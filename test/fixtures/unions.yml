@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_in_eng: MyString
+  name_in_bng: MyString
+  upazila_id: 
+  union_no: 1
+  post: MyString
+
+two:
+  name_in_eng: MyString
+  name_in_bng: MyString
+  upazila_id: 
+  union_no: 1
+  post: MyString
