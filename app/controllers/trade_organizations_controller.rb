@@ -1,4 +1,4 @@
-class TradeOrganizationController < ApplicationController
+class TradeOrganizationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
