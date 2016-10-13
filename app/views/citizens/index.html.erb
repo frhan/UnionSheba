@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Citizens</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name in eng</th>
+      <th>Name in bng</th>
+      <th>Fathers name</th>
+      <th>Mothers name</th>
+      <th>Village</th>
+      <th>Post</th>
+      <th>Post</th>
+      <th>Union</th>
+      <th>Spouse name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @citizens %>
+    <% @citizens.each do |citizen| %>
+      <tr>
+        <td><%= citizen.name_in_eng %></td>
+        <td><%= citizen.name_in_bng %></td>
+        <td><%= citizen.fathers_name %></td>
+        <td><%= citizen.mothers_name %></td>
+        <td><%= citizen.village %></td>
+        <td><%= citizen.post %></td>
+        <td><%= citizen.post %></td>
+        <td><%= citizen.union %></td>
+        <td><%= citizen.spouse_name %></td>
+        <td><%= link_to 'Show', citizen %></td>
+        <td><%= link_to 'Edit', edit_citizen_path(citizen) %></td>
+        <td><%= link_to 'Destroy', citizen, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+      <%end%>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Citizen', new_citizen_path %>
