@@ -1,0 +1,2 @@
+class TradeOrganizationController < ApplicationController
+end

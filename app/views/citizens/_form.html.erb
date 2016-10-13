@@ -1,53 +1,51 @@
 <%= form_for(@citizen) do |f| %>
-  <% if @citizen.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@citizen.errors.count, "error") %> prohibited this citizen from being saved:</h2>
+    <% if @citizen.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@citizen.errors.count, "error") %> prohibited this citizen from being saved:</h2>
 
-      <ul>
-      <% @citizen.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @citizen.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name_in_eng %><br>
+      <%= f.text_field :name_in_eng %>
     </div>
-  <% end %>
+    <div class="field">
+      <%= f.label :name_in_bng %><br>
+      <%= f.text_field :name_in_bng %>
+    </div>
+    <div class="field">
+      <%= f.label :fathers_name %><br>
+      <%= f.text_field :fathers_name %>
+    </div>
+    <div class="field">
+      <%= f.label :mothers_name %><br>
+      <%= f.text_field :mothers_name %>
+    </div>
+    <div class="field">
+      <%= f.label :village %><br>
+      <%= f.text_field :village %>
+    </div>
+    <div class="field">
+      <%= f.label :post %><br>
+      <%= f.text_field :post %>
+    </div>
+    <div class="field">
+      <%= f.label :word_no %><br>
+      <%= f.number_field :post %>
+    </div>
+    <%= f.hidden_field :union_id, :value => current_user.union.id %>
 
-  <div class="field">
-    <%= f.label :name_in_eng %><br>
-    <%= f.text_field :name_in_eng %>
-  </div>
-  <div class="field">
-    <%= f.label :name_in_bng %><br>
-    <%= f.text_field :name_in_bng %>
-  </div>
-  <div class="field">
-    <%= f.label :fathers_name %><br>
-    <%= f.text_field :fathers_name %>
-  </div>
-  <div class="field">
-    <%= f.label :mothers_name %><br>
-    <%= f.text_field :mothers_name %>
-  </div>
-  <div class="field">
-    <%= f.label :village %><br>
-    <%= f.text_field :village %>
-  </div>
-  <div class="field">
-    <%= f.label :post %><br>
-    <%= f.text_field :post %>
-  </div>
-  <div class="field">
-    <%= f.label :post %><br>
-    <%= f.number_field :post %>
-  </div>
-  <div class="field">
-    <%= f.label :union_id %><br>
-    <%= f.text_field :union_id %>
-  </div>
-  <div class="field">
-    <%= f.label :spouse_name %><br>
-    <%= f.text_field :spouse_name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :spouse_name %><br>
+      <%= f.text_field :spouse_name %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

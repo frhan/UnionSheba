@@ -7,7 +7,7 @@ class CreateCitizens < ActiveRecord::Migration
       t.string :mothers_name
       t.string :village
       t.string :post
-      t.integer :post
+      t.integer :word_no
       t.references :union, index: true, foreign_key: true
       t.string :spouse_name
 

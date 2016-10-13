@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013050254) do
+ActiveRecord::Schema.define(version: 20161013071627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,8 @@ ActiveRecord::Schema.define(version: 20161013050254) do
     t.string   "fathers_name"
     t.string   "mothers_name"
     t.string   "village"
-    t.integer  "post"
+    t.string   "post"
+    t.integer  "word_no"
     t.integer  "union_id"
     t.string   "spouse_name"
     t.datetime "created_at",   null: false
@@ -82,6 +83,37 @@ ActiveRecord::Schema.define(version: 20161013050254) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "trade_licenses", force: :cascade do |t|
+    t.integer  "fiscal_year"
+    t.integer  "license_fee"
+    t.integer  "trade_organization_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "trade_licenses", ["trade_organization_id"], name: "index_trade_licenses_on_trade_organization_id", using: :btree
+
+  create_table "trade_organizations", force: :cascade do |t|
+    t.string   "enterprize_name_in_eng"
+    t.string   "enterprize_name_in_bng"
+    t.string   "owners_name_eng"
+    t.string   "owners_name_bng"
+    t.string   "fathers_name"
+    t.string   "mothers_name"
+    t.string   "spouse_name"
+    t.string   "village_name"
+    t.string   "post_name"
+    t.string   "upazilla_name"
+    t.string   "zilla_name"
+    t.string   "business_place"
+    t.string   "business_category"
+    t.integer  "union_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "trade_organizations", ["union_id"], name: "index_trade_organizations_on_union_id", using: :btree
 
   create_table "unions", force: :cascade do |t|
     t.string   "name_in_eng"
@@ -127,6 +159,8 @@ ActiveRecord::Schema.define(version: 20161013050254) do
 
   add_foreign_key "citizens", "unions"
   add_foreign_key "districts", "divisions"
+  add_foreign_key "trade_licenses", "trade_organizations"
+  add_foreign_key "trade_organizations", "unions"
   add_foreign_key "unions", "upazilas"
   add_foreign_key "users", "unions"
 end

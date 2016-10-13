@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fiscal_year: 1
+  license_fee: 1
+
+two:
+  fiscal_year: 1
+  license_fee: 1

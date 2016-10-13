@@ -1,0 +1,2 @@
+module TradeOrganizationHelper
+end
