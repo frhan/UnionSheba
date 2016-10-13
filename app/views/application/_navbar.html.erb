@@ -1,19 +1,29 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <%= link_to 'Updata', root_path, html_options = { class: "navbar-brand"} %>
+      <%= link_to 'Updata', root_path, html_options = {class: "navbar-brand"} %>
     </div>
 
-    <ul class="nav navbar-nav navbar-left">
-      <li> <%= link_to 'Citizens', citizens_path %> </li>
-    </ul>
+    <% if user_signed_in? %>
+        <ul class="nav navbar-nav navbar-left">
+          <li> <%= link_to 'Citizens', citizens_path %> </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-left">
+          <li> <%= link_to 'Trade License', citizens_path %> </li>
+        </ul>
+        <%else%>
+        <ul class="nav navbar-nav navbar-left">
+          <li> <%= link_to 'Request Certificate', citizens_path %> </li>
+        </ul>
+    <% end %>
 
 
     <ul class="nav navbar-nav navbar-right">
       <% if current_user %>
           <%= render 'user_nav_bar' %>
       <% else %>
-          <li> <%= link_to 'Signin', new_user_session_path %> </li>
+          <li> <%= link_to 'Admin Signin', new_user_session_path %> </li>
       <% end %>
 
     </ul>

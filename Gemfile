@@ -38,6 +38,7 @@ gem 'wkhtmltopdf-binary'
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'bootstrap-sass'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
