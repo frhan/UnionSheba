@@ -1,0 +1,21 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to 'Updata', root_path, html_options = { class: "navbar-brand"} %>
+    </div>
+
+    <ul class="nav navbar-nav navbar-left">
+      <li> <%= link_to 'Citizens', citizens_path %> </li>
+    </ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+          <%= render 'user_nav_bar' %>
+      <% else %>
+          <li> <%= link_to 'Signin', new_user_session_path %> </li>
+      <% end %>
+
+    </ul>
+  </div>
+</nav>
