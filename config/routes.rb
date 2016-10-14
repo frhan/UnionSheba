@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   resources :citizens
+  resources :trade_organizations
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
