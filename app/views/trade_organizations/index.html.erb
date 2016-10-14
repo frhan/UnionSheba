@@ -1,6 +1,6 @@
 <h1>Trade License </h1>
 <% if @trade_organizations %>
-    <% @trade_organizations.each do |to| %>
+    <% @trade_organizations.each do |trade_organization| %>
         <table class="table table-striped">
           <thead>
           <tr>
@@ -14,23 +14,14 @@
           <tbody>
 
           <tr>
-            <td><%= to.enterprize_name_in_bng %></td>
-            <td><%= to.owners_name_bng %></td>
-            <td><%= to.business_place %></td>
-            <td><%= to.created_at %></td>
+            <td><%= trade_organization.enterprize_name_in_bng %></td>
+            <td><%= trade_organization.owners_name_bng %></td>
+            <td><%= trade_organization.business_place %></td>
+            <td><%= trade_organization.created_at %></td>
             <td>
-              <a href="@{/trade_license/{id}(id=${tradeOrganization.tradeLicenses.get(0).id})}" role="button"
-                 class="btn btn-primary btn-circle">
-                Show
-              </a>
-              <a href="@{/trade_license/edit/{id}(id=${tradeOrganization.tradeLicenses.get(0).id})}" href="#"
-                 role="button" class="btn btn-warning btn-circle">
-                Edit
-              </a>
-              <!--<a th:href="@{/citizen/delete/{id}(id=${citizen.id})}" role="button"-->
-              <!--class="btn btn-danger btn-circle">-->
-              <!--Delete-->
-              <!--</a>-->
+              <%= link_to "Show",trade_organization_path(trade_organization),class:"btn btn-primary btn-circle"%>
+              <%= link_to "Edit",edit_trade_organization_path(trade_organization),class:"btn btn-primary btn-circle"%>
+
             </td>
           </tr>
           </tbody>
