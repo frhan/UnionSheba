@@ -25,7 +25,6 @@ class TradeOrganizationsController < ApplicationController
   # POST /recipes.json
   def create
     @trade_organization = TradeOrganization.new(trade_organization_params)
-
     respond_to do |format|
       if @trade_organization.save
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }

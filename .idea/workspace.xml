@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d2ef80e-fd60-401c-b476-ec4dc1e959c0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/trade_organizations/_form.html.erb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/trade_organization/renew.html.erb" afterPath="$PROJECT_DIR$/config/initializers/kaminari.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/trade_organizations/show.pdf.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.rdoc" afterPath="$PROJECT_DIR$/README.rdoc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/trade_organizations_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/trade_organizations_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/trade_organizations/index.html.erb" afterPath="$PROJECT_DIR$/app/views/trade_organizations/index.html.erb" />
     </list>
     <ignored path="updata.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,18 +52,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/trade_organizations/new.html.erb">
+      <file leaf-file-name="_form.html.erb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/citizens/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="59">
+              <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/trade_organizations/index.html.erb">
+      <file leaf-file-name="new.html.erb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/trade_organizations/new.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -77,8 +75,8 @@
       <file leaf-file-name="trade_organizations_controller.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/trade_organizations_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="390">
+              <caret line="26" column="74" selection-start-line="26" selection-start-column="74" selection-end-line="26" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -120,7 +118,6 @@
         <option value="$PROJECT_DIR$/app/views/trade_organization/renew.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/app/controllers/trade_organization_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/trade_organizations/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/pdf.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/pdf.css" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
@@ -147,6 +144,7 @@
         <option value="$PROJECT_DIR$/app/views/trade_organizations/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/trade_organizations/new.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/trade_organizations_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/trade_organizations/index.html.erb" />
       </list>
     </option>
   </component>
@@ -286,6 +284,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="updata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="updata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -599,7 +615,7 @@
       <workItem from="1476326766042" duration="6168000" />
       <workItem from="1476343967008" duration="13050000" />
       <workItem from="1476387275992" duration="7787000" />
-      <workItem from="1476470239251" duration="6265000" />
+      <workItem from="1476470239251" duration="6988000" />
     </task>
     <task id="LOCAL-00001" summary="sign in working">
       <created>1476327018707</created>
@@ -692,11 +708,18 @@
       <option name="project" value="LOCAL" />
       <updated>1476476878413</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="added trade organization">
+      <created>1476478301945</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1476478301945</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49391000" />
+    <option name="totallyTimeSpent" value="50114000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="41" y="23" width="1239" height="777" extended-state="6" />
@@ -766,7 +789,8 @@
     <MESSAGE value="form added&#10;" />
     <MESSAGE value="citizen added" />
     <MESSAGE value="citizen comleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="citizen comleted" />
+    <MESSAGE value="added trade organization" />
+    <option name="LAST_COMMIT_MESSAGE" value="added trade organization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1030,7 +1054,7 @@
         <state relative-caret-position="405">
           <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
           <folding>
-            <element signature="e#690#696#0#HTML" expanded="true" />
+            <element signature="e#690#696#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1152,14 +1176,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/citizens/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/citizens/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1184,6 +1200,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/trade_organizations/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/citizens/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/trade_organizations/show.pdf.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1192,10 +1224,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/trade_organizations/_form.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/trade_organizations/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        <state relative-caret-position="585">
+          <caret line="39" column="52" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -1208,18 +1240,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/trade_organizations/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/trade_organizations_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="390">
+          <caret line="26" column="74" selection-start-line="26" selection-start-column="74" selection-end-line="26" selection-end-column="74" />
           <folding />
         </state>
       </provider>
