@@ -14,7 +14,9 @@ class TradeOrganizationsController < ApplicationController
   end
 
   def show
-
+    respond_to do |format|
+      format.html
+    end
   end
 
   # GET /recipes/1/edit
@@ -27,11 +29,11 @@ class TradeOrganizationsController < ApplicationController
     @trade_organization = TradeOrganization.new(trade_organization_params)
     respond_to do |format|
       if @trade_organization.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
-        format.json { render :show, status: :created, location: @recipe }
+        format.html { redirect_to @trade_organization, notice: 'Recipe was successfully created.' }
+        format.json { render :show, status: :created, location: @trade_organization }
       else
         format.html { render :new }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        format.json { render json: @trade_organization.errors, status: :unprocessable_entity }
       end
     end
 
@@ -58,7 +60,7 @@ class TradeOrganizationsController < ApplicationController
   def destroy
     @trade_organization.destroy
     respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
+      format.html { redirect_to trade_organization_url, notice: 'Recipe was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -74,7 +76,9 @@ class TradeOrganizationsController < ApplicationController
 
 
   def trade_organization_params
-    params.require(:trade_organization).permit(:name)
+    params.require(:trade_organization).permit(:enterprize_name_in_eng,:enterprize_name_in_bng,:owners_name_eng,:owners_name_bng,
+    :fathers_name,:mothers_name,:spouse_name,:village_name,:post_name,:upazilla_name,:zilla_name,:business_place,:business_category,
+    :union_id)
   end
 
 end

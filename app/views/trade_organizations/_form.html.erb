@@ -4,7 +4,7 @@
       <div class="panel-title">নাগরিক ফরম</div>
     </div>
     <div class="panel-body">
-      <%= form_for @citizen, html:{class: 'form-horizontal'} do |f| %>
+      <%= form_for @trade_organization, html:{class: 'form-horizontal'} do |f| %>
 
           <div id="signupalert" style="display:none" class="alert alert-danger">
             <p>Error:</p>
@@ -12,16 +12,30 @@
           </div>
 
           <div class="form-group">
-            <label for="nameInEng" class="col-md-3 control-label">Name(English)*</label>
+            <label for="nameInEng" class="col-md-3 control-label">প্রতিষ্ঠান নামঃ(ইংলিশ)</label>
             <div class="col-md-9">
-              <%= f.text_field :name_in_eng, class: "form-control", placeholder: "Name In English" %>
+              <%= f.text_field :enterprize_name_in_eng, class: "form-control", placeholder: "Name In English" %>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">বাংলা নামঃ</label>
+            <label for="nameInBn" class="col-md-3 control-label">প্রতিষ্ঠান নামঃ</label>
             <div class="col-md-9">
-              <%= f.text_field :name_in_bng, class: "form-control", placeholder: "Name In Bangla" %>
+              <%= f.text_field :enterprize_name_in_bng, class: "form-control", placeholder: "Name In Bangla" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">সত্ত্বাধিকারী নামঃ (ইংলিশ)</label>
+            <div class="col-md-9">
+              <%= f.text_field :owners_name_eng, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">সত্ত্বাধিকারী নামঃ (বাংলা)</label>
+            <div class="col-md-9">
+              <%= f.text_field :owners_name_bng, class: "form-control" %>
             </div>
           </div>
 
@@ -32,6 +46,7 @@
             </div>
           </div>
 
+
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">মায়ের নামঃ</label>
             <div class="col-md-9">
@@ -39,50 +54,56 @@
             </div>
           </div>
 
+
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">স্বামী/স্ত্রী নামঃ</label>
+            <label for="nameInBn" class="col-md-3 control-label">স্বামী/স্ত্রীর নামঃ</label>
             <div class="col-md-9">
               <%= f.text_field :spouse_name, class: "form-control" %>
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">গ্রামের নামঃ</label>
-            <div class="col-md-9">
-              <%= f.text_field :village, class: "form-control" %>
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">ডাকঘরঃ</label>
-            <div class="col-md-9">
-              <%= f.text_field :post, class: "form-control" %>
             </div>
           </div>
 
           <%= f.hidden_field :union_id, :value => current_user.union.id %>
 
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">ওয়ার্ড নংঃ</label>
+            <label for="nameInBn" class="col-md-3 control-label">গ্রামের নামঃ</label>
             <div class="col-md-9">
-              <%= f.number_field :word_no, class: "form-control" %>
+              <%= f.text_field :village_name, class: "form-control" %>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">জাতীয় পরিচয়পত্র নম্বরঃ</label>
+            <label for="nameInBn" class="col-md-3 control-label">ডাকঘরঃ</label>
             <div class="col-md-9">
-              <%= f.text_field :nid, class: "form-control" %>
+              <%= f.text_field :post_name, class: "form-control" %>
             </div>
           </div>
 
 
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">জন্ম নিবন্ধন নম্বরঃ</label>
+            <label for="nameInBn" class="col-md-3 control-label">উপজেলাঃ</label>
             <div class="col-md-9">
-              <%= f.text_field :birthid, class: "form-control" %>
+              <%= f.text_field :upazilla_name, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">জেলা</label>
+            <div class="col-md-9">
+              <%= f.text_field :zilla_name, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">ব্যবসার স্থানঃ</label>
+            <div class="col-md-9">
+              <%= f.text_field :business_place, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label"> ব্যবসার ধরনঃ</label>
+            <div class="col-md-9">
+              <%= f.text_field :business_category, class: "form-control" %>
             </div>
           </div>
 
@@ -97,7 +118,7 @@
             </div>
           </div>
       <% end %>
-      <%= link_to 'Back', citizens_path %>
+      <%= link_to 'Back', trade_organizations_path %>
     </div>
   </div>
 </div>
