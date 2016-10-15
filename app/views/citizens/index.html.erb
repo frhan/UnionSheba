@@ -4,7 +4,7 @@
 <h1>Citizens</h1>
 
 <% if @citizens %>
-    <table id="citizens">
+    <table  class="table table-striped">
       <thead>
 
       <tr>
@@ -22,10 +22,15 @@
             <td><%= citizen.name_in_bng %></td>
             <td><%= citizen.fathers_name %></td>
             <td><%= citizen.mothers_name %></td>
+            <td>
+              <%= link_to "Show", citizen_path(citizen), class: "btn btn-primary btn-circle" %>
+              <%= link_to "Edit", edit_citizen_path(citizen), class: "btn btn-primary btn-circle" %>
+
+            </td>
           </tr>
       <% end %>
       </tbody>
     </table>
 <% end %>
-<%= link_to 'New Citizen', new_citizen_path %>
+<%= link_to 'New', new_citizen_path,class: "btn btn-primary" %>
 </div>
