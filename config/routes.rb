@@ -3,10 +3,7 @@ Rails.application.routes.draw do
 
   resources :citizens
   resources :trade_organizations do
-    member do
-      get 'renew'
-      post 'create_trade_license'
-    end
+    resource :trade_licenses
   end
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config

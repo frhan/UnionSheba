@@ -1,0 +1,2 @@
+module TradeLicensesHelper
+end
