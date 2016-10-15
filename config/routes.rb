@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   resources :citizens
   resources :trade_organizations do
-    collection do
+    member do
       get 'renew'
+      post 'create_trade_license'
     end
   end
   devise_for :users

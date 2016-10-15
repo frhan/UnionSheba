@@ -3,7 +3,7 @@
 
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h3 class="panel-title"></h3>
+      <h3 class="panel-title"><%= @trade_organization.enterprize_name_in_eng %></h3>
     </div>
     <div class="panel-body">
       <div class="row">
@@ -12,22 +12,23 @@
           <table class="table table-user-information">
             <tbody>
             <tr>
-              <td>নাম:</td>
-              <td>Programming</td>
+              <td>প্রতিষ্ঠানের নামঃ</td>
+              <td><%= @trade_organization.enterprize_name_in_bng%></td>
+            </tr>
+            <tr>
+              <td>স্বত্বাধীকারির নামঃ</td>
+              <td><%= @trade_organization.owners_name_bng %></td>
             </tr>
 
             <tr>
-              <td>বাবার নাম:</td>
-              <td>Programming</td>
+              <td>ব্যবসার স্থানঃ</td>
+              <td><%= @trade_organization.business_place%></td>
             </tr>
             <tr>
-              <td >মায়ের নাম:</td>
-              <td >Programming</td>
+              <td >ব্যবসার ধরনঃ</td>
+              <td ><%= @trade_organization.business_category%></td>
             </tr>
-            <tr>
-              <td>মায়ের নাম:</td>
-              <td>Programming</td>
-            </tr>
+
 
             <tr>
               <td>স্বামী / স্ত্রীর নাম:</td>

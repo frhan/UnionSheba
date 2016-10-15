@@ -11,6 +11,7 @@ class TradeOrganizationsController < ApplicationController
 
   def new
     @trade_organization = TradeOrganization.new
+    @trade_organization.trade_licenses.build
   end
 
   def show
@@ -70,15 +71,15 @@ class TradeOrganizationsController < ApplicationController
   end
 
   private
+
   def set_trade_organization
     @trade_organization = TradeOrganization.find(params[:id])
   end
 
-
   def trade_organization_params
     params.require(:trade_organization).permit(:enterprize_name_in_eng,:enterprize_name_in_bng,:owners_name_eng,:owners_name_bng,
     :fathers_name,:mothers_name,:spouse_name,:village_name,:post_name,:upazilla_name,:zilla_name,:business_place,:business_category,
-    :union_id)
+    :union_id,trade_licenses_attributes: [:id, :fiscal_year, :license_fee])
   end
 
 end
