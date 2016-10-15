@@ -1,0 +1,100 @@
+<div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <div class="panel-title">ইউনিয়ন</div>
+    </div>
+    <div class="panel-body">
+      <form id="citizenform" class="form-horizontal" role="form"
+            th:action="@{/trade_license/trade_organization/{id}/renew(id=${tradeLicense.tradeOrganization.id})}"
+            th:object="${tradeLicense}" method="post">
+        <!--very important. without it edit will not work-->
+        <input type="hidden" th:field="*{id}"/>
+
+        <div id="signupalert" style="display:none" class="alert alert-danger">
+          <p>Error: Hello Error</p>
+          <span></span>
+        </div>
+
+        <input type="hidden" th:field="*{tradeOrganization.id}"/>
+        <div class="form-group">
+          <label for="nameInEng" class="col-md-3 control-label" th:text="#{organization.name.english}">Institute
+            Name(Eng)*</label>
+          <div class="col-md-9">
+            <input type="text" class="form-control" name="nameInEng" placeholder="Name In English"
+                   th:disabled="${true}"
+                   th:field="*{tradeOrganization.enterprizeNameInEng}"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nameInBn" class="col-md-3 control-label" th:text="#{organization.name.bangla}">Institute
+            Name(Ban)*</label>
+          <div class="col-md-9">
+            <input type="text" class="form-control" name="nameInBn" placeholder="Name in Bangla"
+                   th:field="*{tradeOrganization.enterprizeNameInBn}" value="Test User"
+
+                   th:disabled="${true}"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nameInEng" class="col-md-3 control-label"
+                 th:text="#{owners.name.english}">Name(English)*</label>
+          <div class="col-md-9">
+            <input type="text" class="form-control" name="nameInEng" placeholder="Name In English"
+                   th:disabled="${true}"
+                   th:field="*{tradeOrganization.ownerNameInEn}" value="Test User"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nameInBn" class="col-md-3 control-label" th:text="#{owners.name.bangla}">বাংলা
+            নাম</label>
+          <div class="col-md-9">
+            <input type="text" class="form-control" name="nameInBn" placeholder="Name in Bangla"
+                   th:disabled="${true}"
+                   th:field="*{tradeOrganization.ownerNameInBn}" value="Test User"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nameInBn" class="col-md-3 control-label" th:text="#{business.place.bangla}">বাংলা
+            নাম</label>
+          <div class="col-md-9">
+            <input type="text" class="form-control" name="nameInBn" placeholder="Name in Bangla"
+                   th:disabled="${true}"
+                   th:field="*{tradeOrganization.businessPlace}" value="Test User"/>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="nameInBn" class="col-md-3 control-label">Fiscal year</label>
+          <div class="col-md-9">
+            <input type="text" class="form-control" name="nameInBn" th:field="*{fiscalYear}"
+                   value="2015"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nameInBn" class="col-md-3 control-label">License Fee</label>
+          <div class="col-md-9">
+            <input type="number" class="form-control" name="nameInBn" th:field="*{licenseFee}"
+                   value="1230"/>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <!-- Button -->
+          <div class="col-md-offset-3 col-md-9">
+            <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>
+              &nbsp; Renew
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

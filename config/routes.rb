@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   resources :citizens
-  resources :trade_organizations do
+  resources :trade_organizations,shallow: true do
     resource :trade_licenses
   end
   devise_for :users

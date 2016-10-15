@@ -1,33 +1,35 @@
 <h1>Trade License </h1>
 <% if @trade_organizations %>
-    <% @trade_organizations.each do |trade_organization| %>
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th>Institute Name</th>
-            <th>Owner Name</th>
-            <th>Business Place</th>
-            <th>Last License Renew</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
 
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Institute Name</th>
+        <th>Owner Name</th>
+        <th>Business Place</th>
+        <th>Last License Renew</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @trade_organizations.each do |trade_organization| %>
           <tr>
             <td><%= trade_organization.enterprize_name_in_bng %></td>
             <td><%= trade_organization.owners_name_bng %></td>
             <td><%= trade_organization.business_place %></td>
             <td><%= trade_organization.created_at %></td>
             <td>
-              <%= link_to "Show",trade_organization_path(trade_organization),class:"btn btn-primary btn-circle"%>
-              <%= link_to "Edit",edit_trade_organization_path(trade_organization),class:"btn btn-primary btn-circle"%>
+              <%= link_to "Show", trade_organization_path(trade_organization), class: "btn btn-primary btn-circle" %>
+              <%= link_to "Edit", edit_trade_organization_path(trade_organization), class: "btn btn-primary btn-circle" %>
 
             </td>
           </tr>
-          </tbody>
-        </table>
-    <% end %>
+      <% end %>
+      </tbody>
+    </table>
+
 <% end %>
-<%= link_to "New",new_trade_organization_path,class:"btn btn-primary"%>
+<%= link_to "New", new_trade_organization_path, class: "btn btn-primary" %>
 
 </div>

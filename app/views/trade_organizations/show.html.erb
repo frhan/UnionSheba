@@ -29,11 +29,13 @@
               <td ><%= @trade_organization.business_category%></td>
             </tr>
 
+            <% if @trade_organization.trade_licenses.count > 0 %>
 
             <tr>
-              <td>স্বামী / স্ত্রীর নাম:</td>
-              <td> Programming</td>
+              <td>সর্বশেষ নবায়ন বছরঃ</td>
+              <td><%= @trade_organization.trade_licenses.order('fiscal_year desc').first.fiscal_year%></td>
             </tr>
+                <% end %>
 
             </tbody>
           </table>
