@@ -1,6 +1,6 @@
 class TradeOrganizationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trade_organization, only: [:show, :edit, :update, :destroy, :renew,:show_money_recipt]
+  before_action :set_trade_organization, only: [:show, :edit, :update, :destroy, :renew,:show_money_recipt,:create_trade_license]
 
   def index
     if user_signed_in?
@@ -52,6 +52,23 @@ class TradeOrganizationsController < ApplicationController
   end
 
   def create_trade_license
+    trade_license = TradeLicense.new(trade_license_params)
+    saved = false
+
+    if trade_license.save
+      saved = true
+      @trade_organization.trade_licenses.push trade_license
+    end
+
+    respond_to do |format|
+      if saved
+        format.html { redirect_to @trade_organization, notice: 'was successfully created.' }
+        format.json { render :show, status: :created, location: @trade_organization }
+      else
+        format.html { render :renew }
+        format.json { render json: @trade_organization.errors, status: :unprocessable_entity }
+      end
+    end
 
   end
 
@@ -82,9 +99,8 @@ class TradeOrganizationsController < ApplicationController
   end
 
   def renew
-
+    @trade_license = TradeLicense.new
   end
-
 
   private
 
@@ -100,6 +116,10 @@ class TradeOrganizationsController < ApplicationController
     params.require(:trade_organization).permit(:enterprize_name_in_eng, :enterprize_name_in_bng, :owners_name_eng, :owners_name_bng,
                                                :fathers_name, :mothers_name, :spouse_name, :village_name, :post_name, :upazilla_name, :zilla_name, :business_place, :business_category,
                                                :union_id, trade_licenses_attributes: [:id, :fiscal_year, :license_fee])
+  end
+
+  def trade_license_params
+    params.require(:trade_license).permit(:fiscal_year,:license_fee)
   end
 
 end
