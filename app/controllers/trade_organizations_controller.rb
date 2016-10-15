@@ -1,6 +1,6 @@
 class TradeOrganizationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trade_organization, only: [:show, :edit, :update, :destroy,:renew]
+  before_action :set_trade_organization, only: [:show, :edit, :update, :destroy, :renew]
 
   def index
     if user_signed_in?
@@ -17,6 +17,13 @@ class TradeOrganizationsController < ApplicationController
   def show
     respond_to do |format|
       format.html
+      format.pdf do
+        render :pdf => file_name,
+               :template => 'trade_organizations/show.pdf.erb',
+               :layout => 'pdf.html.erb',
+               :disposition => 'attachment',
+               :show_as_html => params[:debug].present?
+      end
     end
   end
 
@@ -74,16 +81,21 @@ class TradeOrganizationsController < ApplicationController
 
   end
 
+
   private
+
+  def file_name
+    'trade_license'
+  end
 
   def set_trade_organization
     @trade_organization = TradeOrganization.find(params[:id])
   end
 
   def trade_organization_params
-    params.require(:trade_organization).permit(:enterprize_name_in_eng,:enterprize_name_in_bng,:owners_name_eng,:owners_name_bng,
-    :fathers_name,:mothers_name,:spouse_name,:village_name,:post_name,:upazilla_name,:zilla_name,:business_place,:business_category,
-    :union_id,trade_licenses_attributes: [:id, :fiscal_year, :license_fee])
+    params.require(:trade_organization).permit(:enterprize_name_in_eng, :enterprize_name_in_bng, :owners_name_eng, :owners_name_bng,
+                                               :fathers_name, :mothers_name, :spouse_name, :village_name, :post_name, :upazilla_name, :zilla_name, :business_place, :business_category,
+                                               :union_id, trade_licenses_attributes: [:id, :fiscal_year, :license_fee])
   end
 
 end
