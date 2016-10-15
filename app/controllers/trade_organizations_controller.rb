@@ -1,6 +1,6 @@
 class TradeOrganizationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trade_organization, only: [:show, :edit, :update, :destroy]
+  before_action :set_trade_organization, only: [:show, :edit, :update, :destroy,:renew]
 
   def index
     if user_signed_in?
@@ -37,6 +37,10 @@ class TradeOrganizationsController < ApplicationController
         format.json { render json: @trade_organization.errors, status: :unprocessable_entity }
       end
     end
+
+  end
+
+  def create_trade_license
 
   end
 

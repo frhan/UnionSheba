@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   resources :citizens
   resources :trade_organizations,shallow: true do
+    member do
+      get :renew
+      post :create_trade_license
+    end
     resource :trade_licenses
   end
   devise_for :users
