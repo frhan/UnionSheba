@@ -8,8 +8,10 @@ Rails.application.routes.draw do
       post :create_trade_license
       get :show_money_recipt
     end
-    resource :trade_licenses
   end
+  get 'trade_organizations/:id/trade_license/:license_id/edit' => 'trade_organizations#edit_license',
+      as: :edit_trade_license
+
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

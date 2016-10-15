@@ -1,6 +1,7 @@
 class TradeOrganizationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trade_organization, only: [:show, :edit, :update, :destroy, :renew,:show_money_recipt,:create_trade_license]
+  before_action :set_trade_organization, only: [:show, :edit, :update, :destroy,
+                                                :renew,:show_money_recipt, :create_trade_license,:edit_license]
 
   def index
     if user_signed_in?
@@ -100,6 +101,11 @@ class TradeOrganizationsController < ApplicationController
 
   def renew
     @trade_license = TradeLicense.new
+  end
+
+  def edit_license
+    @trade_license = TradeLicense.find(params[:license_id])
+
   end
 
   private

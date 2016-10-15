@@ -1,0 +1,84 @@
+<div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <div class="panel-title"><%= @trade_organization.enterprize_name_in_eng%></div>
+    </div>
+    <div class="panel-body">
+      <!--<form id="citizenform" class="form-horizontal" role="form">-->
+      <%= form_for @trade_license,html:{class: 'form-horizontal'}, url: create_trade_license_trade_organization_path do |f|   %>
+          <div id="signupalert" style="display:none" class="alert alert-danger">
+            <p>Error: Hello Error</p>
+            <span></span>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInEng" class="col-md-3 control-label">InstituteName(Eng)*</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="nameInEng" placeholder="Name In English"
+                     disabled="true" value="<%= @trade_organization.enterprize_name_in_eng %>"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">Institute
+              Name(Ban)*</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="nameInEng" placeholder="Name In English"
+                     disabled="true" value="<%= @trade_organization.enterprize_name_in_bng %>"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInEng" class="col-md-3 control-label">Name(English)*</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="nameInEng" placeholder="Name In English"
+                     disabled="true" value="<%= @trade_organization.owners_name_bng %>"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">বাংলা
+              নাম</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="nameInEng" placeholder="Name In English"
+                     disabled="true" value="<%= @trade_organization.business_place %>"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">বাংলা
+              নাম</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="nameInEng" placeholder="Name In English"
+                     disabled="true" value="<%= @trade_organization.business_category %>"/>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">Fiscal year</label>
+            <div class="col-md-9">
+
+              <%= f.number_field :fiscal_year,class:"form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">License Fee</label>
+            <div class="col-md-9">
+              <%= f.number_field :license_fee,class:"form-control" %>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <!-- Button -->
+            <div class="col-md-offset-3 col-md-9">
+              <%= f.submit :save,class:"btn btn-info" %>
+            </div>
+          </div>
+      <% end%>
+    </div>
+
+  </div>
+</div>

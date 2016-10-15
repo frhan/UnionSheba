@@ -3,7 +3,7 @@
     <p>গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
     <p>(স্থানীয় সরকার বিভাগ)</p>
     <%= wicked_pdf_image_tag 'logo_ganga.png' %>
-    <h1> <span><%= @citizen.union.union_no %></span> নং <span><%= @citizen.union.name_in_bng %></span> ইউনিয়ন পরিষদ</h1>
+    <h1> <span><%= bangla_number(@citizen.union.union_no.to_s) %></span> নং <span><%= @citizen.union.name_in_bng %></span> ইউনিয়ন পরিষদ</h1>
     <p>উপজেলাঃ <span>গঙ্গাচড়া</span>
       জেলাঃ <span >রংপুর</span></p>
     <h2> নাগরিক সনদ পত্র </h2>
@@ -11,7 +11,7 @@
   <div class="main-body">
     <p>আমি এই মর্মে সনদ পত্র প্রদান করতেছি যে <span><%= @citizen.name_in_bng %></span><br/>
       পিতা / স্বামীঃ <span><%= @citizen.fathers_name %></span> &nbsp; মাতাঃ <span> <%= @citizen.mothers_name %></span> <br/>
-      গ্রামঃ <span><%= @citizen.village %></span> &nbsp; ওয়ার্ড নং <span ><%= @citizen.word_no %></span> ডাকঘর <span><%= @citizen.post%></span> <br/>
+      গ্রামঃ <span><%= @citizen.village %></span> &nbsp; ওয়ার্ড নং <span ><%= bangla_number(@citizen.word_no.to_s) %></span> ডাকঘর <span><%= @citizen.post%></span> <br/>
       উপজেলাঃ <%= @citizen.union.upazila.name_in_bng %>জেলাঃ <%= @citizen.union.upazila.district.name_in_bng %> । তাহাকে আমি ব্যক্তিগতভাবে চিনি । তিনি আমার ইউনিয়ন এর স্থায়ী বাসিন্দা ও জন্মসূত্রে বাংলাদেশের নাগরিক । <br/><br/>
       &nbsp;&nbsp;&nbsp;আমি যতদূর জানি তিনি উন্নত ও নৈতিক চরিত্রের  অধকারী । তিনি সমাজের শান্তি-শৃঙ্খলা ভঙ্গ কিংবা রাষ্ট্র বিরোধী  কোনো কার্যকলাপে অংশগ্রহণ করে নাই । </p>
     <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  আমি তাহার জীবনের সর্বাঙ্গীন উন্নতি কামনা করি । </h4><br/>
@@ -21,11 +21,11 @@
     </div>
     <div class="right">
       <div class="number_box">
-        <p><%=@citizen.nid%>
+        <p><%= bangla_number(@citizen.nid)%>
         </p>
       </div>
       <div class="number_box">
-        <p><%=@citizen.birthid%>
+        <p><%= bangla_number(@citizen.birthid)%>
         </p>
       </div>
     </div>
