@@ -1,6 +1,6 @@
 class TradeOrganizationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trade_organization, only: [:show, :edit, :update, :destroy, :renew]
+  before_action :set_trade_organization, only: [:show, :edit, :update, :destroy, :renew,:show_money_recipt]
 
   def index
     if user_signed_in?
@@ -25,6 +25,10 @@ class TradeOrganizationsController < ApplicationController
                :show_as_html => params[:debug].present?
       end
     end
+  end
+
+  def show_money_recipt
+
   end
 
   # GET /recipes/1/edit

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     member do
       get :renew
       post :create_trade_license
+      get :show_money_recipt
     end
     resource :trade_licenses
   end
