@@ -7,11 +7,11 @@
 # To learn more, check out the README:
 #
 # https://github.com/mileszs/wicked_pdf/blob/master/README.md
-if Rails.env.production?
+# if Rails.env.production?
   wkhtmltopdf_path = Gem.bin_path('wkhtmltopdf-binary', 'wkhtmltopdf')
-else
-  wkhtmltopdf_path =  '/usr/local/bin/wkhtmltopdf'
-end
+#else
+#   wkhtmltopdf_path =  '/usr/local/bin/wkhtmltopdf'
+#end
 
 WickedPdf.config = {
   # Path to the wkhtmltopdf executable: This usually isn't needed if using

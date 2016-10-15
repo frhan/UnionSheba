@@ -1,9 +1,13 @@
+@font-face {
+    font-family: 'Kalpurush';
+    src: url('http://static.ioritro.com/font/kalpurush.eot');
+    src: url('http://static.ioritro.com/font/kalpurush.eot?#iefix') format('embedded-opentype'),
+    url('http://static.ioritro.com/font/Kalpurush.ttf')  format('truetype'),
+    url('http://static.ioritro.com/font/kalpurush.svg#svgFontName') format('svg');
+}
 /*@font-face {*/
     /*font-family: 'Kalpurush';*/
-    /*src: url('http://static.ioritro.com/font/kalpurush.eot');*/
-    /*src: url('http://static.ioritro.com/font/kalpurush.eot?#iefix') format('embedded-opentype'),*/
-    /*url('http://static.ioritro.com/font/Kalpurush.ttf')  format('truetype'),*/
-    /*url('http://static.ioritro.com/font/kalpurush.svg#svgFontName') format('svg');*/
+    /*src: url(data:font/truetype;charset=utf-8;base64,)*/
 /*}*/
 body{
     background-color: unset;
