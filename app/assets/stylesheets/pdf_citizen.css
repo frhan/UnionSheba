@@ -54,12 +54,12 @@
 }
 
 .box{
-    top: 75%;
+    top: 70%;
     position: absolute;
     width: 60%;
 }
 .box2{
-    top: 82%;
+    top: 77%;
     position: absolute;
     width: 60%;
 }
@@ -76,7 +76,7 @@
 }
 .singlefooter{
     position: absolute;
-    top: 75%;
+    top: 70%;
     left: 65%;
 }
 .footer_slogan{
