@@ -42,7 +42,7 @@
 }
 
 .main_text3_cit{
-    width: 90%;
+    width: 100%;
     position: absolute;
     top: 62%;
     left: 15%;
@@ -55,7 +55,6 @@
 .box{
     top: 75%;
     position: absolute;
-
     width: 60%;
 }
 .box2{
