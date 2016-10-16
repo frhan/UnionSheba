@@ -44,7 +44,8 @@
 .main_text3_cit{
     width: 100%;
     position: absolute;
-    top: 62%;
+    top: 60%;
+    text-align: center;
     left: 15%;
 }
 .main_text3_cit h3{
