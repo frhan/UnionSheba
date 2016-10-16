@@ -70,7 +70,19 @@
     font-size: 17px;
     margin-left: 3%;
 }
+.numberbox2{
+    width: 190px;
+    border: 1px solid#000;
+    height: 50px;
+    font-size: 17px;
+    margin-left: 32%;
+}
 .numberbox p{
+    padding-top: -70px;
+    text-align: center;
+}
+
+.numberbox2 p{
     padding-top: -70px;
     text-align: center;
 }
