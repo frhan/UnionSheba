@@ -1,0 +1,120 @@
+/*@font-face {*/
+    /*font-family: 'SolaimanLipi';*/
+    /*src: url('../fonts/SolaimanLipi_29-05-06.eot');*/
+    /*src: url('../fonts/SolaimanLipi_29-05-06.eot?#iefix') format('embedded-opentype'),*/
+    /*url('../fonts/SolaimanLipi_29-05-06.ttf')  format('truetype'),*/
+    /*url('../fonts/SolaimanLipi_29-05-06.svg#svgFontName') format('svg');*/
+/*}*/
+body{
+
+    font-family: 'SolaimanLipi';
+    font-weight: normal;
+    margin: 0 auto;
+    width: 100%;
+    background: #ffffff;
+    background-size: cover;
+}
+
+.wrapper{
+    height: 1600px;
+    max-width: 1160px;
+    margin: 0 auto;
+    position: relative;
+
+}
+.logo{
+    position: absolute;
+    width: 300px;
+    margin: 0 auto;
+    left: 43%;
+}
+.logo img{
+    width: 150px;
+    height: 100px;
+}
+.title{
+    width: 60%;
+    margin: 0 auto;
+    left: 20%;
+    text-align: center;
+    position: absolute;
+    top: 12%;
+}
+.title p{
+    line-height: 3px;
+}
+.title h1{
+    line-height: 15px;
+    color: #0958AD;
+}
+.line{
+    width: 100%;
+    height: 1px;
+    background: #648CE7;
+    position: absolute;
+    top: 19%
+}
+.trade{
+    width: 60%;
+    margin: 0 auto;
+    left: 20%;
+    text-align: center;
+    position: absolute;
+    top: 18%
+}
+.trade h3{
+    font-size: 30px;
+    color: #000;
+}
+.full{
+    position: absolute;
+    top: 25%;
+    width: 100%;
+}
+
+.first_section{
+    position: relative;
+    float: left;
+    width: 40%;
+    left: 10%;
+    text-align:left;
+}
+.first_section p{
+    line-height: 1px;
+}
+.second_section{
+    width: 40%;
+    left: 80%;
+    position: relative;
+    text-align:right;
+}
+.second_section p{
+    line-height: 1px;
+}
+.full_line{
+    width: 80%;
+    position: absolute;
+    top: 30%;
+    left: 10%;
+}
+.main_text{
+    width: 80%;
+    position: absolute;
+    top: 35%;
+    left: 10%;
+}
+.main_text p{
+    line-height: 1px;
+}
+.main_text2{
+    width: 80%;
+    position: absolute;
+    top: 55%;
+    left: 10%;
+}
+.footer{
+    position: absolute;
+    width: 80%;
+    top: 60%;
+    left: 10%;
+}

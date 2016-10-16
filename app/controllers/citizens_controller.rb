@@ -16,6 +16,7 @@ class CitizensController < InheritedResources::Base
                :template => 'citizens/show.pdf.erb',
                :layout => 'pdf.html.erb',
                :disposition => 'attachment',
+               page_size: 'A4',
                :show_as_html => params[:debug].present?
       end
     end
