@@ -16,8 +16,8 @@
       <td class="title">
         <p> গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
         <p> (স্থানীয় সরকার বিভাগ) </p>
-        <h1>৪ নং গঙ্গাচড়া ইউনিয়ন পরিষদ</h1>
-        <p style="color: #DA74AB">উপজেলাঃ গঙ্গাচড়া জেলাঃ  রংপুর</p>
+        <h1><span><%= bangla_number(@trade_organization.union.union_no.to_s)%></span> নং <span><%= @trade_organization.union.name_in_bng%></span> ইউনিয়ন পরিষদ</h1>
+        <p style="color: #DA74AB">উপজেলাঃ <%= @trade_organization.union.upazila.name_in_bng%> জেলাঃ  <%= @trade_organization.union.upazila.district.name_in_bng%></p>
       </td>
     </tr>
     <tr>
@@ -37,7 +37,7 @@
         <table>
           <tr>
             <td>
-              <p>লাইসেন্স নং </p>
+              <p>লাইসেন্স নং</p>
             </td>
             <td>
               <p>:</p>
@@ -46,7 +46,7 @@
           </tr>
           <tr>
             <td>
-              <p>লাইসেন্স নং </p>
+              <p>লাইসেন্স ইস্যুর তারিখ</p>
             </td>
             <td>
               <p>:</p>
@@ -59,7 +59,7 @@
         <table>
           <tr>
             <td>
-              <p>লাইসেন্স নং </p>
+              <p>অর্থ বছর </p>
             </td>
             <td>
               <p>:</p>
@@ -93,63 +93,63 @@
         <p>প্রতিষ্ঠানের নাম </p>
       </td>
       <td width="20px">:</td>
-      <td>প্রতিষ্ঠানের নাম </td>
+      <td><%= @trade_organization.enterprize_name_in_bng %></td>
     </tr>
     <tr>
       <td>
         <p>স্বত্ত্বাধিকারীর নাম  </p>
       </td>
       <td>:</td>
-      <td> স্বত্ত্বাধিকারীর নাম</td>
+      <td><%= @trade_organization.owners_name_bng %></td>
     </tr>
     <tr>
       <td>
         <p>পিতা / স্বামীর নাম  </p>
       </td>
       <td>:</td>
-      <td> পিতা / স্বামীর নাম</td>
+      <td> <%= @trade_organization.fathers_name  %></td>
     </tr>
     <tr>
       <td>
         <p>মাতার নাম </p>
       </td>
       <td>:</td>
-      <td> মাতার নাম</td>
+      <td> <%= @trade_organization.mothers_name %></td>
     </tr>
     <tr>
       <td>
         <p>স্বত্ত্বাধিকারীর ঠিকানা</p>
       </td>
       <td>:</td>
-      <td> স্বত্ত্বাধিকারীর ঠিকানা </td>
+      <td> <%= @trade_organization.address %></td>
     </tr>
     <tr>
       <td>
         <p>ব্যবসা/বৃত্তি পেশা পরিচালনার ঠিকানা </p>
       </td>
       <td>:</td>
-      <td> ব্যবসা/বৃত্তি পেশা পরিচালনার ঠিকানা </td>
+      <td> <%= @trade_organization.business_place %></td>
     </tr>
     <tr>
       <td>
         <p>ব্যবসা / বৃত্তি /  পেশার ধরণ   </p>
       </td>
       <td>:</td>
-      <td> ব্যবসা / বৃত্তি /  পেশার ধরণ</td>
+      <td> <%= @trade_organization.business_category %></td>
     </tr>
     <tr>
       <td>
         <p>লাইসেন্স ফি/ নবায়ন ফি </p>
       </td>
       <td>:</td>
-      <td> লাইসেন্স ফি/ নবায়ন ফি </td>
+      <td> <%= @trade_organization.fee %></td>
     </tr>
     <tr>
       <td>
         <p>লাইসেন্সের মেয়াদ </p>
       </td>
       <td>:</td>
-      <td> লাইসেন্সের মেয়াদ</td>
+      <td> <%= @trade_organization.license_deadline %></td>
     </tr>
   </table>
   <table>
@@ -165,15 +165,14 @@
         <br/>
         <br/>
         <p style="padding-left: 20%;">সচিব</p>
-        <p>৪ নং গঙ্গাচড়া ইউনিয়ন পরিষদ</p>
-        <p>উপজেলাঃ গঙ্গাচড়া , জেলাঃ  রংপুর</p>
+        <p><%= bangla_number(@trade_organization.union.union_no.to_s)%> নং <%= @trade_organization.union.name_in_bng%> ইউনিয়ন পরিষদ</p>
+
       </td>
       <td class="second_footer"  style="padding-left: 30%;">
         <br/>
         <br/>
         <p style="padding-left: 18%;">চেয়ারম্যান</p>
-        <p>৪ নং গঙ্গাচড়া ইউনিয়ন পরিষদ</p>
-        <p>উপজেলাঃ গঙ্গাচড়া , জেলাঃ  রংপুর</p>
+        <p><%= bangla_number(@trade_organization.union.union_no.to_s)%> নং <%= @trade_organization.union.name_in_bng%> ইউনিয়ন পরিষদ</p>
       </td>
     </tr>
   </table>

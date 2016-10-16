@@ -10,6 +10,7 @@ body{
     font-size: 20px;
 
 }
+/*-trade license css-*/
 
 .wrapper{
     height: 1100px;
@@ -19,6 +20,8 @@ body{
 
     font-size: 20px;
 }
+
+/*--*/
 .first_warpper{
     height: 1000px;
     max-width: 1180px;
