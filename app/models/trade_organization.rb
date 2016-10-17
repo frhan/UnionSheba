@@ -7,12 +7,21 @@ class TradeOrganization < ActiveRecord::Base
       self.village_name << ',' << self.upazilla_name << ',' << self.zilla_name
   end
 
+  def latest_trade_license
+    trade_license ||= self.trade_licenses.order('fiscal_year desc').first
+  end
+
   def fee
-    '২০০'
+    if !latest_trade_license.nil?
+      latest_trade_license.license_fee
+    end
+
   end
 
   def license_deadline
-    '২০১৫'
+    if !latest_trade_license.nil?
+      latest_trade_license.fiscal_year
+    end
   end
 
 end
