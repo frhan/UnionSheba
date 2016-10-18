@@ -1,9 +1,10 @@
 class CitizensController < InheritedResources::Base
+  include ApplicationHelper
   before_filter :authenticate_user!
 
   def index
     if user_signed_in?
-      @citizens = Citizen.where(:union_id => current_user.union.id)
+      @citizens = current_user.citizens #Citizen.where(:union_id => current_user.union.id)
     end
   end
 
@@ -30,7 +31,7 @@ class CitizensController < InheritedResources::Base
   end
 
   def file_name
-    'file_name'
+    pdf_file_name 'citizen_certificate_'
   end
 end
 

@@ -15,7 +15,6 @@ class TradeOrganization < ActiveRecord::Base
     if !latest_trade_license.nil?
       latest_trade_license.license_fee
     end
-
   end
 
   def license_deadline
@@ -23,5 +22,15 @@ class TradeOrganization < ActiveRecord::Base
       latest_trade_license.fiscal_year
     end
   end
+
+  def license_no
+    'ga-123'
+  end
+
+  def fiscal_year_bangla
+
+  end
+
+
 
 end

@@ -1,4 +1,5 @@
 class TradeOrganizationsController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_user!
   before_action :set_trade_organization, only: [:show, :edit, :update, :destroy,
                                                 :renew,:show_money_recipt,
@@ -6,7 +7,7 @@ class TradeOrganizationsController < ApplicationController
 
   def index
     if user_signed_in?
-      @trade_organizations = TradeOrganization.where(union_id: current_user.union.id)
+      @trade_organizations = current_user.trade_organizations #TradeOrganization.where(union_id: current_user.union.id)
     end
 
   end
@@ -112,7 +113,7 @@ class TradeOrganizationsController < ApplicationController
   private
 
   def file_name
-    'trade_license'
+    pdf_file_name'trade_license_'
   end
 
   def set_trade_organization

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :authentication_keys => [:username]
 
   belongs_to :union
+  has_many :citizens,  through: :union
+  has_many :trade_organizations, through: :union
 
   def email_required?
     false
