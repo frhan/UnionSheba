@@ -25,6 +25,8 @@ class TradeLicense < ActiveRecord::Base
 
   def license_count
     #TradeLicense.where(fiscal_year: self.fiscal_year).count + 1
+    #TODO: count -> join with trade org. where trade-organization union id ->
+    # self.trade_org.uinon_id and licsense fiscal year
     TradeLicense.count + 1
   end
 

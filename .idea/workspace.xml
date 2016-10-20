@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7d2ef80e-fd60-401c-b476-ec4dc1e959c0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/citizens_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/citizens_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/trade_organizations_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/trade_organizations_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/trade_license.rb" afterPath="$PROJECT_DIR$/app/models/trade_license.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/trade_organization.rb" afterPath="$PROJECT_DIR$/app/models/trade_organization.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/trade_organizations/show.pdf.erb" afterPath="$PROJECT_DIR$/app/views/trade_organizations/show.pdf.erb" />
     </list>
     <ignored path="updata.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -109,21 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.pdf.erb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="show.pdf.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/trade_organizations/show.pdf.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
+            <state relative-caret-position="270">
               <caret line="66" column="48" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="trade_license.rb" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/trade_license.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -605,7 +591,7 @@
       <workItem from="1476387275992" duration="7787000" />
       <workItem from="1476470239251" duration="51302000" />
       <workItem from="1476711357590" duration="9230000" />
-      <workItem from="1476862488160" duration="9016000" />
+      <workItem from="1476862488160" duration="9271000" />
     </task>
     <task id="LOCAL-00001" summary="sign in working">
       <created>1476327018707</created>
@@ -915,11 +901,18 @@
       <option name="project" value="LOCAL" />
       <updated>1476983484507</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="citizen certificate all">
+      <created>1476987696847</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1476987696847</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112674000" />
+    <option name="totallyTimeSpent" value="112929000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1397,14 +1390,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/trade_organizations/show.pdf.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="66" column="48" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/trade_organization.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="503">
@@ -1415,8 +1400,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/trade_license.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="510">
+          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/trade_organizations/show.pdf.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="66" column="48" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
           <folding />
         </state>
       </provider>
