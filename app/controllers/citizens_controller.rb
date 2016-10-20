@@ -27,7 +27,8 @@ class CitizensController < InheritedResources::Base
 
   def citizen_params
     params.require(:citizen).permit(:name_in_eng, :name_in_bng, :fathers_name,
-                                    :mothers_name, :village, :post, :word_no, :union_id, :spouse_name,:nid,:birthid)
+                                    :mothers_name, :village, :post, :word_no, :union_id,
+                                    :spouse_name,:nid,:birthid)
   end
 
   def file_name
