@@ -1,9 +1,10 @@
 class CitizensController < InheritedResources::Base
+  include ApplicationHelper
   before_filter :authenticate_user!
 
   def index
     if user_signed_in?
-      @citizens = Citizen.where(:union_id => current_user.union.id)
+      @citizens = current_user.citizens #Citizen.where(:union_id => current_user.union.id)
     end
   end
 
@@ -12,6 +13,7 @@ class CitizensController < InheritedResources::Base
     respond_to do |format|
       format.html
       format.pdf do
+        #TODO:update issue date
         render :pdf => file_name,
                :template => 'citizens/show.pdf.erb',
                :layout => 'pdf.html.erb',
@@ -26,11 +28,12 @@ class CitizensController < InheritedResources::Base
 
   def citizen_params
     params.require(:citizen).permit(:name_in_eng, :name_in_bng, :fathers_name,
-                                    :mothers_name, :village, :post, :word_no, :union_id, :spouse_name,:nid,:birthid)
+                                    :mothers_name, :village, :post, :word_no, :union_id,
+                                    :spouse_name,:nid,:birthid)
   end
 
   def file_name
-    'file_name'
+    pdf_file_name 'citizen_certificate_'
   end
 end
 

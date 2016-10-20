@@ -42,7 +42,7 @@
             <td>
               <p>:</p>
             </td>
-            <td>54635</td>
+            <td><%= @trade_organization.license_no %></td>
           </tr>
           <tr>
             <td>
@@ -51,7 +51,7 @@
             <td>
               <p>:</p>
             </td>
-            <td>54635</td>
+            <td><%= bangla_date(DateTime.now.to_date)%></td>
           </tr>
         </table>
       </td>
@@ -64,17 +64,17 @@
             <td>
               <p>:</p>
             </td>
-            <td>54635</td>
+            <td><%= @trade_organization.fiscal_year %></td>
           </tr>
-          <tr>
-            <td>
-              <p>লাইসেন্স নং </p>
-            </td>
-            <td>
-              <p>:</p>
-            </td>
-            <td>54635</td>
-          </tr>
+          <!--<tr>-->
+            <!--<td>-->
+              <!--<p>লাইসেন্স নং </p>-->
+            <!--</td>-->
+            <!--<td>-->
+              <!--<p>:</p>-->
+            <!--</td>-->
+            <!--<td>54635</td>-->
+          <!--</tr>-->
         </table>
       </td>
     </tr>
@@ -142,14 +142,14 @@
         <p>লাইসেন্স ফি/ নবায়ন ফি </p>
       </td>
       <td>:</td>
-      <td> <%= @trade_organization.fee %></td>
+      <td> <%= bangla_number @trade_organization.fee.to_s %></td>
     </tr>
     <tr>
       <td>
         <p>লাইসেন্সের মেয়াদ </p>
       </td>
       <td>:</td>
-      <td> <%= @trade_organization.license_deadline %></td>
+      <td> <%= @trade_organization.deadline %></td>
     </tr>
   </table>
   <table>

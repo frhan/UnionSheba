@@ -86,9 +86,9 @@ body{
 }
 .second_section{
     width: 40%;
-    left: 80%;
+    left: 60%;
     position: relative;
-    text-align:right;
+    text-align:left;
 }
 .second_section p{
     line-height: 1px;

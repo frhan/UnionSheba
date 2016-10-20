@@ -1,6 +1,8 @@
 class TradeOrganization < ActiveRecord::Base
+  include ApplicationHelper
+
   belongs_to :union
-  has_many :trade_licenses
+  has_many :trade_licenses, dependent: :destroy
   accepts_nested_attributes_for :trade_licenses,:allow_destroy => true
 
   def address
@@ -15,7 +17,6 @@ class TradeOrganization < ActiveRecord::Base
     if !latest_trade_license.nil?
       latest_trade_license.license_fee
     end
-
   end
 
   def license_deadline
@@ -23,5 +24,25 @@ class TradeOrganization < ActiveRecord::Base
       latest_trade_license.fiscal_year
     end
   end
+
+  def license_no
+    if !latest_trade_license.nil?
+      latest_trade_license.licsense_no
+    end
+  end
+
+  def deadline
+    if !latest_trade_license.nil?
+      latest_trade_license.deadline
+    end
+  end
+
+
+  def fiscal_year
+    if !latest_trade_license.nil?
+      latest_trade_license.fiscal_year_show
+    end
+  end
+
 
 end
