@@ -1,6 +1,20 @@
 class TradeLicense < ActiveRecord::Base
+  include ApplicationHelper
   belongs_to :trade_organization
   after_create :save_trade_license_no
+
+
+  def deadline
+    if !self.fiscal_year.nil?
+      "৩০ জুন " << bangla_number((self.fiscal_year + 1).to_s) << " পর্যন্ত বৈধ"
+    end
+  end
+
+  def fiscal_year_show
+    if !self.fiscal_year.nil?
+      bangla_number(self.fiscal_year.to_s) << ' - '<< bangla_number((self.fiscal_year + 1).to_s)
+    end
+  end
 
   private
 

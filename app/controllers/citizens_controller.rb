@@ -13,6 +13,7 @@ class CitizensController < InheritedResources::Base
     respond_to do |format|
       format.html
       format.pdf do
+        #TODO:update issue date
         render :pdf => file_name,
                :template => 'citizens/show.pdf.erb',
                :layout => 'pdf.html.erb',

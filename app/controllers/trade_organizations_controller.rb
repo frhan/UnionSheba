@@ -7,7 +7,7 @@ class TradeOrganizationsController < ApplicationController
 
   def index
     if user_signed_in?
-      @trade_organizations = current_user.trade_organizations #TradeOrganization.where(union_id: current_user.union.id)
+      @trade_organizations = current_user.trade_organizations
     end
 
   end
@@ -21,6 +21,7 @@ class TradeOrganizationsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
+        #TODO:update_issue_date
         render :pdf => file_name,
                :template => 'trade_organizations/show.pdf.erb',
                :layout => 'pdf.html.erb',
@@ -56,15 +57,10 @@ class TradeOrganizationsController < ApplicationController
 
   def create_trade_license
     trade_license = TradeLicense.new(trade_license_params)
-    saved = false
-
-    if trade_license.save
-      saved = true
-      @trade_organization.trade_licenses.push trade_license
-    end
+    @trade_organization.trade_licenses.push trade_license
 
     respond_to do |format|
-      if saved
+      if @trade_organization.save
         format.html { redirect_to @trade_organization, notice: 'was successfully created.' }
         format.json { render :show, status: :created, location: @trade_organization }
       else

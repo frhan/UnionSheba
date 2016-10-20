@@ -64,7 +64,7 @@
             <td>
               <p>:</p>
             </td>
-            <td><%= @trade_organization.fiscal_year_bangla %></td>
+            <td><%= @trade_organization.fiscal_year %></td>
           </tr>
           <!--<tr>-->
             <!--<td>-->
@@ -149,7 +149,7 @@
         <p>লাইসেন্সের মেয়াদ </p>
       </td>
       <td>:</td>
-      <td> <%= bangla_number @trade_organization.license_deadline.to_s %></td>
+      <td> <%= @trade_organization.deadline %></td>
     </tr>
   </table>
   <table>

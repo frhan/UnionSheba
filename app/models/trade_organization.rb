@@ -31,11 +31,18 @@ class TradeOrganization < ActiveRecord::Base
     end
   end
 
-  def fiscal_year_bangla
-      fiscal_year_bangla = 2015 #latest_trade_license.fiscal_year
-      bangla_number(fiscal_year_bangla.to_s) << ' - ' <<  bangla_number((fiscal_year_bangla+ 1).to_s)
+  def deadline
+    if !latest_trade_license.nil?
+      latest_trade_license.deadline
+    end
   end
 
+
+  def fiscal_year
+    if !latest_trade_license.nil?
+      latest_trade_license.fiscal_year_show
+    end
+  end
 
 
 end
