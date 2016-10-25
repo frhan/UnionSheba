@@ -1,23 +1,16 @@
-<br/>
 <div class="wrapper">
   <table class="table">
     <tr>
-      <td>
-        <h3 style="margin-top: -10%;">ক্রমিক  নং -</h3>
-      </td>
-    </tr>
-    <tr>
       <td class="logo">
-        <!--<img align="center" src="static/assets/img/logo.png" alt="Logo">-->
-        <%= wicked_pdf_image_tag('logo_ganga.png',align:"center")  %>
+        <%= wicked_pdf_image_tag('logo1.png',align:"center")  %>
       </td>
     </tr>
     <tr>
       <td class="title">
-        <p> গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
-        <p> (স্থানীয় সরকার বিভাগ) </p>
-        <h1><span><%= bangla_number(@trade_organization.union.union_no.to_s)%></span> নং <span><%= @trade_organization.union.name_in_bng%></span> ইউনিয়ন পরিষদ</h1>
-        <p style="color: #DA74AB">উপজেলাঃ <%= @trade_organization.union.upazila.name_in_bng%> জেলাঃ  <%= @trade_organization.union.upazila.district.name_in_bng%></p>
+        <p class="govt"> গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
+        <p class="govt"> (স্থানীয় সরকার বিভাগ) </p>
+        <h1>৪ নং আলমবিদিতর ইউনিয়ন পরিষদ</h1>
+        <p style="color: #DA74AB">উপজেলাঃ গঙ্গাচড়া জেলাঃ  রংপুর</p>
       </td>
     </tr>
     <tr>
@@ -28,151 +21,6 @@
     <tr>
       <td class="trade">
         <h3>ট্রেড লাইসেন্স </h3>
-      </td>
-    </tr>
-  </table>
-  <table>
-    <tr class="full">
-      <td class="first_section">
-        <table>
-          <tr>
-            <td>
-              <p>লাইসেন্স নং</p>
-            </td>
-            <td>
-              <p>:</p>
-            </td>
-            <td><%= @trade_organization.license_no %></td>
-          </tr>
-          <tr>
-            <td>
-              <p>লাইসেন্স ইস্যুর তারিখ</p>
-            </td>
-            <td>
-              <p>:</p>
-            </td>
-            <td><%= bangla_date(DateTime.now.to_date)%></td>
-          </tr>
-        </table>
-      </td>
-      <td class="second_section">
-        <table>
-          <tr>
-            <td>
-              <p>অর্থ বছর </p>
-            </td>
-            <td>
-              <p>:</p>
-            </td>
-            <td><%= @trade_organization.fiscal_year %></td>
-          </tr>
-          <!--<tr>-->
-            <!--<td>-->
-              <!--<p>লাইসেন্স নং </p>-->
-            <!--</td>-->
-            <!--<td>-->
-              <!--<p>:</p>-->
-            <!--</td>-->
-            <!--<td>54635</td>-->
-          <!--</tr>-->
-        </table>
-      </td>
-    </tr>
-    <br/>
-  </table>
-  <table>
-    <tr class="full_line">
-      <td>
-        <p style="line-height: 30px;">স্থানীয় সরকার (ইউনিয়ন পরিষদ ) আইন , ২০০৯ এর ৬৬ ধারার ক্ষমতা বলে প্রণীত আদর্শ কর তফসিল, ২০১৩ এর ১৭ ধারা অনুসারে নিম্নবর্ণিত প্রতিষ্ঠআন/ব্যক্তির অনূকুলে এই লাইসেন্স ইস্যু করা হলো ।</p>
-      </td>
-    </tr>
-  </table>
-  <table class="main_text">
-    <tr>
-      <td width="280px">
-        <p>প্রতিষ্ঠানের নাম </p>
-      </td>
-      <td width="20px">:</td>
-      <td><%= @trade_organization.enterprize_name_in_bng %></td>
-    </tr>
-    <tr>
-      <td>
-        <p>স্বত্ত্বাধিকারীর নাম  </p>
-      </td>
-      <td>:</td>
-      <td><%= @trade_organization.owners_name_bng %></td>
-    </tr>
-    <tr>
-      <td>
-        <p>পিতা / স্বামীর নাম  </p>
-      </td>
-      <td>:</td>
-      <td> <%= @trade_organization.fathers_name  %></td>
-    </tr>
-    <tr>
-      <td>
-        <p>মাতার নাম </p>
-      </td>
-      <td>:</td>
-      <td> <%= @trade_organization.mothers_name %></td>
-    </tr>
-    <tr>
-      <td>
-        <p>স্বত্ত্বাধিকারীর ঠিকানা</p>
-      </td>
-      <td>:</td>
-      <td> <%= @trade_organization.address %></td>
-    </tr>
-    <tr>
-      <td>
-        <p>ব্যবসা/বৃত্তি পেশা পরিচালনার ঠিকানা </p>
-      </td>
-      <td>:</td>
-      <td> <%= @trade_organization.business_place %></td>
-    </tr>
-    <tr>
-      <td>
-        <p>ব্যবসা / বৃত্তি /  পেশার ধরণ   </p>
-      </td>
-      <td>:</td>
-      <td> <%= @trade_organization.business_category %></td>
-    </tr>
-    <tr>
-      <td>
-        <p>লাইসেন্স ফি/ নবায়ন ফি </p>
-      </td>
-      <td>:</td>
-      <td> <%= bangla_number @trade_organization.fee.to_s %></td>
-    </tr>
-    <tr>
-      <td>
-        <p>লাইসেন্সের মেয়াদ </p>
-      </td>
-      <td>:</td>
-      <td> <%= @trade_organization.deadline %></td>
-    </tr>
-  </table>
-  <table>
-    <tr class="main_text2">
-      <td>
-        <p>স্বত্ত্বাধিকারীকে তার ব্যবসা / বৃত্তি /  পেশা অত্র ইউনিয়ন সীমার মধ্যে চালিয়ে যাওয়ার জন্য এই লাইসেন্স প্রদান করা হলো ।</p>
-      </td>
-    </tr>
-  </table>
-  <table class="footer">
-    <tr>
-      <td class="first_footer">
-        <br/>
-        <br/>
-        <p style="padding-left: 20%;">সচিব</p>
-        <p><%= bangla_number(@trade_organization.union.union_no.to_s)%> নং <%= @trade_organization.union.name_in_bng%> ইউনিয়ন পরিষদ</p>
-
-      </td>
-      <td class="second_footer"  style="padding-left: 30%;">
-        <br/>
-        <br/>
-        <p style="padding-left: 18%;">চেয়ারম্যান</p>
-        <p><%= bangla_number(@trade_organization.union.union_no.to_s)%> নং <%= @trade_organization.union.name_in_bng%> ইউনিয়ন পরিষদ</p>
       </td>
     </tr>
   </table>

@@ -1,59 +1,64 @@
-body{
 
+body{
     font-family: 'SolaimanLipi';
     font-weight: normal;
     margin: 0 auto;
     width: 100%;
-    padding: 0;
     background-size: cover;
     background-position: fixed;
     font-size: 20px;
-
+    background: #FFFDD0;
 }
-
 .wrapper{
-    height: 1100px;
+    height: 1095px;
     max-width: 1160px;
     margin: 0 auto;
     position: relative;
-
+    background: #FFFDD0;
     font-size: 20px;
 }
+
 .logo{
     position: absolute;
     width: 300px;
     margin: 0 auto;
-    left: 43%;
+    left: 2%;
+    top: 2%;
 }
-
 .logo img{
-    width: 150px;
-    height: 100px;
+    width: 200px;
+    height: 125px;
     position: relative;
+
 }
 
 .title{
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
-    left: 20%;
+    left: 10%;
     text-align: center;
     position: absolute;
-    top: 15%;
+
 }
 .title p{
-    line-height: 3px;
+    line-height: 6px;
+    font-size: 20px;
+}
+p.govt{
+    line-height: 6px;
+    font-size: 16px;
 }
 .title h1{
-    line-height: 15px;
+    line-height: 12px;
     color: #0958AD;
+    font-size: 28px;
 }
-
 .line{
     width: 100%;
     height: 1px;
     background: #648CE7;
     position: absolute;
-    top: 28%
+    top: 17%;
 }
 .trade{
     width: 60%;
@@ -61,63 +66,9 @@ body{
     left: 20%;
     text-align: center;
     position: absolute;
-    top: 27%
+    top: 15%
 }
 .trade h3{
-    font-size: 30px;
+    font-size: 45px;
     color: #000;
-}
-
-.full{
-    position: absolute;
-    top: 35%;
-    width: 100%;
-}
-.first_section{
-    position: relative;
-    float: left;
-    width: 40%;
-    left: 10%;
-    text-align:left;
-}
-.first_section p{
-    line-height: 1px;
-    font-size: 20px;
-}
-.second_section{
-    width: 40%;
-    left: 60%;
-    position: relative;
-    text-align:left;
-}
-.second_section p{
-    line-height: 1px;
-}
-.full_line{
-    width: 80%;
-    position: absolute;
-    top: 43%;
-    left: 10%;
-}
-.main_text{
-    width: 80%;
-    position: absolute;
-    top: 52%;
-    left: 10%;
-}
-.main_text p{
-    line-height: 1px;
-}
-
-.main_text2{
-    width: 80%;
-    position: absolute;
-    top: 88%;
-    left: 10%;
-}
-.footer{
-    position: absolute;
-    width: 80%;
-    top: 95%;
-    left: 10%;
 }
