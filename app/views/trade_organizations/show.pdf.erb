@@ -1,27 +1,29 @@
-<div class="wrapper">
-  <table class="table">
-    <tr>
-      <td class="logo">
-        <%= wicked_pdf_image_tag('logo1.png',align:"center")  %>
-      </td>
-    </tr>
-    <tr>
-      <td class="title">
-        <p class="govt"> গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
-        <p class="govt"> (স্থানীয় সরকার বিভাগ) </p>
-        <h1>৪ নং আলমবিদিতর ইউনিয়ন পরিষদ</h1>
-        <p style="color: #DA74AB">উপজেলাঃ গঙ্গাচড়া জেলাঃ  রংপুর</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="line"></div>
-      </td>
-    </tr>
-    <tr>
-      <td class="trade">
-        <h3>ট্রেড লাইসেন্স </h3>
-      </td>
-    </tr>
-  </table>
+<div class='col-md-8 col-md-offset-2 panel panel-default'>
+  <div class='panel-body'>
+
+    <h2>Invoice</h2>
+    <p><%= @trade_organization.union.name_in_bng %></p>
+    <p><%= @trade_organization.enterprize_name_in_bng %></p>
+
+    <h4>Summary</h4>
+    <div class='panel panel-default'>
+      <div class='panel-body'>
+        <table class='table table-hover no-border-top'>
+          <tr>
+            <td>নমে:</td>
+            <td><%= @trade_organization.enterprize_name_in_bng %></td>
+          </tr>
+          <tr>
+            <td>বোনে:</td>
+            <td><%=@trade_organization.enterprize_name_in_bng %></td>
+          </tr>
+          <tr>
+            <td><%= @trade_organization.enterprize_name_in_bng %></td>
+            <td><%= @trade_organization.enterprize_name_in_bng %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
 </div>

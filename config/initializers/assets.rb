@@ -9,4 +9,4 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css.scss, and all non-JS/CSS in app/assets folder are already added.
  #Rails.application.config.assets.precompile += %w( pdf.css )
- Rails.application.config.assets.precompile += %w( pdf_citizen.css pdf_trade.css)
+ Rails.application.config.assets.precompile += %w( pdf_citizen.css pdf_trade.css.scss)
