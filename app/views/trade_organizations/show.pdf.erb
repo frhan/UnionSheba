@@ -1,3 +1,25 @@
+<style>
+  body{
+    margin: 0 auto;
+    font-size: large;
+    background-color: #fcfad3;
+  }
+
+  .container {
+    height:  1095px;
+    background-image: url('<%= Rails.root.join('public','images',@trade_organization.union.watermark_logo) %>');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .top-header {
+    background: url('<%= Rails.root.join('public','images',@trade_organization.union.logo) %>');
+    background-repeat: no-repeat;
+    background-position: 75px 30px;
+    background-size: 150px 100px;
+    border-bottom:2px solid #6b88c4;
+  }
+</style>
+
 <div class="wrapper">
   <div class="container">
     <div class="row top-header">

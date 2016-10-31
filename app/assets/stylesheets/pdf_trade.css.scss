@@ -1,11 +1,6 @@
 @import "bootstrap-sprockets";
 @import 'bootstrap';
 
-body{
-  margin: 0 auto;
-  font-size: large;
-  background-color: #fcfad3;
-}
 
 .wrapper{
   width: 100%;
@@ -13,17 +8,6 @@ body{
 
   margin: 0 auto;
 
-}
-.container {
-  height:  1095px;
-  background-image:url(bg.png);
-  background-repeat: no-repeat;
-  background-position: center;
-}
-.top-header {
-  background: url(logo1.png) no-repeat 75px 30px;
-  background-size: 150px 100px;
-  border-bottom:2px solid #6b88c4;
 }
 
 h2 {
