@@ -4,18 +4,51 @@
 body{
   margin: 0 auto;
   font-size: large;
-  background-color: #cccccc;
+  background-color: #fcfad3;
 }
+
 .wrapper{
   width: 100%;
-  height: 1000px;
+  height:  1095px;
+
   margin: 0 auto;
 
 }
+.container {
+  height:  1095px;
+  background-image:url(bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.top-header {
+  background: url(logo1.png) no-repeat 75px 30px;
+  background-size: 150px 100px;
+  border-bottom:2px solid #6b88c4;
+}
 
+h2 {
+  color: #155aa7;
+  margin:0;
+}
+.sub {
+  color:#d974ac;
+}
+p {
+  margin-bottom:15px;
+}
+.govt {
+  margin-bottom:5px;
+}
 .sarker{
-  padding-left: 20px;
   font-size: 30px;
+  color:#000;
+  margin:20px 0;
+}
+.trade-label:after {
+  content: ':';
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .logo{
   width:100px;
@@ -29,4 +62,22 @@ body{
   margin-top: 5px;
   background: #648CE7;
 }
+.trade-footer {
+  margin-top:80px;
+}
+.trade-footer p {
+  margin-bottom:5px;
+}
 
+//@media (min-width: 1200px) {
+//  .container {
+//    width: 970px;
+//  }
+//}
+
+//@media (min-width: 992px) {
+//  .top-header {
+//    background-position:170px 30px;
+//  }
+//}
+//
