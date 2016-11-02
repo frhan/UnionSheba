@@ -15,7 +15,7 @@
   .top-header {
     background: url('<%= Rails.root.join('public','images','logo.png') %>');
     background-repeat: no-repeat;
-    background-position: 70px 20px;
+    background-position: 50px 20px;
     background-size: 150px 100px;
     border-bottom:2px solid #6b88c4;
   }
@@ -180,7 +180,7 @@
             <p>লাইসেন্স ফি/ নবায়ন ফি </p>
           </div>
           <div class="col-xs-7">
-            <p><%= @trade_organization.fee %></p>
+            <p><%=  @trade_organization.fee %></p>
           </div>
         </div>
       </div>

@@ -15,7 +15,8 @@ class TradeOrganization < ActiveRecord::Base
 
   def fee
     if !latest_trade_license.nil?
-      latest_trade_license.license_fee.to_s << ' টাকা মাত্র ।'
+      taka = bangla_number latest_trade_license.license_fee.to_s
+      taka << ' টাকা মাত্র ।'
     end
   end
 
