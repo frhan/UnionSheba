@@ -1,0 +1,94 @@
+<div class="second_wrapper">
+  <table class="table">
+    <tr>
+      <td>
+        <h3>ক্রমিক  নং -</h3>
+      </td>
+    </tr>
+    <tr>
+      <td class="logo2">
+        <%= wicked_pdf_image_tag('logo_ganga.png',align:"center")  %>
+      </td>
+    </tr>
+    <tr>
+      <td class="title_citizen">
+        <p> গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
+        <p> (স্থানীয় সরকার বিভাগ) </p>
+        <h1><%= bangla_number(@citizen.union.union_no.to_s)%> নং <%= @citizen.union.name_in_bng %> ইউনিয়ন পরিষদ</h1>
+        <p style="color: #DA74AB">উপজেলাঃ <%= @citizen.union.upazila.name_in_bng%> জেলাঃ  <%= @citizen.union.upazila.district.name_in_bng %></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="line"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="trade">
+        <h3>নাগরিকত্ব ও চারিত্রিক সনদ পত্র </h3>
+      </td>
+    </tr>
+  </table>
+  <table>
+    <tr class="full_line_second">
+      <td>
+        <p style="color: #000;font-size: 20px; line-height: 35px;">আমি এই মর্মে সনদ পত্র প্রদান করতেছি যে - <span><%= @citizen.name_in_bng%></span><br/>
+          পিতা / স্বামীঃ <span><%= @citizen.fathers_name %></span> &nbsp; মাতাঃ <span><%= @citizen.mothers_name %> </span>&nbsp;
+          গ্রামঃ <span><%= @citizen.village %> </span>   ওয়ার্ডঃ<span> <%= bangla_number(@citizen.word_no.to_s) %> </span> ডাকঘরঃ<span> <%= @citizen.post %></span>
+            উপজেলাঃ <span> <%= @citizen.union.upazila.name_in_bng%>  </span> জেলাঃ  <span> <%= @citizen.union.upazila.district.name_in_bng %> </span>। <br/>তাহাকে আমি ব্যক্তিগতভাবে চিনি । তিনি আমার ইউনিয়ন এর স্থায়ী বাসিন্দা ও জন্মসূত্রে বাংলাদেশের নাগরিক । <br/>
+          আমার জানামতে তিনি উন্নত ও নৈতিক চরিত্রের  অধকারী । তিনি সমাজের শান্তি-শৃঙ্খলা ভঙ্গ কিংবা রাষ্ট্র বিরোধী  কোনো কার্যকলাপে অংশগ্রহণ করে নাই ।
+        </p>
+      </td>
+    </tr>
+
+  </table>
+  <table>
+    <tr class="main_text3_cit">
+      <td>
+        <h3>আমি তাহার জীবনের সর্বাঙ্গীন উন্নতি কামনা করি</h3>
+      </td>
+    </tr>
+  </table>
+  <table>
+    <tr class="box">
+      <td>
+        <p>জাতীয় পরিচয়পত্র নম্বর</p>
+      </td>
+      <td>
+        <div class="numberbox">
+          <p><%= bangla_number(@citizen.nid) %></p>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <table>
+    <tr class="box2">
+      <td>
+        <p>জন্ম নিবন্ধন নম্বর</p>
+      </td>
+      <td>
+        <div class="numberbox2">
+          <p><%= bangla_number(@citizen.birthid) %></p>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <table class="singlefooter">
+    <tr>
+      <td>
+        <p style="padding-left: 25%;">চেয়ারম্যান</p>
+        <p><%= bangla_number(@citizen.union.union_no.to_s)%> নং <%= @citizen.union.name_in_bng %> ইউনিয়ন পরিষদ</p>
+      </td>
+    </tr>
+  </table>
+  <table class="footer_slogan">
+    <tr>
+      <td>
+        <p style="margin-left: 20%; font-size: 15px;">"হোক না আমার কুড়ে ঘর, আমিও দিব ইউপ কর " </p>
+      </td>
+      <td>
+        <p style="margin-left: 20%; font-size: 15px;">"নির্ভুল জন্ম নিবন্দন একবার, বিড়ম্বনা নয় বার বার "</p>
+      </td>
+    </tr>
+  </table>
+</div>
