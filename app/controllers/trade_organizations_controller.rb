@@ -18,6 +18,7 @@ class TradeOrganizationsController < ApplicationController
   end
 
   def show
+
     respond_to do |format|
       format.html
       format.pdf do
@@ -49,12 +50,14 @@ class TradeOrganizationsController < ApplicationController
   # POST /recipes.json
   def create
     @trade_organization = TradeOrganization.new(trade_organization_params)
+
     respond_to do |format|
       if @trade_organization.save
         format.html { redirect_to @trade_organization, notice: 'Recipe was successfully created.' }
         format.json { render :show, status: :created, location: @trade_organization }
       else
-        format.html { render :new }
+        logger.debug "This is from else"
+        format.html {render :new }
         format.json { render json: @trade_organization.errors, status: :unprocessable_entity }
       end
     end

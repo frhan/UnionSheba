@@ -5,6 +5,14 @@ class TradeOrganization < ActiveRecord::Base
   has_many :trade_licenses, dependent: :destroy
   accepts_nested_attributes_for :trade_licenses,:allow_destroy => true
 
+  validates :enterprize_name_in_eng,:enterprize_name_in_bng,
+            :owners_name_eng,:owners_name_bng,
+            :fathers_name,:mothers_name,
+            :village_name,:post_name,
+            :upazilla_name,:zilla_name,
+            :business_place,:business_category,
+            presence: true
+
   def address
       self.village_name << ',' << self.upazilla_name << ',' << self.zilla_name
   end

@@ -1,15 +1,26 @@
 <div id="signupbox" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <div class="panel-title">নাগরিক ফরম</div>
+      <div class="panel-title">ট্রেড লাইসেন্স ফরম</div>
     </div>
     <div class="panel-body">
       <%= form_for @trade_organization, html:{class: 'form-horizontal'} do |f| %>
 
-          <div id="signupalert" style="display:none" class="alert alert-danger">
-            <p>Error:</p>
-            <span></span>
-          </div>
+          <!--<div id="signupalert" style="display:none" class="alert alert-danger">-->
+            <!--<p>Error:</p>-->
+            <!--<span></span>-->
+          <!--</div>-->
+
+          <% if @trade_organization.errors.any? %>
+              <div id="signupalert"  class="alert alert-danger" >
+                <h2><%= pluralize(@trade_organization.errors.count, "error") %> prohibited to save Trade License</h2>
+                <ul>
+                  <% @trade_organization.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
 
           <div class="form-group">
             <label for="nameInEng" class="col-md-3 control-label">প্রতিষ্ঠান নামঃ(ইংলিশ)</label>
