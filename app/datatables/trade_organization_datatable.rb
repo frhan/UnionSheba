@@ -21,10 +21,10 @@ class TradeOrganizationDatatable
     trd_orgs = []
     trade_organizations.map do |record|
       trd_org = []
+      trd_org <<  link_to(record.license_no, trade_organization_path(record))
       trd_org <<  link_to(record.enterprize_name_in_eng, trade_organization_path(record))
       trd_org << record.owners_name_eng
       trd_org << record.business_place
-      trd_org << link_to("Show", trade_organization_path(record))
       trd_org << link_to("Edit", edit_trade_organization_path(record))
       trd_org << link_to("Delete", trade_organization_path(record), method: :delete, data: { confirm: 'Are you sure?' })
 
@@ -41,10 +41,10 @@ class TradeOrganizationDatatable
     trade_organizations = @user.trade_organizations.order("#{sort_column} #{sort_direction}")
     #trade_organizations = trade_organizations.page(page).per(per_page)
     if params[:sSearch].present?
-      trade_organizations = trade_organizations.where("enterprize_name_in_eng like :search or owners_name_eng like :search", search: "%#{params[:sSearch]}%")
+      trade_organizations = trade_organizations.where("license_no like :search or enterprize_name_in_eng like :search or owners_name_eng like :search",
+                                                      search: "%#{params[:sSearch]}%")
     end
     trade_organizations = Kaminari.paginate_array(trade_organizations).page(page).per(per_page)
-
     trade_organizations
   end
 
@@ -62,7 +62,7 @@ class TradeOrganizationDatatable
   end
 
   def sort_column
-    columns = %w[enterprize_name_in_eng owners_name_eng business_place A B C]
+    columns = %w[license_no enterprize_name_in_eng owners_name_eng business_place Edit Delete]
     columns[params[:iSortCol_0].to_i]
   end
 

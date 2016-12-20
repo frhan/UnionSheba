@@ -135,6 +135,10 @@ module ApplicationHelper
     Time.now.strftime('%Y%m%d%H%M%S%L')
   end
 
+  def current_year_month_day
+    Time.now.strftime('%Y%m%d')
+  end
+
   def pdf_file_name(prefix)
     prefix << current_timestamp.to_s
   end

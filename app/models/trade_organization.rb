@@ -4,6 +4,8 @@ class TradeOrganization < ActiveRecord::Base
   belongs_to :union
   has_many :trade_licenses, dependent: :destroy
   accepts_nested_attributes_for :trade_licenses,:allow_destroy => true
+  validates_uniqueness_of :license_no,scope: :union
+  after_create :save_license_no
 
   validates :enterprize_name_in_eng,:enterprize_name_in_bng,
             :owners_name_eng,:owners_name_bng,
@@ -34,11 +36,11 @@ class TradeOrganization < ActiveRecord::Base
     end
   end
 
-  def license_no
-    if !latest_trade_license.nil?
-      latest_trade_license.licsense_no
-    end
-  end
+  # def license_no
+  #   if !latest_trade_license.nil?
+  #     latest_trade_license.licsense_no
+  #   end
+  # end
 
   def deadline
     if !latest_trade_license.nil?
@@ -46,12 +48,22 @@ class TradeOrganization < ActiveRecord::Base
     end
   end
 
-
   def fiscal_year
     if !latest_trade_license.nil?
       latest_trade_license.fiscal_year_show
     end
   end
 
+  private
+
+  def save_license_no
+    license_no = self.union.union_code << '-'<< current_year_month_day.to_s << '-' << max_count.to_s
+    self.update_attributes(:license_no => license_no)
+  end
+
+  def max_count
+    count = TradeOrganization.where(union_id: self.union.id).count
+    count
+  end
 
 end

@@ -1,1 +1,127 @@
-<%= render 'form' %>
+<div id="signupbox" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <div class="panel-title">ট্রেড লাইসেন্স ফরম</div>
+    </div>
+    <div class="panel-body">
+      <%= form_for @trade_organization, html:{class: 'form-horizontal'} do |f| %>
+
+          <% if @trade_organization.errors.any? %>
+              <div id="signupalert"  class="alert alert-danger" >
+                <h2><%= pluralize(@trade_organization.errors.count, "error") %> prohibited to save Trade License</h2>
+                <ul>
+                  <% @trade_organization.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+
+          <div class="form-group">
+            <label for="nameInEng" class="col-md-3 control-label">প্রতিষ্ঠান নামঃ(ইংলিশ)</label>
+            <div class="col-md-9">
+              <%= f.text_field :enterprize_name_in_eng, class: "form-control", placeholder: "Name In English" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">প্রতিষ্ঠান নামঃ</label>
+            <div class="col-md-9">
+              <%= f.text_field :enterprize_name_in_bng, class: "form-control", placeholder: "Name In Bangla" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">সত্ত্বাধিকারী নামঃ (ইংলিশ)</label>
+            <div class="col-md-9">
+              <%= f.text_field :owners_name_eng, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">সত্ত্বাধিকারী নামঃ (বাংলা)</label>
+            <div class="col-md-9">
+              <%= f.text_field :owners_name_bng, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">বাবার নামঃ</label>
+            <div class="col-md-9">
+              <%= f.text_field :fathers_name, class: "form-control" %>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">মায়ের নামঃ</label>
+            <div class="col-md-9">
+              <%= f.text_field :mothers_name, class: "form-control" %>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">স্বামী/স্ত্রীর নামঃ</label>
+            <div class="col-md-9">
+              <%= f.text_field :spouse_name, class: "form-control" %>
+            </div>
+          </div>
+
+          <%= f.hidden_field :union_id, :value => current_user.union.id %>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">গ্রামের নামঃ</label>
+            <div class="col-md-9">
+              <%= f.text_field :village_name, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">ডাকঘরঃ</label>
+            <div class="col-md-9">
+              <%= f.text_field :post_name, class: "form-control" %>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">উপজেলাঃ</label>
+            <div class="col-md-9">
+              <%= f.text_field :upazilla_name, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">জেলা</label>
+            <div class="col-md-9">
+              <%= f.text_field :zilla_name, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">ব্যবসার স্থানঃ</label>
+            <div class="col-md-9">
+              <%= f.text_field :business_place, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label"> ব্যবসার ধরনঃ</label>
+            <div class="col-md-9">
+              <%= f.text_field :business_category, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!-- Button -->
+            <div class="col-md-offset-3 col-md-9">
+              <%= f.submit "Save", class:"btn btn-info" %>
+
+            </div>
+          </div>
+      <% end %>
+      <%= link_to 'Back', trade_organizations_path %>
+    </div>
+  </div>
+</div>
