@@ -23,7 +23,7 @@ class CitizensDatatable
       ctzn = []
       ctzn <<  link_to(record.nid, citizen_path(record))
       ctzn << link_to(record.birthid, citizen_path(record))
-      ctzn << record.name_in_eng
+      ctzn <<  link_to(record.name_in_eng, citizen_path(record))
       ctzn << record.fathers_name
       ctzn << link_to("Edit", edit_citizen_path(record))
       ctzn << link_to("Delete", citizen_path(record), method: :delete, data: { confirm: 'Are you sure?' })

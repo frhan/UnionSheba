@@ -56,10 +56,9 @@
             </tbody>
           </table>
 
-          <%= link_to 'Print', citizen_path(@citizen, format: 'pdf'),class:"btn btn-info btn-default"%>
-          <%= link_to 'Edit', edit_citizen_path(@citizen),class:"btn btn-primary" %>
-          <%= link_to 'Delete', edit_citizen_path(@citizen),class:"btn btn-danger" %>
-          <%= link_to 'Back', citizens_path,class:"btn btn-info btn-default"%>
+          <%= link_to 'Print Certificate', citizen_path(@citizen, format: 'pdf'),class:"btn btn-info btn-default"%>
+          <!--<%= link_to 'Edit', edit_citizen_path(@citizen),class:"btn btn-primary" %>-->
+          <%= link_to 'Back', citizens_path,class:"btn btn-primary"%>
 
         </div>
       </div>
