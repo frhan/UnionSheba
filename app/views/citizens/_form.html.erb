@@ -6,15 +6,9 @@
     <div class="panel-body">
       <%= form_for @citizen, html:{class: 'form-horizontal'} do |f| %>
 
-          <!--<div id="signupalert" style="display:none" class="alert alert-danger">-->
-            <!--<p>Error:</p>-->
-            <!--<span></span>-->
-          <!--</div>-->
-
-
           <% if @citizen.errors.any? %>
               <div id="signupalert"  class="alert alert-danger" >
-                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+                <h2><%= pluralize(@citizen.errors.count, "error") %> prohibited this user from being saved:</h2>
                 <ul>
                   <% @citizen.errors.full_messages.each do |msg| %>
                       <li><%= msg %></li>
