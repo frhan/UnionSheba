@@ -21,12 +21,12 @@ class TradeOrganizationDatatable
     trd_orgs = []
     trade_organizations.map do |record|
       trd_org = []
-      trd_org << record.enterprize_name_in_eng
+      trd_org <<  link_to(record.enterprize_name_in_eng, trade_organization_path(record))
       trd_org << record.owners_name_eng
       trd_org << record.business_place
-      trd_org << link_to(fa_icon('info-circle lg'), trade_organization_path(record), class: 'label success round')
-      trd_org << link_to(fa_icon('edit lg'), edit_trade_organization_path(record), class: 'label secondary round')
-      trd_org << link_to(fa_icon('trash-o lg'), trade_organization_path(record), method: :delete, data: { confirm: 'Are you sure?' }, class: 'label alert round')
+      trd_org << link_to("Show", trade_organization_path(record))
+      trd_org << link_to("Edit", edit_trade_organization_path(record))
+      trd_org << link_to("Delete", trade_organization_path(record), method: :delete, data: { confirm: 'Are you sure?' })
 
       trd_orgs << trd_org
     end

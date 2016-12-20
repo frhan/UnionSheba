@@ -6,9 +6,6 @@ class TradeOrganizationsController < ApplicationController
                                                 :create_trade_license,:edit_license]
 
   def index
-    # if user_signed_in?
-    #   @trade_organizations = current_user.trade_organizations
-    # end
     respond_to do |format|
       format.html
       format.json { render json: TradeOrganizationDatatable.new(view_context,current_user) }
