@@ -1,14 +1,15 @@
 class TradeOrganizationDatatable
   delegate :params,:fa_icon, :link_to, :trade_organization_path, :edit_trade_organization_path, to: :@view
 
-  def initialize(view)
+  def initialize(view,user)
     @view = view
+    @user = user
   end
 
   def as_json(options = {})
     {
         sEcho: params[:sEcho].to_i,
-        iTotalRecords: TradeOrganization.count,
+        iTotalRecords: total_records,
         iTotalDisplayRecords: trade_organizations.count,
         aaData: data
     }
@@ -37,7 +38,7 @@ class TradeOrganizationDatatable
   end
 
   def fetch_trade_organizations
-    trade_organizations = TradeOrganization.order("#{sort_column} #{sort_direction}")
+    trade_organizations = @user.trade_organizations.order("#{sort_column} #{sort_direction}")
     trade_organizations = Kaminari.paginate_array(trade_organizations).page(page).per(per_page)
     #trade_organizations = trade_organizations.page(page).per(per_page)
     if params[:sSearch].present?

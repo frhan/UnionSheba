@@ -11,7 +11,7 @@ class TradeOrganizationsController < ApplicationController
     # end
     respond_to do |format|
       format.html
-      format.json { render json: TradeOrganizationDatatable.new(view_context) }
+      format.json { render json: TradeOrganizationDatatable.new(view_context,current_user) }
     end
 
   end
