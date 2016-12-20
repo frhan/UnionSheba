@@ -16,7 +16,7 @@ class Citizen < ActiveRecord::Base
     end
 
     if birthid.present?
-      self.nid = english_number(birthid)
+      self.birthid = english_number(birthid)
     end
   end
 
