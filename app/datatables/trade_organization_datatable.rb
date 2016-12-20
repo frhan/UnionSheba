@@ -43,7 +43,6 @@ class TradeOrganizationDatatable
     if params[:sSearch].present?
       trade_organizations = trade_organizations.where("enterprize_name_in_eng like :search or owners_name_eng like :search", search: "%#{params[:sSearch]}%")
     end
-
     trade_organizations = Kaminari.paginate_array(trade_organizations).page(page).per(per_page)
 
     trade_organizations
