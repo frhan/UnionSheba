@@ -82,7 +82,7 @@
                 <td><%= trade_license.license_fee%></td>
                 <td><%= trade_license.created_at.strftime "%B %e, %Y" %></td>
                 <td>
-                  <%= link_to "Edit", trade_license_path(trade_license) %>
+                  <%= link_to "Edit", edit_trade_license_path(trade_license) %>
                   <%= link_to "Delete", edit_trade_license_path(trade_license)%>
                 </td>
               </tr>

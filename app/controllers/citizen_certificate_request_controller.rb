@@ -1,0 +1,3 @@
+class CitizenCertificateRequestController < ApplicationController
+
+end
