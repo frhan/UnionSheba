@@ -18,6 +18,11 @@ class TradeLicense < ActiveRecord::Base
       bangla_number(self.fiscal_year.to_s) << ' - '<< bangla_number((self.fiscal_year + 1).to_s)
     end
   end
+  def fiscal_year_show_eng
+    if !self.fiscal_year.nil?
+      self.fiscal_year.to_s << ' - '<< (self.fiscal_year + 1).to_s
+    end
+  end
 
   private
 

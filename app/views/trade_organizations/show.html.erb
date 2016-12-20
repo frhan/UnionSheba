@@ -78,7 +78,7 @@
           <tbody>
           <% @trade_organization.trade_licenses.order('fiscal_year desc').each do |trade_license| %>
               <tr>
-                <td><%= trade_license.fiscal_year %></td>
+                <td><%= trade_license.fiscal_year_show_eng %></td>
                 <td><%= trade_license.license_fee%></td>
                 <td><%= trade_license.created_at.strftime "%B %e, %Y" %></td>
                 <td>
