@@ -1,15 +1,23 @@
 <div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <div class="panel-title"><%= @trade_organization.enterprize_name_in_eng%></div>
+      <div class="panel-title"><%= @trade_organization.enterprize_name_in_eng %></div>
     </div>
     <div class="panel-body">
       <!--<form id="citizenform" class="form-horizontal" role="form">-->
-      <%= form_for @trade_license,html:{class: 'form-horizontal'}, url: create_trade_license_trade_organization_path do |f|   %>
-          <div id="signupalert" style="display:none" class="alert alert-danger">
-            <p>Error: Hello Error</p>
-            <span></span>
-          </div>
+      <%= form_for @trade_license, html: {class: 'form-horizontal'}, url: create_trade_license_trade_organization_path do |f| %>
+
+          <% if @trade_license.errors.any? %>
+              <div id="signupalert" class="alert alert-danger">
+                <h2><%= pluralize(@trade_license.errors.count, "error") %> prohibited to renew Trade License</h2>
+                <ul>
+                  <% @trade_license.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+
 
           <div class="form-group">
             <label for="nameInEng" class="col-md-3 control-label">InstituteName(Eng)*</label>
@@ -18,6 +26,7 @@
                      disabled="true" value="<%= @trade_organization.enterprize_name_in_eng %>"/>
             </div>
           </div>
+
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">Institute
@@ -59,14 +68,14 @@
             <label for="nameInBn" class="col-md-3 control-label">Fiscal year</label>
             <div class="col-md-9">
 
-              <%= f.number_field :fiscal_year,class:"form-control" %>
+              <%= f.number_field :fiscal_year, class: "form-control" %>
             </div>
           </div>
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">License Fee</label>
             <div class="col-md-9">
-              <%= f.number_field :license_fee,class:"form-control" %>
+              <%= f.number_field :license_fee, class: "form-control" %>
             </div>
           </div>
 
@@ -74,10 +83,10 @@
           <div class="form-group">
             <!-- Button -->
             <div class="col-md-offset-3 col-md-9">
-              <%= f.submit :save,class:"btn btn-info" %>
+              <%= f.submit :save, class: "btn btn-info" %>
             </div>
           </div>
-      <% end%>
+      <% end %>
     </div>
 
   </div>

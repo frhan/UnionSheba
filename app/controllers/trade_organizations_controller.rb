@@ -59,7 +59,6 @@ class TradeOrganizationsController < ApplicationController
         format.html { redirect_to @trade_organization, notice: 'Recipe was successfully created.' }
         format.json { render :show, status: :created, location: @trade_organization }
       else
-        logger.debug "This is from else"
         format.html {render :new }
         format.json { render json: @trade_organization.errors, status: :unprocessable_entity }
       end
@@ -68,8 +67,8 @@ class TradeOrganizationsController < ApplicationController
   end
 
   def create_trade_license
-    trade_license = TradeLicense.new(trade_license_params)
-    @trade_organization.trade_licenses.push trade_license
+    @trade_license = TradeLicense.new(trade_license_params)
+    @trade_organization.trade_licenses.push @trade_license
 
     respond_to do |format|
       if @trade_organization.save
@@ -115,7 +114,6 @@ class TradeOrganizationsController < ApplicationController
 
   def edit_license
     @trade_license = TradeLicense.find(params[:license_id])
-
   end
 
   private
