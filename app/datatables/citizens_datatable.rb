@@ -10,7 +10,7 @@ class CitizensDatatable
     {
         sEcho: params[:sEcho].to_i,
         iTotalRecords: total_records,
-        iTotalDisplayRecords: trade_organizations.count,
+        iTotalDisplayRecords: citizens.count,
         aaData: data
     }
   end
@@ -21,12 +21,12 @@ class CitizensDatatable
     ctzns = []
     citizens.map do |record|
       ctzn = []
-      ctzn <<  link_to(record.enterprize_name_in_eng, trade_organization_path(record))
-      ctzn << record.owners_name_eng
-      ctzn << record.business_place
-      ctzn << link_to("Show", trade_organization_path(record))
-      ctzn << link_to("Edit", edit_trade_organization_path(record))
-      ctzn << link_to("Delete", trade_organization_path(record), method: :delete, data: { confirm: 'Are you sure?' })
+      ctzn <<  link_to(record.nid, citizen_path(record))
+      ctzn << link_to(record.birthid, citizen_path(record))
+      ctzn << record.name_in_eng
+      ctzn << record.fathers_name
+      ctzn << link_to("Edit", edit_citizen_path(record))
+      ctzn << link_to("Delete", citizen_path(record), method: :delete, data: { confirm: 'Are you sure?' })
 
       ctzns << ctzn
     end
@@ -34,14 +34,14 @@ class CitizensDatatable
   end
 
   def citizens
-    @citizens ||= fetch_trade_organizations
+    @citizens ||= fetch_citizens
   end
 
   def fetch_citizens
     citizens = @user.citizens.order("#{sort_column} #{sort_direction}")
     #trade_organizations = trade_organizations.page(page).per(per_page)
     if params[:sSearch].present?
-      citizens = citizens.where("enterprize_name_in_eng like :search or owners_name_eng like :search", search: "%#{params[:sSearch]}%")
+      citizens = citizens.where("nid like :search or birthid like :search or citizens.name_in_eng like :search", search: "%#{params[:sSearch]}%")
     end
     citizens = Kaminari.paginate_array(citizens).page(page).per(per_page)
 
@@ -62,7 +62,7 @@ class CitizensDatatable
   end
 
   def sort_column
-    columns = %w[enterprize_name_in_eng owners_name_eng business_place A B C]
+    columns = %w[nid birthid name_in_eng fathers_name edit delete]
     columns[params[:iSortCol_0].to_i]
   end
 

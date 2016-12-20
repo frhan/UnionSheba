@@ -1,37 +1,21 @@
 <div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<h1>নাগরিক সমূহ</h1>
+  <h1>নাগরিক সমূহ</h1>
+  <table id="citizens" class="table table-striped" data-source="<%= citizens_url(format: "json") %>">
+    <thead>
+    <tr>
+      <th>NID</th>
+      <th>Birth Id</th>
+      <th>Name</th>
+      <th>Fathers Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
 
-<% if @citizens %>
-    <table  id="citizens" class="table table-striped">
-      <thead>
-
-      <tr>
-        <th>Name in English</th>
-        <th>Name in Bangla</th>
-        <th>Fathers name</th>
-        <th>Mothers name</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-
-      <% @citizens.each do |citizen| %>
-          <tr>
-            <td><%= link_to(citizen.name_in_eng, citizen) %></td>
-            <td><%= citizen.name_in_bng %></td>
-            <td><%= citizen.fathers_name %></td>
-            <td><%= citizen.mothers_name %></td>
-            <td>
-              <%= link_to "Show", citizen_path(citizen), class: "btn btn-primary btn-circle" %>
-              <%= link_to "Edit", edit_citizen_path(citizen), class: "btn btn-primary btn-circle" %>
-
-            </td>
-          </tr>
-      <% end %>
-      </tbody>
-    </table>
-<% end %>
-<%= link_to 'New', new_citizen_path,class: "btn btn-primary" %>
+  <%= link_to 'New', new_citizen_path, class: "btn btn-primary" %>
 </div>

@@ -3,9 +3,16 @@ class CitizensController < InheritedResources::Base
   before_filter :authenticate_user!
 
   def index
-    if user_signed_in?
-      @citizens = current_user.citizens #Citizen.where(:union_id => current_user.union.id)
+    # if user_signed_in?
+    #   @citizens = current_user.citizens #Citizen.where(:union_id => current_user.union.id)
+    # end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: CitizensDatatable.new(view_context,current_user) }
     end
+
+
   end
 
   def show
