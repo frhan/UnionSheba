@@ -81,6 +81,10 @@ class TradeOrganizationsController < ApplicationController
 
   end
 
+  def update_trade_license
+
+  end
+
 
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
