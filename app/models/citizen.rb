@@ -1,7 +1,27 @@
 class Citizen < ActiveRecord::Base
+  include ApplicationHelper
   belongs_to :union
+  before_save :save_nid_birthdid_as_english
 
-  #TODO: before save nid and birthid should be saved in english
   validates :name_in_eng,:name_in_bng ,:fathers_name,:mothers_name,
             :village,:post,:word_no, presence: true
+  validate :nid_or_birthid_present
+
+
+  private
+
+  def save_nid_birthdid_as_english
+    if nid.present?
+      self.nid = english_number(nid)
+    end
+
+    if birthid.present?
+      self.nid = english_number(birthid)
+    end
+  end
+
+  def nid_or_birthid_present
+    errors.add(:citizen," National Id or BirthId is required") unless nid.present? || birthid.present?
+  end
+
 end

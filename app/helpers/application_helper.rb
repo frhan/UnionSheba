@@ -82,6 +82,57 @@ module ApplicationHelper
     bn
   end
 
+  def english_number(number)
+    bn = String.new
+    number.each_char do |c|
+      case c
+        when '1'
+          bn << c
+        when '2'
+          bn << c
+        when '3'
+          bn << c
+        when '4'
+          bn << c
+        when '5'
+          bn << c
+        when '6'
+          bn << c
+        when '7'
+          bn << c
+        when '8'
+          bn << c
+        when '9'
+          bn << c
+        when '0'
+          bn << c
+        when '১'
+          bn << '1'
+        when '২'
+          bn << '2'
+        when '৩'
+          bn << '3'
+        when '৪'
+          bn << '4'
+        when '৫'
+          bn << '5'
+        when '৬'
+          bn << '6'
+        when '৭'
+          bn << '7'
+        when '৮'
+          bn << '8'
+        when '৯'
+          bn << '9'
+        when '০'
+          bn << '10'
+        else
+          return -1
+      end
+    end
+    bn
+  end
+
   def bangla_full_date(date)
     if date.nil?
       return String.new
