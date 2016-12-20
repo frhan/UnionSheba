@@ -70,7 +70,7 @@ class TradeOrganizationsController < ApplicationController
     @trade_organization.trade_licenses.push @trade_license
 
     respond_to do |format|
-      if @trade_organization.save
+      if @trade_license.save
         format.html { redirect_to @trade_organization, notice: 'was successfully created.' }
         format.json { render :show, status: :created, location: @trade_organization }
       else
