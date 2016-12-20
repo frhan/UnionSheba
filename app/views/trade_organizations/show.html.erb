@@ -12,6 +12,11 @@
           <table class="table table-user-information">
             <tbody>
             <tr>
+              <td>License No:</td>
+              <td><%= @trade_organization.license_no%></td>
+            </tr>
+
+            <tr>
               <td>প্রতিষ্ঠানের নামঃ</td>
               <td><%= @trade_organization.enterprize_name_in_bng%></td>
             </tr>
@@ -51,5 +56,43 @@
 
 
   </div>
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Trade Licenses</h3>
+    </div>
+
+  <div class="panel-body">
+    <div class="row">
+
+      <div class=" col-md-12 col-lg-12 ">
+
+        <table class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>Fiscal Year</th>
+            <th>License Fee</th>
+            <th>Created</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @trade_organization.trade_licenses.order('fiscal_year desc').each do |trade_license| %>
+              <tr>
+                <td><%= trade_license.fiscal_year %></td>
+                <td><%= trade_license.license_fee%></td>
+                <td><%= trade_license.created_at.strftime "%B %e, %Y" %></td>
+                <td>
+                  <%= link_to "Edit", trade_license_path(trade_license) %>
+                  <%= link_to "Delete", edit_trade_license_path(trade_license)%>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+      </div>
+      </div>
+    </div>
+
 </div>
 </div>

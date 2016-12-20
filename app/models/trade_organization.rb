@@ -11,7 +11,7 @@ class TradeOrganization < ActiveRecord::Base
             :owners_name_eng,:owners_name_bng,
             :fathers_name,:mothers_name,
             :village_name,:post_name,
-            :upazilla_name,:zilla_name,
+            :upazilla_name,:zilla_name,:word_no,
             :business_place,:business_category,
             presence: true
 

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   resources :citizens
+  resources :trade_licenses
   resources :trade_organizations,shallow: true do
     member do
       get :renew
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
   get 'trade_organizations/:id/trade_license/:license_id/edit' => 'trade_organizations#edit_license',
-      as: :edit_trade_license
+      as: :edit_trade_org_trade_license
 
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
