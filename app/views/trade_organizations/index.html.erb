@@ -1,23 +1,20 @@
 <div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-  <h1>Trade License </h1>
+  <h1>ট্রেড লাইসেন্স সমূহ</h1>
 
 
-      <table id="trade_organizations_table" class="table table-striped" data-source="<%= trade_organizations_url(format: "json") %>">
-        <thead>
-        <tr>
-          <th>Institute Name</th>
-          <th>Owner Name</th>
-          <th>Business Place</th>
-          <th>A</th>
-          <th>B</th>
-          <th>C</th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-
-
+  <table id="trade_organizations_table" class="table table-striped" data-source="<%= trade_organizations_url(format: "json") %>">
+    <thead>
+    <tr>
+      <th>Institute Name</th>
+      <th>Owner Name</th>
+      <th>Business Place</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
   <%= link_to "New", new_trade_organization_path, class: "btn btn-primary" %>
-
 </div>
