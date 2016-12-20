@@ -103,7 +103,7 @@ class TradeOrganizationsController < ApplicationController
   def destroy
     @trade_organization.destroy
     respond_to do |format|
-      format.html { redirect_to trade_organization_url, notice: 'Recipe was successfully destroyed.' }
+      format.html { redirect_to trade_organizations_url, notice: 'Recipe was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
