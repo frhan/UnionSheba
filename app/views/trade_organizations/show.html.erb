@@ -83,7 +83,7 @@
                 <td><%= trade_license.created_at.strftime "%B %e, %Y" %></td>
                 <td>
                   <%= link_to "Edit", edit_trade_license_path(trade_license) %>
-                  <%= link_to "Delete", edit_trade_license_path(trade_license)%>
+                  <%= link_to "Delete", trade_license_path(trade_license),method: :delete, data: { confirm: 'Are you sure?' }%>
                 </td>
               </tr>
           <% end %>
