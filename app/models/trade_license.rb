@@ -2,9 +2,9 @@ class TradeLicense < ActiveRecord::Base
   include ApplicationHelper
   belongs_to :trade_organization
   after_create :save_trade_license_no
+
   validates :fiscal_year,:license_fee , presence: true
-
-
+  validates_uniqueness_of :fiscal_year,scope: :trade_organization
 
   def deadline
     if !self.fiscal_year.nil?

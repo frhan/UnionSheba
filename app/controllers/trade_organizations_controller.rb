@@ -19,7 +19,6 @@ class TradeOrganizationsController < ApplicationController
   end
 
   def show
-
     respond_to do |format|
       format.html
       format.pdf do
@@ -114,6 +113,10 @@ class TradeOrganizationsController < ApplicationController
 
   def edit_license
     @trade_license = TradeLicense.find(params[:license_id])
+  end
+
+  def update_issue_date
+    #TODO: ajax for update issue date
   end
 
   private
