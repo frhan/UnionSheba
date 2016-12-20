@@ -7,6 +7,8 @@ class Citizen < ActiveRecord::Base
             :village,:post,:word_no, presence: true
   validate :nid_or_birthid_present
 
+  validates_uniqueness_of :nid,:allow_blank => true, :allow_nil => true
+  validates_uniqueness_of :birthid,:allow_blank => true, :allow_nil => true
 
   private
 
