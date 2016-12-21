@@ -31,7 +31,11 @@ class TradeLicense < ActiveRecord::Base
   end
 
   def total_fee
-      self.fine_fee + self.remaining_fee + self.license_fee
+    total_fee = 0
+    total_fee = total_fee + self.fine_fee if self.fine_fee.present?
+    total_fee = total_fee + self.self.remaining_fee if self.remaining_fee.present?
+    total_fee = total_fee + self.license_fee if self.license_fee.present?
+    total_fee
   end
 
   private
