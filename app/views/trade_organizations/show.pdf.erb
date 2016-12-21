@@ -6,6 +6,11 @@
     font-size: large;
     background-color: #ffffff;
   }
+
+  #footer_text{
+    font-size: larger;
+  }
+
   #internal_table{
     font-size: medium;
   }
@@ -228,7 +233,7 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <p>এই ট্রেড লাইসেন্স এর মেয়াদ <%= @trade_organization.deadline %> সালের ৩০ জুন পর্যন্ত বলবৎ থাকবে ।</p>
+        <p id="footer_text">এই ট্রেড লাইসেন্স এর মেয়াদ <%= @trade_organization.deadline %> সালের ৩০ জুন পর্যন্ত বলবৎ থাকবে ।</p>
       </div>
     </div>
 
