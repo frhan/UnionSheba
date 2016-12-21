@@ -6,6 +6,7 @@ class TradeLicense < ActiveRecord::Base
   validates :fiscal_year,:license_fee , presence: true
   validates_uniqueness_of :fiscal_year,scope: :trade_organization
   validates :fiscal_year, length: { is: 4 }
+  after_initialize :init
 
   def deadline_top
     if !self.fiscal_year.nil?
@@ -57,6 +58,10 @@ class TradeLicense < ActiveRecord::Base
        return Time.now.year.to_s
     end
     self.fiscal_year.to_s
+  end
+
+  def init
+    self.fiscal_year ||= current_year
   end
 
 end
