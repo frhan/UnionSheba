@@ -13,7 +13,6 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap.min
 //= require bootstrap-sprockets
 //= require jquery.turbolinks
 //= require dataTables/jquery.dataTables

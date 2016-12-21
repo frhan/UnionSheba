@@ -78,7 +78,7 @@ module ApplicationHelper
         when '.'
           bn << c
         else
-          return -1
+          bn << c
       end
     end
     bn
@@ -108,6 +108,8 @@ module ApplicationHelper
           bn << c
         when '0'
           bn << c
+        when '.'
+          bn << c
         when '১'
           bn << '1'
         when '২'
@@ -129,7 +131,7 @@ module ApplicationHelper
         when '০'
           bn << '10'
         else
-          return -1
+          bn << c
       end
     end
     bn
