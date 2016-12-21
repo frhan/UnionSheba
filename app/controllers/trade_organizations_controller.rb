@@ -140,11 +140,11 @@ class TradeOrganizationsController < ApplicationController
                                                :village_name, :post_name, :upazilla_name,:word_no,
                                                :zilla_name, :business_place, :business_category,:holding_no,
                                                :union_id, trade_licenses_attributes:
-                                                   [:id, :fiscal_year, :license_fee])
+                                                   [:fiscal_year,:license_fee,:remaining_fee,:fine_fee])
   end
 
   def trade_license_params
-    params.require(:trade_license).permit(:fiscal_year,:license_fee)
+    params.require(:trade_license).permit(:fiscal_year,:license_fee,:remaining_fee,:fine_fee)
   end
 
 end
