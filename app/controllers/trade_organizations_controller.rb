@@ -138,7 +138,7 @@ class TradeOrganizationsController < ApplicationController
                                                :owners_name_eng, :owners_name_bng,
                                                :fathers_name, :mothers_name, :spouse_name,
                                                :village_name, :post_name, :upazilla_name,:word_no,
-                                               :zilla_name, :business_place, :business_category,
+                                               :zilla_name, :business_place, :business_category,:holding_no,
                                                :union_id, trade_licenses_attributes:
                                                    [:id, :fiscal_year, :license_fee])
   end
