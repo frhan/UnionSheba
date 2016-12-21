@@ -54,6 +54,14 @@ class TradeOrganization < ActiveRecord::Base
     end
   end
 
+  def word_no_bn
+    number = String.new
+    if word_no.present?
+      number = bangla_number word_no.to_s
+    end
+    number
+  end
+
   private
 
   def save_license_no
