@@ -6,10 +6,37 @@
     font-size: large;
     background-color: #ffffff;
   }
+    #internal_table{
+      font-size: medium;
+    }
+  th,tr{
+      font-weight: normal;
+    text-align: center;
+  }
+  table{
+    border: 1px solid black;
+  }
+
+  .table {
+    border: 0.5px solid #000000;
+  }
+  .table-bordered > thead > tr > th,
+  .table-bordered > tbody > tr > th,
+  .table-bordered > tfoot > tr > th,
+  .table-bordered > thead > tr > td,
+  .table-bordered > tbody > tr > td,
+  .table-bordered > tfoot > tr > td {
+    border: 0.5px solid #000000;
+  }
+  /*tr{*/
+
+    /*font-weight: normal;*/
+    /*text-align: center;*/
+  /*}*/
 
 </style>
 
-<div class="wrapper">
+<div class="wrapper_trade">
   <div class="container">
 
     <div class="row">
@@ -37,18 +64,6 @@
     </div>
 
     <div class="row">
-
-      <!--<div class="col-xs-6">-->
-        <!--<div class="row">-->
-          <!--<div class="col-xs-6 col-md-4 trade-label">-->
-            <!--<p>লাইসেন্স ইস্যু তারিখ</p>-->
-          <!--</div>-->
-          <!--<div class="col-xs-6 col-md-8">-->
-            <!--<p class="pull-left"><%= bangla_date Time.now %></p>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-
 
       <div class="col-xs-6">
         <div class="row">
@@ -98,7 +113,7 @@
       <div class="col-xs-12">
         <div class="row">
           <div class="col-xs-5 trade-label">
-            <p>স্বত্ত্বাধিকারীর নাম </p>
+            <p> প্রোপাইটর/মালিক</p>
           </div>
           <div class="col-xs-7">
             <p><%= @trade_organization.owners_name_bng %></p>
@@ -112,7 +127,7 @@
       <div class="col-xs-12">
         <div class="row">
           <div class="col-xs-5 trade-label">
-            <p>পিতা / স্বামীর নাম  </p>
+            <p> পিতার নাম</p>
           </div>
           <div class="col-xs-7">
             <p><%= @trade_organization.fathers_name %></p>
@@ -138,7 +153,7 @@
       <div class="col-xs-12">
         <div class="row">
           <div class="col-xs-5 trade-label">
-            <p>স্বত্ত্বাধিকারীর ঠিকানা </p>
+            <p> স্থায়ী ঠিকানা</p>
           </div>
           <div class="col-xs-7">
             <p><%= @trade_organization.address %></p>
@@ -151,7 +166,7 @@
       <div class="col-xs-12">
         <div class="row">
           <div class="col-xs-5 trade-label">
-            <p>ব্যবসা/বৃত্তি পেশা পরিচালনার ঠিকানা</p>
+            <p>ব্যবসার স্থান</p>
           </div>
           <div class="col-xs-7">
             <p><%= @trade_organization.business_place %></p>
@@ -164,7 +179,7 @@
       <div class="col-xs-12">
         <div class="row">
           <div class="col-xs-5 trade-label">
-            <p>ব্যবসা / বৃত্তি /  পেশার ধরণ</p>
+            <p>ব্যবসার বিবরণ</p>
           </div>
           <div class="col-xs-7">
             <p><%= @trade_organization.business_category %></p>
@@ -173,36 +188,54 @@
       </div>
     </div>
 
+    <!--<div class="row">-->
+      <!--<div class="col-xs-12">-->
+        <!--<div class="row">-->
+          <!--<div class="col-xs-5 trade-label">-->
+            <!--<p>লাইসেন্সের মেয়াদ</p>-->
+          <!--</div>-->
+          <!--<div class="col-xs-7">-->
+            <!--<p><%= @trade_organization.deadline_top %></p>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
           <div class="col-xs-5 trade-label">
-            <p>লাইসেন্স ফি/ নবায়ন ফি </p>
+            <p> লাইসেন্সের প্রদেয় টাকা</p>
           </div>
-          <div class="col-xs-7">
-            <p><%=  @trade_organization.fee %></p>
+          <div class="col-xs-7" id="internal_table">
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th align="center">হাল</th>
+                <th  align="center">বকেয়া</th>
+                <th  align="center">জরিমানা/অন্যান্য</th>
+                <th  align="center">সর্বমোট</th>
+              </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td><%= @trade_organization.fee_number %></td>
+                    <td><%= bangla_number '0.00' %></td>
+                    <td><%= bangla_number '0.00' %></td>
+                    <td><%= @trade_organization.fee_number %></td>
+                  </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
 
 
+
     <div class="row">
       <div class="col-xs-12">
-        <div class="row">
-          <div class="col-xs-5 trade-label">
-            <p>লাইসেন্সের মেয়াদ</p>
-          </div>
-          <div class="col-xs-7">
-            <p><%= @trade_organization.deadline %></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <p>স্বত্ত্বাধিকারীকে তার ব্যবসা / বৃত্তি /  পেশা অত্র ইউনিয়ন সীমার মধ্যে চালিয়ে যাওয়ার জন্য এই লাইসেন্স প্রদান করা হলো ।</p>
+        <p>এই ট্রেড লাইসেন্স এর মেয়াদ <%= @trade_organization.deadline %> সালের ৩০ জুন পর্যন্ত বলবৎ থাকবে ।</p>
       </div>
     </div>
 

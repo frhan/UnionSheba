@@ -7,9 +7,15 @@ class TradeLicense < ActiveRecord::Base
   validates_uniqueness_of :fiscal_year,scope: :trade_organization
   validates :fiscal_year, length: { is: 4 }
 
-  def deadline
+  def deadline_top
     if !self.fiscal_year.nil?
       "৩০ জুন " << bangla_number((self.fiscal_year + 1).to_s) << " পর্যন্ত বৈধ"
+    end
+  end
+
+  def deadline
+    if !self.fiscal_year.nil?
+      bangla_number((self.fiscal_year + 1).to_s)
     end
   end
 

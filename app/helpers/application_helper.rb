@@ -75,6 +75,8 @@ module ApplicationHelper
           bn << c
         when '০'
           bn << c
+        when '.'
+          bn << c
         else
           return -1
       end

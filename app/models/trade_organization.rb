@@ -30,6 +30,15 @@ class TradeOrganization < ActiveRecord::Base
     end
   end
 
+  def fee_number
+    taka = '0'
+    if !latest_trade_license.nil?
+      taka = bangla_number latest_trade_license.license_fee.to_s
+      taka << '.00'
+    end
+    bangla_number taka
+  end
+
   def license_deadline
     if !latest_trade_license.nil?
       latest_trade_license.fiscal_year
@@ -45,6 +54,12 @@ class TradeOrganization < ActiveRecord::Base
   def deadline
     if !latest_trade_license.nil?
       latest_trade_license.deadline
+    end
+  end
+
+  def deadline_top
+    if !latest_trade_license.nil?
+      latest_trade_license.deadline_top
     end
   end
 
