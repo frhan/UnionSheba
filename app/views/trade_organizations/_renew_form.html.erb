@@ -20,7 +20,7 @@
 
 
           <div class="form-group">
-            <label for="nameInEng" class="col-md-3 control-label">InstituteName(Eng)*</label>
+            <label for="nameInEng" class="col-md-3 control-label">প্রতিষ্ঠানের নাম (ইংরেজি)</label>
             <div class="col-md-9">
               <input type="text" class="form-control" name="nameInEng" placeholder="Name In English"
                      disabled="true" value="<%= @trade_organization.enterprize_name_in_eng %>"/>
@@ -29,8 +29,7 @@
 
 
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">Institute
-              Name(Ban)*</label>
+            <label for="nameInBn" class="col-md-3 control-label">প্রতিষ্ঠানের নাম (বাংলা)</label>
             <div class="col-md-9">
               <input type="text" class="form-control" name="nameInEng" placeholder="Name In English"
                      disabled="true" value="<%= @trade_organization.enterprize_name_in_bng %>"/>
@@ -38,7 +37,7 @@
           </div>
 
           <div class="form-group">
-            <label for="nameInEng" class="col-md-3 control-label">Name(English)*</label>
+            <label for="nameInEng" class="col-md-3 control-label">সত্ত্বাধিকারীর নামঃ</label>
             <div class="col-md-9">
               <input type="text" class="form-control" name="nameInEng" placeholder="Name In English"
                      disabled="true" value="<%= @trade_organization.owners_name_bng %>"/>
@@ -46,8 +45,7 @@
           </div>
 
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">বাংলা
-              নাম</label>
+            <label for="nameInBn" class="col-md-3 control-label">ব্যবসার স্থানঃ</label>
             <div class="col-md-9">
               <input type="text" class="form-control" name="nameInEng" placeholder="Name In English"
                      disabled="true" value="<%= @trade_organization.business_place %>"/>
@@ -55,8 +53,7 @@
           </div>
 
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">বাংলা
-              নাম</label>
+            <label for="nameInBn" class="col-md-3 control-label">ব্যবসার ধরনঃ</label>
             <div class="col-md-9">
               <input type="text" class="form-control" name="nameInEng" placeholder="Name In English"
                      disabled="true" value="<%= @trade_organization.business_category %>"/>
@@ -65,7 +62,7 @@
 
 
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">Fiscal year</label>
+            <label for="nameInBn" class="col-md-3 control-label">অর্থ বছরঃ</label>
             <div class="col-md-9">
 
               <%= f.number_field :fiscal_year, class: "form-control" %>
@@ -73,7 +70,7 @@
           </div>
 
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">License Fee</label>
+            <label for="nameInBn" class="col-md-3 control-label">লাইসেন্স নবায়ন ফিঃ</label>
             <div class="col-md-9">
               <%= f.number_field :license_fee, class: "form-control" %>
             </div>
