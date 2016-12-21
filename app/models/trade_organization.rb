@@ -30,13 +30,8 @@ class TradeOrganization < ActiveRecord::Base
     end
   end
 
-  def fee_number
-    taka = '0'
-    if !latest_trade_license.nil?
-      taka = bangla_number latest_trade_license.license_fee.to_s
-      taka << '.00'
-    end
-    bangla_number taka
+  def license_fee
+      fee_number latest_trade_license.license_fee
   end
 
   def license_deadline
@@ -70,21 +65,15 @@ class TradeOrganization < ActiveRecord::Base
   end
 
   def total_fee
-    if !latest_trade_license.nil?
-      latest_trade_license.total_fee
-    end
+      fee_number latest_trade_license.total_fee
   end
 
   def fine
-    if !latest_trade_license.nil?
-      latest_trade_license.fine_fee
-    end
+      fee_number latest_trade_license.fine_fee
   end
 
   def remain
-    if !latest_trade_license.nil?
-      latest_trade_license.remaining_fee
-    end
+      fee_number latest_trade_license.remaining_fee
   end
 
   def word_no_bn
@@ -105,6 +94,16 @@ class TradeOrganization < ActiveRecord::Base
   def max_count
     count = TradeOrganization.where(union_id: self.union.id).count
     count
+  end
+
+
+  def fee_number(number)
+    taka = '0'
+    if number.present?
+      taka = bangla_number number.to_s
+    end
+
+    bangla_number taka << '.00'
   end
 
 end

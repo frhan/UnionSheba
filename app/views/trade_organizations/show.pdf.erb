@@ -214,10 +214,10 @@
               </thead>
               <tbody>
               <tr>
-                <td><%= @trade_organization.fee_number %></td>
-                <td><%= bangla_number '0.00' %></td>
-                <td><%= bangla_number '0.00' %></td>
-                <td><%= @trade_organization.fee_number %></td>
+                <td><%= @trade_organization.license_fee %></td>
+                <td><%=  @trade_organization.remain %></td>
+                <td><%=   @trade_organization.fine %></td>
+                <td><%=   @trade_organization.total_fee %></td>
               </tr>
               </tbody>
             </table>
