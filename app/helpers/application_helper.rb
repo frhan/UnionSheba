@@ -35,7 +35,7 @@ module ApplicationHelper
     bn = String.new
 
     if !number.present?
-      return bn
+      return bn<<'-'
     end
 
     number.each_char do |c|
@@ -93,7 +93,7 @@ module ApplicationHelper
     bn = String.new
 
     if !number.present?
-      return bn
+      return bn<<'-'
     end
 
     number.each_char do |c|
