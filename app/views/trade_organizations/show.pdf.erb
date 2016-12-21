@@ -6,11 +6,11 @@
     font-size: large;
     background-color: #ffffff;
   }
-    #internal_table{
-      font-size: medium;
-    }
+  #internal_table{
+    font-size: medium;
+  }
   th,tr{
-      font-weight: normal;
+    font-weight: normal;
     text-align: center;
   }
   table{
@@ -18,7 +18,7 @@
   }
 
   .table {
-    border: 0.5px solid #000000;
+    border: 1px solid #000000;
   }
   .table-bordered > thead > tr > th,
   .table-bordered > tbody > tr > th,
@@ -26,13 +26,8 @@
   .table-bordered > thead > tr > td,
   .table-bordered > tbody > tr > td,
   .table-bordered > tfoot > tr > td {
-    border: 0.5px solid #000000;
+    border: 1px solid #000000;
   }
-  /*tr{*/
-
-    /*font-weight: normal;*/
-    /*text-align: center;*/
-  /*}*/
 
 </style>
 
@@ -99,10 +94,10 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-xs-5 trade-label">
+          <div class="col-xs-4 trade-label">
             <p>প্রতিষ্ঠানের  নাম</p>
           </div>
-          <div class="col-xs-7">
+          <div class="col-xs-8">
             <p><%= @trade_organization.enterprize_name_in_bng%></p>
           </div>
         </div>
@@ -112,10 +107,10 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-xs-5 trade-label">
+          <div class="col-xs-4 trade-label">
             <p> প্রোপাইটর/মালিক</p>
           </div>
-          <div class="col-xs-7">
+          <div class="col-xs-8">
             <p><%= @trade_organization.owners_name_bng %></p>
           </div>
         </div>
@@ -126,10 +121,10 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-xs-5 trade-label">
+          <div class="col-xs-4 trade-label">
             <p> পিতার নাম</p>
           </div>
-          <div class="col-xs-7">
+          <div class="col-xs-8">
             <p><%= @trade_organization.fathers_name %></p>
           </div>
         </div>
@@ -139,10 +134,10 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-xs-5 trade-label">
+          <div class="col-xs-4 trade-label">
             <p>মাতার নাম </p>
           </div>
-          <div class="col-xs-7">
+          <div class="col-xs-8">
             <p><%= @trade_organization.mothers_name %></p>
           </div>
         </div>
@@ -152,10 +147,10 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-xs-5 trade-label">
+          <div class="col-xs-4 trade-label">
             <p> স্থায়ী ঠিকানা</p>
           </div>
-          <div class="col-xs-7">
+          <div class="col-xs-8">
             <p><%= @trade_organization.address %></p>
           </div>
         </div>
@@ -165,10 +160,10 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-xs-5 trade-label">
+          <div class="col-xs-4 trade-label">
             <p>ব্যবসার স্থান</p>
           </div>
-          <div class="col-xs-7">
+          <div class="col-xs-8">
             <p><%= @trade_organization.business_place %></p>
           </div>
         </div>
@@ -178,36 +173,23 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-xs-5 trade-label">
+          <div class="col-xs-4 trade-label">
             <p>ব্যবসার বিবরণ</p>
           </div>
-          <div class="col-xs-7">
+          <div class="col-xs-8">
             <p><%= @trade_organization.business_category %></p>
           </div>
         </div>
       </div>
     </div>
 
-    <!--<div class="row">-->
-      <!--<div class="col-xs-12">-->
-        <!--<div class="row">-->
-          <!--<div class="col-xs-5 trade-label">-->
-            <!--<p>লাইসেন্সের মেয়াদ</p>-->
-          <!--</div>-->
-          <!--<div class="col-xs-7">-->
-            <!--<p><%= @trade_organization.deadline_top %></p>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-xs-5 trade-label">
+          <div class="col-xs-4 trade-label">
             <p> লাইসেন্সের প্রদেয় টাকা</p>
           </div>
-          <div class="col-xs-7" id="internal_table">
+          <div class="col-xs-8" id="internal_table">
             <table class="table table-bordered">
               <thead>
               <tr>
@@ -218,20 +200,18 @@
               </tr>
               </thead>
               <tbody>
-                  <tr>
-                    <td><%= @trade_organization.fee_number %></td>
-                    <td><%= bangla_number '0.00' %></td>
-                    <td><%= bangla_number '0.00' %></td>
-                    <td><%= @trade_organization.fee_number %></td>
-                  </tr>
+              <tr>
+                <td><%= @trade_organization.fee_number %></td>
+                <td><%= bangla_number '0.00' %></td>
+                <td><%= bangla_number '0.00' %></td>
+                <td><%= @trade_organization.fee_number %></td>
+              </tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
-
-
 
     <div class="row">
       <div class="col-xs-12">
