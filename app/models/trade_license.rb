@@ -30,6 +30,10 @@ class TradeLicense < ActiveRecord::Base
     end
   end
 
+  def total_fee
+      self.fine_fee + self.remaining_fee + self.license_fee
+  end
+
   private
 
   def save_trade_license_no

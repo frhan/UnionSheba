@@ -69,6 +69,24 @@ class TradeOrganization < ActiveRecord::Base
     end
   end
 
+  def total_fee
+    if !latest_trade_license.nil?
+      latest_trade_license.total_fee
+    end
+  end
+
+  def fine
+    if !latest_trade_license.nil?
+      latest_trade_license.fine_fee
+    end
+  end
+
+  def remain
+    if !latest_trade_license.nil?
+      latest_trade_license.remaining_fee
+    end
+  end
+
   def word_no_bn
     number = String.new
     if word_no.present?
