@@ -64,23 +64,22 @@
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">অর্থ বছরঃ</label>
             <div class="col-md-9">
-
-              <%= f.number_field :fiscal_year, class: "form-control" %>
+              <%= f.number_field :fiscal_year, class: "form-control",placeholder: "In English number" %>
+              <span class="help-block">অর্থবছরের প্রথম বছরটি লিখুন । ২০০৬-২০১৭ অর্থবছর হলে শুধু ২০১৬ লিখুন (ইংরেজিতে)</span>
             </div>
           </div>
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">লাইসেন্স নবায়ন ফিঃ</label>
             <div class="col-md-9">
-              <%= f.number_field :license_fee, class: "form-control" %>
+              <%= f.number_field :license_fee, class: "form-control",placeholder: "In English number" %>
             </div>
           </div>
-
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">বকেয়া</label>
             <div class="col-md-9">
-              <%= f.number_field :remaining_fee, class: "form-control" %>
+              <%= f.number_field :remaining_fee, class: "form-control",placeholder: "In English number" %>
             </div>
           </div>
 
@@ -88,7 +87,7 @@
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">জরিমানা/অন্যান্য</label>
             <div class="col-md-9">
-              <%= f.number_field :fine_fee, class: "form-control" %>
+              <%= f.number_field :fine_fee, class: "form-control",placeholder: "In English number" %>
             </div>
           </div>
 

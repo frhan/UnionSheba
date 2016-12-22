@@ -51,6 +51,7 @@ class TradeOrganizationDatatable
 
   def total_records
     trade_organizations = @user.trade_organizations
+    trade_organizations = trade_organizations.where(status: :active);
     trade_organizations.count
   end
 

@@ -51,6 +51,7 @@ class CitizensDatatable
 
   def total_records
     citizens = @user.citizens
+    citizens = citizens.where(status: :active);
     citizens.count
   end
 
