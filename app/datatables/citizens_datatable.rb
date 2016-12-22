@@ -39,6 +39,7 @@ class CitizensDatatable
 
   def fetch_citizens
     citizens = @user.citizens.order("#{sort_column} #{sort_direction}")
+    citizens = citizens.where(status: :active);
     #trade_organizations = trade_organizations.page(page).per(per_page)
     if params[:sSearch].present?
       citizens = citizens.where("nid like :search or birthid like :search or citizens.name_in_eng like :search", search: "%#{params[:sSearch]}%")

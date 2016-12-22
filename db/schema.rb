@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221140337) do
+ActiveRecord::Schema.define(version: 20161222090450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,10 +59,11 @@ ActiveRecord::Schema.define(version: 20161221140337) do
     t.integer  "word_no"
     t.integer  "union_id"
     t.string   "spouse_name"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "nid"
     t.string   "birthid"
+    t.string   "status",       default: "active"
   end
 
   add_index "citizens", ["union_id"], name: "index_citizens_on_union_id", using: :btree
@@ -115,11 +116,12 @@ ActiveRecord::Schema.define(version: 20161221140337) do
     t.string   "business_place"
     t.string   "business_category"
     t.integer  "union_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.string   "license_no"
     t.integer  "word_no"
     t.string   "holding_no"
+    t.string   "status",                 default: "active"
   end
 
   add_index "trade_organizations", ["union_id"], name: "index_trade_organizations_on_union_id", using: :btree

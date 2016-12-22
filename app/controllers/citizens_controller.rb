@@ -3,17 +3,23 @@ class CitizensController < InheritedResources::Base
   before_filter :authenticate_user!
 
   def index
-    # if user_signed_in?
-    #   @citizens = current_user.citizens #Citizen.where(:union_id => current_user.union.id)
-    # end
-
     respond_to do |format|
       format.html
       format.json { render json: CitizensDatatable.new(view_context,current_user) }
     end
-
-
   end
+
+  # DELETE /recipes/1
+  # DELETE /recipes/1.json
+  def destroy
+    @citizen = Citizen.find(params[:id])
+    @citizen.update_attributes(status: :inactive)
+    respond_to do |format|
+      format.html { redirect_to citizens_url, notice: 'Citizen was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
 
   def show
     @citizen = Citizen.find(params[:id])

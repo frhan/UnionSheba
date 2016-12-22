@@ -39,6 +39,7 @@ class TradeOrganizationDatatable
 
   def fetch_trade_organizations
     trade_organizations = @user.trade_organizations.order("#{sort_column} #{sort_direction}")
+    trade_organizations = trade_organizations.where(status: :active);
     #trade_organizations = trade_organizations.page(page).per(per_page)
     if params[:sSearch].present?
       trade_organizations = trade_organizations.where("license_no like :search or enterprize_name_in_eng like :search or owners_name_eng like :search",
