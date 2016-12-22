@@ -126,7 +126,7 @@ class TradeOrganizationsController < ApplicationController
   private
 
   def file_name
-    pdf_file_name'trade_license_'
+    pdf_file_name'trade_license_' << current_user.union.union_code
   end
 
   def set_trade_organization
