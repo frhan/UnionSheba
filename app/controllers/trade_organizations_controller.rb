@@ -119,7 +119,7 @@ class TradeOrganizationsController < ApplicationController
   # DELETE /recipes/1
   # DELETE /recipes/1.json
   def destroy
-    @trade_organization.update_attributes(status: :inactive)
+    @trade_organization.update_attributes(status: :deleted)
 
     respond_to do |format|
       format.html { redirect_to trade_organizations_url, notice: 'Trade Lisence was successfully destroyed.' }

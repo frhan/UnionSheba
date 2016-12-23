@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :citizens
   resources :trade_licenses
+  resources :profiles
   resources :trade_organizations,shallow: true do
     member do
       get :renew

@@ -4,7 +4,7 @@
   <% end %>
 
   <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Profile</a></li>
+    <li> <%= link_to 'Profile', profiles_path %></li>
     <li class="divider"></li>
     <li> <%= link_to 'Signout', destroy_user_session_path, html_options = { method: :delete} %></li>
   </ul>

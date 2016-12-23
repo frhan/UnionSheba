@@ -14,7 +14,7 @@ class CitizensController < InheritedResources::Base
   # DELETE /recipes/1.json
   def destroy
     @citizen = Citizen.find(params[:id])
-    @citizen.update_attributes(status: :inactive)
+    @citizen.update_attributes(status: :deleted)
     respond_to do |format|
       format.html { redirect_to citizens_url, notice: 'Citizen was successfully deleted' }
       format.json { head :no_content }

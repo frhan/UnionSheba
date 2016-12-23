@@ -1,0 +1,62 @@
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @union.name_in_eng %></h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+
+        <div class=" col-md-9 col-lg-9 ">
+          <table class="table table-user-information">
+            <tbody>
+
+            <tr>
+              <td> ইউজারের নামঃ</td>
+              <td><%= current_user.username %></td>
+            </tr>
+
+            <tr>
+              <td>ইউজারের ধরন</td>
+              <td><%= current_user.role_name %></td>
+            </tr>
+
+            <tr>
+              <td>ইউনিয়নের নামঃ</td>
+              <td><%= @union.name_in_bng %></td>
+            </tr>
+
+            <tr>
+              <td>ডাকঘরঃ</td>
+              <td><%= @union.post %></td>
+            </tr>
+
+            <tr>
+              <td>ইউনিয়ন নং</td>
+              <td><%= bangla_number @union.union_no.to_s %></td>
+            </tr>
+
+            <tr>
+              <td>উপজেলা নামঃ</td>
+              <td><%= @union.upazila.name_in_bng %></td>
+            </tr>
+
+            <tr>
+              <td>জেলাঃ</td>
+              <td><%= @union.upazila.district.name_in_bng %></td>
+            </tr>
+
+
+            <tr>
+              <td>বিভাগঃ</td>
+              <td><%= @union.upazila.district.division.name_in_bng %></td>
+            </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
