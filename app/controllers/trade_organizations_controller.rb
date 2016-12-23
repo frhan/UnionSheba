@@ -2,6 +2,7 @@ class TradeOrganizationsController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_user!
   load_and_authorize_resource
+  skip_authorize_resource :only => :print_money_recipt
   before_action :set_trade_organization, only: [:show, :edit, :update, :destroy,
                                                 :renew,:show_money_recipt,
                                                 :create_trade_license,:edit_license]
