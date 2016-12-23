@@ -20,7 +20,7 @@ class TradeOrganization < ActiveRecord::Base
   end
 
   def latest_trade_license
-    trade_license ||= self.trade_licenses.order('fiscal_year desc').first
+    @trade_license ||= self.trade_licenses.order('fiscal_year desc').first
   end
 
   def fee
