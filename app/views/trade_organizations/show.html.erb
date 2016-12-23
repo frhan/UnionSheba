@@ -46,7 +46,8 @@
           </table>
 
           <%= link_to 'Print Certificate', trade_organization_path(@trade_organization, format: 'pdf'), class: "btn btn-success" %>
-          <%= link_to 'Print Money Receipt', print_money_recipt_trade_organization_path(@trade_organization), class: "btn btn-info" %>
+          <%= link_to 'Print Money Receipt', print_money_recipt_trade_organization_path(@trade_organization,format: 'pdf'), class: "btn btn-info" %>
+
           <% if can? :create, TradeLicense %>
               <%= link_to 'Renew License', renew_trade_organization_path(@trade_organization), class: "btn btn-primary" %>
           <% end %>
