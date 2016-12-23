@@ -24,10 +24,9 @@ class TradeOrganization < ActiveRecord::Base
   end
 
   def fee
-    if !latest_trade_license.nil?
-      taka = bangla_number latest_trade_license.license_fee.to_s
-      taka << ' টাকা মাত্র ।'
-    end
+    return String.new unless latest_trade_license.present?
+    taka = bangla_number latest_trade_license.license_fee.to_s
+    taka << ' টাকা মাত্র ।'
   end
 
   def license_fee
@@ -35,9 +34,8 @@ class TradeOrganization < ActiveRecord::Base
   end
 
   def license_deadline
-    if !latest_trade_license.nil?
-      latest_trade_license.fiscal_year
-    end
+    return String.new unless latest_trade_license.present?
+    latest_trade_license.fiscal_year
   end
 
   # def license_no
@@ -47,21 +45,18 @@ class TradeOrganization < ActiveRecord::Base
   # end
 
   def deadline
-    if !latest_trade_license.nil?
-      latest_trade_license.deadline
-    end
+    return String.new unless latest_trade_license.present?
+    latest_trade_license.deadline
   end
 
   def deadline_top
-    if !latest_trade_license.nil?
-      latest_trade_license.deadline_top
-    end
+    return String.new unless latest_trade_license.present?
+    latest_trade_license.deadline_top
   end
 
   def fiscal_year
-    if !latest_trade_license.nil?
-      latest_trade_license.fiscal_year_show
-    end
+    return String.new unless latest_trade_license.present?
+    latest_trade_license.fiscal_year_show
   end
 
   def total_fee
@@ -77,9 +72,8 @@ class TradeOrganization < ActiveRecord::Base
   end
 
   def word_no_bn
-    number = String.new
-    number = bangla_number word_no.to_s if  word_no.present?
-    number
+    return String.new unless word_no.present?
+    bangla_number word_no.to_s
   end
 
   private

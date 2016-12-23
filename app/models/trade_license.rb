@@ -25,7 +25,6 @@ class TradeLicense < ActiveRecord::Base
   def fiscal_year_show_eng
     return String.new unless self.fiscal_year.present?
     self.fiscal_year.to_s << ' - '<< (self.fiscal_year + 1).to_s
-
   end
 
   def total_fee
