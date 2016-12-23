@@ -38,12 +38,6 @@ class TradeOrganization < ActiveRecord::Base
     latest_trade_license.fiscal_year
   end
 
-  # def license_no
-  #   if !latest_trade_license.nil?
-  #     latest_trade_license.licsense_no
-  #   end
-  # end
-
   def deadline
     return String.new unless latest_trade_license.present?
     latest_trade_license.deadline
