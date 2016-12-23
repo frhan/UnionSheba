@@ -16,7 +16,7 @@ class CitizensController < InheritedResources::Base
     @citizen = Citizen.find(params[:id])
     @citizen.update_attributes(status: :inactive)
     respond_to do |format|
-      format.html { redirect_to citizens_url, notice: 'Citizen was successfully destroyed.' }
+      format.html { redirect_to citizens_url, notice: 'Citizen was successfully deleted' }
       format.json { head :no_content }
     end
   end

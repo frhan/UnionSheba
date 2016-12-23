@@ -108,7 +108,7 @@ class TradeOrganizationsController < ApplicationController
     @trade_organization.update_attributes(status: :inactive)
 
     respond_to do |format|
-      format.html { redirect_to trade_organizations_url, notice: 'Recipe was successfully destroyed.' }
+      format.html { redirect_to trade_organizations_url, notice: 'Trade Lisence was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
