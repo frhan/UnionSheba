@@ -1,5 +1,5 @@
 class CitizensDatatable
-  delegate :params,:link_to, :citizen_path, :edit_citizen_path, to: :@view
+  delegate :params,:link_to,:can?, :citizen_path, :edit_citizen_path, to: :@view
 
   def initialize(view,user)
     @view = view
@@ -25,8 +25,14 @@ class CitizensDatatable
       ctzn << link_to(record.birthid, citizen_path(record))
       ctzn <<  link_to(record.name_in_eng, citizen_path(record))
       ctzn << record.fathers_name
-      ctzn << link_to("Edit", edit_citizen_path(record))
-      ctzn << link_to("Delete", citizen_path(record), method: :delete, data: { confirm: 'Are you sure?' })
+
+      if can? :edit, @user
+        ctzn << link_to("Edit", edit_citizen_path(record))
+      end
+
+      if can? :delete, @user
+        ctzn << link_to("Delete", citizen_path(record), method: :delete, data: { confirm: 'Are you sure?' })
+      end
 
       ctzns << ctzn
     end
