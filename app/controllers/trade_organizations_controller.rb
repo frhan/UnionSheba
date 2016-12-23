@@ -106,7 +106,7 @@ class TradeOrganizationsController < ApplicationController
   # DELETE /recipes/1.json
   def destroy
     # @trade_organization = TradeOrganization.find(params[:id])
-    @trade_organization.update_attributes!(status: :inactive)
+    @trade_organization.update_attributes(status: :inactive)
     #@trade_organization.destroy
 
     respond_to do |format|
