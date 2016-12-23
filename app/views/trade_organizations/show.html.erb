@@ -13,12 +13,12 @@
             <tbody>
             <tr>
               <td>লাইসেন্স নং</td>
-              <td><%= @trade_organization.license_no%></td>
+              <td><%= @trade_organization.license_no %></td>
             </tr>
 
             <tr>
               <td>প্রতিষ্ঠানের নামঃ</td>
-              <td><%= @trade_organization.enterprize_name_in_bng%></td>
+              <td><%= @trade_organization.enterprize_name_in_bng %></td>
             </tr>
             <tr>
               <td>স্বত্বাধীকারির নামঃ</td>
@@ -27,28 +27,29 @@
 
             <tr>
               <td>ব্যবসার স্থানঃ</td>
-              <td><%= @trade_organization.business_place%></td>
+              <td><%= @trade_organization.business_place %></td>
             </tr>
             <tr>
-              <td >ব্যবসার ধরনঃ</td>
-              <td ><%= @trade_organization.business_category%></td>
+              <td>ব্যবসার ধরনঃ</td>
+              <td><%= @trade_organization.business_category %></td>
             </tr>
 
             <% if @trade_organization.trade_licenses.count > 0 %>
 
-            <tr>
-              <td>সর্বশেষ নবায়ন বছরঃ</td>
-              <td><%= @trade_organization.trade_licenses.order('fiscal_year desc').first.fiscal_year%></td>
-            </tr>
-                <% end %>
+                <tr>
+                  <td>সর্বশেষ নবায়ন বছরঃ</td>
+                  <td><%= @trade_organization.trade_licenses.order('fiscal_year desc').first.fiscal_year %></td>
+                </tr>
+            <% end %>
 
             </tbody>
           </table>
 
-          <%= link_to 'Print Certificate', trade_organization_path(@trade_organization, format: 'pdf'),class:"btn btn-info btn-default"%>
-          <%= link_to 'Print Money Receipt', trade_organization_path(@trade_organization, format: 'pdf'),class:"btn btn-info btn-default"%>
-          <%= link_to 'Renew', renew_trade_organization_path(@trade_organization),class:"btn btn-info btn-default"%>
-
+          <%= link_to 'Print Certificate', trade_organization_path(@trade_organization, format: 'pdf'), class: "btn btn-info btn-default" %>
+          <%= link_to 'Print Money Receipt', trade_organization_path(@trade_organization, format: 'pdf'), class: "btn btn-info btn-default" %>
+          <% if can? :create, TradeLicense %>
+              <%= link_to 'Renew', renew_trade_organization_path(@trade_organization), class: "btn btn-info btn-default" %>
+          <% end %>
 
         </div>
       </div>
@@ -61,38 +62,42 @@
       <h3 class="panel-title">Trade Licenses</h3>
     </div>
 
-  <div class="panel-body">
-    <div class="row">
+    <div class="panel-body">
+      <div class="row">
 
-      <div class=" col-md-12 col-lg-12 ">
+        <div class=" col-md-12 col-lg-12 ">
 
-        <table class="table table-bordered table-striped">
-          <thead>
-          <tr>
-            <th>Fiscal Year</th>
-            <th>License Fee</th>
-            <th>Created</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @trade_organization.trade_licenses.order('fiscal_year desc').each do |trade_license| %>
-              <tr>
-                <td><%= trade_license.fiscal_year_show_eng %></td>
-                <td><%= trade_license.license_fee%></td>
-                <td><%= trade_license.created_at.strftime "%B %e, %Y" %></td>
-                <td>
-                  <%= link_to "Edit", edit_trade_license_path(trade_license) %>
-                  <%= link_to "Delete", trade_license_path(trade_license),method: :delete, data: { confirm: 'Are you sure?' }%>
-                </td>
-              </tr>
-          <% end %>
-          </tbody>
-        </table>
+          <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>Fiscal Year</th>
+              <th>License Fee</th>
+              <th>Created</th>
+              <% if can? :manage, TradeLicense %>
+                  <th></th>
+              <% end %>
+            </tr>
+            </thead>
+            <tbody>
+            <% @trade_organization.trade_licenses.order('fiscal_year desc').each do |trade_license| %>
+                <tr>
+                  <td><%= trade_license.fiscal_year_show_eng %></td>
+                  <td><%= trade_license.license_fee %></td>
+                  <td><%= trade_license.created_at.strftime "%B %e, %Y" %></td>
+                  <% if can? :manage, TradeLicense %>
+                      <td>
+                        <%= link_to "Edit", edit_trade_license_path(trade_license) %>
+                        <%= link_to "Delete", trade_license_path(trade_license), method: :delete, data: {confirm: 'Are you sure?'} %>
+                      </td>
+                  <% end %>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
 
-      </div>
+        </div>
       </div>
     </div>
 
-</div>
+  </div>
 </div>

@@ -9,12 +9,21 @@
       <th>Institute Name</th>
       <th>Owner Name</th>
       <th>Business Place</th>
-      <th>Edit</th>
-      <th>Delete</th>
+
+      <% if can? :edit, TradeOrganization %>
+          <th>Edit</th>
+      <% end %>
+
+      <% if can? :delete, TradeOrganization %>
+          <th>Delete</th>
+      <% end %>
+
     </tr>
     </thead>
     <tbody>
     </tbody>
   </table>
-  <%= link_to "New", new_trade_organization_path, class: "btn btn-primary" %>
+  <% if can? :create, TradeOrganization %>
+      <%= link_to "New", new_trade_organization_path, class: "btn btn-primary" %>
+  <% end %>
 </div>

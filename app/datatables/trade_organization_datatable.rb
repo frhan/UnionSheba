@@ -1,5 +1,5 @@
 class TradeOrganizationDatatable
-  delegate :params,:fa_icon, :link_to, :trade_organization_path, :edit_trade_organization_path, to: :@view
+  delegate :params,:fa_icon, :link_to,:can?, :trade_organization_path, :edit_trade_organization_path, to: :@view
 
   def initialize(view,user)
     @view = view
@@ -25,8 +25,8 @@ class TradeOrganizationDatatable
       trd_org <<  link_to(record.enterprize_name_in_eng, trade_organization_path(record))
       trd_org << record.owners_name_eng
       trd_org << record.business_place
-      trd_org << link_to("Edit", edit_trade_organization_path(record))
-      trd_org << link_to("Delete", trade_organization_path(record), method: :delete, data: { confirm: 'Are you sure?' })
+      trd_org << link_to("Edit", edit_trade_organization_path(record)) if can? :edit, TradeOrganization
+      trd_org << link_to("Delete", trade_organization_path(record), method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, TradeOrganization
 
       trd_orgs << trd_org
     end

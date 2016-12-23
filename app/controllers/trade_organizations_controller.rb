@@ -1,5 +1,6 @@
 class TradeOrganizationsController < ApplicationController
   include ApplicationHelper
+  load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_trade_organization, only: [:show, :edit, :update, :destroy,
                                                 :renew,:show_money_recipt,
