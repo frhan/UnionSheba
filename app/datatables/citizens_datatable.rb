@@ -21,9 +21,9 @@ class CitizensDatatable
     ctzns = []
     citizens.map do |record|
       ctzn = []
-      ctzn <<  link_to(record.nid, citizen_path(record))
+      ctzn << link_to(record.nid, citizen_path(record))
       ctzn << link_to(record.birthid, citizen_path(record))
-      ctzn <<  link_to(record.name_in_eng, citizen_path(record))
+      ctzn << link_to(record.name_in_eng, citizen_path(record))
       ctzn << record.fathers_name
       ctzn << link_to("Edit", edit_citizen_path(record)) if can? :edit, Citizen
       ctzn << link_to("Delete", citizen_path(record), method: :delete, data: { confirm: 'Are you sure?' })  if can? :delete, Citizen
@@ -40,12 +40,11 @@ class CitizensDatatable
   def fetch_citizens
     citizens = @user.citizens.order("#{sort_column} #{sort_direction}")
     citizens = citizens.where(status: :active);
-    #trade_organizations = trade_organizations.page(page).per(per_page)
+
     if params[:sSearch].present?
       citizens = citizens.where("nid like :search or birthid like :search or LOWER(citizens.name_in_eng) like LOWER(:search)", search: "%#{params[:sSearch]}%")
     end
     citizens = Kaminari.paginate_array(citizens).page(page).per(per_page)
-
     citizens
   end
 
