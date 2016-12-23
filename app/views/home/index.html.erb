@@ -1,7 +1,8 @@
 <div class="mainbox col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
   <div class="jumbotron">
     <% if user_signed_in? %>
-        <h1 align="center"><%= current_user.union.name_in_bng %> ইউনিয়ন সেবাকেন্দ্র</h1>
+        <h1 align="center"><%= bangla_number current_user.union.union_no.to_s %>
+          নং <%= current_user.union.name_in_bng %> ইউনিয়ন পরিষদ</h1>
     <% else %>
         <h1 align="center">ইউনিয়ন সেবাকেন্দ্র</h1>
     <% end %>
