@@ -22,13 +22,14 @@ ActiveAdmin.register User do
       f.input :password
       f.input :password_confirmation
       f.input :union_id, :label => 'Union', :as => :select,:collection => Union.all.map{|u| ["#{u.name_in_bng}", u.id]}
+      f.input :role_id, :label => 'Role', :as => :select,:collection => Role.all.map{|r| ["#{r.role_name}", r.id]}
     end
     f.actions
   end
 
   controller do
     def permitted_params
-      params.permit user: [:username, :password, :password_confirmation,:union_id]
+      params.permit user: [:username, :password, :password_confirmation,:union_id,:role_id]
     end
   end
 
