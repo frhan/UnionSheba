@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     member do
       get :renew
       post :create_trade_license
-      get :show_money_recipt
+      get :print_money_recipt
     end
   end
   get 'trade_organizations/:id/trade_license/:license_id/edit' => 'trade_organizations#edit_license',

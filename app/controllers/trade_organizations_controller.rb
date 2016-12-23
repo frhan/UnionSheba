@@ -23,7 +23,6 @@ class TradeOrganizationsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        #TODO:update_issue_date
         render :pdf => file_name,
                :template => 'trade_organizations/show.pdf.erb',
                :layout => 'pdf.html.erb',
@@ -36,12 +35,26 @@ class TradeOrganizationsController < ApplicationController
                dpi:                            '300'
                #zoom: 1.17647
       end
-
-
     end
   end
 
-  def show_money_recipt
+  def print_money_recipt
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => money_recipt_file_name,
+               :template => 'trade_organizations/print_money_recipt.pdf.erb',
+               :layout => 'pdf.html.erb',
+               :disposition => 'attachment',
+               :show_as_html => params[:debug].present?,
+               margin:  {   top:               0,                     # default 10 (mm)
+                            bottom:            0,
+                            left:              0,
+                            right:             0 },
+               dpi:                            '300'
+        #zoom: 1.17647
+      end
+    end
 
   end
 
@@ -56,7 +69,7 @@ class TradeOrganizationsController < ApplicationController
 
     respond_to do |format|
       if @trade_organization.save
-        format.html { redirect_to @trade_organization, notice: 'Recipe was successfully created.' }
+        format.html { redirect_to @trade_organization, notice: 'Trade License was successfully created.' }
         format.json { render :show, status: :created, location: @trade_organization }
       else
         format.html {render :new }
@@ -128,7 +141,11 @@ class TradeOrganizationsController < ApplicationController
   private
 
   def file_name
-    pdf_file_name'trade_license_' << current_user.union.union_code
+    pdf_file_name 'trade_license_' << current_user.union.union_code
+  end
+
+  def money_recipt_file_name
+    pdf_file_name 'money_recipt_' << current_user.union.union_code
   end
 
   def set_trade_organization

@@ -1,0 +1,200 @@
+<style>
+
+  body{
+    font-size: 20px;
+    margin: 0 auto;
+    font-size: medium;
+    background-color: #ffffff;
+  }
+
+</style>
+
+<div class="wrapper_trade">
+  <div class="container">
+
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>লাইসেন্স নং</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.license_no %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>লাইসেন্স ইস্যু তারিখ</p>
+          </div>
+          <div class="col-xs-8">
+            <p class="pull-left"><%= bangla_date Time.now %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>অর্থ বছর</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.fiscal_year %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>ওয়ার্ড নং</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.word_no_bn %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>প্রতিষ্ঠানের  নাম</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.enterprize_name_in_bng%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p> প্রোপাইটর/মালিক</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.owners_name_bng %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p> স্থায়ী ঠিকানা</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.address %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>ব্যবসার স্থান</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.business_place %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>দোকান/হোল্ডিং নং</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= bangla_number @trade_organization.holding_no %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>ব্যবসার বিবরণ</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.business_category %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>হাল</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.license_fee %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>বকেয়া</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.remain %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>জরিমানা/অন্যান্য</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.fine %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>সর্বমোট</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.total_fee %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
