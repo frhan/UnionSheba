@@ -33,11 +33,8 @@ module ApplicationHelper
 
   def bangla_number(number)
     bn = String.new
-
-    if !number.present?
-      return bn<<'-'
-    end
-
+    return bn<<'-' unless number.present?
+    
     number.each_char do |c|
       case c
         when '1'
@@ -60,28 +57,6 @@ module ApplicationHelper
           bn << '৯'
         when '0'
           bn << '০'
-        when '১'
-          bn << c
-        when '২'
-          bn << c
-        when '৩'
-          bn << c
-        when '৪'
-          bn << c
-        when '৫'
-          bn << c
-        when '৬'
-          bn << c
-        when '৭'
-          bn << c
-        when '৮'
-          bn << c
-        when '৯'
-          bn << c
-        when '০'
-          bn << c
-        when '.'
-          bn << c
         else
           bn << c
       end
@@ -91,35 +66,10 @@ module ApplicationHelper
 
   def english_number(number)
     bn = String.new
-
-    if !number.present?
-      return bn<<'-'
-    end
+    return bn<<'-' unless number.present?
 
     number.each_char do |c|
       case c
-        when '1'
-          bn << c
-        when '2'
-          bn << c
-        when '3'
-          bn << c
-        when '4'
-          bn << c
-        when '5'
-          bn << c
-        when '6'
-          bn << c
-        when '7'
-          bn << c
-        when '8'
-          bn << c
-        when '9'
-          bn << c
-        when '0'
-          bn << c
-        when '.'
-          bn << c
         when '১'
           bn << '1'
         when '২'
@@ -148,16 +98,12 @@ module ApplicationHelper
   end
 
   def bangla_full_date(date)
-    if date.nil?
-      return String.new
-    end
+    return String.new  unless date.present?
     bangla_number(date.day.to_s) << ' '<< bangla_month(date.month)<< ' ' << bangla_number(date.year.to_s)
   end
 
   def bangla_date(date)
-    if date.nil?
-      return String.new
-    end
+    return String.new  unless date.present?
     bangla_number(date.day.to_s) << '/' << bangla_number(date.month.to_s) << '/' << bangla_number(date.year.to_s)
   end
 

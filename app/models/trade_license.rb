@@ -8,26 +8,24 @@ class TradeLicense < ActiveRecord::Base
   validates :fiscal_year, length: { is: 4 }
 
   def deadline_top
-    if !self.fiscal_year.nil?
-      "৩০ জুন " << bangla_number((self.fiscal_year + 1).to_s) << " পর্যন্ত বৈধ"
-    end
+    return String.new unless self.fiscal_year.present?
+    "৩০ জুন " << bangla_number((self.fiscal_year + 1).to_s) << " পর্যন্ত বৈধ"
   end
 
   def deadline
-    if !self.fiscal_year.nil?
-      bangla_number((self.fiscal_year + 1).to_s)
-    end
+    return String.new unless self.fiscal_year.present?
+    bangla_number((self.fiscal_year + 1).to_s)
   end
 
   def fiscal_year_show
-    if !self.fiscal_year.nil?
-      bangla_number(self.fiscal_year.to_s) << ' - '<< bangla_number((self.fiscal_year + 1).to_s)
-    end
+    return String.new unless self.fiscal_year.present?
+    bangla_number(self.fiscal_year.to_s) << ' - '<< bangla_number((self.fiscal_year + 1).to_s)
   end
+
   def fiscal_year_show_eng
-    if !self.fiscal_year.nil?
-      self.fiscal_year.to_s << ' - '<< (self.fiscal_year + 1).to_s
-    end
+    return String.new unless self.fiscal_year.present?
+    self.fiscal_year.to_s << ' - '<< (self.fiscal_year + 1).to_s
+
   end
 
   def total_fee
@@ -53,9 +51,7 @@ class TradeLicense < ActiveRecord::Base
   end
 
   def license_fiscal_year
-    if self.fiscal_year.nil?
-       return Time.now.year.to_s
-    end
+    return Time.now.year.to_s unless self.fiscal_year.present?
     self.fiscal_year.to_s
   end
 

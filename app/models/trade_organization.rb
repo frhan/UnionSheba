@@ -78,9 +78,7 @@ class TradeOrganization < ActiveRecord::Base
 
   def word_no_bn
     number = String.new
-    if word_no.present?
-      number = bangla_number word_no.to_s
-    end
+    number = bangla_number word_no.to_s if  word_no.present?
     number
   end
 
@@ -96,13 +94,9 @@ class TradeOrganization < ActiveRecord::Base
     count
   end
 
-
   def fee_number(number)
     taka = '0'
-    if number.present?
-      taka = bangla_number number.to_s
-    end
-
+    taka = number.to_s if number.present?
     bangla_number taka << '.00'
   end
 
