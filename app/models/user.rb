@@ -17,4 +17,20 @@ class User < ActiveRecord::Base
     false
   end
 
+  def admin?
+    self.role.role_name == 'admin'
+  end
+
+  def user?
+    self.role.role_name == 'user'
+  end
+
+  def role_name
+    self.role.role_name
+  end
+
+  def has_role?(role_name)
+    self.role.role_name == role_name
+  end
+
 end
