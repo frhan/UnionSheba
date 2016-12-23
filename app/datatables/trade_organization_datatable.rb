@@ -42,7 +42,7 @@ class TradeOrganizationDatatable
     trade_organizations = trade_organizations.where(status: :active);
     #trade_organizations = trade_organizations.page(page).per(per_page)
     if params[:sSearch].present?
-      trade_organizations = trade_organizations.where("license_no like :search or enterprize_name_in_eng like :search or owners_name_eng like :search",
+      trade_organizations = trade_organizations.where("license_no like :search or lower(enterprize_name_in_eng) like lower(:search) or lower(owners_name_eng) like lower(:search)",
                                                       search: "%#{params[:sSearch]}%")
     end
     trade_organizations = Kaminari.paginate_array(trade_organizations).page(page).per(per_page)

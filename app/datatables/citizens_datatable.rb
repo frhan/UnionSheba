@@ -42,7 +42,7 @@ class CitizensDatatable
     citizens = citizens.where(status: :active);
     #trade_organizations = trade_organizations.page(page).per(per_page)
     if params[:sSearch].present?
-      citizens = citizens.where("nid like :search or birthid like :search or citizens.name_in_eng like :search", search: "%#{params[:sSearch]}%")
+      citizens = citizens.where("nid like :search or birthid like :search or LOWER(citizens.name_in_eng) like LOWER(:search)", search: "%#{params[:sSearch]}%")
     end
     citizens = Kaminari.paginate_array(citizens).page(page).per(per_page)
 
