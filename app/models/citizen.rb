@@ -9,6 +9,7 @@ class Citizen < ActiveRecord::Base
 
   validates_uniqueness_of :nid,:allow_blank => true, :allow_nil => true
   validates_uniqueness_of :birthid,:allow_blank => true, :allow_nil => true
+  validates :nid, length: { minimum: 13 }
 
   private
 
