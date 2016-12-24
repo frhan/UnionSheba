@@ -23,6 +23,29 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  namespace :api do
+    resources :divisions do
+      member do
+        get :districts
+      end
+    end
+
+    resources :districts do
+      member do
+        get :upazilas
+      end
+    end
+
+    resources :upazilas do
+      member do
+        get :unions
+      end
+    end
+
+    resources :unions
+
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
