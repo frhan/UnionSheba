@@ -27,12 +27,12 @@ class CitizenRequestsController < ApplicationController
   end
 
   def show_by_birthid
-      @citizen = Citizen.where(birthid: params[:id]).first;
+      @citizen = Citizen.find_by_birthid(params[:id])
       do_respond(@citizen)
   end
 
   def show_by_nid
-    @citizen = Citizen.where(nid: params[:id]).first
+    @citizen = Citizen.find_by_nid(params[:id])
     do_respond(@citizen)
   end
 
