@@ -6,10 +6,12 @@ class Citizen < ActiveRecord::Base
   validates :name_in_eng,:name_in_bng ,:fathers_name,:mothers_name,
             :village,:post,:word_no, presence: true
   validate :nid_or_birthid_present
+  validate :nid_birthid_numeric
 
   validates_uniqueness_of :nid,:allow_blank => true, :allow_nil => true
   validates_uniqueness_of :birthid,:allow_blank => true, :allow_nil => true
-  validates :nid, length: { minimum: 13 }
+  validates :nid, length: { minimum: 13 },:allow_blank => true, :allow_nil => true
+  validates :birthid, length: { minimum: 17 },:allow_blank => true, :allow_nil => true
 
   def set_status(status)
     self.status = status
@@ -60,6 +62,15 @@ class Citizen < ActiveRecord::Base
 
   def nid_or_birthid_present
     errors.add(:citizen," National Id or BirthId is required") unless nid.present? || birthid.present?
+  end
+
+  def nid_birthid_numeric
+    errors.add(:citizen," National Id/BirthId is not a number") unless nid_or_birthid_numeric?
+  end
+
+  def nid_or_birthid_numeric?
+    return is_numeric nid.to_s if nid.present?
+    return is_numeric birthid.to_s if birthid.present?
   end
 
 end
