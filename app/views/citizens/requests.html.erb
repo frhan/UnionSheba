@@ -13,6 +13,7 @@
             <th>Name</th>
             <th>Requested at</th>
             <th>Email</th>
+            <th>status</th>
           </tr>
           </thead>
           <tbody>
@@ -24,6 +25,7 @@
                 <td><%= link_to(citizen.name_in_eng,citizen) %></td>
                 <td><%= citizen.requested_at %></td>
                 <td><%= citizen.email %></td>
+                <td><%= citizen.status %></td>
               </tr>
           <% end %>
           </tbody>

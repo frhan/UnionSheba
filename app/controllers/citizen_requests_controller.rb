@@ -17,6 +17,10 @@ class CitizenRequestsController < ApplicationController
     end
   end
 
+  def search
+
+  end
+
   private
 
   def citizen_params

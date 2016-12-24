@@ -15,7 +15,7 @@ class Citizen < ActiveRecord::Base
     self.status = status
   end
 
-  def is_active?
+  def active?
     self.status == :active
   end
 
