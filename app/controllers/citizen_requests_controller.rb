@@ -36,6 +36,7 @@ class CitizenRequestsController < ApplicationController
     do_respond(@citizen)
   end
 
+
   private
 
   def citizen_params
@@ -48,17 +49,19 @@ class CitizenRequestsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render :pdf => citizen_file_name(citizen),
-               :template => 'citizens/show.pdf.erb',
-               :layout => 'pdf.html.erb',
-               :disposition => 'attachment',
-               page_size: 'A4',
-               :show_as_html => params[:debug].present?,
-               margin:  {   top:               0,                     # default 10 (mm)
-                            bottom:            0,
-                            left:              0,
-                            right:             0 },
-               dpi:                            '300'
+        if citizen.active?
+          render :pdf => citizen_file_name(citizen),
+                 :template => 'citizens/show.pdf.erb',
+                 :layout => 'pdf.html.erb',
+                 :disposition => 'attachment',
+                 page_size: 'A4',
+                 :show_as_html => params[:debug].present?,
+                 margin:  {   top:               0,                     # default 10 (mm)
+                              bottom:            0,
+                              left:              0,
+                              right:             0 },
+                 dpi:                            '300'
+        end
       end
     end
 
