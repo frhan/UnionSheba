@@ -27,6 +27,11 @@ class Citizen < ActiveRecord::Base
     self.requested_at = Time.now
   end
 
+  def requested_at_formatted
+    return String.new unless requested_at.present?
+    self.requested_at.strftime("%d-%m-%Y %I:%M:%S %p")
+  end
+
   private
 
   def save_nid_birthdid_as_english
