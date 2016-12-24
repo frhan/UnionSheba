@@ -6,12 +6,11 @@ class CitizenRequestsController < ApplicationController
 
   def create
     @citizen = Citizen.new(citizen_params)
-    @citizen.set_status(:pending)
-    @citizen.save_requested_at
+    @citizen.save_pending_request
 
     respond_to do |format|
       if @citizen.save
-        format.html { redirect_to root_path, notice: 'Citizen was successfully created.' }
+        format.html { redirect_to root_path, notice: 'আপনার আবেদনটি গ্রহণ করা হয়েছে । আবেদনটি গৃহীত হলে আপানকে ইমেইলের মাধ্যমে জানিয়ে দেয়া হবে ।' }
       else
         format.html {render :new }
       end

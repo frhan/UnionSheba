@@ -26,8 +26,7 @@ class CitizensController < InheritedResources::Base
   #PUT
   def permit_request
     @citizen =  Citizen.find(params[:id]);
-    @citizen.set_status :active
-    @citizen.save_saved_at
+    @citizen.update_pending_request_to_active
 
     respond_to do |format|
       if  @citizen.update(citizen_params)

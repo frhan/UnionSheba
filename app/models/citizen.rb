@@ -23,6 +23,16 @@ class Citizen < ActiveRecord::Base
     self.status == :pending
   end
 
+  def save_pending_request
+    set_status(:pending)
+    save_requested_at
+  end
+
+  def update_pending_request_to_active
+    set_status :active
+    save_saved_at
+  end
+
   def save_requested_at
     self.requested_at = Time.now
   end
