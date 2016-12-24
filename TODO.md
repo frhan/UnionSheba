@@ -1,3 +1,11 @@
+
+Deploy to Heroku
+------------------
+master - git push heroku master
+branch - git push heroku yourbranch:master
+logs - heroku logs -t
+
+
 TODO
 -----------
 * Custom domain heroku - https://www.youtube.com/watch?v=sf6GhsVGcTQ
