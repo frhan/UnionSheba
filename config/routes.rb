@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  get 'citizen_request/new'
-
-  get 'citizen_request/create'
 
   get 'home/index'
 
   resources :citizens
-  resources :citizen_request
+  resources :citizen_requests
   resources :trade_licenses
   resources :profiles
   resources :trade_organizations,shallow: true do

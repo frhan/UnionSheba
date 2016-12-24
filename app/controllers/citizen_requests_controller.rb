@@ -1,4 +1,4 @@
-class CitizenRequestController < ApplicationController
+class CitizenRequestsController < ApplicationController
 
   def new
     @citizen = Citizen.new
@@ -6,6 +6,14 @@ class CitizenRequestController < ApplicationController
 
   def create
     @citizen = Citizen.new(citizen_params)
+
+    respond_to do |format|
+      if @citizen.save
+        format.html { redirect_to root_path, notice: 'Trade License was successfully created.' }
+      else
+        format.html {render :new }
+      end
+    end
   end
 
   private

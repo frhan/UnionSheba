@@ -4,7 +4,7 @@
       <div class="panel-title">নাগরিক ফরম</div>
     </div>
     <div class="panel-body">
-      <%= form_for @citizen, html:{class: 'form-horizontal'} do |f| %>
+      <%= form_for @citizen, html:{class: 'form-horizontal',method: :post},url: citizen_requests_path do |f| %>
 
           <% if @citizen.errors.any? %>
               <div id="signupalert"  class="alert alert-danger" >
