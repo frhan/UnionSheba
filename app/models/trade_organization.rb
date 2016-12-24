@@ -1,5 +1,5 @@
 class TradeOrganization < ActiveRecord::Base
-  include ApplicationHelper
+  include ApplicationHelper,UnionHelper
 
   belongs_to :union
   has_many :trade_licenses, dependent: :destroy

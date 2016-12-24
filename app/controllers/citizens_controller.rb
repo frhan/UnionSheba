@@ -1,5 +1,5 @@
 class CitizensController < InheritedResources::Base
-  include ApplicationHelper
+  include ApplicationHelper,UnionHelper
   before_filter :authenticate_user!
   load_and_authorize_resource
 

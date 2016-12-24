@@ -1,5 +1,5 @@
 class Citizen < ActiveRecord::Base
-  include ApplicationHelper
+  include ApplicationHelper,UnionHelper
   belongs_to :union
   before_save :save_nid_birthdid_as_english
 
