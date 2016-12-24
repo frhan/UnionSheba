@@ -8,6 +8,10 @@ module UnionHelper
     self.union.union_no.to_s
   end
 
+  def union_code
+    self.union.union_code
+  end
+
   def post_name_bng
     self.union.post
   end

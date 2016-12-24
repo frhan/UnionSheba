@@ -11,7 +11,7 @@ class CitizensController < InheritedResources::Base
   end
 
   def requests
-    @citizens = current_user.citizens.where(status: :pending) if user_signed_in?
+    @citizens = current_user.citizens.where(status: :pending).order('requested_at desc') if user_signed_in?
 
     respond_to do |format|
       format.html
@@ -65,7 +65,7 @@ class CitizensController < InheritedResources::Base
   end
 
   def file_name
-    pdf_file_name 'citizen_certificate_'
+    pdf_file_name 'citizen_certificate_' << @citizen.union_code
   end
 end
 

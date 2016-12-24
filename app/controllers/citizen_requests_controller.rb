@@ -7,6 +7,7 @@ class CitizenRequestsController < ApplicationController
   def create
     @citizen = Citizen.new(citizen_params)
     @citizen.set_status(:pending)
+    @citizen.save_requested_at
 
     respond_to do |format|
       if @citizen.save

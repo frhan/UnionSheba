@@ -142,11 +142,11 @@ class TradeOrganizationsController < ApplicationController
   private
 
   def file_name
-    pdf_file_name 'trade_license_' << current_user.union.union_code
+    pdf_file_name 'trade_license_' << @trade_organization.union_code
   end
 
   def money_recipt_file_name
-    pdf_file_name 'money_recipt_' << current_user.union.union_code
+    pdf_file_name 'money_recipt_' << @trade_organization.union_code
   end
 
   def set_trade_organization

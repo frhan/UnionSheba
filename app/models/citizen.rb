@@ -19,6 +19,14 @@ class Citizen < ActiveRecord::Base
     self.status == :active
   end
 
+  def pending?
+    self.status == :pending
+  end
+
+  def save_requested_at
+    self.requested_at = Time.now
+  end
+
   private
 
   def save_nid_birthdid_as_english
