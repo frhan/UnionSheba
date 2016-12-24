@@ -51,13 +51,8 @@ class Citizen < ActiveRecord::Base
   private
 
   def save_nid_birthdid_as_english
-    if nid.present?
-      self.nid = english_number(nid)
-    end
-
-    if birthid.present?
-      self.birthid = english_number(birthid)
-    end
+      self.nid = english_number(nid) if nid.present?
+      self.birthid = english_number(birthid) if birthid.present?
   end
 
   def nid_or_birthid_present
