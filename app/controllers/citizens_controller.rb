@@ -1,12 +1,21 @@
 class CitizensController < InheritedResources::Base
   include ApplicationHelper,UnionHelper
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!,except: :search
   load_and_authorize_resource
 
   def index
     respond_to do |format|
       format.html
       format.json { render json: CitizensDatatable.new(view_context,current_user) }
+    end
+  end
+
+  def requests
+    @citizens = current_user.citizens.where(status: :pending) if user_signed_in?
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @citizens }
     end
   end
 
@@ -41,6 +50,10 @@ class CitizensController < InheritedResources::Base
                dpi:                            '300'
       end
     end
+  end
+
+  def search
+
   end
 
   private

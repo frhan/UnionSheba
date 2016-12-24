@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
-  resources :citizens
+  resources :citizens do
+    collection do
+      get :requests
+    end
+  end
   resources :citizen_requests
   resources :trade_licenses
   resources :profiles
