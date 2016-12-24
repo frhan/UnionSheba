@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :citizen_requests do
     collection do
-      get :serach
+      get :search
     end
   end
 

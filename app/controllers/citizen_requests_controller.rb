@@ -19,10 +19,12 @@ class CitizenRequestsController < ApplicationController
 
   def search
     #exact matching
-    citizen = Citizen.where("nid = :search or birthid = :search",search: "%#{params[:sSearch]}%");
+    citizens = Citizen.where("nid = :search or birthid = :search",search: "#{params[:sSearch]}");
 
+    # where status in
     respond_to do |format|
-        format.json{ render json: citizen}
+        format.html
+        format.json{ render json: citizens}
     end
   end
 
