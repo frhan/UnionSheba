@@ -106,7 +106,7 @@ class TradeOrganizationsController < ApplicationController
   def update
     respond_to do |format|
       if @trade_organization.update(trade_organization_params)
-        format.html { redirect_to @trade_organization, notice: 'Recipe was successfully updated.' }
+        format.html { redirect_to @trade_organization, notice: 'Trade License was successfully updated.' }
         format.json { render :show, status: :ok, location: @recipe }
       else
         format.html { render :edit }

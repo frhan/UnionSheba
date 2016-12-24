@@ -1,6 +1,6 @@
 class CitizensController < InheritedResources::Base
   include ApplicationHelper,UnionHelper
-  before_filter :authenticate_user!,except: :search
+  before_filter :authenticate_user!
   load_and_authorize_resource
 
   def index
@@ -17,6 +17,28 @@ class CitizensController < InheritedResources::Base
       format.html
       format.json { render json: @citizens }
     end
+  end
+
+  def edit_request
+    @citizen =  Citizen.find(params[:id]);
+  end
+
+  #PUT
+  def permit_request
+    @citizen =  Citizen.find(params[:id]);
+    @citizen.set_status :active
+    @citizen.save_saved_at
+
+    respond_to do |format|
+      if  @citizen.update(citizen_params)
+        format.html { redirect_to requests_citizens_path, notice: 'Citizen was successfully updated' }
+        format.json { render :show, status: :ok, location: @citizen }
+      else
+        format.html { render :edit_request }
+        format.json { render json: @citizen.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   # DELETE /recipes/1
@@ -61,7 +83,7 @@ class CitizensController < InheritedResources::Base
   def citizen_params
     params.require(:citizen).permit(:name_in_eng, :name_in_bng, :fathers_name,
                                     :mothers_name, :village, :post, :word_no, :union_id,
-                                    :spouse_name,:nid,:birthid)
+                                    :spouse_name,:nid,:birthid,:email,:mobile_no)
   end
 
   def file_name

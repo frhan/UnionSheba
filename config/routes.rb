@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   get 'home/index'
 
   resources :citizens do
+
+    member do
+      get :edit_request
+      put :permit_request
+    end
+
     collection do
       get :requests
     end
