@@ -18,11 +18,11 @@ class Citizen < ActiveRecord::Base
   end
 
   def active?
-    self.status == :active
+    self.status == 'active'
   end
 
   def pending?
-    self.status == :pending
+    self.status == 'pending'
   end
 
   def save_pending_request

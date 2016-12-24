@@ -157,4 +157,9 @@ module ApplicationHelper
   def pdf_file_name(prefix)
     prefix << current_timestamp.to_s
   end
+
+  def citizen_file_name(citizen)
+    pdf_file_name 'citizen_certificate_' << citizen.union_code
+  end
+
 end

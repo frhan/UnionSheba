@@ -11,7 +11,13 @@ Rails.application.routes.draw do
       get :requests
     end
   end
-  resources :citizen_requests
+
+  resources :citizen_requests do
+    collection do
+      get :serach
+    end
+  end
+
   resources :trade_licenses
   resources :profiles
   resources :trade_organizations,shallow: true do
@@ -21,6 +27,10 @@ Rails.application.routes.draw do
       get :print_money_recipt
     end
   end
+
+  get 'citizen_requests/show_by_birthid/:id' => 'citizen_requests#show_by_birthid', as: :show_by_birthid_citizen_request
+  get 'citizen_requests/show_by_nid/:id' => 'citizen_requests#show_by_nid', as: :show_by_nid_citizen_request
+
   get 'trade_organizations/:id/trade_license/:license_id/edit' => 'trade_organizations#edit_license',
       as: :edit_trade_org_trade_license
 
