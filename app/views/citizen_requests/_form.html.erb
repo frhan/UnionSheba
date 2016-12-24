@@ -90,7 +90,7 @@
           </div>
 
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">Union</label>
+            <label for="nameInBn" class="col-md-3 control-label">ইউনিয়ন</label>
             <div class="col-md-9">
               <%= f.collection_select :union_id, Union.all,:id,:name_in_bng,{},{class: "form-control"}%>
             </div>
@@ -121,14 +121,14 @@
           </div>
 
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">Email</label>
+            <label for="nameInBn" class="col-md-3 control-label">ইমেইল</label>
             <div class="col-md-9">
-              <%= f.text_field :email, class: "form-control" %>
+              <%= f.text_field :email, class: "form-control",placeholder: "Name In English" %>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">Mobile No</label>
+            <label for="nameInBn" class="col-md-3 control-label">মোবাইল নম্বর</label>
             <div class="col-md-9">
               <%= f.text_field :mobile_no, class: "form-control" %>
             </div>

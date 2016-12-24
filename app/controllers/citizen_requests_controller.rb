@@ -6,10 +6,11 @@ class CitizenRequestsController < ApplicationController
 
   def create
     @citizen = Citizen.new(citizen_params)
+    @citizen.set_status(:pending)
 
     respond_to do |format|
       if @citizen.save
-        format.html { redirect_to root_path, notice: 'Trade License was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Citizen was successfully created.' }
       else
         format.html {render :new }
       end

@@ -11,6 +11,14 @@ class Citizen < ActiveRecord::Base
   validates_uniqueness_of :birthid,:allow_blank => true, :allow_nil => true
   validates :nid, length: { minimum: 13 }
 
+  def set_status(status)
+    self.status = status
+  end
+
+  def is_active?
+    self.status == :active
+  end
+
   private
 
   def save_nid_birthdid_as_english

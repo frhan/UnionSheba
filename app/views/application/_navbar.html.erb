@@ -12,6 +12,11 @@
         <ul class="nav navbar-nav navbar-left">
           <li> <%= link_to 'Trade License', trade_organizations_path %> </li>
         </ul>
+
+        <ul class="nav navbar-nav navbar-left">
+          <li><%= link_to 'Citizen Requests', '#' %></li>
+        </ul>
+
         <%else%>
         <ul class="nav navbar-nav navbar-left">
           <li> <%= link_to 'Request Certificate', new_citizen_request_path %> </li>
