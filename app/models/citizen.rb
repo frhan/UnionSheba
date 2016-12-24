@@ -64,8 +64,9 @@ class Citizen < ActiveRecord::Base
   end
 
   def nid_or_birthid_numeric?
-    return is_numeric nid.to_s if nid.present?
-    return is_numeric birthid.to_s if birthid.present?
+     isnumber = is_numeric(nid.to_s) if nid.present?
+     isnumber = is_numeric(birthid.to_s) if birthid.present?
+     isnumber
   end
 
 end
