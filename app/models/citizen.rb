@@ -48,6 +48,15 @@ class Citizen < ActiveRecord::Base
     self.requested_at.strftime("%d-%m-%Y %I:%M:%S %p")
   end
 
+  def self.GENDERS
+    {'পুরুষ'=> :male,'মহিলা'=> :female,'অন্যান্য'=> :others}
+  end
+
+  def self.STATUS
+    [:active,:pending]
+  end
+
+
   private
 
   def save_nid_birthdid_as_english

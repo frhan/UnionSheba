@@ -53,26 +53,13 @@
             </div>
           </div>
 
-          <!-- Multiple Radios (inline) -->
           <div class="form-group">
-            <label class="col-md-3 control-label" for="radios">লিঙ্গঃ</label>
+            <label for="nameInBn" class="col-md-3 control-label">লিঙ্গঃ</label>
             <div class="col-md-9">
-              <label class="radio-inline" for="radios-0">
-                <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
-                পুরুষ
-              </label>
-              <label class="radio-inline" for="radios-1">
-                <input type="radio" name="radios" id="radios-1" value="2">
-                মহিলা
-              </label>
-              <label class="radio-inline" for="radios-2">
-                <input type="radio" name="radios" id="radios-2" value="3">
-                অন্যান্য
-              </label>
 
+              <%= f.select :gender,Citizen.GENDERS.map {|c| [c[0],c[1]]},{},{class: "form-control"} %>
             </div>
           </div>
-
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">গ্রামের নামঃ</label>
@@ -116,7 +103,7 @@
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">Status</label>
             <div class="col-md-9">
-              <%= f.collection_select :status,[:active,:pending],:to_s, :to_s,{},{class: "form-control"} %>
+              <%= f.collection_select :status,Citizen.STATUS,:to_s, :to_s,{},{class: "form-control"} %>
             </div>
           </div>
 
