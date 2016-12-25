@@ -1,0 +1,240 @@
+<style>
+
+  body{
+    margin: 0 auto;
+    font-size: large;
+    background-color: #ffffff;
+  }
+
+  #footer_text{
+    font-size: larger;
+  }
+
+  #internal_table{
+    font-size: medium;
+  }
+  th,tr{
+    font-weight: normal;
+    text-align: center;
+  }
+  table{
+    border: 1px solid black;
+  }
+
+  .table {
+    border: 1px solid #000000;
+  }
+  .table-bordered > thead > tr > th,
+  .table-bordered > tbody > tr > th,
+  .table-bordered > tfoot > tr > th,
+  .table-bordered > thead > tr > td,
+  .table-bordered > tbody > tr > td,
+  .table-bordered > tfoot > tr > td {
+    border: 1px solid #000000;
+  }
+
+</style>
+
+<div class="wrapper_trade">
+  <div class="container">
+
+    <div class="row nopadding">
+      <div class="col-xs-6 nopadding">
+        <div class="row nopadding">
+          <div class="col-xs-4 col-md-4 trade-label">
+            <p>লাইসেন্স নং</p>
+          </div>
+          <div class="col-xs-8 col-md-8">
+            <p class="pull-left"><%= @trade_organization.license_no%></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-6 nopadding">
+        <div class="row nopadding">
+          <div class="col-xs-6 col-md-4 trade-label">
+            <p>লাইসেন্স ইস্যু তারিখ</p>
+          </div>
+          <div class="col-xs-6 col-md-8">
+            <p class="pull-left"><%= bangla_date Time.now %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row nopadding">
+
+      <div class="col-xs-6">
+        <div class="row nopadding">
+          <div class="col-xs-4 trade-label">
+            <p class="pull-left">অর্থ বছর</p>
+          </div>
+          <div class="col-xs-8">
+            <p class="pull-left"><%= @trade_organization.fiscal_year%></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-6 nopadding">
+        <div class="row nopadding">
+          <div class="col-xs-6 trade-label nopadding">
+            <p class="pull-right nopadding">ওয়ার্ড নং</p>
+          </div>
+          <div class="col-xs-6 nopadding">
+            <p class="pull-left nopadding"><%= @trade_organization.word_no_bn%></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row nopadding">
+      <div class="col-xs-12 nopadding">
+        <p class="nopadding">স্থানীয় সরকার (ইউনিয়ন পরিষদ ) আইন , ২০০৯ এর ৬৬ ধারার ক্ষমতা বলে প্রণীত আদর্শ কর তফসিল, ২০১৩ এর ১৭ ধারা অনুসারে নিম্নবর্ণিত প্রতিষ্ঠান/ব্যক্তির অনূকুলে এই লাইসেন্স ইস্যু করা হলো ।</p>
+      </div>
+    </div>
+
+    <div class="row nopadding">
+      <div class="col-xs-12 nopadding">
+        <div class="row nopadding">
+          <div class="col-xs-4 trade-label">
+            <p>প্রতিষ্ঠানের  নাম</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.enterprize_name_in_bng%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row nopadding">
+      <div class="col-xs-12 nopadding">
+        <div class="row nopadding">
+          <div class="col-xs-4 trade-label">
+            <p> প্রোপাইটর/মালিক</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.owners_name_bng %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row nopadding">
+      <div class="col-xs-12">
+        <div class="row nopadding">
+          <div class="col-xs-4 trade-label">
+            <p> পিতার নাম</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.fathers_name %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row nopadding">
+      <div class="col-xs-12">
+        <div class="row nopadding">
+          <div class="col-xs-4 trade-label">
+            <p>মাতার নাম </p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.mothers_name %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row nopadding">
+      <div class="col-xs-12 nopadding">
+        <div class="row nopadding">
+          <div class="col-xs-4 trade-label">
+            <p> স্থায়ী ঠিকানা</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.address %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row nopadding">
+      <div class="col-xs-12 nopadding">
+        <div class="row nopadding">
+          <div class="col-xs-4 trade-label">
+            <p>ব্যবসার স্থান</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.business_place %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row nopadding">
+      <div class="col-xs-12 nopadding">
+        <div class="row nopadding">
+          <div class="col-xs-4 trade-label">
+            <p>দোকান/হোল্ডিং নং</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= bangla_number @trade_organization.holding_no %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row nopadding">
+      <div class="col-xs-12 nopadding">
+        <div class="row nopadding">
+          <div class="col-xs-4 trade-label">
+            <p>ব্যবসার বিবরণ</p>
+          </div>
+          <div class="col-xs-8">
+            <p><%= @trade_organization.business_category %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row nopadding">
+      <div class="col-xs-12 nopadding">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p> লাইসেন্সের প্রদেয় টাকা</p>
+          </div>
+          <div class="col-xs-8" id="internal_table">
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th align="center">হাল</th>
+                <th  align="center">বকেয়া</th>
+                <th  align="center">জরিমানা/অন্যান্য</th>
+                <th  align="center">সর্বমোট</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td><%= @trade_organization.license_fee %></td>
+                <td><%=  @trade_organization.remain %></td>
+                <td><%=   @trade_organization.fine %></td>
+                <td><%=   @trade_organization.total_fee %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row nopadding">
+      <div class="col-xs-12 nopadding">
+        <p id="footer_text">এই ট্রেড লাইসেন্স এর মেয়াদ <%= @trade_organization.deadline %> সালের ৩০ জুন পর্যন্ত বলবৎ থাকবে ।</p>
+      </div>
+    </div>
+
+  </div>
+</div>
