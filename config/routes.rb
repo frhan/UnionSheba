@@ -18,6 +18,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :forms do
+    collection do
+      get :tax_or_rate_form
+      get :others_form
+    end
+  end
   resources :trade_licenses
   resources :profiles
   resources :trade_organizations,shallow: true do
