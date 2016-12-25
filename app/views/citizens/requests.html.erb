@@ -19,9 +19,9 @@
 
           <% @citizens.each do |citizen| %>
               <tr>
-                <td><%= link_to(citizen.nid, edit_request_citizen_path(citizen)) %></td>
-                <td><%= link_to(citizen.birthid,edit_request_citizen_path(citizen)) %></td>
-                <td><%= link_to(citizen.name_in_eng,edit_request_citizen_path(citizen)) %></td>
+                <td><%= link_to(citizen.nid, edit_citizen_path(citizen)) %></td>
+                <td><%= link_to(citizen.birthid,edit_citizen_path(citizen)) %></td>
+                <td><%= link_to(citizen.name_in_eng,edit_citizen_path(citizen)) %></td>
                 <td><%= citizen.requested_at_formatted %></td>
                 <td><%= citizen.status %></td>
               </tr>

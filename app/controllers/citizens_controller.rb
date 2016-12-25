@@ -26,7 +26,7 @@ class CitizensController < InheritedResources::Base
   #PUT
   def permit_request
     @citizen =  Citizen.find(params[:id]);
-    @citizen.update_pending_request_to_active
+    #@citizen.update_pending_request_to_active
 
     respond_to do |format|
       if  @citizen.update(citizen_params)
@@ -82,7 +82,7 @@ class CitizensController < InheritedResources::Base
   def citizen_params
     params.require(:citizen).permit(:name_in_eng, :name_in_bng, :fathers_name,
                                     :mothers_name, :village, :post, :word_no, :union_id,
-                                    :spouse_name,:nid,:birthid,:email,:mobile_no)
+                                    :spouse_name,:nid,:birthid,:email,:mobile_no,:status)
   end
 
   def file_name

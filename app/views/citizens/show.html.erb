@@ -47,19 +47,24 @@
             </tr>
 
             <tr>
-            <tr>
               <td>জন্ম নিবন্ধন নম্বরঃ</td>
               <td><%= @citizen.birthid %></td>
             </tr>
 
+
+            <tr>
+              <td>Status</td>
+              <td><%= @citizen.status %></td>
             </tr>
 
             </tbody>
           </table>
 
-          <%= link_to 'Print Certificate', citizen_path(@citizen, format: 'pdf'),class:"btn btn-info btn-default"%>
-          <!--<%= link_to 'Edit', edit_citizen_path(@citizen),class:"btn btn-primary" %>-->
-          <%= link_to 'Back', citizens_path,class:"btn btn-primary"%>
+          <% if @citizen.active? %>
+              <%= link_to 'Print Certificate', citizen_path(@citizen, format: 'pdf'), class: "btn btn-info btn-default" %>
+          <% end %>
+
+          <%= link_to 'Back', citizens_path, class: "btn btn-primary" %>
 
         </div>
       </div>

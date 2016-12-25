@@ -105,13 +105,20 @@
             </div>
           </div>
 
-
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">জন্ম নিবন্ধন নম্বরঃ</label>
             <div class="col-md-9">
               <%= f.text_field :birthid, class: "form-control" %>
             </div>
           </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">জন্ম নিবন্ধন নম্বরঃ</label>
+            <div class="col-md-9">
+              <%= f.collection_select :status,[:active,:pending],:to_s, :to_s,{},{class: "form-control"} %>
+            </div>
+          </div>
+
 
           <div class="form-group">
             <!-- Button -->
