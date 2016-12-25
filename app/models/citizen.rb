@@ -56,6 +56,25 @@ class Citizen < ActiveRecord::Base
     [:active,:pending]
   end
 
+  def male?
+    self.gender == 'male'
+  end
+
+  def female?
+    self.gender == 'female'
+  end
+
+  def others?
+    self.gender == 'others'
+  end
+
+  def gender_bangla
+      return String.new unless self.gender.present?
+      return 'পুরুষ' if male?
+      return 'মহিলা' if female?
+      return 'অন্যান্য' if others?
+  end
+
 
   private
 
