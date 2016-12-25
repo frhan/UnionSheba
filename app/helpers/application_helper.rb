@@ -1,7 +1,9 @@
 module ApplicationHelper
 
   def is_numeric(number)
-      number.each_char do |c|
+    return false unless number.present?
+    number = number.strip
+    number.each_char do |c|
         case c
           when '1'
           when '2'
@@ -34,7 +36,8 @@ module ApplicationHelper
   def bangla_number(number)
     bn = String.new
     return bn<<'-' unless number.present?
-    
+
+    number = number.strip
     number.each_char do |c|
       case c
         when '1'
@@ -67,7 +70,7 @@ module ApplicationHelper
   def english_number(number)
     bn = String.new
     return bn<<'-' unless number.present?
-
+    number = number.strip
     number.each_char do |c|
       case c
         when '১'
