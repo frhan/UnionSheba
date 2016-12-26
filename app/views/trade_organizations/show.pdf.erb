@@ -37,55 +37,63 @@
      margin-top: 12px;
    }
 
+  .top-left{
+    padding: 0;
+    margin-top: 7px;
+    margin-left: 5px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+  }
+
 </style>
 
 <div class="wrapper_trade">
   <div class="container">
 
-    <div class="row">
-      <div class="col-xs-6">
-        <div class="row">
-          <div class="col-xs-5 col-md-4 trade-label">
+    <div class="row nopadding">
+      <div class="col-xs-6 nopadding">
+        <div class="row nopadding">
+          <div class="col-xs-5 col-md-4 trade-label nopadding">
             <p class="onlytop">লাইসেন্স নং</p>
           </div>
-          <div class="col-xs-7 col-md-8">
-            <p class="pull-left onlytop"><%= @trade_organization.license_no%></p>
+          <div class="col-xs-7 col-md-8 nopadding">
+            <p class="pull-left top-left"><%= @trade_organization.license_no%></p>
           </div>
         </div>
       </div>
 
-      <div class="col-xs-6">
-        <div class="row">
-          <div class="col-xs-6 col-md-4 trade-label">
+      <div class="col-xs-6 nopadding">
+        <div class="row nopadding">
+          <div class="col-xs-6 col-md-4 trade-label nopadding">
             <p class="onlytop">লাইসেন্স ইস্যু তারিখ</p>
           </div>
-          <div class="col-xs-6 col-md-8">
-            <p class="pull-left onlytop"><%= bangla_date Time.now %></p>
+          <div class="col-xs-6 col-md-8 nopadding">
+            <p class="pull-left top-left"><%= bangla_date Time.now %></p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row nopadding">
 
-      <div class="col-xs-6">
-        <div class="row">
-          <div class="col-xs-5 trade-label">
+      <div class="col-xs-6 nopadding">
+        <div class="row nopadding">
+          <div class="col-xs-5 trade-label nopadding">
             <p class="onlytop">অর্থ বছর</p>
           </div>
-          <div class="col-xs-7">
-            <p class="onlytop"><%= @trade_organization.fiscal_year%></p>
+          <div class="col-xs-7 nopadding">
+            <p class="top-left"><%= @trade_organization.fiscal_year%></p>
           </div>
         </div>
       </div>
 
-      <div class="col-xs-6">
-        <div class="row">
-          <div class="col-xs-6 trade-label">
+      <div class="col-xs-6 nopadding">
+        <div class="row nopadding">
+          <div class="col-xs-6 trade-label nopadding">
             <p class=" text-center onlytop">ওয়ার্ড নং</p>
           </div>
-          <div class="col-xs-6">
-            <p class="pull-left onlytop"><%= @trade_organization.word_no_bn%></p>
+          <div class="col-xs-6 nopadding">
+            <p class="pull-left top-left"><%= @trade_organization.word_no_bn%></p>
           </div>
         </div>
       </div>
@@ -104,8 +112,8 @@
           <div class="col-xs-3 trade-label nopadding">
             <p class="onlytop">প্রতিষ্ঠানের নাম</p>
           </div>
-          <div class="col-xs-9">
-            <p class="onlytop"><%= @trade_organization.enterprize_name_in_bng%></p>
+          <div class="col-xs-9 nopadding">
+            <p class="top-left"><%= @trade_organization.enterprize_name_in_bng%></p>
           </div>
         </div>
       </div>
@@ -117,8 +125,8 @@
           <div class="col-xs-3 trade-label nopadding">
             <p class="onlytop"> প্রোপাইটর/মালিক</p>
           </div>
-          <div class="col-xs-9">
-            <p class="onlytop"><%= @trade_organization.owners_name_bng %></p>
+          <div class="col-xs-9 nopadding">
+            <p class="top-left"><%= @trade_organization.owners_name_bng %></p>
           </div>
         </div>
       </div>
@@ -131,8 +139,8 @@
           <div class="col-xs-3 trade-label nopadding">
             <p class="onlytop"> পিতার নাম</p>
           </div>
-          <div class="col-xs-9">
-            <p class="onlytop"><%= @trade_organization.fathers_name %></p>
+          <div class="col-xs-9 nopadding">
+            <p class="top-left"><%= @trade_organization.fathers_name %></p>
           </div>
         </div>
       </div>
@@ -144,8 +152,8 @@
           <div class="col-xs-3 trade-label nopadding ">
             <p class="onlytop">মাতার নাম </p>
           </div>
-          <div class="col-xs-9">
-            <p class="onlytop"><%= @trade_organization.mothers_name %></p>
+          <div class="col-xs-9 nopadding">
+            <p class="top-left"><%= @trade_organization.mothers_name %></p>
           </div>
         </div>
       </div>
@@ -157,8 +165,8 @@
           <div class="col-xs-3 trade-label nopadding">
             <p class="onlytop"> স্থায়ী ঠিকানা</p>
           </div>
-          <div class="col-xs-9">
-            <p class="onlytop"><%= @trade_organization.address %></p>
+          <div class="col-xs-9 nopadding">
+            <p class="top-left"><%= @trade_organization.address %></p>
           </div>
         </div>
       </div>
@@ -170,8 +178,8 @@
           <div class="col-xs-3 trade-label nopadding">
             <p class="onlytop">ব্যবসার স্থান</p>
           </div>
-          <div class="col-xs-9">
-            <p class="onlytop"><%= @trade_organization.business_place %></p>
+          <div class="col-xs-9 nopadding">
+            <p class="top-left"><%= @trade_organization.business_place %></p>
           </div>
         </div>
       </div>
@@ -183,8 +191,8 @@
           <div class="col-xs-3 trade-label nopadding">
             <p class="onlytop">দোকান/হোল্ডিং নং</p>
           </div>
-          <div class="col-xs-9">
-            <p class="onlytop"><%= bangla_number @trade_organization.holding_no %></p>
+          <div class="col-xs-9 nopadding">
+            <p class="top-left"><%= bangla_number @trade_organization.holding_no %></p>
           </div>
         </div>
       </div>
@@ -196,8 +204,8 @@
           <div class="col-xs-3 trade-label nopadding">
             <p class="onlytop">ব্যবসার বিবরণ</p>
           </div>
-          <div class="col-xs-9">
-            <p class="onlytop"><%= @trade_organization.business_category %></p>
+          <div class="col-xs-9 nopadding">
+            <p class="top-left"><%= @trade_organization.business_category %></p>
           </div>
         </div>
       </div>
@@ -211,8 +219,8 @@
             <p class="onlytop"> লাইসেন্সের প্রদেয় টাকা</p>
           </div>
 
-          <div class="col-xs-9" id="internal_table">
-            <table class="table table-bordered onlytop">
+          <div class="col-xs-9 nopadding" id="internal_table">
+            <table class="table table-bordered top-left">
               <thead>
               <tr>
                 <th align="center">হাল</th>
@@ -237,7 +245,7 @@
 
     <div class="row trade_margin_top">
       <div class="col-xs-12">
-        <p id="footer_text">এই ট্রেড লাইসেন্স এর মেয়াদ <%= @trade_organization.deadline %> সালের ৩০ জুন পর্যন্ত বলবৎ থাকবে ।</p>
+        <p id="footer_text ">এই ট্রেড লাইসেন্স এর মেয়াদ <%= @trade_organization.deadline %> সালের ৩০ জুন পর্যন্ত বলবৎ থাকবে ।</p>
       </div>
     </div>
 
