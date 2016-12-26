@@ -31,7 +31,7 @@ class TradeOrganizationsController < ApplicationController
                :show_as_html => params[:debug].present?,
                margin:  {   top:               0,                     # default 10 (mm)
                             bottom:            0,
-                            left:              15,
+                            left:              20,
                             right:             0 },
                dpi:                            '300'
                #zoom: 1.17647
