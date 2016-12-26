@@ -29,7 +29,7 @@ class TradeOrganizationsController < ApplicationController
                :layout => 'pdf.html.erb',
                :disposition => 'attachment',
                :show_as_html => params[:debug].present?,
-               margin:  {   top:               0,                     # default 10 (mm)
+               margin:  {   top:               2,                     # default 10 (mm)
                             bottom:            0,
                             left:              17,
                             right:             0 },
