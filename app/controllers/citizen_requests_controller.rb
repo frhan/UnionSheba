@@ -44,7 +44,7 @@ class CitizenRequestsController < ApplicationController
   def citizen_params
     params.require(:citizen).permit(:name_in_eng, :name_in_bng, :fathers_name,
                                     :mothers_name, :village, :post, :word_no, :union_id,
-                                    :spouse_name,:nid,:birthid,:email,:mobile_no)
+                                    :spouse_name,:nid,:birthid,:email,:mobile_no,:gender)
   end
 
   def do_respond(citizen)
