@@ -1,7 +1,7 @@
 <style>
 
   body{
-    font-size: 17px;
+    font-size: 18px;
     margin: 0 auto;
     background-color: #ffffff;
   }
@@ -11,8 +11,9 @@
   }
 
   #internal_table{
-    font-size: 13px;
+    font-size: 14px;
   }
+
   th,tr{
     font-weight: normal;
     text-align: center;
@@ -223,9 +224,9 @@
               <tbody>
               <tr>
                 <td><%= @trade_organization.license_fee %></td>
-                <td><%=  @trade_organization.remain %></td>
-                <td><%=   @trade_organization.fine %></td>
-                <td><%=   @trade_organization.total_fee %></td>
+                <td><%= @trade_organization.remain %></td>
+                <td><%= @trade_organization.fine %></td>
+                <td><%= @trade_organization.total_fee %></td>
               </tr>
               </tbody>
             </table>
