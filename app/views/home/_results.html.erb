@@ -3,10 +3,8 @@
   <thead>
   <tr>
     <th>Name</th>
-    <th>Fathers Name</th>
-    <th>Mothers Name</th>
-    <th>NID</th>
-    <th>BirthdId</th>
+    <th>Father's Name</th>
+    <th>Mother's Name</th>
     <th>Union</th>
     <th>Status</th>
   </tr>
@@ -18,8 +16,6 @@
         <td><%= link_to r.name_in_bng,nid_or_birthid_path(r) %></td>
         <td><%= r.fathers_name %></td>
         <td><%= r.mothers_name %></td>
-        <td><%= r.nid %></td>
-        <td><%= r.birthid %></td>
         <td><%= r.union.name_in_bng %></td>
         <td><%= r.status %></td>
       </tr>
