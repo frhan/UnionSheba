@@ -75,7 +75,6 @@ class Citizen < ActiveRecord::Base
       return 'অন্যান্য' if others?
   end
 
-
   private
 
   def save_nid_birthdid_as_english

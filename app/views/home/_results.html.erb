@@ -1,0 +1,31 @@
+<% if @citizens.present? %>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Fathers Name</th>
+    <th>Mothers Name</th>
+    <th>NID</th>
+    <th>BirthdId</th>
+    <th>Union</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% @citizens.each do |r| %>
+      <tr>
+        <td><%= link_to r.name_in_bng,nid_or_birthid_path(r) %></td>
+        <td><%= r.fathers_name %></td>
+        <td><%= r.mothers_name %></td>
+        <td><%= r.nid %></td>
+        <td><%= r.birthid %></td>
+        <td><%= r.union.name_in_bng %></td>
+        <td><%= r.status %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<% elsif @citizens %>
+    <p>No Citizen found</p>
+<% end %>
