@@ -22,3 +22,5 @@ http://www.mccartie.com/2014/08/28/digital-ocean.html
 https://github.com/bradyholt/ansible-rails
 https://blog.botreetechnologies.com/how-to-change-primary-key-column-size-type-using-rails-migration-with-mysql-7a0f74c9e24d#.xw6ng0upx
 https://coderwall.com/p/kqb3xq/rails-4-how-to-partials-ajax-dead-easy
+https://www.youtube.com/watch?v=j1zZ4Lgzf9s
+
