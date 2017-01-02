@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102083753) do
+ActiveRecord::Schema.define(version: 20170102122417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,19 @@ ActiveRecord::Schema.define(version: 20170102083753) do
 
   add_index "citizens", ["union_id"], name: "index_citizens_on_union_id", using: :btree
 
+  create_table "collection_moneys", force: :cascade do |t|
+    t.decimal  "fee"
+    t.decimal  "remain"
+    t.decimal  "fine"
+    t.decimal  "vat"
+    t.integer  "collectable_id"
+    t.string   "collectable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "collection_moneys", ["collectable_type", "collectable_id"], name: "index_collection_moneys_on_collectable_type_and_collectable_id", using: :btree
+
   create_table "districts", force: :cascade do |t|
     t.string   "name_in_eng"
     t.string   "name_in_bng"
@@ -92,8 +105,23 @@ ActiveRecord::Schema.define(version: 20170102083753) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "others_collections", force: :cascade do |t|
+    t.string   "senders_name"
+    t.string   "senders_address"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "role_name"
+  end
+
+  create_table "tax_or_rete_collections", force: :cascade do |t|
+    t.string   "village_name"
+    t.string   "owners_name"
+    t.string   "apprisal_no"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "trade_licenses", force: :cascade do |t|

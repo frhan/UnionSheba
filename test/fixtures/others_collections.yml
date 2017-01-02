@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  senders_name: MyString
+  senders_address: MyString
+
+two:
+  senders_name: MyString
+  senders_address: MyString

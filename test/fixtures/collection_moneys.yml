@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fee: 9.99
+  remain: 9.99
+  fine: 9.99
+  vat: 9.99
+
+two:
+  fee: 9.99
+  remain: 9.99
+  fine: 9.99
+  vat: 9.99
