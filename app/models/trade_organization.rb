@@ -71,7 +71,8 @@ class TradeOrganization < ActiveRecord::Base
   end
 
   def vat
-    fee_number latest_trade_license.vat
+    vat = latest_trade_license.vat.present? ? latest_trade_license.vat : 0;
+    fee_number_decimal '%.2f' % vat
   end
 
   def word_no_bn
@@ -106,6 +107,12 @@ class TradeOrganization < ActiveRecord::Base
     taka = '0'
     taka = number.to_s if number.present?
     bangla_number taka << '.00'
+  end
+
+  def fee_number_decimal(number)
+    taka = '0'
+    taka = number.to_s if number.present?
+    bangla_number taka
   end
 
 end
