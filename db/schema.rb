@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102122417) do
+ActiveRecord::Schema.define(version: 20170102132151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20170102122417) do
     t.string   "collectable_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "serial_no"
   end
 
   add_index "collection_moneys", ["collectable_type", "collectable_id"], name: "index_collection_moneys_on_collectable_type_and_collectable_id", using: :btree
@@ -116,7 +117,7 @@ ActiveRecord::Schema.define(version: 20170102122417) do
     t.string "role_name"
   end
 
-  create_table "tax_or_rete_collections", force: :cascade do |t|
+  create_table "tax_or_rate_collections", force: :cascade do |t|
     t.string   "village_name"
     t.string   "owners_name"
     t.string   "apprisal_no"

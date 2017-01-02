@@ -1,3 +1,3 @@
-class TaxOrReteCollection < ActiveRecord::Base
+class TaxOrRateCollection < ActiveRecord::Base
   has_one :collection_money , as: :collectable
 end

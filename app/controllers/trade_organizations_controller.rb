@@ -131,6 +131,7 @@ class TradeOrganizationsController < ApplicationController
 
   def renew
     @trade_license = TradeLicense.new
+    @trade_license.build_collection_money
   end
 
   def edit_license
@@ -166,7 +167,7 @@ class TradeOrganizationsController < ApplicationController
   end
 
   def trade_license_params
-    params.require(:trade_license).permit(:fiscal_year,:license_fee,:remaining_fee,:fine_fee)
+    params.require(:trade_license).permit(:fiscal_year,collection_money_attributes:[:fee,:remain,:fine,:vat])
   end
 
 end

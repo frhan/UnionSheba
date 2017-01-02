@@ -18,7 +18,6 @@
               </div>
           <% end %>
 
-
           <div class="form-group">
             <label for="nameInEng" class="col-md-3 control-label">প্রতিষ্ঠানের নাম (ইংরেজি)</label>
             <div class="col-md-9">
@@ -26,7 +25,6 @@
                      disabled="true" value="<%= @trade_organization.enterprize_name_in_eng %>"/>
             </div>
           </div>
-
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">প্রতিষ্ঠানের নাম (বাংলা)</label>
@@ -68,18 +66,19 @@
               <span class="help-block">অর্থবছরের প্রথম বছরটি লিখুন । ২০১৬-২০১৭ অর্থবছর হলে শুধু ২০১৬ লিখুন (ইংরেজিতে)</span>
             </div>
           </div>
+          <%= f.fields_for :collection_money do |cm| %>
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">লাইসেন্স নবায়ন ফিঃ</label>
             <div class="col-md-9">
-              <%= f.number_field :license_fee, class: "form-control",placeholder: "In English number" %>
+              <%= cm.number_field :fee, class: "form-control",placeholder: "In English number" %>
             </div>
           </div>
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">বকেয়া</label>
             <div class="col-md-9">
-              <%= f.number_field :remaining_fee, class: "form-control",placeholder: "In English number" %>
+              <%= cm.number_field :remain, class: "form-control",placeholder: "In English number" %>
             </div>
           </div>
 
@@ -87,16 +86,17 @@
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">জরিমানা/অন্যান্য</label>
             <div class="col-md-9">
-              <%= f.number_field :fine_fee, class: "form-control",placeholder: "In English number" %>
+              <%= cm.number_field :fine, class: "form-control",placeholder: "In English number" %>
             </div>
           </div>
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">ভ্যাট</label>
             <div class="col-md-9">
-              <%= f.number_field :vat, class: "form-control",placeholder: "In English number" %>
+              <%= cm.number_field :vat, class: "form-control",placeholder: "In English number" %>
             </div>
           </div>
+              <% end %>
 
 
           <div class="form-group">
