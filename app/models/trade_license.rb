@@ -5,7 +5,7 @@ class TradeLicense < ActiveRecord::Base
   has_one :collection_money,as: :collectable
   accepts_nested_attributes_for :collection_money,:allow_destroy => true
 
-  validates :fiscal_year,:license_fee , presence: true
+  validates :fiscal_year , presence: true
   validates_uniqueness_of :fiscal_year,scope: :trade_organization
   validates :fiscal_year, length: { is: 4 }
 
