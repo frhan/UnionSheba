@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161225194930) do
+ActiveRecord::Schema.define(version: 20170102083753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20161225194930) do
     t.date     "isseu_date"
     t.integer  "remaining_fee"
     t.integer  "fine_fee"
+    t.decimal  "vat"
   end
 
   add_index "trade_licenses", ["trade_organization_id"], name: "index_trade_licenses_on_trade_organization_id", using: :btree
@@ -131,6 +132,8 @@ ActiveRecord::Schema.define(version: 20161225194930) do
     t.integer  "word_no"
     t.string   "holding_no"
     t.string   "status",                 default: "active"
+    t.string   "nid"
+    t.string   "birthid"
   end
 
   add_index "trade_organizations", ["union_id"], name: "index_trade_organizations_on_union_id", using: :btree

@@ -23,6 +23,7 @@
   th,tr{
     font-weight: normal;
     text-align: center;
+
   }
   table{
     border: 1px solid black;
@@ -40,6 +41,8 @@
   .table-bordered > tbody > tr > td,
   .table-bordered > tfoot > tr > td {
     border: 1px solid #000000;
+    margin: 2px;
+    padding: 3px;
   }
    .trade_margin_top{
      margin-top: 12px;
@@ -73,6 +76,10 @@
   }
   .margin-top-10{
     margin-top:10px;
+  }
+
+  .margin-top-7{
+    margin-top:7px;
   }
 
 </style>
@@ -126,13 +133,13 @@
       </div>
     </div>
 
-    <div class="row  margin-top-10">
+    <div class="row  margin-top-7">
       <div class="col-xs-12">
         <p>স্থানীয় সরকার (ইউনিয়ন পরিষদ ) আইন , ২০০৯ এর ৬৬ ধারার ক্ষমতা বলে প্রণীত আদর্শ কর তফসিল, ২০১৩ এর ১৭ ধারা অনুসারে নিম্নবর্ণিত প্রতিষ্ঠান/ব্যক্তির অনূকুলে এই লাইসেন্স ইস্যু করা হলোঃ</p>
       </div>
     </div>
 
-    <div class="row margin-top-10">
+    <div class="row margin-top-7">
       <div class="col-xs-12">
         <div class="row">
           <div class="col-xs-3 trade-label">
@@ -184,6 +191,19 @@
       </div>
     </div>
 
+
+    <div class="row margin-top-5">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-3 trade-label">
+            <p>এনআইডি/জ.নি নং</p>
+          </div>
+          <div class="col-xs-9">
+            <p class="margin-left"><%= @trade_organization.nid_or_birthid %></p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="row margin-top-5">
       <div class="col-xs-12">
@@ -252,6 +272,7 @@
                 <th  align="center">বকেয়া</th>
                 <th  align="center">জরিমানা/অন্যান্য</th>
                 <th  align="center">সর্বমোট</th>
+                <th  align="center">ভ্যাট</th>
               </tr>
               </thead>
               <tbody>
@@ -260,6 +281,7 @@
                 <td><%= @trade_organization.remain %></td>
                 <td><%= @trade_organization.fine %></td>
                 <td><%= @trade_organization.total_fee %></td>
+                <td><%= @trade_organization.vat %></td>
               </tr>
               </tbody>
             </table>

@@ -5,7 +5,7 @@ class TradeOrganization < ActiveRecord::Base
   has_many :trade_licenses, dependent: :destroy
   accepts_nested_attributes_for :trade_licenses,:allow_destroy => true
   validates_uniqueness_of :license_no,scope: :union
-  after_create :save_license_no
+  after_create :save_license_no,:save_nid_birthid_as_english
 
   validates :enterprize_name_in_eng,:enterprize_name_in_bng,
             :owners_name_eng,:owners_name_bng,
@@ -70,9 +70,20 @@ class TradeOrganization < ActiveRecord::Base
       fee_number latest_trade_license.remaining_fee
   end
 
+  def vat
+    fee_number latest_trade_license.vat
+  end
+
   def word_no_bn
     return String.new unless word_no.present?
     bangla_number word_no.to_s
+  end
+
+  def nid_or_birthid
+    return '-' unless self.nid.present? || self.birthid.present?
+
+    bangla_number self.nid if self.nid.present?
+    bangla_number self.birthid if self.birthid.present?
   end
 
   private
@@ -80,6 +91,11 @@ class TradeOrganization < ActiveRecord::Base
   def save_license_no
     license_no = self.union.union_code << '-'<< current_year_month_day.to_s << '-' << max_count.to_s
     self.update_attributes(:license_no => license_no)
+  end
+
+  def save_nid_birthid_as_english
+    self.nid = english_number(nid) if nid.present?
+    self.birthid = english_number(birthid) if birthid.present?
   end
 
   def max_count

@@ -106,6 +106,23 @@
             </div>
           </div>
 
+          <span class=" text-center help-block">নাগরিকত্ব নম্বর অথবা জন্ম নিবন্ধন নম্বর যেকোন একটি দিলে হবে</span>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">জাতীয় পরিচয়পত্র নম্বরঃ</label>
+            <div class="col-md-9">
+              <%= f.text_field :nid, class: "form-control" %>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">জন্ম নিবন্ধন নম্বরঃ</label>
+            <div class="col-md-9">
+              <%= f.text_field :birthid, class: "form-control" %>
+            </div>
+          </div>
+
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">ব্যবসার স্থানঃ</label>
             <div class="col-md-9">
@@ -157,6 +174,14 @@
                   <%= trade_license_form.number_field :fine_fee, class: "form-control",placeholder: "In English number" %>
                 </div>
               </div>
+
+              <div class="form-group">
+                <label for="nameInBn" class="col-md-3 control-label">Vat</label>
+                <div class="col-md-9">
+                  <%= trade_license_form.number_field :vat, class: "form-control",placeholder: "In English number" %>
+                </div>
+              </div>
+
           <%end%>
 
           <div class="form-group">
