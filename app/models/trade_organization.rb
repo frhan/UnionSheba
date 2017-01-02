@@ -59,7 +59,8 @@ class TradeOrganization < ActiveRecord::Base
   end
 
   def total_fee
-      fee_number latest_trade_license.total_fee
+      #fee_number latest_trade_license.total_fee
+      fee_number_decimal '%.2f' % latest_trade_license.total_fee
   end
 
   def fine
