@@ -9,24 +9,26 @@
     <% end %>
     <p></p>
   </div>
+  <% unless user_signed_in? %>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <%= form_tag(home_index_path, class: "form-inline", method: :get, remote: true) do %>
+                <div class="form-group">
+                  <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "NID or Birthid" %>
+                  <%= submit_tag :Search, class: "btn btn-primary" %>
+                </div>
+            <% end %>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <%= form_tag(home_index_path,class: "form-inline", method: :get,remote: true ) do %>
-            <div class="form-group">
-              <%= text_field_tag :q,params[:q], class: "form-control",placeholder:"NID or Birthid"  %>
-              <%= submit_tag :Search, class: "btn btn-primary" %>
-            </div>
-        <%end%>
-
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div id="results">
-    <%= render 'results' %>
-  </div>
+      <div id="results">
+        <%= render 'results' %>
+      </div>
+
+  <% end %>
 
 
 </div>
