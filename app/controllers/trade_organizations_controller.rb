@@ -158,9 +158,9 @@ class TradeOrganizationsController < ApplicationController
                                                :owners_name_eng, :owners_name_bng,
                                                :fathers_name, :mothers_name, :spouse_name,
                                                :village_name, :post_name, :upazilla_name,:word_no,
-                                               :zilla_name, :business_place, :business_category,:holding_no,
+                                               :zilla_name, :business_place, :business_category,:holding_no,:nid,:birthid,
                                                :union_id, trade_licenses_attributes:
-                                                   [:fiscal_year,:license_fee,:remaining_fee,:fine_fee])
+                                                   [:fiscal_year,:license_fee,:remaining_fee,:fine_fee,:vat])
   end
 
   def trade_license_params
