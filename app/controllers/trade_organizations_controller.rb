@@ -17,7 +17,9 @@ class TradeOrganizationsController < ApplicationController
 
   def new
     @trade_organization = TradeOrganization.new
-    @trade_organization.trade_licenses.build
+    trade_licenses = @trade_organization.trade_licenses.build
+    trade_licenses.build_collection_money
+    #logger.debug("Trade liv",trade_licenses)
   end
 
   def show

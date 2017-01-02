@@ -2,6 +2,8 @@ class TradeLicense < ActiveRecord::Base
   include ApplicationHelper
   belongs_to :trade_organization
   after_initialize :init
+  has_one :collection_money,as: :collectable
+  accepts_nested_attributes_for :collection_money,:allow_destroy => true
 
   validates :fiscal_year,:license_fee , presence: true
   validates_uniqueness_of :fiscal_year,scope: :trade_organization
