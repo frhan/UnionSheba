@@ -81,9 +81,8 @@ class TradeOrganization < ActiveRecord::Base
 
   def nid_or_birthid
     return '-' unless self.nid.present? || self.birthid.present?
-
-    bangla_number self.nid if self.nid.present?
-    bangla_number self.birthid if self.birthid.present?
+    return bangla_number self.nid if self.nid.present?
+    return bangla_number self.birthid if self.birthid.present?
   end
 
   private
