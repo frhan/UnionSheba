@@ -4,10 +4,10 @@
       <div class="panel-title">ট্রেড লাইসেন্স ফরম</div>
     </div>
     <div class="panel-body">
-      <%= form_for @trade_organization, html:{class: 'form-horizontal'} do |f| %>
+      <%= form_for @trade_organization, html: {class: 'form-horizontal'} do |f| %>
 
           <% if @trade_organization.errors.any? %>
-              <div id="signupalert"  class="alert alert-danger" >
+              <div id="signupalert" class="alert alert-danger">
                 <h2><%= pluralize(@trade_organization.errors.count, "error") %> prohibited to save Trade License</h2>
                 <ul>
                   <% @trade_organization.errors.full_messages.each do |msg| %>
@@ -34,21 +34,21 @@
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">সত্ত্বাধিকারীর নামঃ (ইংরেজি)</label>
             <div class="col-md-9">
-              <%= f.text_field :owners_name_eng, class: "form-control",placeholder: "In English"  %>
+              <%= f.text_field :owners_name_eng, class: "form-control", placeholder: "In English" %>
             </div>
           </div>
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label"> সত্ত্বাধিকারীর নামঃ (বাংলা)</label>
             <div class="col-md-9">
-              <%= f.text_field :owners_name_bng, class: "form-control",placeholder: "In Bangla"   %>
+              <%= f.text_field :owners_name_bng, class: "form-control", placeholder: "In Bangla" %>
             </div>
           </div>
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">বাবার নামঃ</label>
             <div class="col-md-9">
-              <%= f.text_field :fathers_name, class: "form-control",placeholder: "In Bangla" %>
+              <%= f.text_field :fathers_name, class: "form-control", placeholder: "In Bangla" %>
             </div>
           </div>
 
@@ -56,7 +56,7 @@
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">মায়ের নামঃ</label>
             <div class="col-md-9">
-              <%= f.text_field :mothers_name, class: "form-control",placeholder: "In Bangla" %>
+              <%= f.text_field :mothers_name, class: "form-control", placeholder: "In Bangla" %>
             </div>
           </div>
 
@@ -64,7 +64,7 @@
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">স্বামী/স্ত্রীর নামঃ</label>
             <div class="col-md-9">
-              <%= f.text_field :spouse_name, class: "form-control",placeholder: "In Bangla" %>
+              <%= f.text_field :spouse_name, class: "form-control", placeholder: "In Bangla" %>
             </div>
           </div>
 
@@ -73,14 +73,14 @@
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">গ্রামের নামঃ</label>
             <div class="col-md-9">
-              <%= f.text_field :village_name, class: "form-control",placeholder: "In Bangla" %>
+              <%= f.text_field :village_name, class: "form-control", placeholder: "In Bangla" %>
             </div>
           </div>
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">ডাকঘরঃ</label>
             <div class="col-md-9">
-              <%= f.text_field :post_name, class: "form-control",placeholder: "In Bangla" %>
+              <%= f.text_field :post_name, class: "form-control", placeholder: "In Bangla" %>
             </div>
           </div>
 
@@ -88,21 +88,21 @@
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">ওয়ার্ড নম্বরঃ</label>
             <div class="col-md-9">
-              <%= f.number_field :word_no, class: "form-control",placeholder: "In English Number" %>
+              <%= f.number_field :word_no, class: "form-control", placeholder: "In English Number" %>
             </div>
           </div>
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">উপজেলাঃ</label>
             <div class="col-md-9">
-              <%= f.text_field :upazilla_name, class: "form-control",placeholder: "In Bangla" %>
+              <%= f.text_field :upazilla_name, class: "form-control", placeholder: "In Bangla" %>
             </div>
           </div>
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">জেলা</label>
             <div class="col-md-9">
-              <%= f.text_field :zilla_name, class: "form-control",placeholder: "In Bangla" %>
+              <%= f.text_field :zilla_name, class: "form-control", placeholder: "In Bangla" %>
             </div>
           </div>
 
@@ -126,7 +126,7 @@
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">ব্যবসার স্থানঃ</label>
             <div class="col-md-9">
-              <%= f.text_field :business_place, class: "form-control",placeholder: "In Bangla" %>
+              <%= f.text_field :business_place, class: "form-control", placeholder: "In Bangla" %>
             </div>
           </div>
 
@@ -140,7 +140,7 @@
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label"> ব্যবসার ধরনঃ</label>
             <div class="col-md-9">
-              <%= f.text_field :business_category, class: "form-control",placeholder: "In Bangla"%>
+              <%= f.text_field :business_category, class: "form-control", placeholder: "In Bangla" %>
             </div>
           </div>
 
@@ -148,46 +148,48 @@
               <div class="form-group">
                 <label for="nameInBn" class="col-md-3 control-label"> অর্থ বছরঃ</label>
                 <div class="col-md-9">
-                  <%= trade_license_form.number_field :fiscal_year, class: "form-control",placeholder: "In English" %>
+                  <%= trade_license_form.number_field :fiscal_year, class: "form-control", placeholder: "In English" %>
                   <span class="help-block">অর্থবছরের প্রথম বছরটি লিখুন । ২০১৬-২০১৭ অর্থবছর হলে শুধু ২০১৬ লিখুন (ইংরেজিতে)</span>
                 </div>
               </div>
-              <%= trade_license_form.fields_for :collection_money do |cm|  %>
-              <div class="form-group">
-                <label for="nameInBn" class="col-md-3 control-label"> লাইসেন্স ফিঃ</label>
-                <div class="col-md-9">
-                  <%= cm.number_field :fee, class: "form-control",placeholder: "In English number" %>
-                </div>
-              </div>
+              <%= trade_license_form.fields_for :collection_money do |cm| %>
+                  <div class="form-group">
+                    <label for="nameInBn" class="col-md-3 control-label"> লাইসেন্স ফিঃ</label>
+                    <div class="col-md-9">
+                      <%= cm.number_field :fee, class: "form-control", placeholder: "In English number" %>
+                    </div>
+                  </div>
 
-              <div class="form-group">
-                <label for="nameInBn" class="col-md-3 control-label">বকেয়া</label>
-                <div class="col-md-9">
-                  <%= cm.number_field :remain, class: "form-control",placeholder: "In English number" %>
-                </div>
-              </div>
+                  <div class="form-group">
+                    <label for="nameInBn" class="col-md-3 control-label">বকেয়া</label>
+                    <div class="col-md-9">
+                      <%= cm.number_field :remain, class: "form-control", placeholder: "In English number" %>
+                    </div>
+                  </div>
 
-              <div class="form-group">
-                <label for="nameInBn" class="col-md-3 control-label">জরিমানা/অন্যান্য</label>
-                <div class="col-md-9">
-                  <%= cm.number_field :fine, class: "form-control",placeholder: "In English number" %>
-                </div>
-              </div>
+                  <div class="form-group">
+                    <label for="nameInBn" class="col-md-3 control-label">জরিমানা/অন্যান্য</label>
+                    <div class="col-md-9">
+                      <%= cm.number_field :fine, class: "form-control", placeholder: "In English number" %>
+                    </div>
+                  </div>
 
-              <div class="form-group">
-                <label for="nameInBn" class="col-md-3 control-label">ভ্যাট</label>
-                <div class="col-md-9">
-                  <%= cm.number_field :vat, class: "form-control",placeholder: "In English number" %>
-                </div>
-              </div>
-                  <% end %>
+                  <div class="form-group">
+                    <label for="nameInBn" class="col-md-3 control-label">ভ্যাট</label>
+                    <div class="col-md-9">
+                      <%= cm.number_field :vat, class: "form-control", placeholder: "In English number" %>
+                    </div>
+                  </div>
 
-          <%end%>
+                  <%= cm.hidden_field :union_id, :value => current_user.union.id %>
+              <% end %>
+
+          <% end %>
 
           <div class="form-group">
             <!-- Button -->
             <div class="col-md-offset-3 col-md-9">
-              <%= f.submit "Save", class:"btn btn-info" %>
+              <%= f.submit "Save", class: "btn btn-info" %>
 
             </div>
           </div>

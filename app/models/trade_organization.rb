@@ -29,9 +29,6 @@ class TradeOrganization < ActiveRecord::Base
     taka << ' টাকা মাত্র ।'
   end
 
-  def license_fee
-      fee_number latest_trade_license.license_fee
-  end
 
   def license_deadline
     return String.new unless latest_trade_license.present?
@@ -58,22 +55,25 @@ class TradeOrganization < ActiveRecord::Base
     latest_trade_license.fiscal_year_show
   end
 
+
+  def license_fee
+    fee_number_decimal latest_trade_license.license_fee
+  end
+
   def total_fee
-      #fee_number latest_trade_license.total_fee
-      fee_number_decimal '%.2f' % latest_trade_license.total_fee
+    fee_number_decimal latest_trade_license.total_fee
   end
 
   def fine
-      fee_number latest_trade_license.fine_fee
+    fee_number_decimal latest_trade_license.fine_fee
   end
 
   def remain
-      fee_number latest_trade_license.remaining_fee
+    fee_number_decimal latest_trade_license.remaining_fee
   end
 
   def vat
-    vat = latest_trade_license.vat.present? ? latest_trade_license.vat : 0;
-    fee_number_decimal '%.2f' % vat
+    fee_number_decimal latest_trade_license.vat
   end
 
   def word_no_bn
@@ -111,9 +111,9 @@ class TradeOrganization < ActiveRecord::Base
   end
 
   def fee_number_decimal(number)
-    taka = '0'
-    taka = number.to_s if number.present?
-    bangla_number taka
+    taka =  number.present? ? number : 0
+    taka = '%.2f' % taka
+    bangla_number taka.to_s
   end
 
 end

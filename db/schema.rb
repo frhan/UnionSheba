@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102132151) do
+ActiveRecord::Schema.define(version: 20170103131505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,9 +83,11 @@ ActiveRecord::Schema.define(version: 20170102132151) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "serial_no"
+    t.integer  "union_id"
   end
 
   add_index "collection_moneys", ["collectable_type", "collectable_id"], name: "index_collection_moneys_on_collectable_type_and_collectable_id", using: :btree
+  add_index "collection_moneys", ["union_id"], name: "index_collection_moneys_on_union_id", using: :btree
 
   create_table "districts", force: :cascade do |t|
     t.string   "name_in_eng"
@@ -127,15 +129,10 @@ ActiveRecord::Schema.define(version: 20170102132151) do
 
   create_table "trade_licenses", force: :cascade do |t|
     t.integer  "fiscal_year"
-    t.integer  "license_fee"
     t.integer  "trade_organization_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.string   "licsense_no"
     t.date     "isseu_date"
-    t.integer  "remaining_fee"
-    t.integer  "fine_fee"
-    t.decimal  "vat"
   end
 
   add_index "trade_licenses", ["trade_organization_id"], name: "index_trade_licenses_on_trade_organization_id", using: :btree
@@ -215,6 +212,7 @@ ActiveRecord::Schema.define(version: 20170102132151) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "citizens", "unions"
+  add_foreign_key "collection_moneys", "unions"
   add_foreign_key "districts", "divisions"
   add_foreign_key "trade_licenses", "trade_organizations"
   add_foreign_key "trade_organizations", "unions"

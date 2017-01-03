@@ -2,7 +2,7 @@ class TradeLicense < ActiveRecord::Base
   include ApplicationHelper
   belongs_to :trade_organization
   after_initialize :init
-  has_one :collection_money,as: :collectable
+  has_one :collection_money,as: :collectable,dependent: :destroy
   accepts_nested_attributes_for :collection_money,:allow_destroy => true
 
   validates :fiscal_year , presence: true
@@ -30,12 +30,28 @@ class TradeLicense < ActiveRecord::Base
   end
 
   def total_fee
-    total_fee = 0
-    total_fee = total_fee + self.fine_fee if self.fine_fee.present?
-    total_fee = total_fee + self.remaining_fee if self.remaining_fee.present?
-    total_fee = total_fee + self.license_fee if self.license_fee.present?
-    total_fee = total_fee + self.vat if self.vat.present?
-    total_fee
+    return 0 if self.collection_money.nil?
+    self.collection_money.total
+  end
+
+  def license_fee
+    return 0 if self.collection_money.nil?
+    self.collection_money.fee if self.collection_money.fee.present?
+  end
+
+  def fine_fee
+    return 0 if self.collection_money.nil?
+    self.collection_money.fine  if self.collection_money.fine.present?
+  end
+
+  def remaining_fee
+    return 0 if self.collection_money.nil?
+    self.collection_money.remain if self.collection_money.remain.present?
+  end
+
+  def vat
+    return 0 if self.collection_money.nil?
+    self.collection_money.vat if self.collection_money.vat.present?
   end
 
   private

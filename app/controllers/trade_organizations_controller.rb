@@ -163,11 +163,11 @@ class TradeOrganizationsController < ApplicationController
                                                :village_name, :post_name, :upazilla_name,:word_no,
                                                :zilla_name, :business_place, :business_category,:holding_no,:nid,:birthid,
                                                :union_id, trade_licenses_attributes:
-                                                   [:fiscal_year,collection_money_attributes:[:fee,:remain,:fine,:vat]])
+                                                   [:fiscal_year,collection_money_attributes:[:fee,:remain,:fine,:vat,:union_id]])
   end
 
   def trade_license_params
-    params.require(:trade_license).permit(:fiscal_year,collection_money_attributes:[:fee,:remain,:fine,:vat])
+    params.require(:trade_license).permit(:fiscal_year,collection_money_attributes:[:fee,:remain,:fine,:vat,:union_id])
   end
 
 end

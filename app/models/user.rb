@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   belongs_to :role
   has_many :citizens,  through: :union
   has_many :trade_organizations, through: :union
+  has_many :collection_moneys, through: :union
 
   def email_required?
     false

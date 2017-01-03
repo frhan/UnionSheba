@@ -24,9 +24,9 @@ class TradeLicensesController < ApplicationController
   def update
     trade_organization = @trade_license.trade_organization
     respond_to do |format|
-      if @trade_license.update(trade_license_params)
+      if @trade_license.update!(trade_license_params)
         format.html { redirect_to  trade_organization_path(trade_organization), notice: 'Trade license was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recipe }
+        format.json { render :show, status: :ok, location: @trade_license }
       else
         format.html { render :edit }
         format.json { render json: @trade_organization.errors, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class TradeLicensesController < ApplicationController
   end
 
   def trade_license_params
-    params.require(:trade_license).permit(:fiscal_year,collection_money_attributes:[:fee,:remain,:fine,:vat])
+    params.require(:trade_license).permit(:fiscal_year,collection_money_attributes:[:id,:fee,:remain,:fine,:vat,:union_id,:_destroy])
   end
 
 end
