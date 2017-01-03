@@ -3,6 +3,8 @@ class CollectionMoney < ActiveRecord::Base
   validates :fee,presence: true
   belongs_to :union
 
+  after_create :save_serial_no
+
   def total
     total = 0.0
     total = total + self.fee if self.fee.present?
@@ -12,8 +14,11 @@ class CollectionMoney < ActiveRecord::Base
     total
   end
 
-  def save_union(union)
-    self.union = union
+ private
+
+  def save_serial_no
+    serial_no = CollectionMoney.where(union_id: self.union.id).count
+    self.update_attributes(:serial_no => serial_no)
   end
 
 end
