@@ -54,6 +54,11 @@ class TradeLicense < ActiveRecord::Base
     self.collection_money.vat if self.collection_money.vat.present?
   end
 
+  def money_collection_serial_no
+    return 0 if self.collection_money.nil?
+    self.collection_money.serial_no if self.collection_money.serial_no.present?
+  end
+
   private
 
   def save_trade_license_no

@@ -29,7 +29,6 @@ class TradeOrganization < ActiveRecord::Base
     taka << ' টাকা মাত্র ।'
   end
 
-
   def license_deadline
     return String.new unless latest_trade_license.present?
     latest_trade_license.fiscal_year
@@ -74,6 +73,10 @@ class TradeOrganization < ActiveRecord::Base
 
   def vat
     fee_number_decimal latest_trade_license.vat
+  end
+
+  def money_collection_serial_no
+    bangla_number latest_trade_license.money_collection_serial_no.to_s
   end
 
   def word_no_bn
