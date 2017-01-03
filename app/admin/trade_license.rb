@@ -1,0 +1,2 @@
+ActiveAdmin.register TradeLicense do
+end
