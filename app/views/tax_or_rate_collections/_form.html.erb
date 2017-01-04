@@ -1,0 +1,87 @@
+<div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <div class="panel-title">ট্যাক্স/রেট কালেকশন</div>
+    </div>
+    <div class="panel-body">
+
+      <%= form_for @tax_or_rate_collection, html: {class: 'form-horizontal'} do |f| %>
+
+          <% if @tax_or_rate_collection.errors.any? %>
+              <div id="signupalert" class="alert alert-danger">
+                <h2><%= pluralize(@tax_or_rate_collection.errors.count, "error") %> prohibited to Crate Tax collection</h2>
+                <ul>
+                  <% @tax_or_rate_collection.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+
+
+          <div class="form-group">
+            <label for="nameInEng" class="col-md-3 control-label">প্রতিষ্ঠানের নাম (ইংরেজি)</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="nameInEng" placeholder="Name In English" value="<%= @tax_or_rate_collection.owners_name%>"/>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">প্রতিষ্ঠানের নাম (বাংলা)</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="nameInEng" placeholder="Name In English" value="<%= @tax_or_rate_collection.village_name %>"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">প্রতিষ্ঠানের নাম (বাংলা)</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="nameInEng" placeholder="Name In English" value="<%= @tax_or_rate_collection.apprisal_no %>"/>
+            </div>
+          </div>
+
+          <%= f.fields_for :collection_money do |cm| %>
+              <div class="form-group">
+                <label for="nameInBn" class="col-md-3 control-label">লাইসেন্স নবায়ন ফিঃ</label>
+                <div class="col-md-9">
+                  <%= cm.number_field :fee, class: "form-control", placeholder: "In English number" %>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="nameInBn" class="col-md-3 control-label">বকেয়া</label>
+                <div class="col-md-9">
+                  <%= cm.number_field :remain, class: "form-control", placeholder: "In English number" %>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="nameInBn" class="col-md-3 control-label">জরিমানা/অন্যান্য</label>
+                <div class="col-md-9">
+                  <%= cm.number_field :fine, class: "form-control", placeholder: "In English number" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="nameInBn" class="col-md-3 control-label">ভ্যাট</label>
+                <div class="col-md-9">
+                  <%= cm.number_field :vat, class: "form-control", placeholder: "In English number" %>
+                </div>
+              </div>
+          <% end %>
+
+
+          <div class="form-group">
+            <!-- Button -->
+            <div class="col-md-offset-3 col-md-9">
+              <%= f.submit :save, class: "btn btn-info" %>
+            </div>
+          </div>
+      <% end %>
+      <%= link_to 'Back', tax_or_rate_collections_path%>
+    </div>
+  </div>
+</div>

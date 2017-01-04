@@ -1,0 +1,31 @@
+<div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+  <p id="notice"><%= notice %></p>
+
+  <h1>নাগরিকত্বের আবেদনকারী</h1>
+
+  <% if @tax_or_rate_collections %>
+      <table class="table table-bordered table-striped">
+        <thead>
+
+        <tr>
+          <th>id</th>
+          <th>Village Name</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <% @tax_or_rate_collections.each do |trc| %>
+            <tr>
+              <td><%= link_to(trc.id, tax_or_rate_collection_path(trc)) %></td>
+              <td><%= link_to(trc.village_name, tax_or_rate_collection_path(trc)) %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <% end %>
+  </tbody>
+  </table>
+  <% if can? :create, TradeOrganization %>
+      <%= link_to "New", new_tax_or_rate_collection_path, class: "btn btn-primary" %>
+  <% end %>
+</div>
