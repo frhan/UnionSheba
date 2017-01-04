@@ -47,7 +47,7 @@ class TaxOrRateCollectionsController < ApplicationController
   end
 
   def tax_or_rate_collections_params
-    params.require(:tax_or_rate_collection).permit(:village_name,:owners_name,:apprisal_no,
+    params.require(:tax_or_rate_collection).permit(:village_name,:owners_name,:apprisal_no,:union_id,
                                                    collection_money_attributes:[:fee,:fine,:union_id])
   end
 
