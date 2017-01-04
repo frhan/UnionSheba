@@ -1,6 +1,7 @@
 class TaxOrRateCollectionsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
+  skip_load_resource :only => [:create]
   before_action :set_tax_rate_collection,only: [:show, :edit, :update, :destroy]
 
   def index
@@ -13,6 +14,17 @@ class TaxOrRateCollectionsController < ApplicationController
   end
 
   def create
+    @tax_or_rate_collection = TaxOrRateCollection.new(tax_or_rate_collections_params)
+
+    respond_to do |format|
+      if @tax_or_rate_collection.save!
+        format.html { redirect_to @tax_or_rate_collection, notice: 'Tax Or Rate was successfully created.' }
+        format.json { render :show, status: :created, location: @tax_or_rate_collection }
+      else
+        format.html {render :new }
+        format.json { render json: @tax_or_rate_collection.errors, status: :unprocessable_entity }
+      end
+    end
 
   end
 
@@ -34,9 +46,9 @@ class TaxOrRateCollectionsController < ApplicationController
     @tax_or_rate_collection = TaxOrRateCollection.find(params[:id])
   end
 
-  def tax_or_collections_params
-    params.require(:tax_or_rate_collection).permit(:village_name,owners_name,apprisal_no,
-                                                   collection_money_attributes:[:fee,:remain,:fine,:vat,:union_id])
+  def tax_or_rate_collections_params
+    params.require(:tax_or_rate_collection).permit(:village_name,:owners_name,:apprisal_no,
+                                                   collection_money_attributes:[:fee,:fine,:union_id])
   end
 
 

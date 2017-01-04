@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103131505) do
+ActiveRecord::Schema.define(version: 20170104142835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,7 +125,10 @@ ActiveRecord::Schema.define(version: 20170103131505) do
     t.string   "apprisal_no"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "union_id"
   end
+
+  add_index "tax_or_rate_collections", ["union_id"], name: "index_tax_or_rate_collections_on_union_id", using: :btree
 
   create_table "trade_licenses", force: :cascade do |t|
     t.integer  "fiscal_year"
@@ -214,6 +217,7 @@ ActiveRecord::Schema.define(version: 20170103131505) do
   add_foreign_key "citizens", "unions"
   add_foreign_key "collection_moneys", "unions"
   add_foreign_key "districts", "divisions"
+  add_foreign_key "tax_or_rate_collections", "unions"
   add_foreign_key "trade_licenses", "trade_organizations"
   add_foreign_key "trade_organizations", "unions"
   add_foreign_key "unions", "upazilas"
