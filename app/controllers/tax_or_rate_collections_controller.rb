@@ -90,7 +90,7 @@ class TaxOrRateCollectionsController < ApplicationController
 
 
   def file_name
-    pdf_file_name 'trade_license_' << @tax_or_rate_collection.union_code
+    pdf_file_name 'tax_or_rate_' << @tax_or_rate_collection.union_code
   end
 
 end

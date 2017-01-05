@@ -1,0 +1,29 @@
+<div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+  <p id="notice"><%= notice %></p>
+
+  <h1>ট্যাক্স/রেট কালেকশন</h1>
+
+  <table id="others_collections_table" class="table table-bordered table-striped" data-source="<%= others_collections_path(format: "json") %>">
+    <thead>
+    <tr>
+      <th>Serial No</th>
+      <th>Senders Name</th>
+      <th>Senders Address</th>
+      <th>Total Collection</th>
+
+      <% if can? :edit, Citizen %>
+          <th>Edit</th>
+      <% end %>
+
+      <% if can? :delete, Citizen %>
+          <th>Delete</th>
+      <% end %>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <% if can? :create, TaxOrRateCollection %>
+      <%= link_to "New", new_others_collection_path, class: "btn btn-primary" %>
+  <% end %>
+</div>

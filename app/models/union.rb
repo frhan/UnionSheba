@@ -4,6 +4,7 @@ class Union < ActiveRecord::Base
   has_many :trade_organizations
   has_many :collection_moneys
   has_many :tax_or_rate_collections
+  has_many :others_collections
 
   def to_s
     name_in_bng

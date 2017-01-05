@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :trade_organizations, through: :union
   has_many :collection_moneys, through: :union
   has_many :tax_or_rate_collections, through: :union
+  has_many :others_collections, through: :union
 
   def email_required?
     false
