@@ -52,7 +52,7 @@ class OthersCollectionsController < ApplicationController
     @others_collection.update_attributes(status: :deleted)
 
     respond_to do |format|
-      format.html { redirect_to others_collections_path, notice: 'Trade Lisence was successfully destroyed.' }
+      format.html { redirect_to others_collections_path, notice: 'Collection was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
