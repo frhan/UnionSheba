@@ -18,7 +18,7 @@ class TaxOrRateCollectionsController < ApplicationController
 
     respond_to do |format|
       if @tax_or_rate_collection.save!
-        format.html { redirect_to @tax_or_rate_collection, notice: 'Tax Or Rate was successfully created.' }
+        format.html { redirect_to @tax_or_rate_collection, notice: 'Collection was successfully created.' }
         format.json { render :show, status: :created, location: @tax_or_rate_collection }
       else
         format.html {render :new }
@@ -29,6 +29,16 @@ class TaxOrRateCollectionsController < ApplicationController
   end
 
   def update
+
+    respond_to do |format|
+      if @tax_or_rate_collection.update(tax_or_rate_collections_params)
+        format.html { redirect_to @tax_or_rate_collection, notice: 'Collection  was successfully updated.' }
+        format.json { render :show, status: :ok, location: @recipe }
+      else
+        format.html { render :edit }
+        format.json { render json: @tax_or_rate_collection.errors, status: :unprocessable_entity }
+      end
+    end
 
   end
 
