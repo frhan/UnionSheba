@@ -19,3 +19,4 @@
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require citizens
 //= require trade_organization
+//= require tax_or_rate_collections

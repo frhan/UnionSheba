@@ -1,1 +1,57 @@
-#show
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+  <p id="notice"><%= notice %></p>
+  <% if @tax_or_rate_collection.present? %>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @tax_or_rate_collection.owners_name %></h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+
+            <div class=" col-md-9 col-lg-9 ">
+              <table class="table table-user-information">
+                <tbody>
+                <tr>
+                  <td>মালিক/দখলদারের নাম</td>
+                  <td><%= @tax_or_rate_collection.owners_name %></td>
+                </tr>
+
+                <tr>
+                  <td>মৌজার নাম</td>
+                  <td><%= @tax_or_rate_collection.village_name %></td>
+                </tr>
+                <tr>
+                  <td>মূল্যায়ন তালিকার ক্রমিক নং</td>
+                  <td><%= @tax_or_rate_collection.apprisal_no %></td>
+                </tr>
+                <tr>
+                  <td>গৃহীত অর্থ</td>
+                  <td><%= @tax_or_rate_collection.collection_money.fee %></td>
+                </tr>
+
+                <tr>
+                  <td>জরিমানা(যদি থাকে)</td>
+                  <td><%= @tax_or_rate_collection.collection_money.fine %></td>
+                </tr>
+
+                <tr>
+                  <td>Total</td>
+                  <td><%= @tax_or_rate_collection.collection_money.total %></td>
+                </tr>
+
+                </tr>
+
+                </tbody>
+              </table>
+
+              <%= link_to 'Print Certificate', tax_or_rate_collections_path, class: "btn btn-info btn-default" %>
+              <%= link_to 'Back', tax_or_rate_collections_path, class: "btn btn-primary" %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+
+</div>
