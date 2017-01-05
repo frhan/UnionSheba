@@ -1,4 +1,5 @@
 class TaxOrRateCollectionsController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_user!
   load_and_authorize_resource
   skip_load_resource :only => [:create]
@@ -57,6 +58,22 @@ class TaxOrRateCollectionsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => file_name,
+               :template => 'tax_or_rate_collections/show.pdf.erb',
+               :layout => 'pdf.html.erb',
+               :disposition => 'attachment',
+               :show_as_html => params[:debug].present?,
+               margin:  {   top:               10,                     # default 10 (mm)
+                            bottom:            0,
+                            left:              12,
+                            right:             12},
+               dpi:                            '300'
+        #zoom: 1.17647
+      end
+    end
 
   end
 
@@ -72,5 +89,8 @@ class TaxOrRateCollectionsController < ApplicationController
   end
 
 
+  def file_name
+    pdf_file_name 'trade_license_' << @tax_or_rate_collection.union_code
+  end
 
 end

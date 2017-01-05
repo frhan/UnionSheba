@@ -1,0 +1,181 @@
+<style>
+
+  body {
+    font-size: 18px;
+    margin: 0 auto;
+    background-color: #ffffff;
+  }
+
+  .row {
+    padding: 0;
+    margin: 0;
+  }
+
+  [class*='col-'] {
+    padding: 0;
+    margin: 0;
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
+  .margin-left {
+    margin-left: 7px;
+  }
+
+  .margin-right {
+    margin-right: 5px;
+  }
+
+  .margin-top-5 {
+    margin-top: 5px;
+  }
+
+  #margin-top-50 {
+    margin-top: 50px;
+  }
+
+  .margin-top-7 {
+    margin-top: 7px;
+  }
+
+</style>
+
+<div>
+  <div class="container">
+
+    <div class="row top-header">
+      <div class="col-xs-12 text-center">
+        <h2><%= bangla_number @tax_or_rate_collection.union_no %> নং <%= @tax_or_rate_collection.union_name_bng %> ইউনিয়ন
+          পরিষদ</h2>
+        <p class="sub"> ডাকঘরঃ <%= @tax_or_rate_collection.post_name_bng %>
+          উপজেলাঃ <%= @tax_or_rate_collection.upazila_name_bng %>
+          জেলাঃ  <%= @tax_or_rate_collection.zila_name_bng %></p>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="col-xs-12">
+        <p class="text-center">ইউপি ফরম-৪</p>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-xs-12">
+        <p class="text-center">[ বিধি ৮ দ্রষ্টব্য ]</p>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-xs-12">
+        <p class="text-center">কর ও রেইট আদায়ের রশিদ</p>
+      </div>
+    </div>
+
+
+    <div class="row margin-top-5">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>ক্রমিক নং</p>
+          </div>
+          <div class="col-xs-8">
+            <p class="margin-left"><%= @tax_or_rate_collection.collection_money.serial_no %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row margin-top-5">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>মৌজার নাম</p>
+          </div>
+          <div class="col-xs-8">
+            <p class="margin-left"><%= @tax_or_rate_collection.village_name %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-top-5">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>মালিক/দখলদারের নাম</p>
+          </div>
+          <div class="col-xs-8">
+            <p class="margin-left"><%= @tax_or_rate_collection.owners_name %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-top-5">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>মূল্যায়ন তালিকার ক্রমিক নং</p>
+          </div>
+          <div class="col-xs-8">
+            <p class="margin-left"><%= @tax_or_rate_collection.apprisal_no %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row margin-top-5">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>গৃহীত অর্থ</p>
+          </div>
+          <div class="col-xs-8">
+            <p class="margin-left"><%= @tax_or_rate_collection.collection_money.fee %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-top-5">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>জরিমানা(যদি থাকে)</p>
+          </div>
+          <div class="col-xs-8">
+            <p class="margin-left"><%= @tax_or_rate_collection.collection_money.fine %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row margin-top-5">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4 trade-label">
+            <p>মোট টাকা</p>
+          </div>
+          <div class="col-xs-8">
+            <p class="margin-left"><%= @tax_or_rate_collection.collection_money.total %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="margin-top-50">
+      <div class="col-xs-6">
+      </div>
+      <div class="col-xs-6">
+        <div>
+          <p class="text-center">আদায়কারীর স্বাক্ষর ও তারিখ</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

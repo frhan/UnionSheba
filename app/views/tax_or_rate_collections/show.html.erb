@@ -45,7 +45,7 @@
                 </tbody>
               </table>
 
-              <%= link_to 'Print Certificate', tax_or_rate_collections_path, class: "btn btn-info btn-default" %>
+              <%= link_to 'Download', tax_or_rate_collection_path(@tax_or_rate_collection,format: 'pdf'), class: "btn btn-info btn-default" %>
               <%= link_to 'Back', tax_or_rate_collections_path, class: "btn btn-primary" %>
 
             </div>
