@@ -3,33 +3,27 @@
 
   <h1>ট্যাক্স/রেট কালেকশন</h1>
 
-  <% if @tax_or_rate_collections %>
-      <table class="table table-bordered table-striped">
-        <thead>
+  <table id="tax_or_rate_collections_table" class="table table-bordered table-striped" data-source="<%= tax_or_rate_collections_path(format: "json") %>">
+    <thead>
+    <tr>
+      <th>Serial No</th>
+      <th>Owners Name</th>
+      <th>Village Name</th>
+      <th>Total Collection</th>
 
-        <tr>
-          <th>id</th>
-          <th>Village Name</th>
+      <% if can? :edit, Citizen %>
           <th>Edit</th>
-          <th>Delete</th>
-        </tr>
-        </thead>
-        <tbody>
+      <% end %>
 
-        <% @tax_or_rate_collections.each do |trc| %>
-            <tr>
-              <td><%= link_to(trc.id, tax_or_rate_collection_path(trc)) %></td>
-              <td><%= link_to(trc.id, tax_or_rate_collection_path(trc)) %></td>
-              <td><%= link_to("Edit",edit_tax_or_rate_collection_path(trc)) %></td>
-              <td><%= link_to("Delete", tax_or_rate_collection_path(trc), method: :delete, data: { confirm: 'Are you sure?' }) %></td>
-            </tr>
-        <% end %>
-        </tbody>
-      </table>
-  <% end %>
-  </tbody>
+      <% if can? :delete, Citizen %>
+          <th>Delete</th>
+      <% end %>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
   </table>
-  <% if can? :create, TradeOrganization %>
+  <% if can? :create, TaxOrRateCollection %>
       <%= link_to "New", new_tax_or_rate_collection_path, class: "btn btn-primary" %>
   <% end %>
 </div>

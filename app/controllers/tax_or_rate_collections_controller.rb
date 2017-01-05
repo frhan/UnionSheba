@@ -5,7 +5,12 @@ class TaxOrRateCollectionsController < ApplicationController
   before_action :set_tax_rate_collection,only: [:show, :edit, :update, :destroy]
 
   def index
-    @tax_or_rate_collections = current_user.tax_or_rate_collections.where(status: :active)
+    # @tax_or_rate_collections = current_user.tax_or_rate_collections.where(status: :active)
+    respond_to do |format|
+      format.html
+      format.json { render json: TaxOrRateCollectionDatatable.new(view_context,current_user) }
+    end
+
   end
 
   def new
