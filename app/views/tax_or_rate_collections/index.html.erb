@@ -10,6 +10,8 @@
         <tr>
           <th>id</th>
           <th>Village Name</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -17,7 +19,9 @@
         <% @tax_or_rate_collections.each do |trc| %>
             <tr>
               <td><%= link_to(trc.id, tax_or_rate_collection_path(trc)) %></td>
-              <td><%= link_to(trc.village_name, tax_or_rate_collection_path(trc)) %></td>
+              <td><%= link_to(trc.id, tax_or_rate_collection_path(trc)) %></td>
+              <td><%= link_to("Edit",edit_tax_or_rate_collection_path(trc)) %></td>
+              <td><%= link_to("Delete", tax_or_rate_collection_path(trc), method: :delete, data: { confirm: 'Are you sure?' }) %></td>
             </tr>
         <% end %>
         </tbody>

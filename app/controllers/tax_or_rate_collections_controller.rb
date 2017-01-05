@@ -5,7 +5,7 @@ class TaxOrRateCollectionsController < ApplicationController
   before_action :set_tax_rate_collection,only: [:show, :edit, :update, :destroy]
 
   def index
-    @tax_or_rate_collections = current_user.tax_or_rate_collections
+    @tax_or_rate_collections = current_user.tax_or_rate_collections.where(status: :active)
   end
 
   def new
@@ -33,7 +33,12 @@ class TaxOrRateCollectionsController < ApplicationController
   end
 
   def destroy
+    @tax_or_rate_collection.update_attributes(status: :deleted)
 
+    respond_to do |format|
+      format.html { redirect_to tax_or_rate_collections_path, notice: 'Trade Lisence was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   def show
