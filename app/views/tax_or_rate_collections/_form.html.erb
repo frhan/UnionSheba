@@ -19,18 +19,26 @@
           <% end %>
 
           <%= f.hidden_field :union_id, :value => current_user.union.id %>
+
           <div class="form-group">
-            <label for="nameInEng" class="col-md-3 control-label">মৌজার নাম</label>
+            <label for="nameInBn" class="col-md-3 control-label"> মালিক/দখলদারের নাম (English)</label>
             <div class="col-md-9">
-              <%= f.text_field :village_name, class: "form-control", placeholder: "In Bangla" %>
+              <%= f.text_field :owners_name_in_english, class: "form-control", placeholder: "In English" %>
             </div>
           </div>
-
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label"> মালিক/দখলদারের নাম</label>
             <div class="col-md-9">
               <%= f.text_field :owners_name, class: "form-control", placeholder: "In Bangla" %>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="nameInEng" class="col-md-3 control-label">মৌজার নাম</label>
+            <div class="col-md-9">
+              <%= f.text_field :village_name, class: "form-control", placeholder: "In Bangla" %>
             </div>
           </div>
 
@@ -67,7 +75,7 @@
             </div>
           </div>
       <% end %>
-      <%= link_to 'Back', tax_or_rate_collections_path%>
+      <%= link_to 'Back', tax_or_rate_collections_path %>
     </div>
   </div>
 </div>

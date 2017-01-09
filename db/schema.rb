@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170105145332) do
+ActiveRecord::Schema.define(version: 20170107122343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,11 +111,12 @@ ActiveRecord::Schema.define(version: 20170105145332) do
   create_table "others_collections", force: :cascade do |t|
     t.string   "senders_name"
     t.string   "senders_address"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.integer  "union_id"
-    t.string   "status",          default: "active"
+    t.string   "status",                 default: "active"
     t.string   "time_line"
+    t.string   "owners_name_in_english"
   end
 
   add_index "others_collections", ["union_id"], name: "index_others_collections_on_union_id", using: :btree
@@ -128,10 +129,11 @@ ActiveRecord::Schema.define(version: 20170105145332) do
     t.string   "village_name"
     t.string   "owners_name"
     t.string   "apprisal_no"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.integer  "union_id"
-    t.string   "status",       default: "active"
+    t.string   "status",                 default: "active"
+    t.string   "owners_name_in_english"
   end
 
   add_index "tax_or_rate_collections", ["union_id"], name: "index_tax_or_rate_collections_on_union_id", using: :btree

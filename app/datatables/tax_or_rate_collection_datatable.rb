@@ -20,7 +20,8 @@ class TaxOrRateCollectionDatatable
     tax_or_rates = []
     tax_or_rate_collections.map do |record|
       tax_or_rate = []
-      tax_or_rate <<  link_to(record.collection_money.serial_no, tax_or_rate_collection_path(record))
+      tax_or_rate <<  link_to(record.created_at, tax_or_rate_collection_path(record))
+      tax_or_rate <<  link_to(record.owners_name_in_english, tax_or_rate_collection_path(record))
       tax_or_rate <<  link_to(record.owners_name, tax_or_rate_collection_path(record))
       tax_or_rate << record.village_name
       tax_or_rate << record.collection_money.total
@@ -40,7 +41,7 @@ class TaxOrRateCollectionDatatable
     tax_or_rate_collections = @user.tax_or_rate_collections.order("#{sort_column} #{sort_direction}")
     tax_or_rate_collections = tax_or_rate_collections.where(status: :active);
     if params[:sSearch].present?
-      tax_or_rate_collections = tax_or_rate_collections.where("lower(owners_name) like :search", search: "%#{params[:sSearch]}%")
+      tax_or_rate_collections = tax_or_rate_collections.where("lower(owners_name_in_english) like :search or lower(owners_name) like :search", search: "%#{params[:sSearch]}%")
     end
     tax_or_rate_collections = Kaminari.paginate_array(tax_or_rate_collections).page(page).per(per_page)
     tax_or_rate_collections
@@ -60,7 +61,7 @@ class TaxOrRateCollectionDatatable
   end
 
   def sort_column
-    columns = %w[owners_name village_name]
+    columns = %w[created_at owners_name_in_english owners_name village_name not_orderable not_orderable not_orderable ]
     columns[params[:iSortCol_0].to_i]
   end
 

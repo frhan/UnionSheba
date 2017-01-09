@@ -8,3 +8,13 @@ jQuery ->
     bProcessing: true
     bServerSide: true
     sAjaxSource: $('#tax_or_rate_collections_table').data('source')
+    columns: [
+      { width: "15%" }
+      { width: "20%"}
+      { width: "20%" }
+      { width: "15%", orderable: false }
+      { width: "10%", searchable: false, orderable: false }
+      { width: "10%", searchable: false, orderable: false }
+      { width: "10%", searchable: false, orderable: false }
+    ]
+    order: [ [0,'desc'] ]

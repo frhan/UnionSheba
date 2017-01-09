@@ -14,6 +14,22 @@ class CollectionMoney < ActiveRecord::Base
     total
   end
 
+  def trade_license?
+    self.collectable_type == :TradeLicense
+  end
+
+  def tax_or_rate?
+    self.collectable_type == :TaxOrRateCollection
+  end
+
+  def others?
+    self.collectable_type == :OthersCollection
+  end
+
+  def trade_license_or_others?
+    self.collectable_type == :OthersCollection || self.collectable_type == :TradeLicense
+  end
+
  private
 
   def save_serial_no

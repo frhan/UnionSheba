@@ -18,6 +18,13 @@
               </div>
           <% end %>
 
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label"> প্রদানকারীর নাম (English)</label>
+            <div class="col-md-9">
+              <%= f.text_field :owners_name_in_english, class: "form-control", placeholder: "In English" %>
+            </div>
+          </div>
+
           <%= f.hidden_field :union_id, :value => current_user.union.id %>
           <div class="form-group">
             <label for="nameInEng" class="col-md-3 control-label">প্রদানকারীর নাম</label>

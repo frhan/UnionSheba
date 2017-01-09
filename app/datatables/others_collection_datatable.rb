@@ -20,7 +20,8 @@ class OthersCollectionDatatable
     otherss = []
     others_collections.map do |record|
       others = []
-      others <<  link_to(record.collection_money.serial_no, others_collection_path(record))
+      others <<  link_to(record.created_at, others_collection_path(record))
+      others <<  link_to(record.owners_name_in_english, others_collection_path(record))
       others <<  link_to(record.senders_name, others_collection_path(record))
       others << record.senders_address
       others << record.collection_money.total
@@ -60,7 +61,7 @@ class OthersCollectionDatatable
   end
 
   def sort_column
-    columns = %w[senders_name senders_address]
+    columns = %w[created_at owners_name_in_english senders_name senders_address not_orderable not_orderable not_orderable]
     columns[params[:iSortCol_0].to_i]
   end
 
