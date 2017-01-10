@@ -6,7 +6,6 @@
 
     <% if user_signed_in? %>
 
-
         <ul class="nav navbar-nav navbar-left">
           <li class="dropdown">
             <%= link_to '#', class: "dropdown-toggle", role: "button", :data => {:toggle => "dropdown"}, 'aria-expanded' => false do %>
@@ -42,7 +41,7 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-left">
-          <li> <%= link_to 'Report', collection_moneys_path %> </li>
+          <li> <%= link_to 'রিপোর্ট', collection_moneys_path %> </li>
         </ul>
 
     <% else %>

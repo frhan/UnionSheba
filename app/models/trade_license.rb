@@ -59,6 +59,10 @@ class TradeLicense < ActiveRecord::Base
     self.collection_money.serial_no if self.collection_money.serial_no.present?
   end
 
+  def money_senders_name
+    self.trade_organization.owners_name_bng
+  end
+
   private
 
   def save_trade_license_no

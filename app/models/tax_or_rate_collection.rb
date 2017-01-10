@@ -5,4 +5,9 @@ class TaxOrRateCollection < ActiveRecord::Base
   accepts_nested_attributes_for :collection_money,:allow_destroy => true
   belongs_to :union
 
+
+  def money_senders_name
+    self.owners_name
+  end
+
 end

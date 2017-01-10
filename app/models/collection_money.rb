@@ -30,6 +30,17 @@ class CollectionMoney < ActiveRecord::Base
     self.collectable_type == :OthersCollection || self.collectable_type == :TradeLicense
   end
 
+  def collection_reason
+    return 'বিবিধ' if collectable_type == 'TradeLicense' || collectable_type == 'OthersCollection'
+    return 'ট্যাক্স ও রেট' if collectable_type == 'TaxOrRateCollection'
+    return String.new
+
+  end
+
+  def money_senders_name
+    self.collectable.money_senders_name if collectable.present?
+  end
+
  private
 
   def save_serial_no

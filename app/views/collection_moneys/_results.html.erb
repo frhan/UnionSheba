@@ -4,6 +4,8 @@
       <tr>
         <th>সিরিয়াল নং</th>
         <th> জমার তারিখ</th>
+        <th>প্রদানকারীর নাম</th>
+        <th>বাবদ</th>
         <th>জমার পরিমাণ</th>
         <th>জরিমানা</th>
         <th>বকেয়া</th>
@@ -17,6 +19,8 @@
           <tr>
             <td><%= cm.serial_no %></td>
             <td><%= formatted_date_time cm.created_at%></td>
+            <td><%= cm.money_senders_name %></td>
+            <td><%= cm.collection_reason %></td>
             <td><%= cm.fee %></td>
             <td><%= cm.fine %></td>
             <td><%= cm.remain %></td>
@@ -27,6 +31,8 @@
       <tr>
         <td>সর্বমোট</td>
         <td></td>
+        <td></td>
+        <td></td>
         <td><%= @collection_total[:total_fee] %></td>
         <td><%= @collection_total[:total_fine] %></td>
         <td><%= @collection_total[:total_remain]%></td>
@@ -35,7 +41,8 @@
       </tr>
       </tbody>
     </table>
-<% end %>
 </tbody>
 </table>
+
+<% end %>
 <%= paginate @collection_moneys_kaminary %>
