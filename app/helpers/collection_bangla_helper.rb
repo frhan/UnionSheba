@@ -5,15 +5,21 @@ module CollectionBanglaHelper
   end
 
   def fine_bangla
-    bangla_number self.collection_money.fine.to_s
+    fee_number_decimal self.collection_money.fine
   end
 
   def fee_bangla
-    bangla_number self.collection_money.fee.to_s
+    fee_number_decimal self.collection_money.fee
   end
 
   def total_bangla
-    bangla_number self.collection_money.total.to_s
+    fee_number_decimal self.collection_money.total
+  end
+
+  def fee_number_decimal(number)
+    taka =  number.present? ? number : 0
+    taka = '%.2f' % taka
+    bangla_number taka.to_s
   end
 
 end
