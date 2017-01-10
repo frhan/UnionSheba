@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get :others_form
     end
   end
+  resources :collection_moneys
   resources :tax_or_rate_collections
   resources :others_collections
   resources :trade_licenses

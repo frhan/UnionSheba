@@ -20,16 +20,13 @@
                   <li><%= link_to 'নাগরিকত্বের আবেদনকারী', requests_citizens_path %></li>
               <% end %>
             </ul>
-
           </li>
-
         </ul>
 
 
         <ul class="nav navbar-nav navbar-left">
           <li> <%= link_to 'ট্রেড লাইসেন্স', trade_organizations_path %> </li>
         </ul>
-
 
         <ul class="nav navbar-nav navbar-left">
           <li class="dropdown">
@@ -44,7 +41,9 @@
             </ul>
           </li>
         </ul>
-
+        <ul class="nav navbar-nav navbar-left">
+          <li> <%= link_to 'Report', collection_moneys_path %> </li>
+        </ul>
 
     <% else %>
         <ul class="nav navbar-nav navbar-left">

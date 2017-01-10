@@ -1,0 +1,33 @@
+<% if @collection_moneys %>
+    <table class="table table-bordered table-striped">
+      <thead>
+
+      <tr>
+        <th>Serial No</th>
+        <th>Created At</th>
+        <th>Fee</th>
+        <th>Fine</th>
+        <th>Remain</th>
+        <th>Vat</th>
+        <th>Total</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @collection_moneys.each do |cm| %>
+          <tr>
+            <td><%= cm.serial_no %></td>
+            <td><%= cm.created_at%></td>
+            <td><%= cm.fee%></td>
+            <td><%= cm.fine %></td>
+            <td><%= cm.remain %></td>
+            <td><%= cm.vat %></td>
+            <td><%= cm.total %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
+</tbody>
+</table>
+<%= paginate @collection_moneys %>
