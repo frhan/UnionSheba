@@ -20,7 +20,7 @@ class TaxOrRateCollectionDatatable
     tax_or_rates = []
     tax_or_rate_collections.map do |record|
       tax_or_rate = []
-      tax_or_rate <<  link_to(record.created_at, tax_or_rate_collection_path(record))
+      tax_or_rate <<  link_to(formatted_date_time(record.created_at), tax_or_rate_collection_path(record))
       tax_or_rate <<  link_to(record.owners_name_in_english, tax_or_rate_collection_path(record))
       tax_or_rate <<  link_to(record.owners_name, tax_or_rate_collection_path(record))
       tax_or_rate << record.village_name
@@ -31,6 +31,10 @@ class TaxOrRateCollectionDatatable
       tax_or_rates << tax_or_rate
     end
     tax_or_rates
+  end
+
+  def formatted_date_time(date_time)
+    date_time.strftime('%d-%m-%Y') if date_time.present?
   end
 
   def tax_or_rate_collections

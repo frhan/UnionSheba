@@ -20,7 +20,7 @@ class OthersCollectionDatatable
     otherss = []
     others_collections.map do |record|
       others = []
-      others <<  link_to(record.created_at, others_collection_path(record))
+      others <<  link_to(formatted_date_time(record.created_at), others_collection_path(record))
       others <<  link_to(record.owners_name_in_english, others_collection_path(record))
       others <<  link_to(record.senders_name, others_collection_path(record))
       others << record.senders_address
@@ -31,6 +31,10 @@ class OthersCollectionDatatable
       otherss << others
     end
     otherss
+  end
+
+  def formatted_date_time(date_time)
+    date_time.strftime('%d-%m-%Y') if date_time.present?
   end
 
   def others_collections
