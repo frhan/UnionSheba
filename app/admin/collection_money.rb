@@ -1,3 +1,3 @@
-ActiveAdmin.register TaxOrRateCollection do
+ActiveAdmin.register CollectionMoney do
 
 end
