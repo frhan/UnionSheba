@@ -1,24 +1,23 @@
-<% if @collection_moneys %>
+<% if @collection_moneys_kaminary %>
     <table class="table table-bordered table-striped">
       <thead>
-
       <tr>
-        <th>Serial No</th>
-        <th>Created At</th>
-        <th>Fee</th>
-        <th>Fine</th>
-        <th>Remain</th>
-        <th>Vat</th>
-        <th>Total</th>
+        <th>সিরিয়াল নং</th>
+        <th> জমার তারিখ</th>
+        <th>জমার পরিমাণ</th>
+        <th>জরিমানা</th>
+        <th>বকেয়া</th>
+        <th>ভ্যাট</th>
+        <th>মোট</th>
       </tr>
       </thead>
       <tbody>
 
-      <% @collection_moneys.each do |cm| %>
+      <% @collection_moneys_kaminary.each do |cm| %>
           <tr>
             <td><%= cm.serial_no %></td>
             <td><%= formatted_date_time cm.created_at%></td>
-            <td><%= cm.fee%></td>
+            <td><%= cm.fee %></td>
             <td><%= cm.fine %></td>
             <td><%= cm.remain %></td>
             <td><%= cm.vat %></td>
@@ -26,17 +25,17 @@
           </tr>
       <% end %>
       <tr>
-        <td>Total</td>
+        <td>সর্বমোট</td>
         <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>500</td>
+        <td><%= @collection_total[:total_fee] %></td>
+        <td><%= @collection_total[:total_fine] %></td>
+        <td><%= @collection_total[:total_remain]%></td>
+        <td><%= @collection_total[:total_vat]%></td>
+        <td><%= @collection_total[:total] %></td>
       </tr>
       </tbody>
     </table>
 <% end %>
 </tbody>
 </table>
-<%= paginate @collection_moneys %>
+<%= paginate @collection_moneys_kaminary %>
