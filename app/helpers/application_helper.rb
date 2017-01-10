@@ -165,4 +165,7 @@ module ApplicationHelper
     pdf_file_name 'citizen_certificate_' << citizen.union_code
   end
 
+  def formatted_date_time(date_time)
+    date_time.strftime('%d-%m-%Y') if date_time.present?
+  end
 end

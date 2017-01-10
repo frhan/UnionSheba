@@ -44,6 +44,7 @@ gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'cancancan'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

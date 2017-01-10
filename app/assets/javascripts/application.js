@@ -17,6 +17,7 @@
 //= require jquery.turbolinks
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require bootstrap-datepicker
 //= require citizens
 //= require trade_organization
 //= require tax_or_rate_collections
