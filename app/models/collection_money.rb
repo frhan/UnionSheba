@@ -36,6 +36,11 @@ class CollectionMoney < ActiveRecord::Base
     return String.new
   end
 
+  def self.Types
+    { 'সব'=> :all, 'ট্যাক্স ও রেট'=> :TaxOrRateCollection,'বিবিধ'=> :OthersCollection,
+     'ট্রেড লাইসেন্স'=> :TradeLicense }
+  end
+
   def money_senders_name
     self.collectable.money_senders_name if collectable.present?
   end
