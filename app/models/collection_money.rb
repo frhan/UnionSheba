@@ -31,9 +31,10 @@ class CollectionMoney < ActiveRecord::Base
   end
 
   def collection_reason
-    return 'বিবিধ' if collectable_type == 'TradeLicense' || collectable_type == 'OthersCollection'
+    return 'বিবিধ' if collectable_type == 'OthersCollection'
     return 'ট্যাক্স ও রেট' if collectable_type == 'TaxOrRateCollection'
-    return String.new
+    return 'ট্রেড লাইসেন্স' if collectable_type == 'TradeLicense'
+        return String.new
   end
 
   def self.Types

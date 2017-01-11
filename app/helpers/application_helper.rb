@@ -168,4 +168,11 @@ module ApplicationHelper
   def formatted_date_time(date_time)
     date_time.strftime('%d-%m-%Y') if date_time.present?
   end
+
+  def get_type
+    if params[:collections].present?
+      return params[:collections][:type]
+    end
+  end
+
 end
