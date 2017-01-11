@@ -90,21 +90,21 @@
     <div class="row">
       <div class="col-xs-6">
         <div class="row">
-          <div class="col-xs-5 trade-label">
+          <div class="col-xs-3 trade-label">
             <p>Start Date</p>
           </div>
-          <div class="col-xs-7" >
-            <p class="margin-left" id="license_no" ><%= @start_date %></p>
+          <div class="col-xs-9" >
+            <p class="margin-left" id="license_no" ><%= formatted_date_time @start_date %></p>
           </div>
         </div>
       </div>
       <div class="col-xs-6">
         <div class="row">
-          <div class="col-xs-6 trade-label">
+          <div class="col-xs-3 trade-label">
             <p>End Date</p>
           </div>
-          <div class="col-xs-6">
-            <p class="pull-left margin-left"><%= @start_date %></p>
+          <div class="col-xs-9">
+            <p class="pull-left margin-left"><%= formatted_date_time @end_date %></p>
           </div>
         </div>
       </div>
