@@ -170,9 +170,15 @@ module ApplicationHelper
   end
 
   def get_type
-    if params[:collections].present?
-      return params[:collections][:type]
-    end
+      return params[:collections][:type] if params[:collections].present?
+  end
+
+  def collection_money_type_bangla
+     return 'টাকা কালেকশন' unless (params[:collections].present? && params[:collections][:type].present?)
+     return 'টাকা কালেকশন' if params[:collections][:type] == 'all'
+     return 'ট্যাক্স ও রেট কালেকশন' if params[:collections][:type] == 'TaxOrRateCollection'
+     return 'ট্রেড লাইসেন্স কালেকশন' if params[:collections][:type] == 'TradeLicense'
+     return 'বিবিধ কালেকশন'  if params[:collections][:type] == 'OthersCollection'
   end
 
 end
