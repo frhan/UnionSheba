@@ -8,3 +8,11 @@ jQuery ->
     bProcessing: true
     bServerSide: true
     sAjaxSource: $('#citizens').data('source')
+    columns: [
+      { width: "23%" }
+      { width: "23%"}
+      { width: "22%" }
+      { width: "22%", orderable: false }
+      { width: "5%", orderable: false }
+      { width: "5%", orderable: false }
+    ]

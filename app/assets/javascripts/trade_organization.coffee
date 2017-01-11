@@ -8,3 +8,11 @@ jQuery ->
     bProcessing: true
     bServerSide: true
     sAjaxSource: $('#trade_organizations_table').data('source')
+    columns: [
+      { width: "22%" }
+      { width: "23%"}
+      { width: "23%" }
+      { width: "22%", orderable: false }
+      { width: "5%", orderable: false }
+      { width: "5%", orderable: false }
+      ]

@@ -64,7 +64,7 @@ class TradeOrganizationDatatable
   end
 
   def sort_column
-    columns = %w[license_no enterprize_name_in_eng owners_name_eng business_place Edit Delete]
+    columns = %w[license_no enterprize_name_in_eng owners_name_eng not_orderable not_orderable not_orderable]
     columns[params[:iSortCol_0].to_i]
   end
 
