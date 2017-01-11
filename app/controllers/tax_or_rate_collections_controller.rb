@@ -23,7 +23,7 @@ class TaxOrRateCollectionsController < ApplicationController
     @tax_or_rate_collection = TaxOrRateCollection.new(tax_or_rate_collections_params)
 
     respond_to do |format|
-      if @tax_or_rate_collection.save!
+      if @tax_or_rate_collection.save
         format.html { redirect_to @tax_or_rate_collection, notice: 'Collection was successfully created.' }
         format.json { render :show, status: :created, location: @tax_or_rate_collection }
       else

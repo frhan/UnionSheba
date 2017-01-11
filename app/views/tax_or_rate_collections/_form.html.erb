@@ -9,7 +9,7 @@
 
           <% if @tax_or_rate_collection.errors.any? %>
               <div id="signupalert" class="alert alert-danger">
-                <h2><%= pluralize(@tax_or_rate_collection.errors.count, "error") %> prohibited to Crate Tax collection</h2>
+                <h2><%= pluralize(@tax_or_rate_collection.errors.count, "error") %> prohibited to save Tax collection</h2>
                 <ul>
                   <% @tax_or_rate_collection.errors.full_messages.each do |msg| %>
                       <li><%= msg %></li>

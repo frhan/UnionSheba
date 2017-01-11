@@ -5,6 +5,8 @@ class OthersCollection <  ActiveRecord::Base
   accepts_nested_attributes_for :collection_money,:allow_destroy => true
   belongs_to :union
 
+  validates :senders_name,:senders_address,:time_line,:owners_name_in_english,presence: true
+
   def money_senders_name
     self.senders_name
   end

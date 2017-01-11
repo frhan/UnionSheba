@@ -23,7 +23,7 @@ class OthersCollectionsController < ApplicationController
     @others_collection = OthersCollection.new(others_collections_params)
 
     respond_to do |format|
-      if @others_collection.save!
+      if @others_collection.save
         format.html { redirect_to @others_collection, notice: 'Collection was successfully created.' }
         format.json { render :show, status: :created, location: @others_collection }
       else

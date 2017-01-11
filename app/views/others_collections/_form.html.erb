@@ -9,7 +9,7 @@
 
           <% if @others_collection.errors.any? %>
               <div id="signupalert" class="alert alert-danger">
-                <h2><%= pluralize(@others_collection.errors.count, "error") %> prohibited to Crate Tax collection</h2>
+                <h2><%= pluralize(@others_collection.errors.count, "error") %> prohibited to save Others collection</h2>
                 <ul>
                   <% @others_collection.errors.full_messages.each do |msg| %>
                       <li><%= msg %></li>
