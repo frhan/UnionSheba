@@ -16,9 +16,6 @@
       <%= submit_tag :Search, class: "btn btn-primary" %>
   <% end %>
 
-  <%= link_to 'pdf', collection_moneys_path(start_date: params[:start_date], end_date: params[:end_date],format: :pdf), class: "btn" %>
-
-
   <div id="results">
     <%= render 'results' %>
   </div>

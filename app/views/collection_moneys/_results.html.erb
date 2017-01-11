@@ -1,3 +1,5 @@
+<%= link_to 'pdf', collection_moneys_path(start_date: params[:start_date], end_date: params[:end_date],format: :pdf), class: "btn" %>
+
 <% if @collection_moneys_kaminary %>
     <table class="table table-bordered table-striped">
       <thead>

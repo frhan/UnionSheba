@@ -34,7 +34,6 @@ class CollectionMoney < ActiveRecord::Base
     return 'বিবিধ' if collectable_type == 'TradeLicense' || collectable_type == 'OthersCollection'
     return 'ট্যাক্স ও রেট' if collectable_type == 'TaxOrRateCollection'
     return String.new
-
   end
 
   def money_senders_name
