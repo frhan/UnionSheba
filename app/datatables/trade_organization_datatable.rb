@@ -8,18 +8,36 @@ class TradeOrganizationDatatable
 
   def as_json(options = {})
     {
-        sEcho: params[:sEcho].to_i,
-        iTotalRecords: total_records,
-        iTotalDisplayRecords: trade_organizations.count,
-        aaData: data
+        data: data,
+        recordsTotal:  my_search.count,
+        recordsFiltered: sort_order_filter.count
     }
   end
 
   private
 
+  def my_search
+    @filtered_trade_organizations = @user.trade_organizations.where(status: :active)
+  end
+
+  def sort_order_filter
+    records = my_search.order("#{sort_column} #{sort_direction}")
+    if params[:search][:value].present?
+      records = records.where("license_no like :search or lower(enterprize_name_in_eng) like lower(:search) or lower(owners_name_eng) like lower(:search)",
+                              search: "%#{params[:search][:value]}%")
+    end
+    records
+  end
+
+  def display_on_page
+    Kaminari.paginate_array(sort_order_filter).page(page).per(per_page)
+    #sort_order_filter.page(page).per(per_page)
+  end
+
+
   def data
     trd_orgs = []
-    trade_organizations.map do |record|
+    display_on_page.map do |record|
       trd_org = []
       trd_org <<  link_to(record.license_no, trade_organization_path(record))
       trd_org <<  link_to(record.enterprize_name_in_eng, trade_organization_path(record))
@@ -33,43 +51,21 @@ class TradeOrganizationDatatable
   trd_orgs
   end
 
-  def trade_organizations
-    @trade_organizations ||= fetch_trade_organizations
-  end
-
-  def fetch_trade_organizations
-    trade_organizations = @user.trade_organizations.order("#{sort_column} #{sort_direction}")
-    trade_organizations = trade_organizations.where(status: :active);
-    #trade_organizations = trade_organizations.page(page).per(per_page)
-    if params[:sSearch].present?
-      trade_organizations = trade_organizations.where("license_no like :search or lower(enterprize_name_in_eng) like lower(:search) or lower(owners_name_eng) like lower(:search)",
-                                                      search: "%#{params[:sSearch]}%")
-    end
-    trade_organizations = Kaminari.paginate_array(trade_organizations).page(page).per(per_page)
-    trade_organizations
-  end
-
-  def total_records
-    trade_organizations = @user.trade_organizations
-    trade_organizations = trade_organizations.where(status: :active);
-    trade_organizations.count
-  end
-
   def page
-    params[:iDisplayStart].to_i/per_page + 1
+    params[:start].to_i/per_page + 1
   end
 
   def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
+    params[:length].to_i > 0 ? params[:length].to_i : 10
   end
 
   def sort_column
     columns = %w[license_no enterprize_name_in_eng owners_name_eng not_orderable not_orderable not_orderable]
-    columns[params[:iSortCol_0].to_i]
+    columns[params[:order][:'0'][:column].to_i]
   end
 
   def sort_direction
-    params[:sSortDir_0] == "desc" ? "desc" : "asc"
+    params[:order][:'0'][:dir] == "desc" ? "desc" : "asc"
   end
 
 
