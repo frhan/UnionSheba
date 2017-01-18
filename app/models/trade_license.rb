@@ -83,7 +83,10 @@ class TradeLicense < ActiveRecord::Base
   end
 
   def init
-    self.fiscal_year ||= current_year
+    now = Time.now
+    year = now.year
+    year = now.year - 1 if now.month < 6
+    self.fiscal_year = year.to_s
   end
 
 end
