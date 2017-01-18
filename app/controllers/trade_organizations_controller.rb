@@ -123,6 +123,12 @@ class TradeOrganizationsController < ApplicationController
   def destroy
     @trade_organization.update_attributes(status: :deleted)
 
+    if @trade_organization.trade_licenses.present?
+      @trade_organization.trade_licenses.each do |tl|
+        tl.remove
+      end
+    end
+
     respond_to do |format|
       format.html { redirect_to trade_organizations_url, notice: 'Trade Lisence was successfully destroyed.' }
       format.json { head :no_content }

@@ -50,6 +50,7 @@ class OthersCollectionsController < ApplicationController
 
   def destroy
     @others_collection.update_attributes(status: :deleted)
+    @others_collection.collection_money.remove if @others_collection.collection_money.present?
 
     respond_to do |format|
       format.html { redirect_to others_collections_path, notice: 'Collection was successfully destroyed.' }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170107122343) do
+ActiveRecord::Schema.define(version: 20170118134243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,10 +80,11 @@ ActiveRecord::Schema.define(version: 20170107122343) do
     t.decimal  "vat"
     t.integer  "collectable_id"
     t.string   "collectable_type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "serial_no"
     t.integer  "union_id"
+    t.string   "status",           default: "active"
   end
 
   add_index "collection_moneys", ["collectable_type", "collectable_id"], name: "index_collection_moneys_on_collectable_type_and_collectable_id", using: :btree
@@ -143,7 +144,7 @@ ActiveRecord::Schema.define(version: 20170107122343) do
     t.integer  "trade_organization_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.date     "isseu_date"
+    t.date     "issur_date"
   end
 
   add_index "trade_licenses", ["trade_organization_id"], name: "index_trade_licenses_on_trade_organization_id", using: :btree
@@ -199,6 +200,8 @@ ActiveRecord::Schema.define(version: 20170107122343) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "upazilas", ["district_id"], name: "index_upazilas_on_district_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: ""
     t.string   "username",               default: "", null: false
@@ -230,5 +233,6 @@ ActiveRecord::Schema.define(version: 20170107122343) do
   add_foreign_key "trade_licenses", "trade_organizations"
   add_foreign_key "trade_organizations", "unions"
   add_foreign_key "unions", "upazilas"
+  add_foreign_key "upazilas", "districts"
   add_foreign_key "users", "unions"
 end

@@ -63,19 +63,11 @@ class TradeLicense < ActiveRecord::Base
     self.trade_organization.owners_name_bng
   end
 
+  def remove
+    collection_money.remove if collection_money.present?
+  end
+
   private
-
-  def save_trade_license_no
-    trade_license_no = trade_organization.union.union_code << '-'<< license_fiscal_year << '-' << license_count.to_s
-    self.update_attributes(:licsense_no => trade_license_no)
-  end
-
-  def license_count
-    #TradeLicense.where(fiscal_year: self.fiscal_year).count + 1
-    #TODO: count -> join with trade org. where trade-organization union id ->
-    # self.trade_org.uinon_id and licsense fiscal year
-    TradeLicense.count + 1
-  end
 
   def license_fiscal_year
     return Time.now.year.to_s unless self.fiscal_year.present?

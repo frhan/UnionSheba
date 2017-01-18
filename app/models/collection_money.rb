@@ -4,7 +4,8 @@ class CollectionMoney < ActiveRecord::Base
   belongs_to :union
 
   after_create :save_serial_no
-
+  scope :by_type, lambda { |type,status| joins("INNER JOIN #{type.table_name} ON #{type.table_name}.id = #{CollectionMoney.table_name}.opinionable_id
+                                          AND #{Opinion.table_name}.opinionable_type = '#{type.to_s}'") }
   def total
     total = 0.0
     total = total + self.fee if self.fee.present?
@@ -44,6 +45,14 @@ class CollectionMoney < ActiveRecord::Base
 
   def money_senders_name
     self.collectable.money_senders_name if collectable.present?
+  end
+
+  def remove
+    self.update_attributes(status: :deleted)
+  end
+
+  def active?
+    self.status == 'active'
   end
 
  private

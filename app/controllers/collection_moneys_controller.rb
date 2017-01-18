@@ -10,10 +10,10 @@ class CollectionMoneysController < ApplicationController
 
     if @start_date && @end_date
       @collection_moneys = current_user.collection_moneys.
-          where(:created_at => @start_date.beginning_of_day..@end_date.end_of_day).
+          where(status: :active,:created_at => @start_date.beginning_of_day..@end_date.end_of_day).
           order("created_at desc")
     else
-      @collection_moneys = current_user.collection_moneys.order("created_at desc")
+      @collection_moneys = current_user.collection_moneys.where(status: :active).order("created_at desc")
     end
 
     #logger.debug(params[:collections][:type])
