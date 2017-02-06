@@ -20,8 +20,6 @@ https://coderwall.com/p/kqb3xq/rails-4-how-to-partials-ajax-dead-easy
 https://www.youtube.com/watch?v=j1zZ4Lgzf9s
 http://siunegu.github.io/barby/wicked_pdf/rails/pdf/2015/04/22/rails-pdf-barcodes/
 
-## delete status - delete problem
-## Fiscal year - autometic problem
-##
+#tax and other collection datatable
 
 
