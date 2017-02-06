@@ -143,7 +143,7 @@
             <p class="pull-right margin-right"> মাতা</p>
           </div>
           <div class="col-xs-9">
-            <p class="margin-left"><%= @citizen.mothers_name%></p>
+            <p class="margin-left"><%= @citizen.mothers_name %></p>
           </div>
         </div>
       </div>
@@ -153,15 +153,114 @@
       <div class="col-xs-12">
         <div class="row">
           <div class="col-xs-3 trade-label">
-            <p class="pull-right margin-right">Address</p>
+            <p class="pull-right margin-right">ওয়ার্ড</p>
           </div>
           <div class="col-xs-9">
-            <p class="margin-left"><%= @citizen.mothers_name%></p>
+            <p class="margin-left"><%= bangla_number @citizen.word_no.to_s %></p>
           </div>
         </div>
       </div>
     </div>
 
+    <div class="row margin-top-7">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-3 trade-label">
+            <p class="pull-right margin-right">ডাকঘর</p>
+          </div>
+          <div class="col-xs-9">
+            <p class="margin-left"><%=  @citizen.post %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-top-7">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-3 trade-label">
+            <p class="pull-right margin-right">উপজেলা</p>
+          </div>
+          <div class="col-xs-9">
+            <p class="margin-left"><%=  @citizen.upazila_name_bng %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row margin-top-7">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-3 trade-label">
+            <p class="pull-right margin-right">জেলা</p>
+          </div>
+          <div class="col-xs-9">
+            <p class="margin-left"><%=  @citizen.zila_name_bng %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-top-7">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-3 trade-label">
+            <p class="pull-right margin-right">জাতীয় পরিচয়পত্র নম্বর</p>
+          </div>
+          <div class="col-xs-9">
+            <p class="margin-left"><%=  @citizen.nid %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row margin-top-7">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-3 trade-label">
+            <p class="pull-right margin-right">জন্ম নিবন্ধন নম্বর</p>
+          </div>
+          <div class="col-xs-9">
+            <p class="margin-left"><%=  @citizen.birthid %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row ">
+      <div class="col-xs-12">
+        <p>তাহাকে আমি ব্যক্তিগতভাবে চিনি । তিনি আমার ইউনিয়ন এর স্থায়ী বাসিন্দা ও জন্মসূত্রে বাংলাদেশের নাগরিক ।</p>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="col-xs-12">
+        <p> আমার জানামতে তিনি উন্নত ও নৈতিক চরিত্রের অধিকারী। তিনি সমাজের শান্তি-শৃঙ্খলা ভঙ্গ কিংবা রাষ্ট্র বিরোধী কোনো
+          কার্যকলাপে অংশগ্রহণ করে নাই ।</p>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="col-xs-12">
+        <p class="text-center">আমি তাহার জীবনের সর্বাঙ্গীন উন্নতি কামনা করি</p>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+
+      <div class="col-xs-8 ">
+
+      </div>
+
+      <div class="col-xs-4">
+        <p class="text-center">চেয়ারম্যান</p>
+        <p class="text-center"><%= bangla_number(@citizen.union.union_no.to_s) %> নং <%= @citizen.union.name_in_bng %> ইউনিয়ন পরিষদ</p>
+      </div>
+
+    </div>
 
 
   </div>
