@@ -86,13 +86,6 @@
 
 
           <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">ওয়ার্ড নম্বরঃ</label>
-            <div class="col-md-9">
-              <%= f.number_field :word_no, class: "form-control", placeholder: "In English Number" %>
-            </div>
-          </div>
-
-          <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">উপজেলাঃ</label>
             <div class="col-md-9">
               <%= f.text_field :upazilla_name, class: "form-control", placeholder: "In Bangla" %>
@@ -129,6 +122,15 @@
               <%= f.text_field :business_place, class: "form-control", placeholder: "In Bangla" %>
             </div>
           </div>
+
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">ওয়ার্ড নম্বরঃ</label>
+            <div class="col-md-9">
+              <%= f.number_field :word_no, class: "form-control", placeholder: "In English Number" %>
+            </div>
+          </div>
+
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">দোকান/হোল্ডিং নং</label>
