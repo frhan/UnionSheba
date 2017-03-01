@@ -85,7 +85,7 @@ class OthersCollectionsController < ApplicationController
   end
 
   def others_collections_params
-    params.require(:others_collection).permit(:owners_name_in_english,:senders_name,:senders_address,:time_line,:union_id,
+    params.require(:others_collection).permit(:reason,:owners_name_in_english,:senders_name,:senders_address,:time_line,:union_id,
                                                    collection_money_attributes:[:fee,:fine,:remain,:union_id])
   end
 
