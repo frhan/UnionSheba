@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118134243) do
+ActiveRecord::Schema.define(version: 20170301220453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20170118134243) do
     t.string   "status",                 default: "active"
     t.string   "time_line"
     t.string   "owners_name_in_english"
+    t.string   "reason"
   end
 
   add_index "others_collections", ["union_id"], name: "index_others_collections_on_union_id", using: :btree

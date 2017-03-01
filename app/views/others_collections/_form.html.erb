@@ -50,6 +50,14 @@
           </div>
 
 
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">বাবদ</label>
+            <div class="col-md-9">
+              <%= f.text_field :reason, class: "form-control", placeholder: "In Bangla" %>
+            </div>
+          </div>
+
+
           <%= f.fields_for :collection_money do |cm| %>
               <div class="form-group">
                 <label for="nameInBn" class="col-md-3 control-label">গৃহীত অর্থ</label>
