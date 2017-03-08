@@ -62,7 +62,7 @@
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">অর্থ বছরঃ</label>
             <div class="col-md-9">
-              <%= f.number_field :fiscal_year, class: "form-control", placeholder: "In English number" %>
+              <%= f.number_field :fiscal_year,value: current_fiscal_year, class: "form-control", placeholder: "In English number" %>
               <span class="help-block">অর্থবছরের প্রথম বছরটি লিখুন । ২০১৬-২০১৭ অর্থবছর হলে শুধু ২০১৬ লিখুন (ইংরেজিতে)</span>
             </div>
           </div>
@@ -107,6 +107,7 @@
             </div>
           </div>
       <% end %>
+      <%= link_to 'Back', trade_organization_path(@trade_organization) %>
     </div>
 
   </div>

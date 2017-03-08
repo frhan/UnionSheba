@@ -1,7 +1,7 @@
 class TradeLicense < ActiveRecord::Base
   include ApplicationHelper
   belongs_to :trade_organization
-  after_initialize :init
+  #after_initialize :init
   has_one :collection_money,as: :collectable,dependent: :destroy
   accepts_nested_attributes_for :collection_money,:allow_destroy => true
 
