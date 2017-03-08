@@ -23,7 +23,7 @@ class TaxOrRateCollectionDatatable
     records = active_tax_or_rates.order("#{sort_column} #{sort_direction}")
     if params[:search][:value].present?
       records = records.where("lower(owners_name_in_english) like :search or lower(owners_name) like :search",
-                              search: "%#{params[:sSearch]}%")
+                              search: "%#{params[:search][:value]}%")
     end
     records
   end

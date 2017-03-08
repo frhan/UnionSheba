@@ -22,7 +22,7 @@ class OthersCollectionDatatable
   def sort_order_filter
     records = active_others_collections.order("#{sort_column} #{sort_direction}")
     if params[:search][:value].present?
-      records = records.where("lower(senders_name) like :search", search: "%#{params[:sSearch]}%")
+      records = records.where("lower(senders_name) like :search", search: "%#{params[:search][:value]}%")
     end
     records
   end
