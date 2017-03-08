@@ -8,17 +8,33 @@ class OthersCollectionDatatable
 
   def as_json(options = {})
     {
-        sEcho: params[:sEcho].to_i,
-        iTotalRecords: total_records,
-        iTotalDisplayRecords: others_collections.count,
-        aaData: data
+        data: data,
+        recordsTotal:  active_others_collections.count,
+        recordsFiltered: sort_order_filter.count
     }
   end
   private
 
+  def active_others_collections
+    @filtered_others_collections = @user.others_collections.where(status: :active)
+  end
+
+  def sort_order_filter
+    records = active_others_collections.order("#{sort_column} #{sort_direction}")
+    if params[:search][:value].present?
+      records = records.where("lower(senders_name) like :search", search: "%#{params[:sSearch]}%")
+    end
+    records
+  end
+
+  def display_on_page
+    Kaminari.paginate_array(sort_order_filter).page(page).per(per_page)
+    #sort_order_filter.page(page).per(per_page)
+  end
+
   def data
     otherss = []
-    others_collections.map do |record|
+    display_on_page.map do |record|
       others = []
       others <<  link_to(formatted_date_time(record.created_at), others_collection_path(record))
       others <<  link_to(record.owners_name_in_english, others_collection_path(record))
@@ -37,39 +53,20 @@ class OthersCollectionDatatable
     date_time.strftime('%d-%m-%Y') if date_time.present?
   end
 
-  def others_collections
-    @others_collections ||= fetch_others_collections
-  end
-
-  def fetch_others_collections
-    others_collections = @user.others_collections.order("#{sort_column} #{sort_direction}")
-    others_collections = others_collections.where(status: :active);
-    if params[:sSearch].present?
-      others_collections = others_collections.where("lower(senders_name) like :search", search: "%#{params[:sSearch]}%")
-    end
-    others_collections = Kaminari.paginate_array(others_collections).page(page).per(per_page)
-    others_collections
-  end
-
-  def total_records
-    others_collections = @user.others_collections.where(status: :active);
-    others_collections.count
-  end
-
   def page
-    params[:iDisplayStart].to_i/per_page + 1
+    params[:start].to_i/per_page + 1
   end
 
   def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
+    params[:length].to_i > 0 ? params[:length].to_i : 10
   end
 
   def sort_column
     columns = %w[created_at owners_name_in_english senders_name senders_address not_orderable not_orderable not_orderable]
-    columns[params[:iSortCol_0].to_i]
+    columns[params[:order][:'0'][:column].to_i]
   end
 
   def sort_direction
-    params[:sSortDir_0] == "desc" ? "desc" : "asc"
+    params[:order][:'0'][:dir] == "desc" ? "desc" : "asc"
   end
 end

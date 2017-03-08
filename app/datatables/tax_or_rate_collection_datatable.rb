@@ -8,17 +8,34 @@ class TaxOrRateCollectionDatatable
 
   def as_json(options = {})
     {
-        sEcho: params[:sEcho].to_i,
-        iTotalRecords: total_records,
-        iTotalDisplayRecords: tax_or_rate_collections.count,
-        aaData: data
+        data: data,
+        recordsTotal:  active_tax_or_rates.count,
+        recordsFiltered: sort_order_filter.count
     }
   end
   private
 
+  def active_tax_or_rates
+    @filtered_tax_or_rate_collections = @user.tax_or_rate_collections.where(status: :active)
+  end
+
+  def sort_order_filter
+    records = active_tax_or_rates.order("#{sort_column} #{sort_direction}")
+    if params[:search][:value].present?
+      records = records.where("lower(owners_name_in_english) like :search or lower(owners_name) like :search",
+                              search: "%#{params[:sSearch]}%")
+    end
+    records
+  end
+
+  def display_on_page
+    Kaminari.paginate_array(sort_order_filter).page(page).per(per_page)
+    #sort_order_filter.page(page).per(per_page)
+  end
+
   def data
     tax_or_rates = []
-    tax_or_rate_collections.map do |record|
+    display_on_page.map do |record|
       tax_or_rate = []
       tax_or_rate <<  link_to(formatted_date_time(record.created_at), tax_or_rate_collection_path(record))
       tax_or_rate <<  link_to(record.owners_name_in_english, tax_or_rate_collection_path(record))
@@ -37,39 +54,40 @@ class TaxOrRateCollectionDatatable
     date_time.strftime('%d-%m-%Y') if date_time.present?
   end
 
-  def tax_or_rate_collections
-    @tax_or_rate_collections ||= fetch_tax_or_rate_collections
-  end
+  # def tax_or_rate_collections
+  #   @tax_or_rate_collections ||= fetch_tax_or_rate_collections
+  # end
 
-  def fetch_tax_or_rate_collections
-    tax_or_rate_collections = @user.tax_or_rate_collections.order("#{sort_column} #{sort_direction}")
-    tax_or_rate_collections = tax_or_rate_collections.where(status: :active);
-    if params[:sSearch].present?
-      tax_or_rate_collections = tax_or_rate_collections.where("lower(owners_name_in_english) like :search or lower(owners_name) like :search", search: "%#{params[:sSearch]}%")
-    end
-    tax_or_rate_collections = Kaminari.paginate_array(tax_or_rate_collections).page(page).per(per_page)
-    tax_or_rate_collections
-  end
+  # def fetch_tax_or_rate_collections
+  #   tax_or_rate_collections = @user.tax_or_rate_collections.order("#{sort_column} #{sort_direction}")
+  #   tax_or_rate_collections = tax_or_rate_collections.where(status: :active);
+  #   if params[:sSearch].present?
+  #     tax_or_rate_collections = tax_or_rate_collections.where("lower(owners_name_in_english) like :search or lower(owners_name) like :search", search: "%#{params[:sSearch]}%")
+  #   end
+  #   tax_or_rate_collections = Kaminari.paginate_array(tax_or_rate_collections).page(page).per(per_page)
+  #   tax_or_rate_collections
+  # end
 
-  def total_records
-    tax_or_rate_collections = @user.tax_or_rate_collections.where(status: :active);
-    tax_or_rate_collections.count
-  end
+  # def total_records
+  #   tax_or_rate_collections = @user.tax_or_rate_collections.where(status: :active);
+  #   tax_or_rate_collections.count
+  # end
 
   def page
-    params[:iDisplayStart].to_i/per_page + 1
+    params[:start].to_i/per_page + 1
   end
 
   def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
+    params[:length].to_i > 0 ? params[:length].to_i : 10
   end
 
   def sort_column
     columns = %w[created_at owners_name_in_english owners_name village_name not_orderable not_orderable not_orderable ]
-    columns[params[:iSortCol_0].to_i]
+    columns[params[:order][:'0'][:column].to_i]
   end
 
   def sort_direction
-    params[:sSortDir_0] == "desc" ? "desc" : "asc"
+    params[:order][:'0'][:dir] == "desc" ? "desc" : "asc"
   end
+
 end
