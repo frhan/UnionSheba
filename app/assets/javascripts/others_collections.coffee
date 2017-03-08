@@ -3,11 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
   $('#others_collections_table').dataTable
-    sPaginationType: "full_numbers"
-    bJQueryUI: true
-    bProcessing: true
-    bServerSide: true
-    sAjaxSource: $('#others_collections_table').data('source')
+    pagingType: "full_numbers"
+    jQueryUI: true
+    processing: true
+    serverSide: true
+    ajax: $('#others_collections_table').data('source')
     columns: [
       { width: "15%" }
       { width: "20%"}
