@@ -24,7 +24,7 @@ class TradeLicensesController < ApplicationController
   def update
     trade_organization = @trade_license.trade_organization
     respond_to do |format|
-      if @trade_license.update!(trade_license_params)
+      if @trade_license.update(trade_license_params)
         format.html { redirect_to  trade_organization_path(trade_organization), notice: 'Trade license was successfully updated.' }
         format.json { render :show, status: :ok, location: @trade_license }
       else

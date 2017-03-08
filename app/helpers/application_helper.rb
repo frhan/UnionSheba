@@ -181,4 +181,5 @@ module ApplicationHelper
      return 'বিবিধ কালেকশন'  if params[:collections][:type] == 'OthersCollection'
   end
 
+
 end
