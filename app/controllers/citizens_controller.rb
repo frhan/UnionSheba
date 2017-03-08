@@ -64,10 +64,10 @@ class CitizensController < InheritedResources::Base
                :disposition => 'attachment',
                page_size: 'A4',
                :show_as_html => params[:debug].present?,
-               margin:  {   top:               0,                     # default 10 (mm)
+               margin:  {   top:               10,                     # default 10 (mm)
                             bottom:            0,
-                            left:              0,
-                            right:             0 },
+                            left:              5,
+                            right:             5 },
                dpi:                            '300'
       end
     end

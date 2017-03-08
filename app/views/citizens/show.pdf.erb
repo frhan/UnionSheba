@@ -3,6 +3,15 @@
   /* ======================================
    *  02. typography
   /* ====================================== */
+  /*.row {*/
+  /*padding:0;*/
+  /*margin:0;*/
+  /*}*/
+
+  /*[class*='col-'] {*/
+  /*padding:0;*/
+  /*margin:0;*/
+  /*}*/
 
   h1,
   h2,
@@ -42,7 +51,6 @@
     height: auto;
   }
 
-
   /* ======================================
    *  03. custom padding, margin
   /* ====================================== */
@@ -50,16 +58,15 @@
   .wrapper-content {
     border: 5px double #666;
     padding: 1px;
-    margin: 50px 0;
-    background: url('<%= Rails.root.join('public','images','bd_png.png') %>') no-repeat center 39%;
     position: relative;
     overflow: hidden;
   }
+
   .wrapper-content-inner {
     border: 1px solid #666;
-    padding: 50px 20px;
   }
-  .wrapper-content:after{
+
+  .wrapper-content:after {
     opacity: 0.6;
   }
 
@@ -68,7 +75,7 @@
   }
 
   .logo {
-    margin-bottom: 20px;
+
   }
 
   .top-area {
@@ -78,12 +85,12 @@
   .top-area h1 {
     font-size: 22px;
     line-height: 40px;
-    margin-bottom: 50px;
+
   }
 
   .top-area h3 {
     font-weight: 400;
-    margin-bottom: 20px;
+
   }
 
   .top-area h4 {
@@ -91,11 +98,11 @@
   }
 
   .main-area {
-    margin-top: 40px;
+
   }
 
   .main-area h5 {
-    margin-top: 40px;
+
     margin-bottom: 15px;
   }
 
@@ -113,23 +120,22 @@
   }
 
   .bottom-area-left {
-    margin-top: 100px;
+
   }
 
   .bottom-area-left ol {
-    margin-left: -26px;
     line-height: 19px;
   }
 
   .bottom-area-left ol li {
     font-size: 11px;
     font-weight: 600;
-    margin-bottom: 8px;
+
   }
 
   .bottom-area-left ol ol {
     list-style: none;
-    margin-top: 10px;
+
   }
 
   .bottom-area-right ul li {
@@ -137,72 +143,85 @@
     font-size: 12px;
   }
 
-  .bottom-area-right {
-    margin-top: 100px;
-  }
-
   .footer {
     text-align: center;
-    margin-top: 30px;
+
   }
 
   .footer p {
     text-decoration: underline;
   }
 
-  * {
-    -webkit-box-sizing: border-box;
-    /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;
-    /* Firefox, other Gecko */
-    box-sizing: border-box;
-  }
-
   body {
-    font-size: 14px;
     font-weight: 400;
     line-height: 24px;
-    text-transform: capitalize;
     color: #000;
+    font-size: 18px;
     width: 100%;
     background: #FFFFFF;
   }
 
+  .wrapper3 {
+    width: 100%;
+    height: 100%;
+  }
+
+  .container {
+    padding: 0;
+    margin: 0;
+  }
+    .test{
+      background: #730E15;
+    }
 </style>
 
 <!--========================================================
                         MAIN AREA
 =========================================================-->
-<div class="wrapper">
+<div class="wrapper3">
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
         <div class="wrapper-content">
           <div class="wrapper-content-inner">
-            <div class="logo">
-              <img src="assets/img/logo.png" alt="..." class="img-responsive">
-            </div>
-            <div class="top-area">
-              <h1>Government of the People's Republic of Bangladesh <br> National Board of Revenue</h1>
-              <h3>Taxpayer's Identification Number (TIN) Certificate</h3>
-              <h4>TIN : 150487299836</h4>
-            </div>
-            <div class="main-area">
-              <p>This is to Certify that <strong>Md. Farhan Faruque</strong> is a Registered Taxpayer of National Board of Revenue under the jurisdiction of <strong>Taxes Circle-146 (Salary), </strong>Taxes Zone <strong>07, Dhaka.</strong></p>
-              <h5>Taxpayer's Particulars:</h5>
-              <ul>
-                <li>1) Name: <strong>Md. Farhan Faruque</strong></li>
-                <li>2) Father's Name: <strong>Md. Abdul Hamid</strong></li>
-                <li>3) Mother's Name: <strong>Farida Begum</strong></li>
-                <li>4) Current Address: <strong>House#37,Road#15,Sector#13, Uttara, Dhaka, PO: 1230</strong></li>
-                <li>5) Previous TIN: <strong>Not Applicable</strong></li>
-                <li>6) Status: <strong>Individual</strong></li>
-              </ul>
-              <p>Date: December 19, 2013</p>
+
+            <div class="row test" >
+              <div class="col-xs-4 col-xs-offset-4">
+                <div class="logo">
+                  <%= image_tag wicked_pdf_asset_base64('bdgovt.png')%>
+                </div>
+              </div>
             </div>
 
+
+            <div class="top-area">
+              <h1>৪ নং গঙ্গাছড়া ইউনিওন পরিষদ</h1>
+              <h4>৪ নং গঙ্গাছড়া ইউনিওন পরিষদ</h4>
+              <h3>নাগরিকত্ব ও চারিত্রিক সনদপত্র</h3>
+              <h4>নাগরিকত্ব নং: ১২৩৪৫৫</h4>
+            </div>
+            <div class="main-area">
+              <p>আমি এই মর্মে সনদ প্রদান করিতেছি যে,<strong> মোঃ ফারহান ফারুক </strong> - আমার ইউনিয়নের স্থায়ী
+                বাসিন্দা এবং জন্মসূত্রে বাংলাদেশের নাগরিক । তাহাকে আমি ব্যক্তিগতভাবে চিনি ।</p>
+              <h5>নাগরিকের বিবরণ:</h5>
+              <ul>
+                <li>নামঃ <strong>মোঃ ফারহান ফারুক</strong></li>
+                <li>বাবার নামঃ <strong> আবদুল হামিদ</strong></li>
+                <li>মায়ের নামঃ <strong>ফরিদা</strong></li>
+                <li>ঠিকানাঃ ওয়ার্ড নং- ০৩, গ্রাম- আরাযিনিয়ামত, ডাকঘর- বুরিরহাত ফার্ম</li>
+                <li>উপজেলাঃ গঙ্গাছড়া</li>
+                <li>জেলাঃ রংপুর</li>
+                <li>জাতীয় পরিচয়পত্র নম্বরঃ ১২৩৪৫৬৭৮</li>
+              </ul>
+              <p>ইস্যুর তারিখঃ: December 19, 2013</p>
+            </div>
+
+            <p> আমার জানামতে তিনি উন্নত ও নৈতিক চরিত্রের অধকারী । তিনি সমাজের শান্তি-শৃঙ্খলা ভঙ্গ কিংবা রাষ্ট্র
+              বিরোধী কোনো কার্যকলাপে অংশগ্রহণ করে নাই ।</p>
+
+            <h4>আমি তাহার জীবনের সর্বাঙ্গীন উন্নতি কামনা করি</h4>
+
             <div class="footer">
-              <p>N.B: This is a system generated certificate and requires no manual signature</p>
             </div>
           </div>
         </div>
