@@ -41,13 +41,23 @@ class OthersCollectionDatatable
       others <<  link_to(record.senders_name, others_collection_path(record))
       others << record.senders_address
       others << record.collection_money.total
-      others << link_to("Edit", edit_others_collection_path(record)) if can? :edit, OthersCollection
-      others << link_to("Delete", others_collection_path(record), method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, OthersCollection
-
+      others << edit_link(record)
+      others << del_link(record)
       otherss << others
     end
     otherss
   end
+
+  def edit_link(record)
+    return  link_to("Edit", edit_others_collection_path(record)) if can? :edit, OthersCollection
+    ''
+  end
+
+  def del_link(record)
+    return link_to("Delete", others_collection_path(record), method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, OthersCollection
+    ''
+  end
+
 
   def formatted_date_time(date_time)
     date_time.strftime('%d-%m-%Y') if date_time.present?

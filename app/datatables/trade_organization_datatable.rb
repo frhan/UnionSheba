@@ -43,12 +43,21 @@ class TradeOrganizationDatatable
       trd_org <<  link_to(record.enterprize_name_in_eng, trade_organization_path(record))
       trd_org << record.owners_name_eng
       trd_org << record.business_place
-      trd_org << link_to("Edit", edit_trade_organization_path(record)) if can? :edit, TradeOrganization
-      trd_org << link_to("Delete", trade_organization_path(record), method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, TradeOrganization
-
+      trd_org << edit_link(record)
+      trd_org <<  del_link(record)
       trd_orgs << trd_org
     end
   trd_orgs
+  end
+
+  def edit_link(record)
+   return  link_to("Edit", edit_trade_organization_path(record)) if can? :edit, TradeOrganization
+   ''
+  end
+
+  def del_link(record)
+    return link_to("Delete", trade_organization_path(record), method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, TradeOrganization
+    ''
   end
 
   def page

@@ -25,12 +25,22 @@ class CitizensDatatable
       ctzn << link_to(record.birthid, citizen_path(record))
       ctzn << link_to(record.name_in_eng, citizen_path(record))
       ctzn << record.fathers_name
-      ctzn << link_to("Edit", edit_citizen_path(record)) if can? :edit, Citizen
-      ctzn << link_to("Delete", citizen_path(record), method: :delete, data: { confirm: 'Are you sure?' })  if can? :delete, Citizen
+      ctzn << edit_link(record)
+      ctzn << del_link(record)
 
       ctzns << ctzn
     end
     ctzns
+  end
+
+  def edit_link(record)
+    return  link_to("Edit", edit_citizen_path(record)) if can? :edit, Citizen
+    ''
+  end
+
+  def del_link(record)
+    return link_to("Delete", citizen_path(record), method: :delete, data: { confirm: 'Are you sure?' })  if can? :delete, Citizen
+    ''
   end
 
   def citizens
