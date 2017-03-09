@@ -35,12 +35,12 @@ class CitizensDatatable
 
   def edit_link(record)
     return  link_to("Edit", edit_citizen_path(record)) if can? :edit, Citizen
-    ''
+    '-'
   end
 
   def del_link(record)
     return link_to("Delete", citizen_path(record), method: :delete, data: { confirm: 'Are you sure?' })  if can? :delete, Citizen
-    ''
+    '-'
   end
 
   def citizens

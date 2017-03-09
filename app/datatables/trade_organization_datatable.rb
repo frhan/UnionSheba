@@ -52,12 +52,12 @@ class TradeOrganizationDatatable
 
   def edit_link(record)
    return  link_to("Edit", edit_trade_organization_path(record)) if can? :edit, TradeOrganization
-   ''
+   '-'
   end
 
   def del_link(record)
     return link_to("Delete", trade_organization_path(record), method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, TradeOrganization
-    ''
+    '-'
   end
 
   def page

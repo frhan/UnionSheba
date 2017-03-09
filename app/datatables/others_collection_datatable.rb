@@ -50,12 +50,12 @@ class OthersCollectionDatatable
 
   def edit_link(record)
     return  link_to("Edit", edit_others_collection_path(record)) if can? :edit, OthersCollection
-    ''
+    '-'
   end
 
   def del_link(record)
     return link_to("Delete", others_collection_path(record), method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, OthersCollection
-    ''
+    '-'
   end
 
 
