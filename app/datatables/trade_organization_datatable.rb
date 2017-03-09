@@ -4,6 +4,7 @@ class TradeOrganizationDatatable
   def initialize(view,user)
     @view = view
     @user = user
+    logger.debug @user
   end
 
   def as_json(options = {})
