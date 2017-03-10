@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
   $('#tax_or_rate_collections_table').dataTable
-    pagingType: "full_numbers"
+    pagingType: "full"
     jQueryUI: true
     processing: true
     serverSide: true

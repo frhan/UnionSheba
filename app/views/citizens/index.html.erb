@@ -9,20 +9,14 @@
       <th>Birth Id</th>
       <th>Name</th>
       <th>Fathers Name</th>
-      <% if can? :edit, Citizen %>
-          <th>Edit</th>
-      <% end %>
-
-      <% if can? :delete, Citizen %>
-          <th>Delete</th>
-      <% end %>
-
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
     </thead>
     <tbody>
     </tbody>
   </table>
   <% if can? :create, Citizen %>
-    <%= link_to 'New', new_citizen_path, class: "btn btn-primary" %>
+      <%= link_to 'New', new_citizen_path, class: "btn btn-primary" %>
   <% end %>
 </div>

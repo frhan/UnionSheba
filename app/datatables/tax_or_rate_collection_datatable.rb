@@ -42,36 +42,26 @@ class TaxOrRateCollectionDatatable
       tax_or_rate <<  link_to(record.owners_name, tax_or_rate_collection_path(record))
       tax_or_rate << record.village_name
       tax_or_rate << record.collection_money.total
-      tax_or_rate << link_to("Edit", edit_tax_or_rate_collection_path(record)) if can? :edit, TaxOrRateCollection
-      tax_or_rate << link_to("Delete", tax_or_rate_collection_path(record), method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, TaxOrRateCollection
-
+      tax_or_rate << edit_link(record)
+      tax_or_rate << del_link(record)
       tax_or_rates << tax_or_rate
     end
     tax_or_rates
   end
 
+  def edit_link(record)
+    return  link_to("Edit", edit_tax_or_rate_collection_path(record)) if can? :edit, TaxOrRateCollection
+    '-'
+  end
+
+  def del_link(record)
+    return link_to("Delete", tax_or_rate_collection_path(record), method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, TaxOrRateCollection
+    '-'
+  end
+
   def formatted_date_time(date_time)
     date_time.strftime('%d-%m-%Y') if date_time.present?
   end
-
-  # def tax_or_rate_collections
-  #   @tax_or_rate_collections ||= fetch_tax_or_rate_collections
-  # end
-
-  # def fetch_tax_or_rate_collections
-  #   tax_or_rate_collections = @user.tax_or_rate_collections.order("#{sort_column} #{sort_direction}")
-  #   tax_or_rate_collections = tax_or_rate_collections.where(status: :active);
-  #   if params[:sSearch].present?
-  #     tax_or_rate_collections = tax_or_rate_collections.where("lower(owners_name_in_english) like :search or lower(owners_name) like :search", search: "%#{params[:sSearch]}%")
-  #   end
-  #   tax_or_rate_collections = Kaminari.paginate_array(tax_or_rate_collections).page(page).per(per_page)
-  #   tax_or_rate_collections
-  # end
-
-  # def total_records
-  #   tax_or_rate_collections = @user.tax_or_rate_collections.where(status: :active);
-  #   tax_or_rate_collections.count
-  # end
 
   def page
     params[:start].to_i/per_page + 1

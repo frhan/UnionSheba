@@ -5,8 +5,9 @@ class Ability
 
       if user.admin?
         can :manage, :all
-      else
+      elsif user.user?
         can :read, :all
+        can :create,:all
       end
 
     # Define abilities for the passed in user here. For example:
