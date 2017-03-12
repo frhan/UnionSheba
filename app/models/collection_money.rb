@@ -55,6 +55,26 @@ class CollectionMoney < ActiveRecord::Base
     self.status == 'active'
   end
 
+  def collection_fee
+    return self.fee if self.fee.present?
+    0.0
+  end
+
+  def collection_fine
+    return self.fine if self.fine.present?
+    0.0
+  end
+
+  def collection_remain
+    return self.remain if self.remain.present?
+    0.0
+  end
+
+  def collection_vat
+    return self.vat if self.vat.present?
+    0.0
+  end
+
  private
 
   def save_serial_no
