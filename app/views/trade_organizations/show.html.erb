@@ -7,7 +7,6 @@
     </div>
     <div class="panel-body">
       <div class="row">
-
         <div class=" col-md-9 col-lg-9 ">
           <table class="table table-user-information">
             <tbody>
@@ -45,15 +44,25 @@
             </tbody>
           </table>
 
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=" col-md-12 col-lg-12 ">
+
           <%= link_to 'Print Certificate', trade_organization_path(@trade_organization, format: 'pdf'), class: "btn btn-success" %>
-          <%= link_to 'Print Money Receipt', print_money_recipt_trade_organization_path(@trade_organization,format: 'pdf'), class: "btn btn-info" %>
+          <%= link_to 'Print Money Receipt', print_money_recipt_trade_organization_path(@trade_organization, format: 'pdf'), class: "btn btn-info" %>
+
 
           <% if can? :create, TradeLicense %>
               <%= link_to 'Renew License', renew_trade_organization_path(@trade_organization), class: "btn btn-primary" %>
           <% end %>
 
+          <%= link_to 'Tax Rate', new_tax_or_rate_collection_path(trade_org: @trade_organization), class: "btn btn-info" %>
         </div>
       </div>
+
     </div>
 
 
