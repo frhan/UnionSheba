@@ -181,5 +181,12 @@ module ApplicationHelper
      return 'বিবিধ কালেকশন'  if params[:collections][:type] == 'OthersCollection'
   end
 
+  def current_fiscal_year_bangla
+      now = Time.now
+      year = now.year
+      year = now.year - 1 if now.month < 6 #if fiscal year less than june
+      bangla_number(year.to_s) << '-'<< bangla_number((year + 1).to_s)
+  end
+
 
 end

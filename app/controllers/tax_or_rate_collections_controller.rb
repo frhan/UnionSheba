@@ -17,6 +17,11 @@ class TaxOrRateCollectionsController < ApplicationController
   def new
     @tax_or_rate_collection = TaxOrRateCollection.new
     @tax_or_rate_collection.build_collection_money
+
+    if params[:trade_org]
+      @tax_or_rate_collection.init(TradeOrganization.find(params[:trade_org]))
+    end
+
   end
 
   def create
