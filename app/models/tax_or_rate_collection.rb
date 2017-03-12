@@ -16,11 +16,16 @@ class TaxOrRateCollection < ActiveRecord::Base
       self.village_name = mouja trade_org.business_place
       self.owners_name = trade_org.owners_name_bng
       self.owners_name_in_english = trade_org.owners_name_eng
+      self.apprisal_no = chromic_no trade_org.license_no
     end
   end
 
   def mouja(village_name)
     village_name << ' (' << current_fiscal_year_bangla << ' অর্থবছরের পেশা, ব্যবসা, জীবিকার কর বাবদ' << ')'
+  end
+
+  def chromic_no(license_no)
+    license_no.split('-').last if license_no.present?
   end
 
 end
