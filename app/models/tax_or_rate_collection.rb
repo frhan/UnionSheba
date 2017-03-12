@@ -20,7 +20,7 @@ class TaxOrRateCollection < ActiveRecord::Base
   end
 
   def mouja(village_name)
-    'village_name' << ' (' << current_fiscal_year_bangla << ' অর্থবছরের পেশা, ব্যবসা, জীবিকার কর বাবদ' << ')'
+    village_name << ' (' << current_fiscal_year_bangla << ' অর্থবছরের পেশা, ব্যবসা, জীবিকার কর বাবদ' << ')'
   end
 
 end
