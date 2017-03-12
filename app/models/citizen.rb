@@ -43,6 +43,10 @@ class Citizen < ActiveRecord::Base
     self.saved_at = Time.now
   end
 
+  def save_citizen_no
+    #self.saved_at = Time.now
+  end
+
   def requested_at_formatted
     return String.new unless requested_at.present?
     self.requested_at.strftime("%d-%m-%Y %I:%M:%S %p")

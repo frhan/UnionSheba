@@ -1,4 +1,9 @@
 class CitizensController < InheritedResources::Base
+  require 'barby'
+  require 'barby/barcode'
+  require 'barby/barcode/qr_code'
+  require 'barby/outputter/png_outputter'
+
   include ApplicationHelper,UnionHelper
   before_filter :authenticate_user!
   load_and_authorize_resource
@@ -54,6 +59,7 @@ class CitizensController < InheritedResources::Base
 
   def show
     @citizen = Citizen.find(params[:id])
+    @barcode = barcode_output( @citizen)
     respond_to do |format|
       format.html
       format.pdf do
@@ -76,6 +82,16 @@ class CitizensController < InheritedResources::Base
   def search
 
   end
+
+  def barcode_output( citizen )
+    barcode_string = citizen.name_in_eng
+    barcode = Barby::QrCode.new(barcode_string, level: :q, size: 5)
+
+    # PNG OUTPUT
+    base64_output = Base64.encode64(barcode.to_png({ xdim: 5 }))
+    "data:image/png;base64,#{base64_output}"
+  end
+
 
   private
 
