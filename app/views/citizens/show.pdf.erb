@@ -112,7 +112,8 @@
   }
 
   .main-area h5 {
-    margin-top: 40px;
+    margin-top: 30px;
+    text-size: 18px;
     margin-bottom: 10px;
   }
 
@@ -181,8 +182,6 @@
   }
 
   body {
-    font-weight: 400;
-    line-height: 24px;
     color: #000;
     font-size: 18px;
     width: 100%;
@@ -242,7 +241,7 @@
                 <li>১) নামঃ <b><%= @citizen.name_in_bng %></b></li>
                 <li>২) পিতার নামঃ <b> <%= @citizen.fathers_name %></b> </li>
                 <li>৩) মাতার নামঃ <b><%= @citizen.mothers_name %> </b> </li>
-                <li>৪) ওয়ার্ড নংঃ <%= bangla_number(@citizen.word_no.to_s) %></li>
+                <li>৪) ওয়ার্ড নম্বরঃ <%= bangla_number(@citizen.word_no.to_s) %></li>
                 <li>৫) গ্রামঃ <%= @citizen.village %></li>
                 <li>৬) ডাকঘরঃ <%= @citizen.post %></li>
                 <li>৭) উপজেলাঃ <%= @citizen.upazila_name_bng %></li>
