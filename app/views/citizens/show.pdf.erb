@@ -111,9 +111,10 @@
 
   }
 
-  .main-area h5 {
-    margin-top: 40px;
+  .main-area #citizen_disc {
+    margin-top: 30px;
     margin-bottom: 10px;
+    font-weight: bold;
   }
 
   .main-area ul li {
@@ -124,8 +125,8 @@
     margin-top: 20px;
   }
 
-  .text-area h4 {
-    margin-top: 20px;
+  .text-area .footer_center {
+    margin-top: 15px;
     text-align: center;
   }
 
@@ -181,8 +182,6 @@
   }
 
   body {
-    font-weight: 400;
-    line-height: 24px;
     color: #000;
     font-size: 18px;
     width: 100%;
@@ -237,12 +236,12 @@
             <div class="main-area">
               <p>আমি এই মর্মে সনদ প্রদান করিতেছি যে,<strong> <%= @citizen.name_in_bng %> </strong> - আমার ইউনিয়নের স্থায়ী
                 বাসিন্দা এবং জন্মসূত্রে বাংলাদেশের নাগরিক । তাহাকে আমি ব্যক্তিগতভাবে চিনি ও জানি ।</p>
-              <h5>নাগরিকের বিবরণ:</h5>
+              <p id="citizen_disc">নাগরিকের বিবরণ:</p>
               <ul>
                 <li>১) নামঃ <b><%= @citizen.name_in_bng %></b></li>
                 <li>২) পিতার নামঃ <b> <%= @citizen.fathers_name %></b> </li>
                 <li>৩) মাতার নামঃ <b><%= @citizen.mothers_name %> </b> </li>
-                <li>৪) ওয়ার্ড নংঃ <%= bangla_number(@citizen.word_no.to_s) %></li>
+                <li>৪) ওয়ার্ড নম্বরঃ <%= bangla_number(@citizen.word_no.to_s) %></li>
                 <li>৫) গ্রামঃ <%= @citizen.village %></li>
                 <li>৬) ডাকঘরঃ <%= @citizen.post %></li>
                 <li>৭) উপজেলাঃ <%= @citizen.upazila_name_bng %></li>
@@ -260,7 +259,7 @@
             <div class="text-area">
               <p> আমার জানামতে তিনি উন্নত ও নৈতিক চরিত্রের অধিকারী । তিনি সমাজের শান্তি-শৃঙ্খলা ভঙ্গ কিংবা রাষ্ট্র
                 বিরোধী কোনো কার্যকলাপে অংশগ্রহণ করে নাই ।</p>
-              <h4>আমি তাহার জীবনের সর্বাঙ্গীন উন্নতি কামনা করি</h4>
+              <p class="footer_center">আমি তাহার জীবনের সর্বাঙ্গীন উন্নতি কামনা করি</p>
             </div>
 
             <div class="footer">
