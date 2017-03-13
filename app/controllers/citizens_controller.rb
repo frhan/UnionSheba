@@ -70,7 +70,7 @@ class CitizensController < InheritedResources::Base
                :disposition => 'attachment',
                page_size: 'A4',
                :show_as_html => params[:debug].present?,
-               margin:  {   top:               10,                     # default 10 (mm)
+               margin:  {   top:               8,                     # default 10 (mm)
                             bottom:            0,
                             left:              5,
                             right:             5 },
@@ -84,11 +84,11 @@ class CitizensController < InheritedResources::Base
   end
 
   def barcode_output( citizen )
-    barcode_string = citizen.name_in_eng
-    barcode = Barby::QrCode.new(barcode_string, level: :q, size: 5)
+    barcode_string = citizen.barcode
+    barcode = Barby::QrCode.new(barcode_string, level: :q, size: 9)
 
     # PNG OUTPUT
-    base64_output = Base64.encode64(barcode.to_png({ xdim: 5 }))
+    base64_output = Base64.encode64(barcode.to_png({ xdim: 4 }))
     "data:image/png;base64,#{base64_output}"
   end
 

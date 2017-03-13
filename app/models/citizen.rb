@@ -1,17 +1,17 @@
 class Citizen < ActiveRecord::Base
-  include ApplicationHelper,UnionHelper
+  include ApplicationHelper, UnionHelper
   belongs_to :union
   before_save :save_nid_birthdid_as_english
 
-  validates :name_in_eng,:name_in_bng ,:fathers_name,:mothers_name,
-            :village,:post,:word_no, presence: true
+  validates :name_in_eng, :name_in_bng, :fathers_name, :mothers_name,
+            :village, :post, :word_no, presence: true
   validate :nid_or_birthid_present
   validate :nid_birthid_numeric
 
-  validates_uniqueness_of :nid,:allow_blank => true, :allow_nil => true
-  validates_uniqueness_of :birthid,:allow_blank => true, :allow_nil => true
-  validates :nid, length: { minimum: 13 },:allow_blank => true, :allow_nil => true
-  validates :birthid, length: { minimum: 17 },:allow_blank => true, :allow_nil => true
+  validates_uniqueness_of :nid, :allow_blank => true, :allow_nil => true
+  validates_uniqueness_of :birthid, :allow_blank => true, :allow_nil => true
+  validates :nid, length: {minimum: 13}, :allow_blank => true, :allow_nil => true
+  validates :birthid, length: {minimum: 17}, :allow_blank => true, :allow_nil => true
 
   def set_status(status)
     self.status = status
@@ -53,11 +53,11 @@ class Citizen < ActiveRecord::Base
   end
 
   def self.GENDERS
-    {'পুরুষ'=> :male,'মহিলা'=> :female,'অন্যান্য'=> :others}
+    {'পুরুষ' => :male, 'মহিলা' => :female, 'অন্যান্য' => :others}
   end
 
   def self.STATUS
-    [:active,:pending]
+    [:active, :pending]
   end
 
   def male?
@@ -73,31 +73,47 @@ class Citizen < ActiveRecord::Base
   end
 
   def gender_bangla
-      return String.new unless self.gender.present?
-      return 'পুরুষ' if male?
-      return 'মহিলা' if female?
-      return 'অন্যান্য' if others?
+    return String.new unless self.gender.present?
+    return 'পুরুষ' if male?
+    return 'মহিলা' if female?
+    return 'অন্যান্য' if others?
+  end
+
+  def barcode
+    barcode = ''
+    barcode << self.name_in_eng if self.name_in_eng.present?
+    barcode << "\n"
+
+    if self.nid.present?
+      barcode << 'NID#'<< nid << "\n"
+     elsif self.birthid.present?
+      barcode << 'BirthId#'<< birthid << "\n"
+    end
+
+    barcode << 'Union Name#' << self.union.name_in_eng
+
+    barcode
   end
 
   private
 
   def save_nid_birthdid_as_english
-      self.nid = english_number(nid) if nid.present?
-      self.birthid = english_number(birthid) if birthid.present?
+    self.nid = english_number(nid) if nid.present?
+    self.birthid = english_number(birthid) if birthid.present?
   end
 
   def nid_or_birthid_present
-    errors.add(:citizen," National Id or BirthId is required") unless nid.present? || birthid.present?
+    errors.add(:citizen, " National Id or BirthId is required") unless nid.present? || birthid.present?
   end
 
   def nid_birthid_numeric
-    errors.add(:citizen," National Id/BirthId is not a number") unless nid_or_birthid_numeric?
+    errors.add(:citizen, " National Id/BirthId is not a number") unless nid_or_birthid_numeric?
   end
 
   def nid_or_birthid_numeric?
-     isnumber = is_numeric(nid.to_s) if nid.present?
-     isnumber = is_numeric(birthid.to_s) if birthid.present?
-     isnumber
+    isnumber = is_numeric(nid.to_s) if nid.present?
+    isnumber = is_numeric(birthid.to_s) if birthid.present?
+    isnumber
   end
 
 end
