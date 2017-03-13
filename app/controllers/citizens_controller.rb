@@ -59,11 +59,11 @@ class CitizensController < InheritedResources::Base
 
   def show
     @citizen = Citizen.find(params[:id])
-    @barcode = barcode_output( @citizen)
+    @barcode = barcode_output(@citizen)   if params[:format] == 'pdf'
+
     respond_to do |format|
       format.html
       format.pdf do
-        #TODO:update issue date
         render :pdf => file_name,
                :template => 'citizens/show.pdf.erb',
                :layout => 'pdf.html.erb',
