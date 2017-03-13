@@ -7,6 +7,8 @@ class Citizen < ActiveRecord::Base
             :village, :post, :word_no, presence: true
   validate :nid_or_birthid_present
   validate :nid_birthid_numeric
+  after_create :save_citizen_no
+  after_save :save_citizen_no
 
   validates_uniqueness_of :nid, :allow_blank => true, :allow_nil => true
   validates_uniqueness_of :birthid, :allow_blank => true, :allow_nil => true
@@ -44,7 +46,15 @@ class Citizen < ActiveRecord::Base
   end
 
   def save_citizen_no
-    #self.saved_at = Time.now
+    return if self.pending?
+    return if self.citizen_no.present?
+
+    ctzn_no = Citizen.where(union_id: 1).maximum(:citizen_no)
+    #TODO: excepttion handle
+    ctzn_no = ctzn_no.to_i
+    ctzn_no = 1001 if ctzn_no == 0
+    ctzn_no = ctzn_no + 1
+    self.update_attributes(:citizen_no => ctzn_no.to_s, status: 'active' )
   end
 
   def requested_at_formatted
@@ -81,18 +91,20 @@ class Citizen < ActiveRecord::Base
 
   def barcode
     barcode = ''
-    barcode << self.name_in_eng if self.name_in_eng.present?
+    barcode << self.name_in_bng if self.name_in_bng.present?
     barcode << "\n"
-
     if self.nid.present?
       barcode << 'NID#'<< nid << "\n"
      elsif self.birthid.present?
-      barcode << 'BirthId#'<< birthid << "\n"
+      barcode << 'BirthId# '<< birthid << "\n"
     end
-
-    barcode << 'Union Name#' << self.union.name_in_eng
-
+    barcode << 'Union: ' << self.union.name_in_bng
     barcode
+  end
+
+  def citizen_no_pdf
+    return bangla_number(self.citizen_no) if self.citizen_no.present?
+    bangla_number '1234567'
   end
 
   private
