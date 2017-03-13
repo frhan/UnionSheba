@@ -50,11 +50,11 @@ class Citizen < ActiveRecord::Base
     return if self.citizen_no.present?
 
     ctzn_no = Citizen.where(union_id: 1).maximum(:citizen_no)
-    #TODO: excepttion handle
+    ctzn_no = 0 if ctzn_no.nil?
     ctzn_no = ctzn_no.to_i
-    ctzn_no = 1001 if ctzn_no == 0
+    ctzn_no = 1000 if ctzn_no == 0
     ctzn_no = ctzn_no + 1
-    self.update_attributes(:citizen_no => ctzn_no.to_s, status: 'active' )
+    self.update_attributes(:citizen_no => ctzn_no.to_s)
   end
 
   def requested_at_formatted
