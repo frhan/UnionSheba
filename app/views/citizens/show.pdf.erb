@@ -177,9 +177,14 @@
 
   }
 
-  .footer .chairman_stamp {
+  .footer .chairman_stamp_20 {
     /*80px for no signature*/
     margin-top: 20px;
+  }
+
+  .footer .chairman_stamp_80 {
+    /*80px for no signature*/
+    margin-top: 80px;
   }
 
   .slogan {
@@ -290,19 +295,23 @@
 
             <div class="footer">
               <div class="row">
+
                 <div class="col-xs-7">
                   <%= wicked_pdf_image_tag_for_public @barcode %>
                 </div>
 
-                <div class="col-xs-5 chairman_stamp">
-                  <div>
-                    <%= image_tag wicked_pdf_asset_base64( @citizen.union_sig_name), height: '30', width: '100%' %>
-                  </div>
+                <div class="col-xs-5 ">
+                  <% if @citizen.signature? %>
+                      <div>
+                        <%= image_tag wicked_pdf_asset_base64(@citizen.union_sig_name), height: '30', width: '100%' %>
+                      </div>
+                  <% end %>
 
-                  <p class="text-center">চেয়ারম্যান</p>
+                  <p class="text-center <%= @citizen.signature? ? 'chairman_stamp_20' : 'chairman_stamp_80' %>">চেয়ারম্যান</p>
                   <p class="text-center"><%= bangla_number(@citizen.union.union_no.to_s) %>
                     নং <%= @citizen.union.name_in_bng %> ইউনিয়ন পরিষদ</p>
                 </div>
+
               </div>
             </div>
 
