@@ -182,8 +182,8 @@
   }
 
   .slogan {
-    margin-top: 20px;
-    font-size: 15px;
+    margin-top: 15px;
+    font-size: 14px;
   }
   .slogan #left-slogan {
     text-align: right;
@@ -252,7 +252,7 @@
 
             <div class="row">
               <div class="col-xs-12">
-              <p class="pull-right">তারিখ: <%= bangla_date Time.now %></p>
+              <p class="pull-right">ইস্যু তারিখ: <%= bangla_date Time.now %></p>
             </div>
               </div>
 
@@ -272,9 +272,9 @@
                 <li>৮) জেলাঃ <%= @citizen.zila_name_bng %></li>
 
                 <% if @citizen.nid.present? %>
-                    <li>৯) জাতীয় পরিচয়পত্র নম্বরঃ <%= bangla_number(@citizen.nid) %></li>
+                    <li>৯) জাতীয় পরিচয়পত্র নম্বরঃ <b><%= bangla_number(@citizen.nid) %> </b></li>
                 <% else %>
-                    <li>৯) জন্ম নিবন্ধন নম্বরঃ <%= bangla_number(@citizen.birthid) %></li>
+                    <li>৯) জন্ম নিবন্ধন নম্বরঃ <b><%= bangla_number(@citizen.birthid) %> </b></li>
                 <% end %>
 
               </ul>
