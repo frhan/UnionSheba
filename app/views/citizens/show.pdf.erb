@@ -106,7 +106,7 @@
     text-decoration: underline;
   }
 
-  .top-area .sub{
+  .top-area .sub {
     font-size: 20px;
   }
 
@@ -178,13 +178,15 @@
   }
 
   .footer .chairman_stamp {
-    margin-top: 80px;
+    /*80px for no signature*/
+    margin-top: 20px;
   }
 
   .slogan {
     margin-top: 15px;
     font-size: 14px;
   }
+
   .slogan #left-slogan {
     text-align: right;
   }
@@ -252,9 +254,9 @@
 
             <div class="row">
               <div class="col-xs-12">
-              <p class="pull-right">ইস্যু তারিখ: <%= bangla_date Time.now %></p>
-            </div>
+                <p class="pull-right">ইস্যু তারিখ: <%= bangla_date Time.now %></p>
               </div>
+            </div>
 
             <div class="main-area">
               <p>আমি এই মর্মে সনদ প্রদান করিতেছি যে,<strong> <%= @citizen.name_in_bng %> </strong> - আমার ইউনিয়নের
@@ -293,6 +295,10 @@
                 </div>
 
                 <div class="col-xs-5 chairman_stamp">
+                  <div>
+                    <%= image_tag wicked_pdf_asset_base64('gup_signature.png'), height: '30', width: '100%' %>
+                  </div>
+
                   <p class="text-center">চেয়ারম্যান</p>
                   <p class="text-center"><%= bangla_number(@citizen.union.union_no.to_s) %>
                     নং <%= @citizen.union.name_in_bng %> ইউনিয়ন পরিষদ</p>
