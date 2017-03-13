@@ -1,5 +1,10 @@
 class CitizenRequestsController < ApplicationController
-    include ApplicationHelper
+  require 'barby'
+  require 'barby/barcode'
+  require 'barby/barcode/qr_code'
+  require 'barby/outputter/png_outputter'
+  include ApplicationHelper
+
   def new
     @citizen = Citizen.new
   end
@@ -38,6 +43,14 @@ class CitizenRequestsController < ApplicationController
     do_respond(@citizen)
   end
 
+  def barcode_output( citizen )
+    barcode_string = citizen.barcode
+    barcode = Barby::QrCode.new(barcode_string, level: :q, size: 9)
+
+    # PNG OUTPUT
+    base64_output = Base64.encode64(barcode.to_png({ xdim: 4 }))
+    "data:image/png;base64,#{base64_output}"
+  end
 
   private
 
@@ -48,6 +61,8 @@ class CitizenRequestsController < ApplicationController
   end
 
   def do_respond(citizen)
+    @barcode =  barcode_output( citizen ) if params[:format] == 'pdf'
+
     respond_to do |format|
       format.html
       format.pdf do
@@ -58,12 +73,13 @@ class CitizenRequestsController < ApplicationController
                  :disposition => 'attachment',
                  page_size: 'A4',
                  :show_as_html => params[:debug].present?,
-                 margin:  {   top:               0,                     # default 10 (mm)
+                 margin:  {   top:               8,                     # default 10 (mm)
                               bottom:            0,
-                              left:              0,
-                              right:             0 },
+                              left:              5,
+                              right:             5 },
                  dpi:                            '300'
         end
+
       end
     end
 
