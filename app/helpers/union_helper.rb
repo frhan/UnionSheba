@@ -25,7 +25,7 @@ module UnionHelper
   end
 
   def signature?
-    return true
+    return self.union.show_signature
   end
 
   def union_logo_name

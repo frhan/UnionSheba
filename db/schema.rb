@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170312182856) do
+ActiveRecord::Schema.define(version: 20170313183349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,11 +184,12 @@ ActiveRecord::Schema.define(version: 20170312182856) do
     t.integer  "upazila_id"
     t.integer  "union_no"
     t.string   "post"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "logo"
     t.string   "watermark_logo"
     t.string   "union_code"
+    t.boolean  "show_signature", default: false
   end
 
   add_index "unions", ["upazila_id"], name: "index_unions_on_upazila_id", using: :btree
