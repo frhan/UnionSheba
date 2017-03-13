@@ -107,12 +107,12 @@
   }
 
   .main-area {
-    margin-top: 20px;
+    margin-top: 10px;
 
   }
 
   .main-area #citizen_disc {
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 10px;
     font-weight: bold;
   }
@@ -206,7 +206,6 @@
     background: #730E15;
   }
 
-
   .test3 {
     background: #B00100;
   }
@@ -242,8 +241,16 @@
               <h3>নাগরিকত্ব ও চারিত্রিক সনদপত্র</h3>
               <h4>নাগরিকত্ব নং: ১২৩৪৫৫</h4>
             </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+              <p class="pull-right">তারিখ: <%= bangla_date Time.now %></p>
+            </div>
+              </div>
+
             <div class="main-area">
-              <p>আমি এই মর্মে সনদ প্রদান করিতেছি যে,<strong> <%= @citizen.name_in_bng %> </strong> - আমার ইউনিয়নের স্থায়ী
+              <p>আমি এই মর্মে সনদ প্রদান করিতেছি যে,<strong> <%= @citizen.name_in_bng %> </strong> - আমার ইউনিয়নের
+                স্থায়ী
                 বাসিন্দা এবং জন্মসূত্রে বাংলাদেশের নাগরিক । তাহাকে আমি ব্যক্তিগতভাবে চিনি ও জানি ।</p>
               <p id="citizen_disc">নাগরিকের বিবরণ:</p>
               <ul>
