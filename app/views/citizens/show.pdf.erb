@@ -74,10 +74,10 @@
 
   .logo img {
     margin-top: 20px;
+    margin-left: -30px;
   }
 
   .logo {
-
   }
 
   .top-area {
@@ -202,6 +202,15 @@
     background: #155aa7;
   }
 
+  .test2 {
+    background: #730E15;
+  }
+
+
+  .test3 {
+    background: #B00100;
+  }
+
 </style>
 
 <!--========================================================
@@ -239,8 +248,8 @@
               <p id="citizen_disc">নাগরিকের বিবরণ:</p>
               <ul>
                 <li>১) নামঃ <b><%= @citizen.name_in_bng %></b></li>
-                <li>২) পিতার নামঃ <b> <%= @citizen.fathers_name %></b> </li>
-                <li>৩) মাতার নামঃ <b><%= @citizen.mothers_name %> </b> </li>
+                <li>২) পিতার নামঃ <b> <%= @citizen.fathers_name %></b></li>
+                <li>৩) মাতার নামঃ <b><%= @citizen.mothers_name %> </b></li>
                 <li>৪) ওয়ার্ড নম্বরঃ <%= bangla_number(@citizen.word_no.to_s) %></li>
                 <li>৫) গ্রামঃ <%= @citizen.village %></li>
                 <li>৬) ডাকঘরঃ <%= @citizen.post %></li>
@@ -248,9 +257,9 @@
                 <li>৮) জেলাঃ <%= @citizen.zila_name_bng %></li>
 
                 <% if @citizen.nid.present? %>
-                    <li>৯) জাতীয় পরিচয়পত্র নম্বরঃ <%= bangla_number(@citizen.nid)%></li>
+                    <li>৯) জাতীয় পরিচয়পত্র নম্বরঃ <%= bangla_number(@citizen.nid) %></li>
                 <% else %>
-                    <li>৯) জন্ম নিবন্ধন নম্বরঃ <%= bangla_number(@citizen.birthid)%></li>
+                    <li>৯) জন্ম নিবন্ধন নম্বরঃ <%= bangla_number(@citizen.birthid) %></li>
                 <% end %>
 
               </ul>
