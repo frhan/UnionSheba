@@ -58,7 +58,7 @@
   .wrapper-content {
     border: 5px double #666;
     padding: 1px;
-    background: url('<%= Rails.root.join('public','images','bg-3-opacity.png') %>') no-repeat center 50%;
+    background: url('<%= Rails.root.join('public','images', @citizen.union_bg_name) %>') no-repeat center 50%;
     position: relative;
     overflow: hidden;
   }
@@ -237,7 +237,7 @@
                 <div class="row">
                   <div class="col-xs-4 col-xs-offset-4">
                     <div class="logo">
-                      <%= image_tag wicked_pdf_asset_base64('bdgovt.png') %>
+                      <%= image_tag wicked_pdf_asset_base64(@citizen.union_logo_name) %>
                     </div>
                   </div>
                 </div>
@@ -296,7 +296,7 @@
 
                 <div class="col-xs-5 chairman_stamp">
                   <div>
-                    <%= image_tag wicked_pdf_asset_base64('gup_signature.png'), height: '30', width: '100%' %>
+                    <%= image_tag wicked_pdf_asset_base64( @citizen.union_sig_name), height: '30', width: '100%' %>
                   </div>
 
                   <p class="text-center">চেয়ারম্যান</p>

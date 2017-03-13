@@ -24,4 +24,20 @@ module UnionHelper
     self.union.upazila.district.name_in_bng
   end
 
+  def signature?
+    return true
+  end
+
+  def union_logo_name
+    self.union.logo_img_name
+  end
+
+  def union_bg_name
+    self.union.bg_img_name
+  end
+
+  def union_sig_name
+    self.union.sig_img_name
+  end
+
 end
