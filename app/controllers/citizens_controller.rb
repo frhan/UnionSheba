@@ -16,7 +16,11 @@ class CitizensController < InheritedResources::Base
   end
 
   def requests
-    @citizens = current_user.citizens.where(status: :pending).order('requested_at asc') if user_signed_in?
+    @citizens = current_user.citizens.where(status: :pending)
+                    .order('requested_at asc').per_page_kaminari(params[:page])
+                    .per(10) if user_signed_in?
+    #@users = User.order(:name).page params[:page]
+    #@citizens = Citizen.per_page_kaminari(params[:page]).per(10)
 
     respond_to do |format|
       format.html
