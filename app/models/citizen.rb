@@ -1,7 +1,7 @@
 class Citizen < ActiveRecord::Base
   include ApplicationHelper, UnionHelper
   belongs_to :union
-  before_save :save_nid_birthdid_as_english
+  before_validation :save_nid_birthdid_as_english
 
   validates :name_in_eng, :name_in_bng, :fathers_name, :mothers_name,
             :village, :post, :word_no, presence: true

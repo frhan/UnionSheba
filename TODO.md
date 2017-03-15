@@ -24,4 +24,9 @@ https://github.com/superp/rails-uploader
 
 #tax and other collection datatable
 
+Task
+-----
+* validates same nid or birthid (english and bangla)
+
+
 
