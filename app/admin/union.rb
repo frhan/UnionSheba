@@ -3,7 +3,7 @@ ActiveAdmin.register Union do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
- permit_params :name_in_eng, :name_in_bng, :desc,:upazila_id,:union_no,:post,:logo,:watermark_logo,:union_code,:show_signature
+ permit_params :name_in_eng, :name_in_bng, :desc,:upazila_id,:union_no,:post,:logo,:watermark_logo,:union_code,:chairman_name,:show_signature
 #
 # or
 #

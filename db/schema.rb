@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313183349) do
+ActiveRecord::Schema.define(version: 20170315085103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,6 +190,7 @@ ActiveRecord::Schema.define(version: 20170313183349) do
     t.string   "watermark_logo"
     t.string   "union_code"
     t.boolean  "show_signature", default: false
+    t.string   "chairman_name"
   end
 
   add_index "unions", ["upazila_id"], name: "index_unions_on_upazila_id", using: :btree

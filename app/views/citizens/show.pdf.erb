@@ -178,9 +178,14 @@
     margin-top: 80px;
   }
 
-  .footer .signature{
+  .footer .signature {
     margin-top: 10px;
   }
+
+  .footer .chairman {
+   font-size: 20px;
+  }
+
 
   .slogan {
     margin-top: 15px;
@@ -300,11 +305,19 @@
                       <div class="signature">
                         <%= image_tag wicked_pdf_asset_base64(@citizen.union_sig_name), width: '100%' %>
                       </div>
+
                   <% end %>
 
-                  <p class="text-center <%= @citizen.signature? ? 'chairman_stamp_with_sig' : 'chairman_stamp_wo_sig' %>">চেয়ারম্যান</p>
-                  <p class="text-center"><%= bangla_number(@citizen.union.union_no.to_s) %>
-                    নং <%= @citizen.union.name_in_bng %> ইউনিয়ন পরিষদ</p>
+                  <div class="<%= @citizen.signature? ? 'chairman_stamp_with_sig' : 'chairman_stamp_wo_sig' %>">
+
+                    <% if @citizen.union_chairman_name.present? %>
+                        <p class="text-center chairman"><%= @citizen.union_chairman_name %></p>
+                    <% end %>
+
+                    <p class="text-center">চেয়ারম্যান</p>
+                    <p class="text-center"><%= bangla_number(@citizen.union.union_no.to_s) %>
+                      নং <%= @citizen.union.name_in_bng %> ইউনিয়ন পরিষদ</p>
+                  </div>
                 </div>
 
               </div>

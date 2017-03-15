@@ -40,4 +40,8 @@ module UnionHelper
     self.union.sig_img_name
   end
 
+  def union_chairman_name
+    self.union.chairman_name
+  end
+
 end
