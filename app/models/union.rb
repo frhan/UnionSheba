@@ -26,7 +26,7 @@ class Union < ActiveRecord::Base
   def sig_img_name
     sig = ''
     sig << self.union_code.downcase
-    sig << '_sig.png'
+    sig << '_sig.jpg'
   end
 
 

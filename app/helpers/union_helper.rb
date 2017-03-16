@@ -44,4 +44,9 @@ module UnionHelper
     self.union.chairman_name
   end
 
+  def upz_zilla_name
+    name = ''
+    name << upazila_name_bng << ',' << zila_name_bng
+  end
+
 end
