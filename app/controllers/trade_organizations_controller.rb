@@ -1,4 +1,9 @@
 class TradeOrganizationsController < ApplicationController
+  require 'barby'
+  require 'barby/barcode'
+  require 'barby/barcode/qr_code'
+  require 'barby/outputter/png_outputter'
+
   include ApplicationHelper
   before_action :authenticate_user!
   load_and_authorize_resource
@@ -23,6 +28,8 @@ class TradeOrganizationsController < ApplicationController
   end
 
   def show
+    @barcode = barcode_output(@trade_organization)   if params[:format] == 'pdf'
+
     respond_to do |format|
       format.html
       format.pdf do
@@ -39,6 +46,14 @@ class TradeOrganizationsController < ApplicationController
                #zoom: 1.17647
       end
     end
+  end
+
+  def barcode_output( trade_organization )
+    barcode_string = trade_organization.barcode
+    barcode = Barby::QrCode.new(barcode_string, level: :q, size: 6)
+    # PNG OUTPUT
+    base64_output = Base64.encode64(barcode.to_png({ xdim: 3 }))
+    "data:image/png;base64,#{base64_output}"
   end
 
   def print_money_recipt

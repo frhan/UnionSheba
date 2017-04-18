@@ -19,6 +19,13 @@ class TradeOrganization < ActiveRecord::Base
       self.village_name << ',' << self.upazilla_name << ',' << self.zilla_name
   end
 
+
+  def barcode
+    barcode = String.new
+    barcode << self.license_no if self.license_no.present?
+    barcode
+  end
+
   def latest_trade_license
     @trade_license ||= self.trade_licenses.order('fiscal_year desc').first
   end
