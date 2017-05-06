@@ -4,6 +4,7 @@ class TaxOrRateCollection < ActiveRecord::Base
 
   accepts_nested_attributes_for :collection_money, :allow_destroy => true
   belongs_to :union
+  belongs_to :tax_category
 
   validates :owners_name, :village_name, :apprisal_no, :owners_name_in_english, presence: true
 
@@ -11,13 +12,20 @@ class TaxOrRateCollection < ActiveRecord::Base
     self.owners_name
   end
 
+  def init_val(trade_org_id)
+    self.tax_year = current_fiscal_year_bangla
+
+    if trade_org_id.present?
+      init(TradeOrganization.find(trade_org_id))
+    end
+  end
+
   def init(trade_org)
-    if trade_org.present?
-      self.village_name = mouja trade_org.business_place
+      self.village_name = trade_org.business_place
       self.owners_name = trade_org.owners_name_bng
       self.owners_name_in_english = trade_org.owners_name_eng
       self.apprisal_no = chromic_no trade_org.license_no
-    end
+      self.tax_category = TaxCategory.first if TaxCategory.first.present?
   end
 
   def mouja(village_name)

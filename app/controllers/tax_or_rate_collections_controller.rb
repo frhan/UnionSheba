@@ -17,11 +17,7 @@ class TaxOrRateCollectionsController < ApplicationController
   def new
     @tax_or_rate_collection = TaxOrRateCollection.new
     @tax_or_rate_collection.build_collection_money
-
-    if params[:trade_org]
-      @tax_or_rate_collection.init(TradeOrganization.find(params[:trade_org]))
-    end
-
+    @tax_or_rate_collection.init_val(params[:trade_org])
   end
 
   def create
@@ -90,7 +86,8 @@ class TaxOrRateCollectionsController < ApplicationController
   end
 
   def tax_or_rate_collections_params
-    params.require(:tax_or_rate_collection).permit(:owners_name_in_english,:village_name,:owners_name,:apprisal_no,:union_id,
+    params.require(:tax_or_rate_collection).permit(:owners_name_in_english,:village_name,:owners_name,:apprisal_no,:union_id,:tax_category_id,
+                                                   :other_reason,:tax_year,
                                                    collection_money_attributes:[:id,:fee,:fine,:union_id])
   end
 

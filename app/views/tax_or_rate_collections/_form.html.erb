@@ -44,6 +44,27 @@
           </div>
 
           <div class="form-group">
+            <label for="nameInEng" class="col-md-3 control-label">বাবদ</label>
+            <div class="col-md-9">
+              <%= f.collection_select :tax_category_id, TaxCategory.all,:id,:name,{},{class: "form-control"}%>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInEng" class="col-md-3 control-label">অন্যান্য</label>
+            <div class="col-md-9">
+              <%= f.text_field :other_reason, class: "form-control", placeholder: "অন্যান্য বাবদ হলে লিখুন" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInEng" class="col-md-3 control-label">অর্থ বছর</label>
+            <div class="col-md-9">
+              <%= f.text_field :tax_year, class: "form-control", placeholder: "In Bangla" %>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">মূল্যায়ন তালিকার ক্রমিক নং</label>
             <div class="col-md-9">
               <%= f.text_field :apprisal_no, class: "form-control", placeholder: "In Bangla" %>

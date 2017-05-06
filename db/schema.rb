@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315085103) do
+ActiveRecord::Schema.define(version: 20170506081326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,12 @@ ActiveRecord::Schema.define(version: 20170315085103) do
     t.string "role_name"
   end
 
+  create_table "tax_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tax_or_rate_collections", force: :cascade do |t|
     t.string   "village_name"
     t.string   "owners_name"
@@ -137,8 +143,12 @@ ActiveRecord::Schema.define(version: 20170315085103) do
     t.integer  "union_id"
     t.string   "status",                 default: "active"
     t.string   "owners_name_in_english"
+    t.integer  "tax_category_id"
+    t.string   "other_reason"
+    t.string   "tax_year"
   end
 
+  add_index "tax_or_rate_collections", ["tax_category_id"], name: "index_tax_or_rate_collections_on_tax_category_id", using: :btree
   add_index "tax_or_rate_collections", ["union_id"], name: "index_tax_or_rate_collections_on_union_id", using: :btree
 
   create_table "trade_licenses", force: :cascade do |t|
@@ -233,6 +243,7 @@ ActiveRecord::Schema.define(version: 20170315085103) do
   add_foreign_key "collection_moneys", "unions"
   add_foreign_key "districts", "divisions"
   add_foreign_key "others_collections", "unions"
+  add_foreign_key "tax_or_rate_collections", "tax_categories"
   add_foreign_key "tax_or_rate_collections", "unions"
   add_foreign_key "trade_licenses", "trade_organizations"
   add_foreign_key "trade_organizations", "unions"
