@@ -1,4 +1,4 @@
-<%= link_to 'pdf', report_tax_or_rate_collections_path(collections: {category_id: get_cat_type}, start_date: params[:start_date], end_date: params[:end_date], format: :pdf), class: "btn" %>
+<%= link_to 'pdf', report_tax_or_rate_collections_path(collections: {category_id: get_cat_type }, start_date: params[:start_date], end_date: params[:end_date], format: :pdf), class: "btn" %>
 
 <% if @tax_collections %>
     <table class="table table-bordered table-striped">
@@ -29,8 +29,8 @@
         <td></td>
         <td></td>
         <td></td>
-        <td></td>
-        <td></td>
+        <td><%= @tax_sum %></td>
+        <td><%= @total_sum %></td>
       </tr>
       </tbody>
     </table>

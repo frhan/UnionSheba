@@ -21,8 +21,6 @@ class TaxOrRateCollectionsController < ApplicationController
     @tax_collections = current_user.tax_or_rate_collections
                            .where(status: :active)
                            .order("created_at desc")
-                           .per_page_kaminari(params[:page])
-                           .per(10)
 
     if @start_date && @end_date
       @tax_collections = @tax_collections
@@ -37,8 +35,30 @@ class TaxOrRateCollectionsController < ApplicationController
                              .where(:tax_category_id => params[:collections][:category_id])
     end
 
+    @total_sum = @tax_collections.map { |s| s.collection_money.total }.reduce(0, :+)
+    @tax_sum = @tax_collections.map { |s| s.collection_money.fee }.reduce(0, :+)
+
+    if request.format.html?
+      @tax_collections = @tax_collections
+                             .per_page_kaminari(params[:page])
+                             .per(10)
+    end
+
     respond_to do |format|
       format.html
+      format.pdf do
+        render :pdf => file_name_report,
+               :template => 'tax_or_rate_collections/index.pdf.erb',
+               :layout => 'pdf.html.erb',
+               :disposition => 'attachment',
+               :show_as_html => params[:debug].present?,
+               margin: {top: 10, # default 10 (mm)
+                        bottom: 0,
+                        left: 5,
+                        right: 5},
+               dpi: '300'
+        #zoom: 1.17647
+      end
     end
   end
 
@@ -122,6 +142,10 @@ class TaxOrRateCollectionsController < ApplicationController
 
   def file_name
     pdf_file_name 'tax_or_rate_' << @tax_or_rate_collection.union_code
+  end
+
+  def file_name_report
+    pdf_file_name 'rax_rate_money_collection_'
   end
 
 end
