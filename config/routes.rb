@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     end
   end
   resources :collection_moneys
-  resources :tax_or_rate_collections
+  resources :tax_or_rate_collections do
+      collection do
+        get :report
+      end
+  end
   resources :others_collections
   resources :trade_licenses
   resources :profiles

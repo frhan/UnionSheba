@@ -1,0 +1,33 @@
+<%= link_to 'pdf', collection_moneys_path(collections: { type: get_type},start_date: params[:start_date], end_date: params[:end_date],format: :pdf), class: "btn" %>
+
+<% if @tax_collections %>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>সিরিয়াল নং</th>
+        <th> জমার তারিখ</th>
+        <th>প্রদানকারীর নাম</th>
+        <th>বাবদ</th>
+        <th>জমার পরিমাণ</th>
+        <th>মোট</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @tax_collections.each do |cm| %>
+          <tr>
+            <td><%= cm.collection_money.serial_no %></td>
+            <td><%= formatted_date_time cm.created_at%></td>
+            <td><%= cm.collection_money.money_senders_name %></td>
+            <td><%= cm.collection_money.collection_reason %></td>
+            <td><%= cm.collection_money.collection_fee %></td>
+            <td></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+</tbody>
+</table>
+
+<% end %>
+<%= paginate @tax_collections %>

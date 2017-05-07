@@ -2,7 +2,7 @@
   <p id="notice"><%= notice %></p>
   <h2>Money Collected</h2>
 
-  <%= form_tag(collection_moneys_path, class: "form-inline", method: :get, remote: true) do %>
+  <%= form_tag(report_tax_or_rate_collections_path, class: "form-inline", method: :get) do %>
 
       <div class="form-group">
         <label class="sr-only" >Start Date</label>
@@ -15,13 +15,11 @@
       </div>
 
       <div class="form-group">
-        <%= collection_select(:collections, :type, CollectionMoney.Types, :last, :first,{},{class: "form-control"}) %>
+        <%= collection_select(:collections, :category_id, TaxCategory.all, :id,:name,{ :prompt => 'Select',:selected => params[:collections][:category_id]},{class: "form-control"}) %>
       </div>
       <%= submit_tag :Search, class: "btn btn-primary" %>
   <% end %>
-
   <div id="results">
     <%= render 'results' %>
   </div>
-
 </div>
