@@ -48,5 +48,4 @@ class TaxOrRateCollection < ActiveRecord::Base
     babod_val << babod
   end
 
-
 end
