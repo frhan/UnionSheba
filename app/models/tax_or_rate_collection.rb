@@ -42,5 +42,11 @@ class TaxOrRateCollection < ActiveRecord::Base
     return String.new
   end
 
+  def babod_pdf
+    babod_val = String.new
+    babod_val << bangla_number(self.tax_year) << ' অর্থবছরের ' if self.tax_year.present?
+    babod_val << babod
+  end
+
 
 end

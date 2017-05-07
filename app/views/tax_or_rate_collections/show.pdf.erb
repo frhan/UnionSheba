@@ -48,7 +48,8 @@
 
     <div class="row top-header">
       <div class="col-xs-12 text-center">
-        <h2><%= bangla_number @tax_or_rate_collection.union_no %> নং <%= @tax_or_rate_collection.union_name_bng %> ইউনিয়ন
+        <h2><%= bangla_number @tax_or_rate_collection.union_no %> নং <%= @tax_or_rate_collection.union_name_bng %>
+          ইউনিয়ন
           পরিষদ</h2>
         <p class="sub"> ডাকঘরঃ <%= @tax_or_rate_collection.post_name_bng %>
           উপজেলাঃ <%= @tax_or_rate_collection.upazila_name_bng %>
@@ -113,6 +114,21 @@
       </div>
     </div>
 
+    <% if @tax_or_rate_collection.tax_category.present? %>
+        <div class="row margin-top-5">
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-4 trade-label">
+                <p>বাবদ</p>
+              </div>
+              <div class="col-xs-8">
+                <p class="margin-left"><%= @tax_or_rate_collection.babod_pdf %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+
     <div class="row margin-top-5">
       <div class="col-xs-12">
         <div class="row">
@@ -125,7 +141,6 @@
         </div>
       </div>
     </div>
-
 
     <div class="row margin-top-5">
       <div class="col-xs-12">
@@ -152,8 +167,6 @@
         </div>
       </div>
     </div>
-
-
 
     <div class="row margin-top-5">
       <div class="col-xs-12">
