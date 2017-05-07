@@ -31,9 +31,10 @@ class TaxOrRateCollectionsController < ApplicationController
 
     end
 
-    if params[:collections][:tax_category_id].present?
+    if params[:collections] && params[:collections][:category_id].present?
+      @selected_id = params[:collections][:category_id]
       @tax_collections = @tax_collections
-                             .where(:tax_category_id => params[:collections][:tax_category_id])
+                             .where(:tax_category_id => params[:collections][:category_id])
     end
 
     respond_to do |format|
