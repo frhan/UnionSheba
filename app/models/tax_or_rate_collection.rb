@@ -21,11 +21,11 @@ class TaxOrRateCollection < ActiveRecord::Base
   end
 
   def init(trade_org)
-      self.village_name = trade_org.business_place
-      self.owners_name = trade_org.owners_name_bng
-      self.owners_name_in_english = trade_org.owners_name_eng
-      self.apprisal_no = chromic_no trade_org.license_no
-      self.tax_category = TaxCategory.first if TaxCategory.first.present?
+    self.village_name = trade_org.business_place
+    self.owners_name = trade_org.owners_name_bng
+    self.owners_name_in_english = trade_org.owners_name_eng
+    self.apprisal_no = chromic_no trade_org.license_no
+    self.tax_category = TaxCategory.first if TaxCategory.first.present?
   end
 
   def mouja(village_name)
@@ -35,5 +35,12 @@ class TaxOrRateCollection < ActiveRecord::Base
   def chromic_no(license_no)
     license_no.split('-').last if license_no.present?
   end
+
+  def babod
+    return self.other_reason if self.tax_category.present? && self.tax_category.others?
+    return self.tax_category.name if self.tax_category.present?
+    return String.new
+  end
+
 
 end

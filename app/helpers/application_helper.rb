@@ -173,6 +173,10 @@ module ApplicationHelper
       return params[:collections][:type] if params[:collections].present?
   end
 
+  def get_cat_type
+    return params[:collections][:category_id] if params[:category_id].present?
+  end
+
   def collection_money_type_bangla
      return 'টাকা কালেকশন' unless (params[:collections].present? && params[:collections][:type].present?)
      return 'টাকা কালেকশন' if params[:collections][:type] == 'all'

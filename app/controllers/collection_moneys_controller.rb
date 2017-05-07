@@ -9,16 +9,19 @@ class CollectionMoneysController < ApplicationController
     @end_date = DateTime.parse(params[:end_date]) if params[:end_date].present?
 
     if @start_date && @end_date
-      @collection_moneys = current_user.collection_moneys.
-          where(status: :active, :created_at => @start_date.beginning_of_day..@end_date.end_of_day).
-          order("created_at desc")
+      @collection_moneys = current_user.collection_moneys
+                               .where(status: :active, :created_at => @start_date.beginning_of_day..@end_date.end_of_day)
+                               .order("created_at desc")
     else
-      @collection_moneys = current_user.collection_moneys.where(status: :active).order("created_at desc")
+      @collection_moneys = current_user.collection_moneys
+                               .where(status: :active)
+                               .order("created_at desc")
     end
 
     #logger.debug(params[:collections][:type])
     if params[:collections].present? && params[:collections][:type].present? && params[:collections][:type] != 'all'
-      @collection_moneys = @collection_moneys.where(collectable_type: params[:collections][:type])
+      @collection_moneys = @collection_moneys
+                               .where(collectable_type: params[:collections][:type])
     end
 
     total_fee = @collection_moneys.sum(:fee)
@@ -33,7 +36,10 @@ class CollectionMoneysController < ApplicationController
     # unless @collection_moneys.kind_of?(Array)
     #   @collection_moneys = @collection_moneys.page(params[:page]).per(10)
     # else
-    @collection_moneys_kaminary = Kaminari.paginate_array(@collection_moneys).page(params[:page]).per(20)
+    @collection_moneys_kaminary = Kaminari
+                                      .paginate_array(@collection_moneys)
+                                      .page(params[:page])
+                                      .per(20)
     #end
 
     respond_to do |format|

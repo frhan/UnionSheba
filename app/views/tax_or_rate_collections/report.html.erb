@@ -15,7 +15,7 @@
       </div>
 
       <div class="form-group">
-        <%= collection_select(:collections, :category_id, TaxCategory.all, :id,:name,{ :prompt => 'Select',:selected => @selected_id},{class: "form-control"}) %>
+        <%= collection_select(:collections, :category_id, TaxCategory.all, :id,:name,{ :include_blank => 'সব',:selected => @selected_id},{class: "form-control"}) %>
       </div>
       <%= submit_tag :Search, class: "btn btn-primary" %>
   <% end %>
