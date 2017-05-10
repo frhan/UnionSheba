@@ -57,10 +57,9 @@ Task
 
 Task
 -------
-* T#1: head wise tax or rate collection
 * T#2: citizen certificate
 * warish certificate
-* others certi
+* others certificate
 
 
 

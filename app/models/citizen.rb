@@ -1,19 +1,28 @@
 class Citizen < ActiveRecord::Base
   include ApplicationHelper, UnionHelper
   belongs_to :union
-  before_validation :save_nid_birthdid_as_english
 
-  validates :name_in_eng, :name_in_bng, :fathers_name, :mothers_name,
-            :village, :post, :word_no, presence: true
-  validate :nid_or_birthid_present
-  validate :nid_birthid_numeric
-  after_create :save_citizen_no
-  after_save :save_citizen_no
+  has_many :addresses, as: :addressable, dependent: :destroy
+  has_many :basic_infos, as: :infoable, dependent: :destroy
+  has_one :contact_address, as: :contactable, dependent: :destroy
 
-  validates_uniqueness_of :nid, :allow_blank => true, :allow_nil => true
-  validates_uniqueness_of :birthid, :allow_blank => true, :allow_nil => true
-  validates :nid, length: {minimum: 13}, :allow_blank => true, :allow_nil => true
-  validates :birthid, length: {minimum: 17}, :allow_blank => true, :allow_nil => true
+  accepts_nested_attributes_for :addresses, allow_destroy: true
+  accepts_nested_attributes_for :basic_infos, allow_destroy: true
+  accepts_nested_attributes_for :contact_address, allow_destroy: true
+
+  #before_validation :save_nid_birthdid_as_english
+  # validates :name_in_eng, :name_in_bng, :fathers_name, :mothers_name,
+  #           :village, :post, :word_no, presence: true
+  # validate :nid_or_birthid_present
+  # validate :nid_birthid_numeric
+  # after_create :save_citizen_no
+  # after_save :save_citizen_no
+  #
+  # validates_uniqueness_of :nid, :allow_blank => true, :allow_nil => true
+  # validates_uniqueness_of :birthid, :allow_blank => true, :allow_nil => true
+  # validates :nid, length: {minimum: 13}, :allow_blank => true, :allow_nil => true
+  # validates :birthid, length: {minimum: 17}, :allow_blank => true, :allow_nil => true
+
 
   def set_status(status)
     self.status = status
@@ -95,7 +104,7 @@ class Citizen < ActiveRecord::Base
     barcode << "\n"
     if self.nid.present?
       barcode << 'NID#'<< nid << "\n"
-     elsif self.birthid.present?
+    elsif self.birthid.present?
       barcode << 'BirthId# '<< birthid << "\n"
     end
     barcode << 'Union: ' << self.union.name_in_bng

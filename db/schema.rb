@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506081326) do
+ActiveRecord::Schema.define(version: 20170509174710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,23 @@ ActiveRecord::Schema.define(version: 20170506081326) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
+  create_table "addresses", force: :cascade do |t|
+    t.string   "village"
+    t.string   "road"
+    t.integer  "word_no"
+    t.string   "district"
+    t.string   "upazila"
+    t.string   "post_office"
+    t.string   "type"
+    t.string   "lang"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
+
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -48,6 +65,23 @@ ActiveRecord::Schema.define(version: 20170506081326) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "basic_infos", force: :cascade do |t|
+    t.string   "name"
+    t.string   "fathers_name"
+    t.string   "mothers_name"
+    t.string   "maritial_status"
+    t.string   "nid"
+    t.string   "birth_id"
+    t.string   "date_of_birth"
+    t.string   "lang"
+    t.integer  "infoable_id"
+    t.string   "infoable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "basic_infos", ["infoable_type", "infoable_id"], name: "index_basic_infos_on_infoable_type_and_infoable_id", using: :btree
 
   create_table "citizens", force: :cascade do |t|
     t.string   "name_in_eng"
@@ -90,6 +124,17 @@ ActiveRecord::Schema.define(version: 20170506081326) do
 
   add_index "collection_moneys", ["collectable_type", "collectable_id"], name: "index_collection_moneys_on_collectable_type_and_collectable_id", using: :btree
   add_index "collection_moneys", ["union_id"], name: "index_collection_moneys_on_union_id", using: :btree
+
+  create_table "contact_addresses", force: :cascade do |t|
+    t.string   "mobile_no"
+    t.string   "email"
+    t.integer  "contactable_id"
+    t.string   "contactable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "contact_addresses", ["contactable_type", "contactable_id"], name: "index_contact_addresses_on_contactable_type_and_contactable_id", using: :btree
 
   create_table "districts", force: :cascade do |t|
     t.string   "name_in_eng"

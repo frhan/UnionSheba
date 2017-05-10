@@ -8,6 +8,14 @@ class CitizensController < InheritedResources::Base
   before_filter :authenticate_user!
   load_and_authorize_resource
 
+  def new
+    @citizen = Citizen.new
+    @citizen.build_contact_address
+    @citizen.basic_infos.build
+    @citizen.addresses.build
+    @citizen.addresses.build
+  end
+
   def index
     respond_to do |format|
       format.html

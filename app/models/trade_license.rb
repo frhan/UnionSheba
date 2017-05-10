@@ -2,12 +2,12 @@ class TradeLicense < ActiveRecord::Base
   include ApplicationHelper
   belongs_to :trade_organization
   #after_initialize :init
-  has_one :collection_money,as: :collectable,dependent: :destroy
-  accepts_nested_attributes_for :collection_money,:allow_destroy => true
+  has_one :collection_money, as: :collectable, dependent: :destroy
+  accepts_nested_attributes_for :collection_money, :allow_destroy => true
 
-  validates :fiscal_year , presence: true
-  validates_uniqueness_of :fiscal_year,scope: :trade_organization
-  validates :fiscal_year, length: { is: 4 }
+  validates :fiscal_year, presence: true
+  validates_uniqueness_of :fiscal_year, scope: :trade_organization
+  validates :fiscal_year, length: {is: 4}
 
   def deadline_top
     return String.new unless self.fiscal_year.present?
@@ -41,7 +41,7 @@ class TradeLicense < ActiveRecord::Base
 
   def fine_fee
     return 0 if self.collection_money.nil?
-    self.collection_money.fine  if self.collection_money.fine.present?
+    self.collection_money.fine if self.collection_money.fine.present?
   end
 
   def remaining_fee
