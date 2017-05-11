@@ -17,41 +17,9 @@
               </div>
           <% end %>
 
-
-          <div class="form-group">
-            <label for="nameInEng" class="col-md-3 control-label">Name(English)*</label>
-            <div class="col-md-9">
-              <%= f.text_field :name_in_eng, class: "form-control", placeholder: "Name In English" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">বাংলা নামঃ</label>
-            <div class="col-md-9">
-              <%= f.text_field :name_in_bng, class: "form-control", placeholder: "Name In Bangla" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">বাবার নামঃ</label>
-            <div class="col-md-9">
-              <%= f.text_field :fathers_name, class: "form-control", placeholder: "In Bangla" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">মায়ের নামঃ</label>
-            <div class="col-md-9">
-              <%= f.text_field :mothers_name, class: "form-control", placeholder: "In Bangla" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">স্বামী/স্ত্রী নামঃ</label>
-            <div class="col-md-9">
-              <%= f.text_field :spouse_name, class: "form-control", placeholder: "In Bangla" %>
-            </div>
-          </div>
+          <%= f.fields_for :basic_infos do |bi| %>
+              <%= render partial: 'layouts/basic_information', locals: {f: bi} %>
+          <% end %>
 
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">লিঙ্গঃ</label>
@@ -60,29 +28,7 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">গ্রামের নামঃ</label>
-            <div class="col-md-9">
-              <%= f.text_field :village, class: "form-control", placeholder: "In Bangla" %>
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">ডাকঘরঃ</label>
-            <div class="col-md-9">
-              <%= f.text_field :post, class: "form-control", placeholder: "In Bangla" %>
-            </div>
-          </div>
-
           <%= f.hidden_field :union_id, :value => current_user.union.id %>
-
-          <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">ওয়ার্ড নংঃ</label>
-            <div class="col-md-9">
-              <%= f.number_field :word_no, class: "form-control", placeholder: "In English" %>
-            </div>
-          </div>
           <span class=" text-center help-block">নাগরিকত্ব নম্বর অথবা জন্ম নিবন্ধন নম্বর যেকোন একটি দিলে হবে</span>
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">জাতীয় পরিচয়পত্র নম্বরঃ</label>
@@ -91,7 +37,6 @@
             </div>
           </div>
 
-
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">জন্ম নিবন্ধন নম্বরঃ</label>
             <div class="col-md-9">
@@ -99,16 +44,21 @@
             </div>
           </div>
 
+          <%= f.fields_for :addresses do |ad| %>
+              <%= render partial: 'layouts/address', locals: {f: ad} %>
+          <% end %>
+
+          <%= f.fields_for :contact_address do |ca| %>
+              <%= render partial: 'layouts/contact_address', locals: {f: ca} %>
+          <% end %>
+
+
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">Status</label>
             <div class="col-md-9">
               <%= f.collection_select :status, Citizen.STATUS, :to_s, :to_s, {}, {class: "form-control"} %>
             </div>
           </div>
-
-          <%= f.fields_for :addresses do |ad| %>
-              <%= render partial: 'layouts/address', locals: {f: ad} %>
-          <% end %>
 
           <div class="form-group">
             <!-- Button -->

@@ -11,9 +11,9 @@ class CitizensController < InheritedResources::Base
   def new
     @citizen = Citizen.new
     @citizen.build_contact_address
-    @citizen.basic_infos.build
-    @citizen.addresses.build
-    @citizen.addresses.build
+    @citizen.basic_infos.build(lang: current_lang)
+    @citizen.addresses.build(address_type: :present, lang: current_lang)
+    @citizen.addresses.build(address_type: :permanent, lang: current_lang)
   end
 
   def index
@@ -107,10 +107,15 @@ class CitizensController < InheritedResources::Base
 
   private
 
+  # def citizen_params
+  #   params.require(:citizen).permit(:name_in_eng, :name_in_bng, :fathers_name,
+  #                                   :mothers_name, :village, :post, :word_no, :union_id,
+  #                                   :spouse_name,:nid,:birthid,:email,:mobile_no,:status,:gender)
+  # end
   def citizen_params
-    params.require(:citizen).permit(:name_in_eng, :name_in_bng, :fathers_name,
-                                    :mothers_name, :village, :post, :word_no, :union_id,
-                                    :spouse_name,:nid,:birthid,:email,:mobile_no,:status,:gender)
+    params.require(:citizen).permit(:union_id,:nid,:birthid,basic_infos_attributes: [:name,:fathers_name,:mothers_name,:date_of_birth,:lang],
+                                    addresses_attributes:[:village,:road,:word_no,:district,:upazila,:post_office,:address_type,:lang],
+                                    contact_address_attributes:[:mobile_no,:email])
   end
 
   def file_name

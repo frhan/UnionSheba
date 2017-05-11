@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509174710) do
+ActiveRecord::Schema.define(version: 20170511215738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170509174710) do
     t.string   "district"
     t.string   "upazila"
     t.string   "post_office"
-    t.string   "type"
+    t.string   "address_type"
     t.string   "lang"
     t.integer  "addressable_id"
     t.string   "addressable_type"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20170509174710) do
     t.string   "infoable_type"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "state"
   end
 
   add_index "basic_infos", ["infoable_type", "infoable_id"], name: "index_basic_infos_on_infoable_type_and_infoable_id", using: :btree

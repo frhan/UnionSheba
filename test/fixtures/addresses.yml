@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  village: MyString
+  road: MyString
+  word_no: 1
+  district: MyString
+  upazila: MyString
+  post_office: MyString
+  type: 
+  lang: MyString
+
+two:
+  village: MyString
+  road: MyString
+  word_no: 1
+  district: MyString
+  upazila: MyString
+  post_office: MyString
+  type: 
+  lang: MyString

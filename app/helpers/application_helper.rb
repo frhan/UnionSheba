@@ -4,33 +4,33 @@ module ApplicationHelper
     return false unless number.present?
     number = number.strip
     number.each_char do |c|
-        case c
-          when '1'
-          when '2'
-          when '3'
-          when '4'
-          when '5'
-          when '6'
-          when '7'
-          when '8'
-          when '9'
-          when '0'
-          when '১'
-          when '২'
-          when '৩'
-          when '৪'
-          when '৫'
-          when '৬'
-          when '৭'
-          when '৮'
-          when '৯'
-          when '০'
-          else
-            return false
-        end
+      case c
+        when '1'
+        when '2'
+        when '3'
+        when '4'
+        when '5'
+        when '6'
+        when '7'
+        when '8'
+        when '9'
+        when '0'
+        when '১'
+        when '২'
+        when '৩'
+        when '৪'
+        when '৫'
+        when '৬'
+        when '৭'
+        when '৮'
+        when '৯'
+        when '০'
+        else
+          return false
       end
+    end
 
-      true
+    true
   end
 
   def bangla_number(number)
@@ -101,12 +101,12 @@ module ApplicationHelper
   end
 
   def bangla_full_date(date)
-    return String.new  unless date.present?
+    return String.new unless date.present?
     bangla_number(date.day.to_s) << ' '<< bangla_month(date.month)<< ' ' << bangla_number(date.year.to_s)
   end
 
   def bangla_date(date)
-    return String.new  unless date.present?
+    return String.new unless date.present?
     bangla_number(date.day.to_s) << '/' << bangla_number(date.month.to_s) << '/' << bangla_number(date.year.to_s)
   end
 
@@ -122,7 +122,7 @@ module ApplicationHelper
       when 4
         month = 'এপ্রিল'
       when 5
-        month =  'মে'
+        month = 'মে'
       when 6
         month = 'জুন'
       when 7
@@ -170,7 +170,7 @@ module ApplicationHelper
   end
 
   def get_type
-      return params[:collections][:type] if params[:collections].present?
+    return params[:collections][:type] if params[:collections].present?
   end
 
   def get_cat_type
@@ -178,18 +178,18 @@ module ApplicationHelper
   end
 
   def collection_money_type_bangla
-     return 'টাকা কালেকশন' unless (params[:collections].present? && params[:collections][:type].present?)
-     return 'টাকা কালেকশন' if params[:collections][:type] == 'all'
-     return 'ট্যাক্স ও রেট কালেকশন' if params[:collections][:type] == 'TaxOrRateCollection'
-     return 'ট্রেড লাইসেন্স কালেকশন' if params[:collections][:type] == 'TradeLicense'
-     return 'বিবিধ কালেকশন'  if params[:collections][:type] == 'OthersCollection'
+    return 'টাকা কালেকশন' unless (params[:collections].present? && params[:collections][:type].present?)
+    return 'টাকা কালেকশন' if params[:collections][:type] == 'all'
+    return 'ট্যাক্স ও রেট কালেকশন' if params[:collections][:type] == 'TaxOrRateCollection'
+    return 'ট্রেড লাইসেন্স কালেকশন' if params[:collections][:type] == 'TradeLicense'
+    return 'বিবিধ কালেকশন' if params[:collections][:type] == 'OthersCollection'
   end
 
   def current_fiscal_year_bangla
-      now = Time.now
-      year = now.year
-      year = now.year - 1 if now.month < 6 #if fiscal year less than june
-      bangla_number(year.to_s) << '-'<< bangla_number((year + 1).to_s)
+    now = Time.now
+    year = now.year
+    year = now.year - 1 if now.month < 6 #if fiscal year less than june
+    bangla_number(year.to_s) << '-'<< bangla_number((year + 1).to_s)
   end
 
   def wicked_pdf_image_tag_for_public(img, options={})
@@ -199,6 +199,17 @@ module ApplicationHelper
     else
       image_tag img
     end
+  end
+
+  def current_lang
+    return 'en' if params[:lang] == 'en'
+    'bn'
+  end
+
+  def address_type(address)
+    return "বর্তমান ঠিকানা" if address.present_address?
+    return "স্থায়ী ঠিকানা" if address.permanent_address?
+    String.new
   end
 
 end
