@@ -5,8 +5,8 @@ class CitizensController < InheritedResources::Base
   require 'barby/outputter/png_outputter'
 
   include ApplicationHelper, UnionHelper
-  before_filter :authenticate_user! ,only: :index
-  load_and_authorize_resource only: :index
+  before_filter :authenticate_user! ,only: [:index,:requests]
+  load_and_authorize_resource only: [:index,:requests]
 
   def new
     @citizen = Citizen.new
@@ -20,6 +20,13 @@ class CitizensController < InheritedResources::Base
 
   def active
     @citizen = Citizen.find(params[:id])
+  end
+
+  def verify_application
+
+  end
+
+  def verify_citizen
 
   end
 
