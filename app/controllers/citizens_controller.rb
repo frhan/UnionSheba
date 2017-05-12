@@ -114,7 +114,7 @@ class CitizensController < InheritedResources::Base
                                     addresses_attributes: [:village, :road, :word_no, :district, :upazila, :post_office, :address_type, :lang],
                                     contact_address_attributes: [:mobile_no, :email],
                                     citizen_basic_attributes:[:nid,:birthid,:dob,:gender,:maritial_status_id,
-                                                              :citizenship_status_id,:religion_id])
+                                                              :citizenship_state_id,:religion_id])
   end
 
   def file_name
