@@ -123,7 +123,7 @@ class CitizensController < InheritedResources::Base
   private
 
   def citizen_params
-    params.require(:citizen).permit(:union_id, :nid, :birthid, basic_infos_attributes: [:name, :fathers_name, :mothers_name, :date_of_birth, :lang],
+    params.require(:citizen).permit(:union_id, :status, basic_infos_attributes: [:name, :fathers_name, :mothers_name, :date_of_birth, :lang],
                                     addresses_attributes: [:village, :road, :word_no, :district, :upazila, :post_office, :address_type, :lang],
                                     contact_address_attributes: [:mobile_no, :email],
                                     citizen_basic_attributes:[:nid,:birthid,:dob,:gender,:maritial_status_id,

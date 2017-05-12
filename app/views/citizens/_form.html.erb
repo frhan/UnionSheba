@@ -30,7 +30,10 @@
                   <%= f.collection_select :union_id, Union.all, :id, :name_in_bng, {}, {class: "form-control"} %>
                 </div>
               </div>
+
           <% end %>
+
+          <%= f.hidden_field :status, :value => user_signed_in? ? :active : :pending %>
 
           <%= f.fields_for :citizen_basic do |cb| %>
               <%= render partial: 'layouts/citizen_basic', locals: {f: cb} %>
