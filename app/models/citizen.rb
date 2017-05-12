@@ -120,6 +120,21 @@ class Citizen < ActiveRecord::Base
     bangla_number '1234567'
   end
 
+  def basic_information
+    @basic_info ||= self.basic_infos.info(current_lang).first if self.basic_infos.info(current_lang).present?
+    @basic_info
+  end
+
+  def present_address
+    @present_address ||= self.addresses.present(current_lang).first if self.addresses.present(current_lang).first.present?
+    @present_address
+  end
+
+  def permanent_address
+    @permanent_address ||=  self.addresses.permanent(current_lang).first if self.addresses.permanent(current_lang).first.present?
+    @permanent_address
+  end
+
   private
 
   def save_nid_birthdid_as_english

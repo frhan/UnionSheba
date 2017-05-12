@@ -3,6 +3,8 @@ class BasicInfo < ActiveRecord::Base
 
   scope :en, -> { where(lang: :en) }
 
-  scope :en, -> { where(lang: :bn) }
+  scope :bn, -> { where(lang: :bn) }
+
+  scope :info, -> (lang) { where(lang: lang) }
 
 end

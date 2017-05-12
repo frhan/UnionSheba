@@ -202,7 +202,7 @@ module ApplicationHelper
   end
 
   def current_lang
-    return 'en' if params[:lang] == 'en'
+    #return 'en' if params[:lang] == 'en'
     'bn'
   end
 
