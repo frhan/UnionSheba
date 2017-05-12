@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512084815) do
+ActiveRecord::Schema.define(version: 20170512103714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170512084815) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "state"
+    t.string   "spouse_name"
   end
 
   add_index "basic_infos", ["infoable_type", "infoable_id"], name: "index_basic_infos_on_infoable_type_and_infoable_id", using: :btree
@@ -164,6 +165,16 @@ ActiveRecord::Schema.define(version: 20170512084815) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "image_attachments", force: :cascade do |t|
+    t.string   "photo"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "image_attachments", ["attachable_type", "attachable_id"], name: "index_image_attachments_on_attachable_type_and_attachable_id", using: :btree
 
   create_table "maritial_statuses", force: :cascade do |t|
     t.string   "name_en"
