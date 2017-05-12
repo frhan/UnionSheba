@@ -19,7 +19,7 @@ class Citizen < ActiveRecord::Base
   #           :village, :post, :word_no, presence: true
   # validate :nid_or_birthid_present
   # validate :nid_birthid_numeric
-  # after_create :save_citizen_no
+  after_create :save_tracking_id
   # after_save :save_citizen_no
   #
   # validates_uniqueness_of :nid, :allow_blank => true, :allow_nil => true
@@ -59,10 +59,9 @@ class Citizen < ActiveRecord::Base
   end
 
   def save_citizen_no
-    return if self.pending?
-    return if self.citizen_no.present?
+    return if self.pending? ||  self.citizen_no.present?
 
-    ctzn_no = Citizen.where(union_id: 1).maximum(:citizen_no)
+    ctzn_no = Citizen.where(union_id: self.union.id).maximum(:citizen_no)
     ctzn_no = 0 if ctzn_no.nil?
     ctzn_no = ctzn_no.to_i
     ctzn_no = 1000 if ctzn_no == 0
@@ -135,8 +134,10 @@ class Citizen < ActiveRecord::Base
     @permanent_address
   end
 
-  def save_tracking_no
-
+  def save_tracking_id
+    trac_no = Citizen.where(union_id: self.union.id).count(:tracking_id)
+    trac_id = self.union.union_code << '-'<< current_year_month_day.to_s << '-' << trac_no.to_s
+    self.update_attributes(:tracking_id => trac_id)
   end
 
   private
