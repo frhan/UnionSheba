@@ -1,0 +1,47 @@
+<div class="form-group">
+  <h4 class="text-center"><u><%= address_type f.object %></u></h4>
+</div>
+
+<div class="form-group">
+  <label for="nameInEng" class="col-md-3 control-label">গ্রাম/মহল্লা</label>
+  <div class="col-md-9">
+    <%= f.text_field :village, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="nameInEng" class="col-md-3 control-label">রোড/ব্লক/সেক্টর</label>
+  <div class="col-md-9">
+    <%= f.text_field :road, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="nameInEng" class="col-md-3 control-label">ওয়ার্ড নং</label>
+  <div class="col-md-9">
+    <%= f.text_field :word_no, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="nameInEng" class="col-md-3 control-label">উপজেলা/থানা</label>
+  <div class="col-md-9">
+    <%= f.text_field :upazila, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="nameInEng" class="col-md-3 control-label">জেলা</label>
+  <div class="col-md-9">
+    <%= f.text_field :district, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="nameInEng" class="col-md-3 control-label">পোষ্ট অফিস</label>
+  <div class="col-md-9">
+    <%= f.text_field :post_office, class: "form-control" %>
+  </div>
+</div>
+<%= f.hidden_field :address_type %>
+<%= f.hidden_field :lang %>

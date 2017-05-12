@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512082328) do
+ActiveRecord::Schema.define(version: 20170512084815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,15 +70,11 @@ ActiveRecord::Schema.define(version: 20170512082328) do
     t.string   "name"
     t.string   "fathers_name"
     t.string   "mothers_name"
-    t.string   "maritial_status"
-    t.string   "nid"
-    t.string   "birth_id"
-    t.string   "date_of_birth"
     t.string   "lang"
     t.integer  "infoable_id"
     t.string   "infoable_type"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "state"
   end
 
@@ -105,26 +101,14 @@ ActiveRecord::Schema.define(version: 20170512082328) do
   add_index "citizen_basics", ["religion_id"], name: "index_citizen_basics_on_religion_id", using: :btree
 
   create_table "citizens", force: :cascade do |t|
-    t.string   "name_in_eng"
-    t.string   "name_in_bng"
-    t.string   "fathers_name"
-    t.string   "mothers_name"
-    t.string   "village"
-    t.string   "post"
-    t.integer  "word_no"
     t.integer  "union_id"
-    t.string   "spouse_name"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.string   "nid"
-    t.string   "birthid"
     t.string   "status",       default: "active"
-    t.string   "email"
-    t.string   "mobile_no"
     t.datetime "requested_at"
     t.datetime "saved_at"
-    t.string   "gender"
     t.string   "citizen_no"
+    t.string   "tracking_id"
   end
 
   add_index "citizens", ["union_id"], name: "index_citizens_on_union_id", using: :btree
