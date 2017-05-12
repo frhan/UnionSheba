@@ -17,32 +17,16 @@
               </div>
           <% end %>
 
+          <%= f.hidden_field :union_id, :value => current_user.union.id %>
+
           <%= f.fields_for :basic_infos do |bi| %>
               <%= render partial: 'layouts/basic_information', locals: {f: bi} %>
           <% end %>
 
-          <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">লিঙ্গঃ</label>
-            <div class="col-md-9">
-              <%= f.select :gender, Citizen.GENDERS.map { |c| [c[0], c[1]] }, {}, {class: "form-control"} %>
-            </div>
-          </div>
+          <%= f.fields_for :citizen_basic do |cb| %>
+              <%= render partial: 'layouts/citizen_basic', locals: {f: cb} %>
+          <% end %>
 
-          <%= f.hidden_field :union_id, :value => current_user.union.id %>
-          <span class=" text-center help-block">নাগরিকত্ব নম্বর অথবা জন্ম নিবন্ধন নম্বর যেকোন একটি দিলে হবে</span>
-          <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">জাতীয় পরিচয়পত্র নম্বরঃ</label>
-            <div class="col-md-9">
-              <%= f.text_field :nid, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="nameInBn" class="col-md-3 control-label">জন্ম নিবন্ধন নম্বরঃ</label>
-            <div class="col-md-9">
-              <%= f.text_field :birthid, class: "form-control" %>
-            </div>
-          </div>
 
           <%= f.fields_for :addresses do |ad| %>
               <%= render partial: 'layouts/address', locals: {f: ad} %>

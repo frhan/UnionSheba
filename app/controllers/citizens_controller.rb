@@ -11,6 +11,7 @@ class CitizensController < InheritedResources::Base
   def new
     @citizen = Citizen.new
     @citizen.build_contact_address
+    @citizen.build_citizen_basic
     @citizen.basic_infos.build(lang: current_lang)
     @citizen.addresses.build(address_type: :present, lang: current_lang)
     @citizen.addresses.build(address_type: :permanent, lang: current_lang)
@@ -111,7 +112,9 @@ class CitizensController < InheritedResources::Base
   def citizen_params
     params.require(:citizen).permit(:union_id, :nid, :birthid, basic_infos_attributes: [:name, :fathers_name, :mothers_name, :date_of_birth, :lang],
                                     addresses_attributes: [:village, :road, :word_no, :district, :upazila, :post_office, :address_type, :lang],
-                                    contact_address_attributes: [:mobile_no, :email])
+                                    contact_address_attributes: [:mobile_no, :email],
+                                    citizen_basic_attributes:[:nid,:birthid,:dob,:gender,:maritial_status_id,
+                                                              :citizenship_status_id,:religion_id])
   end
 
   def file_name
