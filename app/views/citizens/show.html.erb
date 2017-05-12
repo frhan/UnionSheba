@@ -1,77 +1,7 @@
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
   <p id="notice"><%= notice %></p>
 
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= @citizen.name_in_eng %></h3>
-    </div>
-    <div class="panel-body">
-      <div class="row">
-
-        <div class=" col-md-9 col-lg-9 ">
-          <table class="table table-user-information">
-            <tbody>
-            <tr>
-              <td>নামঃ</td>
-              <td><%= @citizen.name_in_bng %></td>
-            </tr>
-
-            <tr>
-              <td>বাবার নামঃ</td>
-              <td><%= @citizen.fathers_name %></td>
-            </tr>
-            <tr>
-              <td>মায়ের নামঃ</td>
-              <td><%= @citizen.mothers_name %></td>
-            </tr>
-
-            <tr>
-              <td>স্বামী/স্ত্রীর নামঃ</td>
-              <td><%= @citizen.spouse_name %></td>
-            </tr>
-
-            <tr>
-              <td>লিঙ্গঃ</td>
-              <td><%= @citizen.gender_bangla %></td>
-            </tr>
-
-
-            <tr>
-              <td>গ্রামের নামঃ</td>
-              <td><%= @citizen.village %></td>
-            </tr>
-
-            <tr>
-              <td>ওয়ার্ড নংঃ</td>
-              <td><%= @citizen.word_no %></td>
-            </tr>
-            <td>ডাকঘরঃ</td>
-            <td><%= @citizen.post %></td>
-
-            <tr>
-              <td>জাতীয় পরিচয়পত্র নম্বরঃ</td>
-              <td><%= @citizen.nid %></td>
-            </tr>
-
-            <tr>
-              <td>জন্ম নিবন্ধন নম্বরঃ</td>
-              <td><%= @citizen.birthid %></td>
-            </tr>
-
-
-            <tr>
-              <td>Status</td>
-              <td><%= @citizen.status %></td>
-            </tr>
-
-            </tbody>
-          </table>
-
-          <% if @citizen.active? %>
-              <%= link_to 'Print Certificate', citizen_path(@citizen, format: 'pdf'), class: "btn btn-info btn-default" %>
-          <% end %>
-
-          <%= link_to 'Back', citizens_path, class: "btn btn-primary" %>
+           <%= link_to 'Back', citizens_path, class: "btn btn-primary" %>
 
         </div>
       </div>

@@ -12,7 +12,6 @@
   </div>
 </div>
 
-
 <div class="form-group">
   <label for="nameInBn" class="col-md-3 control-label">ধর্ম</label>
   <div class="col-md-9">
@@ -20,14 +19,12 @@
   </div>
 </div>
 
-
 <div class="form-group">
   <label for="nameInBn" class="col-md-3 control-label">বাসিন্দা</label>
   <div class="col-md-9">
     <%= f.select :religion, CitizenshipState.all.map { |c| [c.name_bn, c.id] }, {}, {class: "form-control"} %>
   </div>
 </div>
-
 
 <span class=" text-center help-block">নাগরিকত্ব নম্বর অথবা জন্ম নিবন্ধন নম্বর যেকোন একটি দিলে হবে</span>
 <div class="form-group">
@@ -47,6 +44,6 @@
 <div class="form-group">
   <label for="nameInEng" class="col-md-3 control-label">জম্ম তারিখ</label>
   <div class="col-md-9">
-    <%= f.text_field :dob, class: "form-control"%>
+    <%= f.text_field :dob, class: "form-control" %>
   </div>
 </div>
