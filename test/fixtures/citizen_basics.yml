@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nid: MyString
+  birthid: MyString
+  dob: 2017-05-12
+  passport_no: MyString
+  gender: MyString
+  maritial_status_id: 
+  citizenship_status_id: 
+  religion_id: 
+
+two:
+  nid: MyString
+  birthid: MyString
+  dob: 2017-05-12
+  passport_no: MyString
+  gender: MyString
+  maritial_status_id: 
+  citizenship_status_id: 
+  religion_id: 
