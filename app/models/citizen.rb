@@ -6,6 +6,7 @@ class Citizen < ActiveRecord::Base
   has_many :basic_infos, as: :infoable, dependent: :destroy
   has_one :contact_address, as: :contactable, dependent: :destroy
 
+
   accepts_nested_attributes_for :addresses, allow_destroy: true
   accepts_nested_attributes_for :basic_infos, allow_destroy: true
   accepts_nested_attributes_for :contact_address, allow_destroy: true

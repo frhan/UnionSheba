@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511215738) do
+ActiveRecord::Schema.define(version: 20170512082328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,26 @@ ActiveRecord::Schema.define(version: 20170511215738) do
 
   add_index "basic_infos", ["infoable_type", "infoable_id"], name: "index_basic_infos_on_infoable_type_and_infoable_id", using: :btree
 
+  create_table "citizen_basics", force: :cascade do |t|
+    t.string   "nid"
+    t.string   "birthid"
+    t.date     "dob"
+    t.string   "passport_no"
+    t.string   "gender"
+    t.integer  "maritial_status_id"
+    t.integer  "citizenship_state_id"
+    t.integer  "religion_id"
+    t.integer  "basicable_id"
+    t.string   "basicable_type"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "citizen_basics", ["basicable_type", "basicable_id"], name: "index_citizen_basics_on_basicable_type_and_basicable_id", using: :btree
+  add_index "citizen_basics", ["citizenship_state_id"], name: "index_citizen_basics_on_citizenship_state_id", using: :btree
+  add_index "citizen_basics", ["maritial_status_id"], name: "index_citizen_basics_on_maritial_status_id", using: :btree
+  add_index "citizen_basics", ["religion_id"], name: "index_citizen_basics_on_religion_id", using: :btree
+
   create_table "citizens", force: :cascade do |t|
     t.string   "name_in_eng"
     t.string   "name_in_bng"
@@ -108,6 +128,11 @@ ActiveRecord::Schema.define(version: 20170511215738) do
   end
 
   add_index "citizens", ["union_id"], name: "index_citizens_on_union_id", using: :btree
+
+  create_table "citizenship_states", force: :cascade do |t|
+    t.string "name_en"
+    t.string "name_bn"
+  end
 
   create_table "collection_moneys", force: :cascade do |t|
     t.decimal  "fee"
@@ -156,6 +181,13 @@ ActiveRecord::Schema.define(version: 20170511215738) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "maritial_statuses", force: :cascade do |t|
+    t.string   "name_en"
+    t.string   "name_bn"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "others_collections", force: :cascade do |t|
     t.string   "senders_name"
     t.string   "senders_address"
@@ -169,6 +201,13 @@ ActiveRecord::Schema.define(version: 20170511215738) do
   end
 
   add_index "others_collections", ["union_id"], name: "index_others_collections_on_union_id", using: :btree
+
+  create_table "religions", force: :cascade do |t|
+    t.string   "name_en"
+    t.string   "name_bn"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "role_name"
@@ -285,6 +324,9 @@ ActiveRecord::Schema.define(version: 20170511215738) do
   add_index "users", ["union_id"], name: "index_users_on_union_id", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "citizen_basics", "citizenship_states"
+  add_foreign_key "citizen_basics", "maritial_statuses"
+  add_foreign_key "citizen_basics", "religions"
   add_foreign_key "citizens", "unions"
   add_foreign_key "collection_moneys", "unions"
   add_foreign_key "districts", "divisions"

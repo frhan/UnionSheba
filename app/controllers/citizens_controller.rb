@@ -4,7 +4,7 @@ class CitizensController < InheritedResources::Base
   require 'barby/barcode/qr_code'
   require 'barby/outputter/png_outputter'
 
-  include ApplicationHelper,UnionHelper
+  include ApplicationHelper, UnionHelper
   before_filter :authenticate_user!
   load_and_authorize_resource
 
@@ -19,13 +19,14 @@ class CitizensController < InheritedResources::Base
   def index
     respond_to do |format|
       format.html
-      format.json { render json: CitizensDatatable.new(view_context,current_user) }
+      format.json { render json: CitizensDatatable.new(view_context, current_user) }
     end
   end
 
   def requests
     @citizens = current_user.citizens.where(status: :pending)
-                    .order('requested_at asc').per_page_kaminari(params[:page])
+                    .order('requested_at asc')
+                    .per_page_kaminari(params[:page])
                     .per(10) if user_signed_in?
     #@users = User.order(:name).page params[:page]
     #@citizens = Citizen.per_page_kaminari(params[:page]).per(10)
@@ -37,16 +38,16 @@ class CitizensController < InheritedResources::Base
   end
 
   def edit_request
-    @citizen =  Citizen.find(params[:id]);
+    @citizen = Citizen.find(params[:id]);
   end
 
   #PUT
   def permit_request
-    @citizen =  Citizen.find(params[:id]);
+    @citizen = Citizen.find(params[:id]);
     #@citizen.save_citizen_no
 
     respond_to do |format|
-      if  @citizen.update(citizen_params)
+      if @citizen.update(citizen_params)
         format.html { redirect_to requests_citizens_path, notice: 'Citizen was successfully updated' }
         format.json { render :show, status: :ok, location: @citizen }
       else
@@ -71,7 +72,7 @@ class CitizensController < InheritedResources::Base
 
   def show
     @citizen = Citizen.find(params[:id])
-    @barcode = barcode_output(@citizen)   if params[:format] == 'pdf'
+    @barcode = barcode_output(@citizen) if params[:format] == 'pdf'
 
     respond_to do |format|
       format.html
@@ -82,11 +83,11 @@ class CitizensController < InheritedResources::Base
                :disposition => 'attachment',
                page_size: 'A4',
                :show_as_html => params[:debug].present?,
-               margin:  {   top:               8,                     # default 10 (mm)
-                            bottom:            0,
-                            left:              5,
-                            right:             5 },
-               dpi:                            '300'
+               margin: {top: 8, # default 10 (mm)
+                        bottom: 0,
+                        left: 5,
+                        right: 5},
+               dpi: '300'
       end
     end
   end
@@ -95,27 +96,22 @@ class CitizensController < InheritedResources::Base
 
   end
 
-  def barcode_output( citizen )
+  def barcode_output(citizen)
     barcode_string = citizen.barcode
     barcode = Barby::QrCode.new(barcode_string, level: :q, size: 9)
 
     # PNG OUTPUT
-    base64_output = Base64.encode64(barcode.to_png({ xdim: 4 }))
+    base64_output = Base64.encode64(barcode.to_png({xdim: 4}))
     "data:image/png;base64,#{base64_output}"
   end
 
 
   private
 
-  # def citizen_params
-  #   params.require(:citizen).permit(:name_in_eng, :name_in_bng, :fathers_name,
-  #                                   :mothers_name, :village, :post, :word_no, :union_id,
-  #                                   :spouse_name,:nid,:birthid,:email,:mobile_no,:status,:gender)
-  # end
   def citizen_params
-    params.require(:citizen).permit(:union_id,:nid,:birthid,basic_infos_attributes: [:name,:fathers_name,:mothers_name,:date_of_birth,:lang],
-                                    addresses_attributes:[:village,:road,:word_no,:district,:upazila,:post_office,:address_type,:lang],
-                                    contact_address_attributes:[:mobile_no,:email])
+    params.require(:citizen).permit(:union_id, :nid, :birthid, basic_infos_attributes: [:name, :fathers_name, :mothers_name, :date_of_birth, :lang],
+                                    addresses_attributes: [:village, :road, :word_no, :district, :upazila, :post_office, :address_type, :lang],
+                                    contact_address_attributes: [:mobile_no, :email])
   end
 
   def file_name
