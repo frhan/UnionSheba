@@ -7,7 +7,13 @@
 
     <div class="panel-body">
 
+      <div class="thumbnail">
+        <%= cl_image_tag( @citizen.image_attachment.photo, :width => 600, :height => 400, :crop => :fill) %>
+        <%= link_to("Download", cl_signed_download_url(@citizen.image_attachment.photo,{ :attachment => true})) %>
+      </div>
+
       <%= render partial: 'layouts/show_basic_info', locals: {person: @citizen.basic_information} %>
+      <%= render partial: 'layouts/show_citizen_info', locals: {person: @citizen.citizen_basic} %>
       <%= render partial: 'layouts/show_address', locals: {address: @citizen.present_address} %>
       <%= render partial: 'layouts/show_address', locals: {address: @citizen.permanent_address} %>
       <%= render partial: 'layouts/show_contact_address', locals: {address: @citizen.contact_address} %>
@@ -17,6 +23,10 @@
 
           <% if @citizen.active? %>
               <%= link_to 'Print Certificate', citizen_path(@citizen, format: 'pdf'), class: "btn btn-info btn-default" %>
+          <% end %>
+
+          <% if @citizen.pending? %>
+              <%= link_to 'Activate Citizen', citizen_path(@citizen, format: 'pdf'), class: "btn btn-info btn-default" %>
           <% end %>
 
           <%= link_to 'Back', citizens_path, class: "btn btn-primary" %>

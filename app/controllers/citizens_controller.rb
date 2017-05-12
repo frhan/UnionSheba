@@ -5,8 +5,8 @@ class CitizensController < InheritedResources::Base
   require 'barby/outputter/png_outputter'
 
   include ApplicationHelper, UnionHelper
-  before_filter :authenticate_user!
-  load_and_authorize_resource
+  before_filter :authenticate_user! ,only: :index
+  load_and_authorize_resource only: :index
 
   def new
     @citizen = Citizen.new
@@ -16,6 +16,11 @@ class CitizensController < InheritedResources::Base
     @citizen.basic_infos.build(lang: current_lang)
     @citizen.addresses.build(address_type: :present, lang: current_lang)
     @citizen.addresses.build(address_type: :permanent, lang: current_lang)
+  end
+
+  def active
+    @citizen = Citizen.find(params[:id])
+
   end
 
   def index

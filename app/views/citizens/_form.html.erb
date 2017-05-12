@@ -16,8 +16,9 @@
                 </ul>
               </div>
           <% end %>
-
-          <%= f.hidden_field :union_id, :value => current_user.union.id %>
+          <% if user_signed_in? %>
+            <%= f.hidden_field :union_id, :value => current_user.union.id %>
+          <% end %>
 
           <%= f.fields_for :basic_infos do |bi| %>
               <%= render partial: 'layouts/basic_information', locals: {f: bi} %>

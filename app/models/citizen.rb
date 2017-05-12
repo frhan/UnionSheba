@@ -135,6 +135,10 @@ class Citizen < ActiveRecord::Base
     @permanent_address
   end
 
+  def save_tracking_no
+
+  end
+
   private
 
   def save_nid_birthdid_as_english

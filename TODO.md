@@ -58,6 +58,7 @@ Task
 Task
 -------
 * T#2: citizen certificate
+ - show data
 * warish certificate
 * others certificate
 

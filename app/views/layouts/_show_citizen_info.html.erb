@@ -1,0 +1,90 @@
+<div class="row">
+
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-xs-4">
+        <label>লিঙ্গ:</label>
+      </div>
+      <div class="col-xs-8">
+        <p><%= person.gender %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-xs-4  control-label">
+        <label>বৈবাহিক সম্পর্ক:</label>
+      </div>
+      <div class="col-xs-8">
+        <p><%= person.maritial_status.name_bn %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-xs-4">
+        <label>ধর্ম:</label>
+      </div>
+      <div class="col-xs-8">
+        <p><%= person.religion.name_bn %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-xs-4  control-label">
+        <label>বাসিন্দা:</label>
+      </div>
+      <div class="col-xs-8">
+        <p><%= person.citizenship_state.name_bn %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-xs-4">
+        <label>জম্ম তারিখ:</label>
+      </div>
+      <div class="col-xs-8">
+        <p><%= person.dob %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-xs-6  control-label">
+        <label>জাতীয় পরিচয়পত্র নম্বর:</label>
+      </div>
+      <div class="col-xs-6">
+        <p><%= person.nid %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-xs-3">
+        <label>জন্ম নিবন্ধন নম্বর:</label>
+      </div>
+      <div class="col-xs-9">
+        <p><%= person.birthid %></p>
+      </div>
+    </div>
+  </div>
+
+</div>
