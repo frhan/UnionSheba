@@ -1,0 +1,11 @@
+development:
+ cloud_name: bsnap
+ api_key: '964217779167916'
+ api_secret: CkdIo6QrF2ggrgcsSYK8D_7LGi4
+ enhance_image_tag: true
+ static_image_support: false
+
+production:
+  cloud_name: "bsnap"
+  api_key:  <%= ENV["CLOUDINARY_API_KEY"] %>
+  api_secret:  <%= ENV["CLOUDINARY_API_SECRET"] %>

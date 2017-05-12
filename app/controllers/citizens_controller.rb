@@ -12,6 +12,7 @@ class CitizensController < InheritedResources::Base
     @citizen = Citizen.new
     @citizen.build_contact_address
     @citizen.build_citizen_basic
+    @citizen.build_image_attachment
     @citizen.basic_infos.build(lang: current_lang)
     @citizen.addresses.build(address_type: :present, lang: current_lang)
     @citizen.addresses.build(address_type: :permanent, lang: current_lang)
@@ -114,7 +115,8 @@ class CitizensController < InheritedResources::Base
                                     addresses_attributes: [:village, :road, :word_no, :district, :upazila, :post_office, :address_type, :lang],
                                     contact_address_attributes: [:mobile_no, :email],
                                     citizen_basic_attributes:[:nid,:birthid,:dob,:gender,:maritial_status_id,
-                                                              :citizenship_state_id,:religion_id])
+                                                              :citizenship_state_id,:religion_id],
+                                    image_attachment_attributes: [:photo])
   end
 
   def file_name
