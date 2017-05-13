@@ -53,8 +53,7 @@ class CitizensController < InheritedResources::Base
   end
 
   def verify_application
-    #exact matching
-    @citizen = Citizen.find_by_tracking_id(params[:q]) if params[:q].present?
+    @citizen = Citizen.find_by_tracking_id(params[:q]) if params[:q]
     # where status in
     respond_to do |format|
       format.html
