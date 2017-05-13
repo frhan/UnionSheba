@@ -5,8 +5,8 @@ class CitizensController < InheritedResources::Base
   require 'barby/outputter/png_outputter'
 
   include ApplicationHelper, UnionHelper
-  before_filter :authenticate_user! ,only: [:index,:requests]
-  load_and_authorize_resource only: [:index,:requests]
+  before_filter :authenticate_user! ,only: [:index,:requests,:show]
+  load_and_authorize_resource only: [:index,:requests,:show]
 
   def new
     @citizen = Citizen.new
@@ -16,6 +16,36 @@ class CitizensController < InheritedResources::Base
     @citizen.basic_infos.build(lang: current_lang)
     @citizen.addresses.build(address_type: :present, lang: current_lang)
     @citizen.addresses.build(address_type: :permanent, lang: current_lang)
+  end
+
+  # POST /recipes
+  # POST /recipes.json
+  def create
+    @citizen = Citizen.new(citizen_params)
+
+    respond_to do |format|
+      if @citizen.save
+        format.html { redirect_to user_signed_in? ?  @citizen : public_citizen__path(@citizen) , notice: 'Citizen was successfully created.' }
+        format.json { render :show, status: :created, location: @citizen }
+      else
+        format.html {render :new }
+        format.json { render json: @citizen.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
+  def public_citizen__path(citizen)
+    return show_by_tracking_citizens_path(citizen.tracking_id)
+  end
+  def show_by_tracking_id
+    @citizen = Citizen.find_by_tracking_id(params[:id])
+    #do_respond(@citizen)
+  end
+
+  def show_by_nid
+    @citizen = Citizen.find_by_nid(params[:id])
+    #do_respond(@citizen)
   end
 
   def active

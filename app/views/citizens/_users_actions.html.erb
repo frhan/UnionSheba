@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-12">
+
+    <% if @citizen.active? %>
+        <%= link_to 'Print Certificate', citizen_path(@citizen, format: 'pdf'), class: "btn btn-info btn-default" %>
+    <% end %>
+
+    <% if @citizen.pending? %>
+        <%= link_to 'Activate Citizen', citizen_path(@citizen, format: 'pdf'), class: "btn btn-info btn-default" %>
+    <% end %>
+
+    <%= link_to 'Back', citizens_path, class: "btn btn-primary" %>
+  </div>
+</div>
