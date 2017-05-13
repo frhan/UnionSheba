@@ -1,4 +1,4 @@
 <div class="thumbnail">
   <%= cl_image_tag( image_attachment.photo, :width => 600, :height => 400, :crop => :fill) %>
-  <%= link_to("Download", cl_signed_download_url(image_attachment.photo ,{ :attachment => true})) %>
+  <%= link_to("Full Show", cl_signed_download_url(image_attachment.photo ,{ :attachment => true})) %>
 </div>

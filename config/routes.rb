@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
     collection do
       get :requests
+      get :verify_application
+      get :verify_citizen
     end
   end
 
