@@ -7,7 +7,7 @@
 
     <div class="panel-body">
       <% if @citizen.image_attachment.present? %>
-          <%= render 'layouts/show_image', locals: {image_attachment: @citizen.image_attachment} %>
+          <%= render partial: 'layouts/show_image', locals: {image_attachment: @citizen.image_attachment} %>
       <% end %>
 
       <%= render partial: 'layouts/show_basic_info', locals: {person: @citizen.basic_information} %>
