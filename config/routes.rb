@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :citizens do
     member do
       get :edit_request
+      get :activate_citizen
       put :permit_request
     end
     collection do

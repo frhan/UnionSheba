@@ -49,6 +49,10 @@ class Citizen < ActiveRecord::Base
     set_status :active
     save_saved_at
   end
+  def activate
+    self.update_attributes(status: :active)
+    save_citizen_no
+  end
 
   def save_requested_at
     self.requested_at = Time.now

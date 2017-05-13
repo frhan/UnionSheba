@@ -40,16 +40,16 @@ class CitizensController < InheritedResources::Base
   end
   def show_by_tracking_id
     @citizen = Citizen.find_by_tracking_id(params[:id])
-    #do_respond(@citizen)
   end
 
   def show_by_nid
     @citizen = Citizen.find_by_nid(params[:id])
-    #do_respond(@citizen)
   end
 
-  def active
+  def activate_citizen
     @citizen = Citizen.find(params[:id])
+    @citizen.activate
+    redirect_to @citizen
   end
 
   def verify_application
@@ -59,7 +59,6 @@ class CitizensController < InheritedResources::Base
       format.html
       format.js
     end
-
   end
 
   def verify_citizen
@@ -73,7 +72,7 @@ class CitizensController < InheritedResources::Base
 
   def index
     @citizens = current_user.citizens.where(status: :active)
-                    .order('created_at desc')
+                    .order('updated_at desc')
                     .per_page_kaminari(params[:page])
                     .per(10)
 
