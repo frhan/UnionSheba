@@ -58,16 +58,14 @@ Task
 Task
 -------
 * T#2: citizen certificate
- - verify page 
- - show data
- - index page for both
  - label from file
  - jquery form verification
- - 
  - pdf
- - ddate of birth add calender
+ - date of birth add calender
  - checking data
- - 
+ - edit - not show file /
+ 
+ 
 * T#3 warish certificate
  - controller
  - views

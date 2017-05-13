@@ -30,7 +30,8 @@
 <div class="form-group">
   <label for="nameInEng" class="col-md-3 control-label">জম্ম তারিখ</label>
   <div class="col-md-9">
-    <%= f.text_field :dob, class: "form-control" %>
+    <%= f.date_field :dob,"data-provide" => 'datepicker', "data-date-format" => "yyyy-mm-dd",max:Date.today,class: "form-control" %>
+
   </div>
 </div>
 
