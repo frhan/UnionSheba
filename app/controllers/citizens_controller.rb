@@ -63,11 +63,20 @@ class CitizensController < InheritedResources::Base
   end
 
   def verify_citizen
-
+    @citizen = Citizen.find_by_citizen_no(params[:q]) if params[:q]
+    # where status in
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def index
-    @citizens = Citizen.all
+    @citizens = current_user.citizens.where(status: :active)
+                    .order('created_at desc')
+                    .per_page_kaminari(params[:page])
+                    .per(10)
+
     respond_to do |format|
       format.html
     end
@@ -78,8 +87,6 @@ class CitizensController < InheritedResources::Base
                     .order('requested_at asc')
                     .per_page_kaminari(params[:page])
                     .per(10) if user_signed_in?
-    #@users = User.order(:name).page params[:page]
-    #@citizens = Citizen.per_page_kaminari(params[:page]).per(10)
 
     respond_to do |format|
       format.html

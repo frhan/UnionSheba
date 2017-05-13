@@ -1,35 +1,30 @@
 <div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
   <p id="notice"><%= notice %></p>
 
-  <h1>নাগরিকত্বের আবেদনকারী</h1>
+  <h1>নাগরিকত্বের আবেদনকারী সমূহ</h1>
 
-    <% if @citizens %>
-        <table class="table table-bordered table-striped">
-          <thead>
-
-          <tr>
-            <th>NID</th>
-            <th>Birth Id</th>
-            <th>Name</th>
-            <th>Requested at</th>
-            <th>status</th>
-          </tr>
-          </thead>
-          <tbody>
-
-          <% @citizens.each do |citizen| %>
-              <tr>
-                <td><%= link_to(citizen.nid, edit_citizen_path(citizen)) %></td>
-                <td><%= link_to(citizen.birthid,edit_citizen_path(citizen)) %></td>
-                <td><%= link_to(citizen.name_in_eng,edit_citizen_path(citizen)) %></td>
-                <td><%= citizen.requested_at_formatted %></td>
-                <td><%= citizen.status %></td>
-              </tr>
-          <% end %>
-          </tbody>
-        </table>
-    <% end %>
-    </tbody>
-  <%= paginate @citizens %>
-  </table>
+  <div class="row">
+    <div class="form-group col-md-12">
+      <% if can? :create, Citizen %>
+          <%= link_to 'New', new_citizen_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
+
+  <div class="row">
+    <%= form_tag(verify_citizen_citizens_path, method: :get, remote: true) do %>
+        <div class="form-group col-md-10">
+          <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "নাগরিক আবেদনের ট্র্যাকিং নম্বরটি প্রবেশ করুন" %>
+        </div>
+        <div class="form-group col-md-2">
+          <%= submit_tag 'খোঁজ করুন', class: "btn btn-primary" %>
+        </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'citizens', citizens: @citizens %>
+    </div>
+  </div>
+</div>
