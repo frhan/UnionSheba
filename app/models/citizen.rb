@@ -57,7 +57,7 @@ class Citizen < ActiveRecord::Base
   end
 
   def delete_image
-    return unless self.image_attachment.photo
+    return unless self.image_attachment.present? && self.image_attachment.photo.present?
     self.image_attachment.photo.file.delete if self.image_attachment.photo.file.exists?
     self.image_attachment.delete
   end
