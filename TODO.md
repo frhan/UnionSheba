@@ -58,9 +58,26 @@ Task
 Task
 -------
 * T#2: citizen certificate
+ - verify page 
  - show data
-* warish certificate
+ - index page for both
+ - label from file
+ - jquery form verification
+ - 
+ - pdf
+ - ddate of birth add calender
+ - checking data
+ - 
+* T#3 warish certificate
+ - controller
+ - views
+ - certificate
+ - 
+ 
 * others certificate
-
+* add footer
+* theme should not black
+* paralax for home page
+*
 
 

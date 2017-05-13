@@ -8,7 +8,7 @@
     <div class="panel-body">
       <div class="row">
 
-        <%= form_tag(home_index_path, method: :get, remote: true) do %>
+        <%= form_tag(verify_application_citizens_path, method: :get, remote: true) do %>
             <div class="form-group col-md-10">
               <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "আপনার নাগরিক আবেদনের ট্র্যাকিং নম্বরটি প্রবেশ করুন" %>
             </div>
@@ -19,5 +19,8 @@
       </div>
     </div>
 
+    <div id="results">
+      <%= render 'results' %>
+    </div>
   </div>
 </div>

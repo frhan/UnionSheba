@@ -1,0 +1,21 @@
+<% if @citizen.present? %>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Father's Name</th>
+    <th>Mother's Name</th>
+    <th>Union</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+
+      <tr>
+        <td><%= @citizen.status %></td>
+      </tr>
+  </tbody>
+</table>
+<% else %>
+    <p>No Citizen found</p>
+<% end %>
