@@ -49,9 +49,17 @@ class Citizen < ActiveRecord::Base
     set_status :active
     save_saved_at
   end
+
   def activate
     self.update_attributes(status: :active)
     save_citizen_no
+    delete_image
+  end
+
+  def delete_image
+    return unless self.image_attachment.photo
+    self.image_attachment.photo.file.delete if self.image_attachment.photo.file.exists?
+    self.image_attachment.delete
   end
 
   def save_requested_at
@@ -63,7 +71,7 @@ class Citizen < ActiveRecord::Base
   end
 
   def save_citizen_no
-    return if self.pending? ||  self.citizen_no.present?
+    return if self.pending? || self.citizen_no.present?
 
     ctzn_no = Citizen.where(union_id: self.union.id).maximum(:citizen_no)
     ctzn_no = 0 if ctzn_no.nil?
@@ -134,7 +142,7 @@ class Citizen < ActiveRecord::Base
   end
 
   def permanent_address
-    @permanent_address ||=  self.addresses.permanent(current_lang).first if self.addresses.permanent(current_lang).first.present?
+    @permanent_address ||= self.addresses.permanent(current_lang).first if self.addresses.permanent(current_lang).first.present?
     @permanent_address
   end
 
