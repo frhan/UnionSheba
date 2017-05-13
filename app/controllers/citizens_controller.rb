@@ -67,9 +67,9 @@ class CitizensController < InheritedResources::Base
   end
 
   def index
+    @citizens = Citizen.all
     respond_to do |format|
       format.html
-      format.json { render json: CitizensDatatable.new(view_context, current_user) }
     end
   end
 

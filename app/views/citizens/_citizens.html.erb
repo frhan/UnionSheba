@@ -1,0 +1,25 @@
+<% if citizens %>
+    <table class="table table-bordered table-striped">
+      <thead>
+
+      <tr>
+        <th>NID</th>
+        <th>Birth Id</th>
+        <th>Name</th>
+        <th>Requested at</th>
+        <th>status</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% citizens.each do |citizen| %>
+          <tr>
+            <td><%= link_to(citizen.status, edit_citizen_path(citizen)) %></td>
+
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
+</tbody>
+</table>

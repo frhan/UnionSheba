@@ -2,20 +2,7 @@
   <p id="notice"><%= notice %></p>
 
   <h1>নাগরিক সমূহ</h1>
-  <table id="citizens" class="table table-bordered table-striped" data-source="<%= citizens_url(format: "json") %>">
-    <thead>
-    <tr>
-      <th>NID</th>
-      <th>Birth Id</th>
-      <th>Name</th>
-      <th>Fathers Name</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
+  <%= render 'citizens', citizens: @citizens %>
   <% if can? :create, Citizen %>
       <%= link_to 'New', new_citizen_path, class: "btn btn-primary" %>
   <% end %>
