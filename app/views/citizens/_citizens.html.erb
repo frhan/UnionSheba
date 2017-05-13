@@ -3,7 +3,13 @@
       <thead>
 
       <tr>
-        <th>Tracking Id</th>
+        <% if show_tracking %>
+            <th>Tracking Id</th>
+        <% end %>
+        <% if show_citizen_no %>
+            <th>Citizen No</th>
+        <% end %>
+
         <th>NID</th>
         <th>Birth Id</th>
         <th>Name</th>
@@ -15,12 +21,34 @@
 
       <% citizens.each do |citizen| %>
           <tr>
-            <td><%= link_to(citizen.tracking_id, edit_citizen_path(citizen)) %></td>
-            <td><%= link_to(citizen.status, edit_citizen_path(citizen)) %></td>
-            <td><%= link_to(citizen.status, edit_citizen_path(citizen)) %></td>
-            <td><%= link_to(citizen.status, edit_citizen_path(citizen)) %></td>
-            <td><%= link_to(citizen.status, edit_citizen_path(citizen)) %></td>
-            <td><%= link_to(citizen.status, edit_citizen_path(citizen)) %></td>
+            <% if show_tracking %>
+                <td><%= link_to(citizen.tracking_id, edit_citizen_path(citizen)) %></td>
+            <% end %>
+
+            <% if show_citizen_no %>
+                <td><%= link_to(citizen.citizen_no, edit_citizen_path(citizen)) %></td>
+            <% end %>
+
+            <% if citizen.citizen_basic.present? %>
+                <td><%= link_to(citizen.citizen_basic.nid, edit_citizen_path(citizen)) %></td>
+                <td><%= link_to(citizen.citizen_basic.birthid, edit_citizen_path(citizen)) %></td>
+            <% else %>
+                <td></td>
+                <td></td>
+            <% end %>
+
+            <% if citizen.basic_information.present? %>
+                <td><%= link_to(citizen.basic_information.name, edit_citizen_path(citizen)) %></td>
+                <td><%= link_to(citizen.basic_information.fathers_name, edit_citizen_path(citizen)) %></td>
+            <% else %>
+                <td></td>
+                <td></td>
+            <% end %>
+
+            <td>
+              <%= link_to('Edit', edit_citizen_path(citizen)) %>
+              <%= link_to('Delete', edit_citizen_path(citizen)) %>
+            </td>
           </tr>
       <% end %>
       </tbody>
