@@ -49,7 +49,7 @@ class CitizensController < InheritedResources::Base
   def activate_citizen
     @citizen = Citizen.find(params[:id])
     @citizen.activate
-    redirect_to @citizen
+    redirect_to @citizen,notice: 'Citizen was successfully activated.'
   end
 
   def verify_application

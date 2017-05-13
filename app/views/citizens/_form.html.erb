@@ -65,9 +65,19 @@
               <%= f.submit "Save", class: "btn btn-info" %>
             </div>
           </div>
+          
+          <% if user_signed_in? %>
+              <% if f.object.new_record? || f.object.active? %>
+                  <%= link_to 'Back', citizens_path %>
+              <% else %>
+                  <%= link_to 'Back', requests_citizens_path %>
+              <% end %>
+          <% else %>
+              <%= link_to 'Back', root_path %>
+          <% end %>
       <% end %>
 
-      <%= link_to 'Back', user_signed_in? ? citizens_path : root_path %>
+
 
     </div>
   </div>

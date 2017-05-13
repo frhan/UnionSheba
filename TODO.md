@@ -63,8 +63,9 @@ Task
  - pdf
  - date of birth add calender
  - checking data
- - edit - not show file /
- 
+ - delete citizen
+ - citizen no should unique for all union
+ - on public show - union/district/upazila- show
  
 * T#3 warish certificate
  - controller
