@@ -1,21 +1,45 @@
 <% if @citizen.present? %>
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Father's Name</th>
-    <th>Mother's Name</th>
-    <th>Union</th>
-    <th>Status</th>
-  </tr>
-  </thead>
-  <tbody>
+    <div class="row">
+      <div class="col-md-10 col-sm-offset-1">
+        <p id="notice"><%= notice %></p>
+        <% if @citizen.image_attachment.present? %>
+            <%= render partial: 'layouts/show_image', locals: {image_attachment: @citizen.image_attachment} %>
+        <% end %>
 
-      <tr>
-        <td><%= @citizen.status %></td>
-      </tr>
-  </tbody>
-</table>
+        <% if @citizen.citizen_no.present? %>
+            <div class="row">
+              <div class="col-xs-2">
+                <label>নাগরিকত্ব নং:</label>
+              </div>
+              <div class="col-xs-10 pull-left">
+                <p><%= person.citizen_no %></p>
+              </div>
+            </div>
+        <% end %>
+
+        <%= render partial: 'layouts/show_basic_info', locals: {person: @citizen.basic_information} %>
+        <%= render partial: 'layouts/show_citizen_info', locals: {person: @citizen.citizen_basic} %>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label>স্ট্যাটাস:</label>
+          </div>
+          <div class="col-xs-10">
+            <p><%= @citizen.status %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label>তারিখ:</label>
+          </div>
+          <div class="col-xs-10">
+            <p><%= @citizen.created_at %></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
 <% else %>
     <p>No Citizen found</p>
 <% end %>

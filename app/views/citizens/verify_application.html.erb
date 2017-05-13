@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2 toppad">
+<div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-2 toppad">
   <p id="notice"><%= notice %></p>
   <div class="panel panel-info">
     <div class="panel-heading">
@@ -16,14 +16,14 @@
               <%= submit_tag 'খোঁজ করুন', class: "btn btn-primary" %>
             </div>
         <% end %>
+        <div id="results">
+          <% if @citizen.present? %>
+              <%= render 'results' %>
+          <% end %>
+        </div>
       </div>
     </div>
 
-    <div id="results">
-      <% if @citizen.present? %>
-          <%= render 'results' %>
-      <% end %>
-    </div>
 
   </div>
 </div>
