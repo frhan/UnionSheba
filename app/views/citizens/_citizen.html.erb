@@ -12,13 +12,18 @@
                 <label>নাগরিকত্ব নং:</label>
               </div>
               <div class="col-xs-10 pull-left">
-                <p><%= person.citizen_no %></p>
+                <p><%= @citizen.citizen_no %></p>
               </div>
             </div>
         <% end %>
 
-        <%= render partial: 'layouts/show_basic_info', locals: {person: @citizen.basic_information} %>
-        <%= render partial: 'layouts/show_citizen_info', locals: {person: @citizen.citizen_basic} %>
+        <% if @citizen.basic_information.present? %>
+            <%= render partial: 'layouts/show_basic_info', locals: {person: @citizen.basic_information} %>
+        <% end %>
+
+        <% if @citizen.citizen_basic.present? %>
+            <%= render partial: 'layouts/show_citizen_info', locals: {person: @citizen.citizen_basic} %>
+        <% end %>
 
         <div class="row">
           <div class="col-xs-2">

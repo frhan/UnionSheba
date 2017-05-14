@@ -115,13 +115,19 @@ class Citizen < ActiveRecord::Base
 
   def barcode
     barcode = ''
-    barcode << self.name_in_bng if self.name_in_bng.present?
-    barcode << "\n"
-    if self.nid.present?
-      barcode << 'NID#'<< nid << "\n"
-    elsif self.birthid.present?
-      barcode << 'BirthId# '<< birthid << "\n"
+    if self.basic_information.present?
+      barcode << self.basic_information.name if self.basic_information.name.present?
+      barcode << "\n"
     end
+
+    if self.citizen_basic.present?
+      if self.citizen_basic.nid.present?
+        barcode << 'NID#'<< self.citizen_basic.nid << "\n"
+      elsif self.citizen_basic.birthid.present?
+        barcode << 'BirthId# '<< self.citizen_basic.nid .birthid << "\n"
+      end
+    end
+
     barcode << 'Union: ' << self.union.name_in_bng
     barcode
   end
