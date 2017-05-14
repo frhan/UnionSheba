@@ -32,6 +32,33 @@
             <%= render partial: 'layouts/show_basic_info', locals: {person: @citizen.basic_information} %>
         <% end %>
 
+        <div class="row">
+          <div class="col-xs-2">
+            <label> ইউনিয়ন:</label>
+          </div>
+          <div class="col-xs-10 pull-left">
+            <p><%= @citizen.union_name_bng %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label>উপজেলা:</label>
+          </div>
+          <div class="col-xs-10 pull-left">
+            <p><%= @citizen.upazila_name_bng %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label> জেলা:</label>
+          </div>
+          <div class="col-xs-10 pull-left">
+            <p><%= @citizen.zila_name_bng %></p>
+          </div>
+        </div>
+
         <% if @citizen.citizen_basic.present? %>
             <%= render partial: 'layouts/show_citizen_info', locals: {person: @citizen.citizen_basic} %>
         <% end %>
