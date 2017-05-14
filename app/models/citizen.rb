@@ -62,12 +62,10 @@ class Citizen < ActiveRecord::Base
   def save_citizen_no
     return if self.pending? || self.citizen_no.present?
 
-    ctzn_no = Citizen.where(union_id: self.union.id).maximum(:citizen_no)
-    ctzn_no = 0 if ctzn_no.nil?
-    ctzn_no = ctzn_no.to_i
-    ctzn_no = 1000 if ctzn_no == 0
+    ctzn_no = Citizen.where(union_id: self.union.id).count(:citizen_no)
     ctzn_no = ctzn_no + 1
-    self.update_attributes(:citizen_no => ctzn_no.to_s)
+    ctzn = self.union.union_code << 'C' << current_year.to_s << ctzn_no.to_s
+    self.update_attributes(:citizen_no => ctzn)
   end
 
   def requested_at_formatted
