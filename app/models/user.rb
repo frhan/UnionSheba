@@ -7,11 +7,12 @@ class User < ActiveRecord::Base
 
   belongs_to :union
   belongs_to :role
-  has_many :citizens,  through: :union
+  has_many :citizens, through: :union
   has_many :trade_organizations, through: :union
   has_many :collection_moneys, through: :union
   has_many :tax_or_rate_collections, through: :union
   has_many :others_collections, through: :union
+  has_many :warishes, through: :union
 
   def email_required?
     false
