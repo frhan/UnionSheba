@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  warish_no: MyString
+  tracking_id: MyString
+
+two:
+  warish_no: MyString
+  tracking_id: MyString

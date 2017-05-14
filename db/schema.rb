@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512103714) do
+ActiveRecord::Schema.define(version: 20170514195415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -319,6 +319,29 @@ ActiveRecord::Schema.define(version: 20170512103714) do
   add_index "users", ["union_id"], name: "index_users_on_union_id", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  create_table "warish_relations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "relation"
+    t.integer  "age"
+    t.string   "lang"
+    t.integer  "warish_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "warish_relations", ["warish_id"], name: "index_warish_relations_on_warish_id", using: :btree
+
+  create_table "warishes", force: :cascade do |t|
+    t.string   "warish_no"
+    t.string   "tracking_id"
+    t.string   "status"
+    t.integer  "union_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "warishes", ["union_id"], name: "index_warishes_on_union_id", using: :btree
+
   add_foreign_key "citizen_basics", "citizenship_states"
   add_foreign_key "citizen_basics", "maritial_statuses"
   add_foreign_key "citizen_basics", "religions"
@@ -333,4 +356,6 @@ ActiveRecord::Schema.define(version: 20170512103714) do
   add_foreign_key "unions", "upazilas"
   add_foreign_key "upazilas", "districts"
   add_foreign_key "users", "unions"
+  add_foreign_key "warish_relations", "warishes"
+  add_foreign_key "warishes", "unions"
 end
