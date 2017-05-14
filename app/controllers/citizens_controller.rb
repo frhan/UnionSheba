@@ -28,6 +28,7 @@ class CitizensController < InheritedResources::Base
         format.html { redirect_to user_signed_in? ?  @citizen : public_citizen__path(@citizen) , notice: 'Citizen was successfully created.' }
         format.json { render :show, status: :created, location: @citizen }
       else
+        @citizen.build_image_attachment if @citizen.image_attachment.blank?
         format.html {render :new }
         format.json { render json: @citizen.errors, status: :unprocessable_entity }
       end
