@@ -1,6 +1,8 @@
 class Address < ActiveRecord::Base
   belongs_to :addressable, polymorphic: true
 
+  validates :village, :word_no, :post_office,:district,:upazila, presence: true
+
   scope :present, -> (lang) {
     where(address_type: :present, lang: lang)
   }

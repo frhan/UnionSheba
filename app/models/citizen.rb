@@ -14,19 +14,8 @@ class Citizen < ActiveRecord::Base
   accepts_nested_attributes_for :citizen_basic, allow_destroy: true
   accepts_nested_attributes_for :image_attachment, allow_destroy: true
 
-  #before_validation :save_nid_birthdid_as_english
-  # validates :name_in_eng, :name_in_bng, :fathers_name, :mothers_name,
-  #           :village, :post, :word_no, presence: true
-  # validate :nid_or_birthid_present
-  # validate :nid_birthid_numeric
   after_create :save_tracking_id
-  # after_save :save_citizen_no
-  #
-  # validates_uniqueness_of :nid, :allow_blank => true, :allow_nil => true
-  # validates_uniqueness_of :birthid, :allow_blank => true, :allow_nil => true
-  # validates :nid, length: {minimum: 13}, :allow_blank => true, :allow_nil => true
-  # validates :birthid, length: {minimum: 17}, :allow_blank => true, :allow_nil => true
-
+  after_save :save_citizen_no
 
   def set_status(status)
     self.status = status
@@ -160,23 +149,5 @@ class Citizen < ActiveRecord::Base
 
   private
 
-  def save_nid_birthdid_as_english
-    self.nid = english_number(nid) if nid.present?
-    self.birthid = english_number(birthid) if birthid.present?
-  end
-
-  def nid_or_birthid_present
-    errors.add(:citizen, " National Id or BirthId is required") unless nid.present? || birthid.present?
-  end
-
-  def nid_birthid_numeric
-    errors.add(:citizen, " National Id/BirthId is not a number") unless nid_or_birthid_numeric?
-  end
-
-  def nid_or_birthid_numeric?
-    isnumber = is_numeric(nid.to_s) if nid.present?
-    isnumber = is_numeric(birthid.to_s) if birthid.present?
-    isnumber
-  end
 
 end
