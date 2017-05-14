@@ -14,7 +14,7 @@
   <div class="row">
     <%= form_tag(citizens_path, method: :get) do %>
         <div class="form-group col-md-10">
-          <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "নাগরিক আবেদনের ট্র্যাকিং নম্বরটি প্রবেশ করুন" %>
+          <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "নাগরিক সনদের নম্বরটি প্রবেশ করুন" %>
         </div>
         <div class="form-group col-md-2">
           <%= submit_tag 'খোঁজ করুন', class: "btn btn-primary" %>
