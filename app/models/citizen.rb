@@ -141,7 +141,7 @@ class Citizen < ActiveRecord::Base
 
   def save_tracking_id
     trac_no = Citizen.where(union_id: self.union.id).count(:tracking_id)
-    trac_id = self.union.union_code << '-'<< current_year_month_day.to_s << '-' << trac_no.to_s
+    trac_id = self.union.union_code << '-C'<< current_year_month_day.to_s << '-' << trac_no.to_s
     self.update_attributes(:tracking_id => trac_id)
   end
 

@@ -10,6 +10,17 @@
           <%= render partial: 'layouts/show_image', locals: {image_attachment: @citizen.image_attachment} %>
       <% end %>
 
+      <% if @citizen.pending? %>
+          <div class="row">
+            <div class="col-xs-2">
+              <label> ট্র্যাকিং নম্বর:</label>
+            </div>
+            <div class="col-xs-10 pull-left">
+              <p><%= @citizen.tracking_id %></p>
+            </div>
+          </div>
+      <% end %>
+
       <%= render partial: 'layouts/show_basic_info', locals: {person: @citizen.basic_information} %>
       <%= render partial: 'layouts/show_citizen_info', locals: {person: @citizen.citizen_basic} %>
       <%= render partial: 'layouts/show_address', locals: {address: @citizen.present_address} %>

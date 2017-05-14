@@ -25,7 +25,7 @@ class CitizensController < InheritedResources::Base
 
     respond_to do |format|
       if @citizen.save
-        format.html { redirect_to user_signed_in? ?  @citizen : public_citizen__path(@citizen) , notice: 'Citizen was successfully created.' }
+        format.html { redirect_to user_signed_in? ?  @citizen : public_citizen__path(@citizen) , notice: get_notice }
         format.json { render :show, status: :created, location: @citizen }
       else
         @citizen.build_image_attachment if @citizen.image_attachment.blank?
@@ -36,9 +36,6 @@ class CitizensController < InheritedResources::Base
 
   end
 
-  def public_citizen__path(citizen)
-    return show_by_tracking_citizens_path(citizen.tracking_id)
-  end
   def show_by_tracking_id
     @citizen = Citizen.find_by_tracking_id(params[:id])
   end
@@ -180,5 +177,14 @@ class CitizensController < InheritedResources::Base
   def file_name
     pdf_file_name 'citizen_certificate_' << @citizen.union_code
   end
+
+  def get_notice
+    user_signed_in? ? 'Citizen was successfully created.' : 'আপনার আবেদনটি সাবমিট করা হয়েছে । ভবিষ্যৎ অনুসন্ধানের জন্য ট্র্যাকিং নম্বরটি সংগ্রহে রাখুন ।'
+  end
+
+  def public_citizen__path(citizen)
+    return show_by_tracking_citizens_path(citizen.tracking_id)
+  end
+
 end
 
