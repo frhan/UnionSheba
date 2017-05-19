@@ -17,7 +17,9 @@ class TradeOrganizationDatatable
   private
 
   def my_search
-    @filtered_trade_organizations = @user.trade_organizations.where(status: :active)
+    @filtered_trade_organizations = @user.trade_organizations
+                                        .where(status: :active)
+                                        .order('created_at desc')
   end
 
   def sort_order_filter
@@ -74,7 +76,7 @@ class TradeOrganizationDatatable
   end
 
   def sort_direction
-    params[:order][:'0'][:dir] == "desc" ? "desc" : "asc"
+    params[:order][:'0'][:dir] == "asc" ? "asc" : "desc"
   end
 
 

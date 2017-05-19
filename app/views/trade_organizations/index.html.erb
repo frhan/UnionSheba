@@ -2,6 +2,14 @@
   <p id="notice"><%= notice %></p>
 
   <h1>ট্রেড লাইসেন্স সমূহ</h1>
+  <div class="row">
+    <div class="form-group col-md-12">
+      <% if can? :create, TradeOrganization %>
+          <%= link_to "New", new_trade_organization_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
   <table id="trade_organizations_table" class="table table-bordered table-striped" data-source="<%= trade_organizations_url(format: "json") %>">
     <thead>
     <tr>
@@ -16,7 +24,5 @@
     <tbody>
     </tbody>
   </table>
-  <% if can? :create, TradeOrganization %>
-      <%= link_to "New", new_trade_organization_path, class: "btn btn-primary" %>
-  <% end %>
+
 </div>
