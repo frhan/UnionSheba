@@ -26,7 +26,7 @@ class WarishesController < InheritedResources::Base
     respond_to do |format|
       if @warish.save
         format.html { redirect_to user_signed_in? ?  @warish : public_citizen__path(@warish) , notice: get_notice }
-        format.json { render :show, status: :created, location: @citizen }
+        format.json { render :show, status: :created, location: @warish }
       else
         @citizen.build_image_attachment if @citizen.image_attachment.blank?
         format.html {render :new }
@@ -47,7 +47,7 @@ class WarishesController < InheritedResources::Base
   end
 
   def verify_application
-    @citizen = Citizen.find_by_tracking_id(params[:q]) if params[:q]
+    @warish = Warish.find_by_tracking_id(params[:q]) if params[:q]
     # where status in
     respond_to do |format|
       format.html
@@ -56,7 +56,7 @@ class WarishesController < InheritedResources::Base
   end
 
   def verify_warish
-    @citizen = Citizen.find_by_citizen_no(params[:q]) if params[:q]
+    @warish = Warish.find_by_warish_no(params[:q]) if params[:q]
     # where status in
     respond_to do |format|
       format.html
@@ -65,12 +65,12 @@ class WarishesController < InheritedResources::Base
   end
 
   def index
-    @citizens = current_user.citizens.where(status: :active)
+    @warishes = current_user.warishes.where(status: :active)
                     .order('updated_at desc')
                     .per_page_kaminari(params[:page])
                     .per(10)
 
-    @citizens = @citizens.where("citizen_no like :search", search: "%#{params[:q]}%") if params[:q].present?
+    @warishes = @warishes.where("warish_no like :search", search: "%#{params[:q]}%") if params[:q].present?
 
     respond_to do |format|
       format.html
@@ -78,11 +78,11 @@ class WarishesController < InheritedResources::Base
   end
 
   def requests
-    @citizens = current_user.citizens.where(status: :pending)
+    @warishes = current_user.warishes.where(status: :pending)
                     .order('created_at asc')
                     .per_page_kaminari(params[:page])
                     .per(10)
-    @citizens = @citizens.where("tracking_id like :search", search: "%#{params[:q]}%") if params[:q].present?
+    @warishes = @warishes.where("tracking_id like :search", search: "%#{params[:q]}%") if params[:q].present?
 
     respond_to do |format|
       format.html
@@ -91,16 +91,16 @@ class WarishesController < InheritedResources::Base
   end
 
   def edit_request
-    @citizen = Citizen.find(params[:id]);
+    @warish = Warish.find(params[:id]);
   end
 
   #PUT
   def permit_request
-    @citizen = Citizen.find(params[:id]);
+    @warish = Warish.find(params[:id]);
     #@citizen.save_citizen_no
 
     respond_to do |format|
-      if @citizen.update(citizen_params)
+      if @warish.update(citizen_params)
         format.html { redirect_to requests_citizens_path, notice: 'Citizen was successfully updated' }
         format.json { render :show, status: :ok, location: @citizen }
       else
@@ -114,8 +114,8 @@ class WarishesController < InheritedResources::Base
   # DELETE /recipes/1
   # DELETE /recipes/1.json
   def destroy
-    @citizen = Citizen.find(params[:id])
-    @citizen.update_attributes(status: :deleted)
+    @warish = Warish.find(params[:id])
+    @warish.update_attributes(status: :deleted)
     respond_to do |format|
       format.html { redirect_to citizens_url, notice: 'Citizen was successfully deleted' }
       format.json { head :no_content }
