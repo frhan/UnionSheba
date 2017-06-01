@@ -1,16 +1,16 @@
-<div id="signupbox" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+<div id="signupbox" class="mainbox col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <div class="panel-title">নাগরিক ফরম</div>
+      <div class="panel-title">ওয়ারিশ ফরম</div>
     </div>
     <div class="panel-body">
-      <%= form_for @citizen, html: {class: 'form-horizontal'} do |f| %>
+      <%= form_for @warish, html: {class: 'form-horizontal'} do |f| %>
 
-          <% if @citizen.errors.any? %>
+          <% if @warish.errors.any? %>
               <div id="signupalert" class="alert alert-danger">
-                <h2><%= pluralize(@citizen.errors.count, "error") %> prohibited this user from being saved:</h2>
+                <h2><%= pluralize(@warish.errors.count, "error") %> prohibited this user from being saved:</h2>
                 <ul>
-                  <% @citizen.errors.full_messages.each do |msg| %>
+                  <% @warish.errors.full_messages.each do |msg| %>
                       <li><%= msg %></li>
                   <% end %>
                 </ul>
@@ -51,6 +51,20 @@
               <% end %>
           <% end %>
 
+          <div class="form-group">
+            <h4 class="text-center"><u>ওয়ারিশগনের তালিকা </u> </h4>
+          </div>
+
+          <%= f.fields_for :warish_relations do |w| %>
+              <%= render 'warish_relation', f: w %>
+          <% end %>
+          <div class="form-group">
+            <!-- Button -->
+            <div class="col-md-offset-3 col-md-9">
+          <%= button_tag 'নতুন ওয়ারিশ', :name => nil-%>
+              </div>
+            </div>
+
           <%= f.fields_for :addresses do |ad| %>
               <%= render partial: 'layouts/address', locals: {f: ad} %>
           <% end %>
@@ -65,12 +79,12 @@
               <%= f.submit "Save", class: "btn btn-info" %>
             </div>
           </div>
-          
+
           <% if user_signed_in? %>
               <% if f.object.new_record? || f.object.active? %>
-                  <%= link_to 'Back', citizens_path %>
+                  <%= link_to 'Back', warishes_path %>
               <% else %>
-                  <%= link_to 'Back', requests_citizens_path %>
+                  <%= link_to 'Back', requests_warishes_path %>
               <% end %>
           <% else %>
               <%= link_to 'Back', root_path %>
