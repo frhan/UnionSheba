@@ -178,8 +178,8 @@ module ApplicationHelper
   end
 
   def collection_money_type_bangla
-    return 'দৈনিক হিসাব বিবরণী' unless (params[:collections].present? && params[:collections][:type].present?)
-    return 'দৈনিক হিসাব বিবরণী' if params[:collections][:type] == 'all'
+    return 'দৈনিক আদায় বিবরণী' unless (params[:collections].present? && params[:collections][:type].present?)
+    return 'দৈনিক আদায় বিবরণী' if params[:collections][:type] == 'all'
     return 'ট্যাক্স ও রেট কালেকশন' if params[:collections][:type] == 'TaxOrRateCollection'
     return 'ট্রেড লাইসেন্স কালেকশন' if params[:collections][:type] == 'TradeLicense'
     return 'বিবিধ কালেকশন' if params[:collections][:type] == 'OthersCollection'
