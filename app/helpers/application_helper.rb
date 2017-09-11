@@ -178,8 +178,8 @@ module ApplicationHelper
   end
 
   def collection_money_type_bangla
-    return 'টাকা কালেকশন' unless (params[:collections].present? && params[:collections][:type].present?)
-    return 'টাকা কালেকশন' if params[:collections][:type] == 'all'
+    return 'দৈনিক আদায় বিবরণী' unless (params[:collections].present? && params[:collections][:type].present?)
+    return 'দৈনিক আদায় বিবরণী' if params[:collections][:type] == 'all'
     return 'ট্যাক্স ও রেট কালেকশন' if params[:collections][:type] == 'TaxOrRateCollection'
     return 'ট্রেড লাইসেন্স কালেকশন' if params[:collections][:type] == 'TradeLicense'
     return 'বিবিধ কালেকশন' if params[:collections][:type] == 'OthersCollection'
@@ -188,7 +188,7 @@ module ApplicationHelper
   def current_fiscal_year_bangla
     now = Time.now
     year = now.year
-    year = now.year - 1 if now.month < 6 #if fiscal year less than june
+    year = now.year - 1 if now.month < 7 #if fiscal year less than june
     bangla_number(year.to_s) << '-'<< bangla_number((year + 1).to_s)
   end
 
