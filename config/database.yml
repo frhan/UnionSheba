@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: updata_production
-  username: updata
-  password: <%= ENV['UPDATA_DATABASE_PASSWORD'] %>
+  username: deployer
+  password: cefalo
