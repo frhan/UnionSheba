@@ -75,4 +75,4 @@ end
 
 gem 'rails_12factor', group: :production
 gem 'puma','3.10.0'
-
+gem 'therubyracer'
