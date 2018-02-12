@@ -18,6 +18,11 @@ module Updata
     config.time_zone = 'Asia/Dhaka'
     config.active_record.default_timezone = :local
 
+    config.logger = Logger.new(STDOUT)
+    config.logger = Log4r::Logger.new("Application Log")
+
+    config.log_level = :debug
+
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
