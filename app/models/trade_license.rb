@@ -60,7 +60,7 @@ class TradeLicense < ActiveRecord::Base
   end
 
   def money_senders_name
-    "<p> #{self.trade_organization.owners_name_bng} <br> #{self.trade_organization.enterprize_name_in_bng} </p>".html_safe
+    "<p> #{self.trade_organization.enterprize_name_in_bng}<br>প্রপাইটর: #{self.trade_organization.owners_name_bng} </p>".html_safe
   end
 
   def remove

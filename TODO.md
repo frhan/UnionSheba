@@ -86,3 +86,4 @@ http://tohyongcheng.github.io/learn/ruby%20on%20rails/digitalocean/capistrano/po
 https://github.com/BeanStack/deploying_on_digital_ocean
 
 http://vladigleba.com/blog/2014/08/12/provisioning-a-rails-server-using-chef-part-2-writing-the-recipes/
+
