@@ -180,9 +180,9 @@ module ApplicationHelper
   def collection_money_type_bangla
     return 'দৈনিক আদায় বিবরণী' unless (params[:collections].present? && params[:collections][:type].present?)
     return 'দৈনিক আদায় বিবরণী' if params[:collections][:type] == 'all'
-    return 'ট্যাক্স ও রেট কালেকশন' if params[:collections][:type] == 'TaxOrRateCollection'
-    return 'ট্রেড লাইসেন্স কালেকশন' if params[:collections][:type] == 'TradeLicense'
-    return 'বিবিধ কালেকশন' if params[:collections][:type] == 'OthersCollection'
+    return 'ট্যাক্স ও রেট আদায় বিবরণী' if params[:collections][:type] == 'TaxOrRateCollection'
+    return 'ট্রেড লাইসেন্স আদায় বিবরণী' if params[:collections][:type] == 'TradeLicense'
+    return 'বিবিধ আদায় বিবরণী' if params[:collections][:type] == 'OthersCollection'
   end
 
   def current_fiscal_year_bangla
