@@ -79,4 +79,11 @@ Task
 * paralax for home page
 *
 
+Digital ocean
+--------------
+http://tohyongcheng.github.io/learn/ruby%20on%20rails/digitalocean/capistrano/postgresql/2016/01/10/deploying-ror-on-digitalocean.html
+
+https://github.com/BeanStack/deploying_on_digital_ocean
+
+http://vladigleba.com/blog/2014/08/12/provisioning-a-rails-server-using-chef-part-2-writing-the-recipes/
 

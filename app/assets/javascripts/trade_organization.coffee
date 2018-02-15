@@ -16,3 +16,4 @@ jQuery ->
       { width: "5%", orderable: false }
       { width: "5%", orderable: false }
       ]
+    order: [ [0,'desc'] ]

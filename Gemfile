@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 ruby '2.2.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -55,6 +55,14 @@ gem 'cloudinary'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails-collection'
+
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler', '~> 1.1.3'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-passenger'
 end
 
 group :development do
@@ -66,4 +74,5 @@ group :development do
 end
 
 gem 'rails_12factor', group: :production
-
+#gem 'puma','3.10.0'
+#gem 'therubyracer'
