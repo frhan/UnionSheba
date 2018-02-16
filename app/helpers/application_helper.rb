@@ -181,7 +181,7 @@ module ApplicationHelper
     return 'দৈনিক আদায় বিবরণী' unless (params[:collections].present? && params[:collections][:type].present?)
     return 'দৈনিক আদায় বিবরণী' if params[:collections][:type] == 'all'
     return 'ট্যাক্স ও রেট আদায় বিবরণী' if params[:collections][:type] == 'TaxOrRateCollection'
-    return 'ট্রেড লাইসেন্স আদায় বিবরণী' if params[:collections][:type] == 'TradeLicense'
+    return 'ট্রেড লাইসেন্স ফি আদায় বিবরণী' if params[:collections][:type] == 'TradeLicense'
     return 'বিবিধ আদায় বিবরণী' if params[:collections][:type] == 'OthersCollection'
   end
 

@@ -87,3 +87,9 @@ https://github.com/BeanStack/deploying_on_digital_ocean
 
 http://vladigleba.com/blog/2014/08/12/provisioning-a-rails-server-using-chef-part-2-writing-the-recipes/
 
+
+Citizen Applications
+--------------------
+* after request send mail with tracking id
+* after verifiy send mail with pdf
+* 
