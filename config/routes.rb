@@ -15,6 +15,21 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :warishes do
+    member do
+      get :edit_request
+      get :activate_citizen
+      put :permit_request
+    end
+
+    collection do
+      get :requests
+      get :verify_application
+      get :verify_warish
+    end
+  end
+
+
   get 'citizens/show_by_tracking_id/:id' => 'citizens#show_by_tracking_id', as: :show_by_tracking_citizens
 
   resources :citizen_requests do

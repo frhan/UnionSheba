@@ -16,7 +16,9 @@ class OthersCollectionDatatable
   private
 
   def active_others_collections
-    @filtered_others_collections = @user.others_collections.where(status: :active)
+    @filtered_others_collections = @user.others_collections
+                                       .where(status: :active)
+                                       .order('created_at desc')
   end
 
   def sort_order_filter
@@ -77,6 +79,6 @@ class OthersCollectionDatatable
   end
 
   def sort_direction
-    params[:order][:'0'][:dir] == "desc" ? "desc" : "asc"
+    params[:order][:'0'][:dir] == "asc" ? "asc" : "desc"
   end
 end

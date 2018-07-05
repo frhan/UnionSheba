@@ -1,0 +1,89 @@
+
+<% if @citizen.present? %>
+    <div class="row">
+      <div class="col-md-10 col-sm-offset-1">
+        <p id="notice"><%= notice %></p>
+        <% if @citizen.image_attachment.present? %>
+            <%= render partial: 'layouts/show_image', locals: {image_attachment: @citizen.image_attachment} %>
+        <% end %>
+
+        <% if @citizen.citizen_no.present? %>
+            <div class="row">
+              <div class="col-xs-2">
+                <label>নাগরিকত্ব নং:</label>
+              </div>
+              <div class="col-xs-10 pull-left">
+                <p><%= @citizen.citizen_no %></p>
+              </div>
+            </div>
+        <% end %>
+
+        <% if @citizen.pending? %>
+            <div class="row">
+              <div class="col-xs-2">
+                <label> ট্র্যাকিং নম্বর:</label>
+              </div>
+              <div class="col-xs-10 pull-left">
+                <p><%= @citizen.tracking_id %></p>
+              </div>
+            </div>
+        <% end %>
+
+        <% if @citizen.basic_information.present? %>
+            <%= render partial: 'layouts/show_basic_info', locals: {person: @citizen.basic_information} %>
+        <% end %>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label> ইউনিয়ন:</label>
+          </div>
+          <div class="col-xs-10 pull-left">
+            <p><%= @citizen.union_name_bng %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label>উপজেলা:</label>
+          </div>
+          <div class="col-xs-10 pull-left">
+            <p><%= @citizen.upazila_name_bng %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label> জেলা:</label>
+          </div>
+          <div class="col-xs-10 pull-left">
+            <p><%= @citizen.zila_name_bng %></p>
+          </div>
+        </div>
+
+        <% if @citizen.citizen_basic.present? %>
+            <%= render partial: 'layouts/show_citizen_info', locals: {person: @citizen.citizen_basic} %>
+        <% end %>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label>স্ট্যাটাস:</label>
+          </div>
+          <div class="col-xs-10">
+            <p><%= @citizen.status %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label>তারিখ:</label>
+          </div>
+          <div class="col-xs-10">
+            <p><%= @citizen.created_at %></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+<% else %>
+    <p>No Citizen found</p>
+<% end %>

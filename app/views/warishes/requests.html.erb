@@ -1,0 +1,22 @@
+<div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+  <p id="notice"><%= notice %></p>
+
+  <h1>নাগরিকত্বের আবেদনকারী সমূহ</h1>
+
+  <div class="row">
+    <%= form_tag(requests_citizens_path, method: :get) do %>
+        <div class="form-group col-md-10">
+          <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "ট্র্যাকিং নম্বরটি প্রবেশ করুন" %>
+        </div>
+        <div class="form-group col-md-2">
+          <%= submit_tag 'খোঁজ করুন', class: "btn btn-primary" %>
+        </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'warishes', citizens: @citizens, show_tracking: true, show_citizen_no: false %>
+    </div>
+  </div>
+</div>

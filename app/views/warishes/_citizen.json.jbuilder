@@ -1,0 +1,2 @@
+json.extract! citizen, :id, :name_in_eng, :name_in_bng, :fathers_name, :mothers_name, :village, :post, :post, :union_id, :spouse_name, :created_at, :updated_at
+json.url citizen_url(citizen, format: :json)

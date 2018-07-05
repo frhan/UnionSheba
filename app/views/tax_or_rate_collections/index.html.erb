@@ -3,6 +3,14 @@
 
   <h1>ট্যাক্স/রেট কালেকশন</h1>
 
+  <div class="row">
+    <div class="form-group col-md-12">
+      <% if can? :create, TaxOrRateCollection %>
+          <%= link_to "New", new_tax_or_rate_collection_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
   <table id="tax_or_rate_collections_table" class="table table-bordered table-striped" data-source="<%= tax_or_rate_collections_path(format: "json") %>">
     <thead>
     <tr>
@@ -18,7 +26,4 @@
     <tbody>
     </tbody>
   </table>
-  <% if can? :create, TaxOrRateCollection %>
-      <%= link_to "New", new_tax_or_rate_collection_path, class: "btn btn-primary" %>
-  <% end %>
 </div>
