@@ -15,7 +15,7 @@ class Citizen < ActiveRecord::Base
   accepts_nested_attributes_for :image_attachment, allow_destroy: true
 
   after_create :save_tracking_id
-  after_save :save_citizen_no
+  after_create :save_citizen_no
 
   def set_status(status)
     self.status = status
@@ -57,15 +57,6 @@ class Citizen < ActiveRecord::Base
 
   def save_saved_at
     self.saved_at = Time.now
-  end
-
-  def save_citizen_no
-    return if self.pending? || self.citizen_no.present?
-
-    ctzn_no = Citizen.where(union_id: self.union.id).count(:citizen_no)
-    ctzn_no = ctzn_no + 1
-    ctzn = self.union.union_code << 'C' << current_year.to_s << ctzn_no.to_s
-    self.update_attributes(:citizen_no => ctzn)
   end
 
   def requested_at_formatted
@@ -139,13 +130,26 @@ class Citizen < ActiveRecord::Base
     @permanent_address
   end
 
-  def save_tracking_id
-    trac_no = Citizen.where(union_id: self.union.id).count(:tracking_id)
-    trac_id = self.union.union_code << '-C'<< current_year_month_day.to_s << '-' << trac_no.to_s
-    self.update_attributes(:tracking_id => trac_id)
-  end
 
   private
+
+  def save_citizen_no
+    return if self.pending? || self.citizen_no.present?
+
+    ctzn_no = Citizen.where(union_id: self.union.id).count(:citizen_no)
+    ctzn_no = ctzn_no + 1
+    ctzn = "#{self.union.union_code}C#{current_year.to_s}#{ctzn_no.to_s}"
+    self.update_attributes(:citizen_no => ctzn)
+  end
+
+
+  def save_tracking_id
+    return if !self.pending? || self.tracking_id.present?
+
+    trac_no = Citizen.where(union_id: self.union.id).count(:tracking_id)
+    trac_id = "#{self.union.union_code}C#{current_year_month_day.to_s}#{trac_no.to_s}"
+    self.update_attributes(:tracking_id => trac_id)
+  end
 
 
 end
