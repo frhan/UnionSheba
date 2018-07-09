@@ -1,12 +1,12 @@
 <div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
   <p id="notice"><%= notice %></p>
 
-  <h1>ব্যয়</h1>
+  <h1>ব্যয়সমূহ</h1>
 
   <div class="row">
     <div class="form-group col-md-12">
       <% if can? :create, Expense %>
-          <%= link_to "New", new_expense_path, class: "btn btn-primary" %>
+          <%= link_to "নতুন ব্যয়", new_expense_path, class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
@@ -15,7 +15,7 @@
     <thead>
     <tr>
       <th>Created At</th>
-      <th>Money Expense</th>
+      <th>Expense</th>
       <th>Category</th>
       <th>Note</th>
       <th>Edit</th>

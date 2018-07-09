@@ -13,10 +13,10 @@ jQuery ->
     ajax: $('#expenses_table').data('source')
     columns: [
       { width: "15%" }
-      { width: "20%"}
-      { width: "20%", orderable: false }
-      { width: "15%", searchable: false, orderable: false }
-      { width: "15%", searchable: false, orderable: false }
-      { width: "15%", searchable: false, orderable: false }
+      { width: "15%"}
+      { width: "30%", orderable: false }
+      { width: "20%", searchable: false, orderable: false }
+      { width: "10%", searchable: false, orderable: false }
+      { width: "10%", searchable: false, orderable: false }
     ]
     order: [ [0,'desc'] ]
