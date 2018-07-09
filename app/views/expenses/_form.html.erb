@@ -9,7 +9,7 @@
 
           <% if @expense.errors.any? %>
               <div id="signupalert" class="alert alert-danger">
-                <h2><%= pluralize(@tax_or_rate_collection.errors.count, "error") %> prohibited to save Expense</h2>
+                <h2><%= pluralize(@expense.errors.count, "error") %> prohibited to save Expense</h2>
                 <ul>
                   <% @expense.errors.full_messages.each do |msg| %>
                       <li><%= msg %></li>
@@ -23,7 +23,7 @@
           <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">ব্যয়কৃত অর্থ</label>
             <div class="col-md-9">
-              <%= f.text_field :expense_money, class: "form-control", placeholder: "In English" %>
+              <%= f.number_field :expense_money, class: "form-control", placeholder: "English Number" %>
             </div>
           </div>
 
