@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514195415) do
+ActiveRecord::Schema.define(version: 20180709104833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20170514195415) do
     t.integer  "serial_no"
     t.integer  "union_id"
     t.string   "status",           default: "active"
+    t.integer  "tx_year"
   end
 
   add_index "collection_moneys", ["collectable_type", "collectable_id"], name: "index_collection_moneys_on_collectable_type_and_collectable_id", using: :btree

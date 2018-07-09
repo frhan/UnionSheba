@@ -1,9 +1,10 @@
 class CollectionMoney < ActiveRecord::Base
+  include ApplicationHelper
   belongs_to :collectable,polymorphic: true
   validates :fee,presence: true
   belongs_to :union
 
-  after_create :save_serial_no
+  after_create :save_serial_no,:save_tax_year
   scope :by_type, lambda { |type,status| joins("INNER JOIN #{type.table_name} ON #{type.table_name}.id = #{CollectionMoney.table_name}.opinionable_id
                                           AND #{Opinion.table_name}.opinionable_type = '#{type.to_s}'") }
   def total
@@ -80,6 +81,10 @@ class CollectionMoney < ActiveRecord::Base
   def save_serial_no
     serial_no = CollectionMoney.where(union_id: self.union.id,collectable_type: self.collectable_type).count
     self.update_attributes(:serial_no => serial_no)
+  end
+
+  def save_tax_year
+    self.update_attributes(:tx_year => current_fiscal_year)
   end
 
 end

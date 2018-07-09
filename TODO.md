@@ -5,6 +5,10 @@ master - git push heroku master
 branch - git push heroku yourbranch:master
 logs - heroku logs -t
 
+Migrate
+-------
+heroku run rake db:migrate
+
 TODO
 -----------
 * barcode - https://www.youtube.com/watch?v=0ZCvLDZQ5HM
