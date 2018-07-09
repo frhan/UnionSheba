@@ -67,7 +67,7 @@ class WarishesController < InheritedResources::Base
   def index
     @warishes = current_user.warishes.where(status: :active)
                     .order('updated_at desc')
-                    .per_page_kaminari(params[:page])
+                    .page(params[:page])
                     .per(10)
 
     @warishes = @warishes.where("warish_no like :search", search: "%#{params[:q]}%") if params[:q].present?
@@ -80,7 +80,7 @@ class WarishesController < InheritedResources::Base
   def requests
     @warishes = current_user.warishes.where(status: :pending)
                     .order('created_at asc')
-                    .per_page_kaminari(params[:page])
+                    .page(params[:page])
                     .per(10)
     @warishes = @warishes.where("tracking_id like :search", search: "%#{params[:q]}%") if params[:q].present?
 

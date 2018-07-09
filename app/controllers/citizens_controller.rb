@@ -71,7 +71,7 @@ class CitizensController < InheritedResources::Base
   def index
     @citizens = current_user.citizens.where(status: :active)
                     .order('updated_at desc')
-                    .per_page_kaminari(params[:page])
+                    .page(params[:page])
                     .per(10)
 
     @citizens = @citizens.where("citizen_no like :search", search: "%#{params[:q]}%") if params[:q].present?
@@ -84,7 +84,7 @@ class CitizensController < InheritedResources::Base
   def requests
     @citizens = current_user.citizens.where(status: :pending)
                     .order('created_at asc')
-                    .per_page_kaminari(params[:page])
+                    .page(params[:page])
                     .per(10)
     @citizens = @citizens.where("tracking_id like :search", search: "%#{params[:q]}%") if params[:q].present?
 

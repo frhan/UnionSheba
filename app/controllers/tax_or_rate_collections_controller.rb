@@ -40,7 +40,7 @@ class TaxOrRateCollectionsController < ApplicationController
 
     if request.format.html?
       @tax_collections = @tax_collections
-                             .per_page_kaminari(params[:page])
+                             .page(params[:page])
                              .per(10)
     end
 

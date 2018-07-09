@@ -110,6 +110,12 @@ module ApplicationHelper
     bangla_number(date.day.to_s) << '/' << bangla_number(date.month.to_s) << '/' << bangla_number(date.year.to_s)
   end
 
+  def bangla_time(date)
+    return String.new unless date.present?
+    #bangla_number(date.day.to_s) << '/' << bangla_number(date.month.to_s) << '/' << bangla_number(date.year.to_s)
+    bangla_number date.strftime("%I:%M:%S %p")
+  end
+
   def bangla_month(month_no)
 
     case month_no
