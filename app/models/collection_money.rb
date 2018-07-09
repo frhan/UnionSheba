@@ -79,7 +79,10 @@ class CollectionMoney < ActiveRecord::Base
  private
 
   def save_serial_no
-    serial_no = CollectionMoney.where(union_id: self.union.id,collectable_type: self.collectable_type).count
+    serial_no = CollectionMoney.where(union_id: self.union.id,
+                                      collectable_type: self.collectable_type,
+                                      tx_year: current_fiscal_year ).count
+    serial_no = serial_no + 1
     self.update_attributes(:serial_no => serial_no)
   end
 
