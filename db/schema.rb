@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180709104833) do
+ActiveRecord::Schema.define(version: 20180709201307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -166,6 +166,27 @@ ActiveRecord::Schema.define(version: 20180709104833) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "expense_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.decimal  "expense_money"
+    t.string   "note"
+    t.string   "other_category"
+    t.integer  "fiscal_year"
+    t.integer  "union_id"
+    t.integer  "expense_category_id"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "status",              default: "active"
+  end
+
+  add_index "expenses", ["expense_category_id"], name: "index_expenses_on_expense_category_id", using: :btree
+  add_index "expenses", ["union_id"], name: "index_expenses_on_union_id", using: :btree
 
   create_table "image_attachments", force: :cascade do |t|
     t.string   "photo"
@@ -349,6 +370,8 @@ ActiveRecord::Schema.define(version: 20180709104833) do
   add_foreign_key "citizens", "unions"
   add_foreign_key "collection_moneys", "unions"
   add_foreign_key "districts", "divisions"
+  add_foreign_key "expenses", "expense_categories"
+  add_foreign_key "expenses", "unions"
   add_foreign_key "others_collections", "unions"
   add_foreign_key "tax_or_rate_collections", "tax_categories"
   add_foreign_key "tax_or_rate_collections", "unions"

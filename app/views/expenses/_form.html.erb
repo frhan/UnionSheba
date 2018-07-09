@@ -1,0 +1,63 @@
+<div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <div class="panel-title">ব্যয়</div>
+    </div>
+    <div class="panel-body">
+
+      <%= form_for @expense, html: {class: 'form-horizontal'} do |f| %>
+
+          <% if @expense.errors.any? %>
+              <div id="signupalert" class="alert alert-danger">
+                <h2><%= pluralize(@tax_or_rate_collection.errors.count, "error") %> prohibited to save Expense</h2>
+                <ul>
+                  <% @expense.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+
+          <%= f.hidden_field :union_id, :value => current_user.union.id %>
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">ব্যয়কৃত অর্থ</label>
+            <div class="col-md-9">
+              <%= f.text_field :expense_money, class: "form-control", placeholder: "In English" %>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="nameInEng" class="col-md-3 control-label">বাবদ</label>
+            <div class="col-md-9">
+              <%= f.collection_select :expense_category_id, ExpenseCategory.all,:id,:name,{},{class: "form-control"}%>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nameInEng" class="col-md-3 control-label">অন্যান্য</label>
+            <div class="col-md-9">
+              <%= f.text_field :other_category, class: "form-control", placeholder: "অন্যান্য বাবদ হলে লিখুন" %>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">নোট</label>
+            <div class="col-md-9">
+              <%= f.text_field :note, class: "form-control", placeholder: "In Bangla" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!-- Button -->
+            <div class="col-md-offset-3 col-md-9">
+              <%= f.submit :save, class: "btn btn-info" %>
+            </div>
+          </div>
+      <% end %>
+      <%= link_to 'Back', expenses_path %>
+    </div>
+  </div>
+</div>

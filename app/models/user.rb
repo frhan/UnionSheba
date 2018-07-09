@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :tax_or_rate_collections, through: :union
   has_many :others_collections, through: :union
   has_many :warishes, through: :union
+  has_many :expenses, through: :union
 
   def email_required?
     false

@@ -22,3 +22,4 @@
 //= require trade_organization
 //= require tax_or_rate_collections
 //= require others_collections
+//= require expenses

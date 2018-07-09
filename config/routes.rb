@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :expenses
   get 'home/index'
 
   resources :citizens do

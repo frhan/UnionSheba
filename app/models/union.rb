@@ -6,6 +6,7 @@ class Union < ActiveRecord::Base
   has_many :tax_or_rate_collections
   has_many :others_collections
   has_many :warishes
+  has_many :expenses
 
   def to_s
     name_in_bng
