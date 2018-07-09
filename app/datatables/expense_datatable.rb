@@ -40,18 +40,13 @@ class ExpenseDatatable
       expense = []
       expense <<  link_to(formatted_date_time(record.created_at), expense_path(record))
       expense <<  record.expense_money
-      expense << expense_category(record)
+      expense << record.exp_category
       expense << record.note
       expense << edit_link(record)
       expense << del_link(record)
       expenses << expense
     end
     expenses
-  end
-
-  def expense_category(expense)
-    return expense.other_category if expense.expense_category.others?
-    expense.expense_category.name
   end
 
   def edit_link(record)
