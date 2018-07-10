@@ -2,8 +2,11 @@
   <div class="col-xs-12">
 
     <% if @citizen.active? %>
-        <%= link_to 'Print Certificate', citizen_path(@citizen, format: 'pdf'), class: "btn btn-success" %>
         <%= link_to 'Back', citizens_path, class: "btn btn-primary" %>
+        <%= link_to 'Print Certificate With Sign', citizen_path(@citizen, format: 'pdf', sign: true), class: "btn btn-success" %>
+        <%= link_to 'Print Certificate W/O Sign', citizen_path(@citizen, format: 'pdf', sign: false), class: "btn btn-warning" %>
+        <%= link_to 'Send Email','#', class: "btn btn-success" %>
+        <%= link_to 'Deactivate','#', class: "btn btn-warning" %>
     <% end %>
 
     <% if @citizen.pending? %>

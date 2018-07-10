@@ -179,9 +179,8 @@
   }
 
   .footer .chairman {
-   font-size: 20px;
+    font-size: 20px;
   }
-
 
   .slogan {
     margin-top: 10px;
@@ -262,7 +261,8 @@
             </div>
 
             <div class="main-area">
-              <p>আমি এই মর্মে সনদ প্রদান করিতেছি যে,<strong> <%= @citizen.basic_information.name %> </strong>&nbsp;আমার ইউনিয়নের
+              <p>আমি এই মর্মে সনদ প্রদান করিতেছি যে,<strong> <%= @citizen.basic_information.name %> </strong>&nbsp;আমার
+                ইউনিয়নের
                 স্থায়ী
                 বাসিন্দা এবং জন্মসূত্রে বাংলাদেশের নাগরিক । তাহাকে আমি ব্যক্তিগতভাবে চিনি ও জানি ।</p>
               <p id="citizen_disc">নাগরিকের বিবরণ:</p>
@@ -299,14 +299,14 @@
                 </div>
 
                 <div class="col-xs-5 ">
-                  <% if @citizen.signature? %>
+                  <% if @citizen.signature? && params[:sign] == 'true' %>
                       <div class="signature">
                         <%= image_tag wicked_pdf_asset_base64(@citizen.union_sig_name), width: '100%' %>
                       </div>
 
                   <% end %>
 
-                  <div class="<%= @citizen.signature? ? 'chairman_stamp_with_sig' : 'chairman_stamp_wo_sig' %>">
+                  <div class="<%= (@citizen.signature? && params[:sign] == 'true') ? 'chairman_stamp_with_sig' : 'chairman_stamp_wo_sig' %>">
 
                     <% if @citizen.union_chairman_name.present? %>
                         <p class="text-center chairman">( <%= @citizen.union_chairman_name %> )</p>
@@ -323,18 +323,7 @@
             </div>
 
             <div class="slogan">
-              <!--<div class="row">-->
-                <!--<div class="col-xs-12">-->
-
-                  <!--<div class="col-xs-6">-->
-                    <p class="text-center">হোক না আমার কুড়ে ঘর, আমিও দিব ইউপি কর</p>
-                  <!--</div>-->
-
-                  <!--<div class="col-xs-6">-->
-                    <!--<p id="left-slogan">নির্ভুল জন্ম নিবন্ধন একবার, বিড়ম্বনা নয় বার বার</p>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
+              <p class="text-center">হোক না আমার কুড়ে ঘর, আমিও দিব ইউপি কর</p>
             </div>
 
           </div>
