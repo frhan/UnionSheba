@@ -5,7 +5,9 @@
         <%= link_to 'Back', citizens_path, class: "btn btn-primary" %>
         <%= link_to 'Print Certificate With Sign', citizen_path(@citizen, format: 'pdf', sign: true), class: "btn btn-success" %>
         <%= link_to 'Print Certificate W/O Sign', citizen_path(@citizen, format: 'pdf', sign: false), class: "btn btn-warning" %>
-        <%= link_to 'Send Email','#', class: "btn btn-success" %>
+        <% if @citizen.contact_address.email.present? %>
+          <%= link_to 'Send Email','#', class: "btn btn-success" %>
+        <% end%>
         <%= link_to 'Deactivate','#', class: "btn btn-warning" %>
     <% end %>
 
@@ -13,7 +15,6 @@
         <%= link_to 'Activate Citizen', activate_citizen_citizen_path(@citizen), class: "btn btn-info btn-default" %>
         <%= link_to 'Back', requests_citizens_path, class: "btn btn-primary" %>
     <% end %>
-
 
   </div>
 </div>
