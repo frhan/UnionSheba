@@ -38,6 +38,7 @@ class ExpenseDatatable
     expenses = []
     display_on_page.map do |record|
       expense = []
+      expense <<  link_to(record.serial_no, expense_path(record))
       expense <<  link_to(formatted_date_time(record.created_at), expense_path(record))
       expense <<  record.expense_money
       expense << record.exp_category
@@ -72,7 +73,7 @@ class ExpenseDatatable
   end
 
   def sort_column
-    columns = %w[created_at expense_money  not_orderable not_orderable not_orderable not_orderable ]
+    columns = %w[serial_no created_at expense_money  not_orderable not_orderable not_orderable not_orderable ]
     columns[params[:order][:'0'][:column].to_i]
   end
 

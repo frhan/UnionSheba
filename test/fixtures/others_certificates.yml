@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lang: MyString
+  status: MyString
+  certifcate_no: MyString
+  tracking_no: MyString
+
+two:
+  lang: MyString
+  status: MyString
+  certifcate_no: MyString
+  tracking_no: MyString

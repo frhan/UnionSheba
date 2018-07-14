@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180709201307) do
+ActiveRecord::Schema.define(version: 20180713173437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,10 +73,12 @@ ActiveRecord::Schema.define(version: 20180709201307) do
     t.string   "lang"
     t.integer  "infoable_id"
     t.string   "infoable_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "state"
     t.string   "spouse_name"
+    t.boolean  "father_alive",  default: true
+    t.boolean  "mother_alive",  default: true
   end
 
   add_index "basic_infos", ["infoable_type", "infoable_id"], name: "index_basic_infos_on_infoable_type_and_infoable_id", using: :btree
@@ -183,6 +185,7 @@ ActiveRecord::Schema.define(version: 20180709201307) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.string   "status",              default: "active"
+    t.integer  "serial_no"
   end
 
   add_index "expenses", ["expense_category_id"], name: "index_expenses_on_expense_category_id", using: :btree
@@ -203,6 +206,15 @@ ActiveRecord::Schema.define(version: 20180709201307) do
     t.string   "name_bn"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "others_certificates", force: :cascade do |t|
+    t.string   "lang"
+    t.string   "status"
+    t.string   "certifcate_no"
+    t.string   "tracking_no"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "others_collections", force: :cascade do |t|

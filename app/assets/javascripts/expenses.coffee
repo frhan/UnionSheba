@@ -12,9 +12,10 @@ jQuery ->
     serverSide: true
     ajax: $('#expenses_table').data('source')
     columns: [
+      { width: "10%" }
       { width: "15%" }
       { width: "15%"}
-      { width: "30%", orderable: false }
+      { width: "20%", orderable: false }
       { width: "20%", searchable: false, orderable: false }
       { width: "10%", searchable: false, orderable: false }
       { width: "10%", searchable: false, orderable: false }

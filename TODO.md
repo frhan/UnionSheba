@@ -97,3 +97,11 @@ Citizen Applications
 * after request send mail with tracking id
 * after verifiy send mail with pdf
 * 
+
+Kill port
+------
+
+sudo lsof -i tcp:3000 
+Replace 3000 with whichever port you want. Run below command to kill that process.
+
+sudo kill -9 PID
