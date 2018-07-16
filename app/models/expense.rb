@@ -14,7 +14,6 @@ class Expense < ActiveRecord::Base
 
   private
 
-
   def save_serial_no
     srl_no = Expense.where(union_id: self.union.id).count(:serial_no)
     srl_no = srl_no + 1
