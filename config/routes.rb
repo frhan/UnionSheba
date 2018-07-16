@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get 'home/index'
 
   resources :citizens do
@@ -46,6 +45,7 @@ Rails.application.routes.draw do
   end
 
   resources :collection_moneys
+  resources :others_certificates
   resources :tax_or_rate_collections do
     collection do
       get :report
