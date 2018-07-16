@@ -6,7 +6,7 @@
         <% if show_tracking %>
             <th>Tracking Id</th>
         <% end %>
-        <% if show_citizen_no %>
+        <% if show_warish_no %>
             <th>Citizen No</th>
         <% end %>
 
@@ -19,35 +19,35 @@
       </thead>
       <tbody>
 
-      <% warishes.each do |citizen| %>
+      <% warishes.each do |warish| %>
           <tr>
             <% if show_tracking %>
-                <td><%= link_to(citizen.tracking_id, citizen_path(citizen)) %></td>
+                <td><%= link_to(warish.tracking_id, warish_path(warish)) %></td>
             <% end %>
 
-            <% if show_citizen_no %>
-                <td><%= link_to(citizen.warish_no, citizen_path(citizen)) %></td>
+            <% if show_warish_no %>
+                <td><%= link_to(warish.warish_no, warish_path(warish)) %></td>
             <% end %>
 
-            <% if citizen.citizen_basic.present? %>
-                <td><%= link_to(citizen.citizen_basic.nid, citizen_path(citizen)) %></td>
-                <td><%= link_to(citizen.citizen_basic.birthid, citizen_path(citizen)) %></td>
+            <% if warish.citizen_basic.present? %>
+                <td><%= link_to(warish.citizen_basic.nid, warish_path(warish)) %></td>
+                <td><%= link_to(warish.citizen_basic.birthid, warish_path(warish)) %></td>
             <% else %>
                 <td></td>
                 <td></td>
             <% end %>
 
-            <% if citizen.basic_information.present? %>
-                <td><%= link_to(citizen.basic_information.name, citizen_path(citizen)) %></td>
-                <td><%= link_to(citizen.basic_information.fathers_name, citizen_path(citizen)) %></td>
+            <% if warish.basic_information.present? %>
+                <td><%= link_to(warish.basic_information.name, warish_path(warish)) %></td>
+                <td><%= link_to(warish.basic_information.fathers_name, warish_path(warish)) %></td>
             <% else %>
                 <td></td>
                 <td></td>
             <% end %>
 
             <td>
-              <%= link_to('Edit', edit_citizen_path(citizen)) %>
-              <%= link_to('Delete', edit_citizen_path(citizen)) %>
+              <%= link_to('Edit', edit_warish_path(warish)) %>
+              <%= link_to('Delete', edit_warish_path(warish)) %>
             </td>
           </tr>
       <% end %>
