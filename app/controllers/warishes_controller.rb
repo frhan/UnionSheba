@@ -21,7 +21,7 @@ class WarishesController < InheritedResources::Base
   # POST /recipes
   # POST /recipes.json
   def create
-    @warish = Warish.new(citizen_params)
+    @warish = Warish.new(warish_params)
 
     respond_to do |format|
       if @warish.save

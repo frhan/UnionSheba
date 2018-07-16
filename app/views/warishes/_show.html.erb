@@ -2,15 +2,15 @@
   <p id="notice"><%= notice %></p>
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h3 class="panel-title">নাগরিকের বিবরণ</h3>
+      <h3 class="panel-title">ওয়ারিশের বিবরণ</h3>
     </div>
 
     <div class="panel-body">
-      <% if @citizen.image_attachment.present? %>
+      <% if @warish.image_attachment.present? %>
           <%= render partial: 'layouts/show_image', locals: {image_attachment: @citizen.image_attachment} %>
       <% end %>
 
-      <% if @citizen.pending? %>
+      <% if @warish.pending? %>
           <div class="row">
             <div class="col-xs-2">
               <label> ট্র্যাকিং নম্বর:</label>
@@ -21,17 +21,11 @@
           </div>
       <% end %>
 
-      <%= render partial: 'layouts/show_basic_info', locals: {person: @citizen.basic_information} %>
-      <%= render partial: 'layouts/show_citizen_info', locals: {person: @citizen.citizen_basic} %>
-      <%= render partial: 'layouts/show_address', locals: {address: @citizen.present_address} %>
-      <%= render partial: 'layouts/show_address', locals: {address: @citizen.permanent_address} %>
-      <%= render partial: 'layouts/show_contact_address', locals: {address: @citizen.contact_address} %>
-
-      <% if user_signed_in? %>
-          <%= render 'users_actions' %>
-      <% else %>
-          <%= render 'public_actions' %>
-      <% end %>
+      <%= render partial: 'layouts/show_basic_info', locals: {person: @warish.basic_information} %>
+      <%= render partial: 'layouts/show_citizen_info', locals: {person: @warish.citizen_basic} %>
+      <%= render partial: 'layouts/show_address', locals: {address: @warish.present_address} %>
+      <%= render partial: 'layouts/show_address', locals: {address: @warish.permanent_address} %>
+      <%= render partial: 'layouts/show_contact_address', locals: {address: @warish.contact_address} %>
 
     </div>
   </div>

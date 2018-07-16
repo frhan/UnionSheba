@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180713173437) do
+ActiveRecord::Schema.define(version: 20180716111313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -207,6 +207,19 @@ ActiveRecord::Schema.define(version: 20180713173437) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "occupations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "state"
+    t.string   "workspace_name"
+    t.integer  "annual_income"
+    t.integer  "occupable_id"
+    t.string   "occupable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "occupations", ["occupable_type", "occupable_id"], name: "index_occupations_on_occupable_type_and_occupable_id", using: :btree
 
   create_table "others_certificates", force: :cascade do |t|
     t.string   "lang"
