@@ -1,4 +1,4 @@
-<% if citizens %>
+<% if warishes %>
     <table class="table table-bordered table-striped">
       <thead>
 
@@ -19,14 +19,14 @@
       </thead>
       <tbody>
 
-      <% citizens.each do |citizen| %>
+      <% warishes.each do |citizen| %>
           <tr>
             <% if show_tracking %>
                 <td><%= link_to(citizen.tracking_id, citizen_path(citizen)) %></td>
             <% end %>
 
             <% if show_citizen_no %>
-                <td><%= link_to(citizen.citizen_no, citizen_path(citizen)) %></td>
+                <td><%= link_to(citizen.warish_no, citizen_path(citizen)) %></td>
             <% end %>
 
             <% if citizen.citizen_basic.present? %>
@@ -53,5 +53,5 @@
       <% end %>
       </tbody>
     </table>
-    <%= paginate citizens %>
+    <%= paginate warishes %>
 <% end %>

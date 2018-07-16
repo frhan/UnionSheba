@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180716111313) do
+ActiveRecord::Schema.define(version: 20180716114125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,12 +73,13 @@ ActiveRecord::Schema.define(version: 20180716111313) do
     t.string   "lang"
     t.integer  "infoable_id"
     t.string   "infoable_type"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.string   "state"
     t.string   "spouse_name"
-    t.boolean  "father_alive",  default: true
-    t.boolean  "mother_alive",  default: true
+    t.boolean  "father_alive",              default: true
+    t.boolean  "mother_alive",              default: true
+    t.string   "educational_qualification"
   end
 
   add_index "basic_infos", ["infoable_type", "infoable_id"], name: "index_basic_infos_on_infoable_type_and_infoable_id", using: :btree
@@ -383,8 +384,9 @@ ActiveRecord::Schema.define(version: 20180716111313) do
     t.string   "tracking_id"
     t.string   "status"
     t.integer  "union_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "dead_person_name"
   end
 
   add_index "warishes", ["union_id"], name: "index_warishes_on_union_id", using: :btree
