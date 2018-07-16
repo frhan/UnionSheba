@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :expenses
   get 'home/index'
 
   resources :citizens do
@@ -45,20 +44,27 @@ Rails.application.routes.draw do
       get :others_form
     end
   end
+
   resources :collection_moneys
   resources :tax_or_rate_collections do
-      collection do
-        get :report
-      end
+    collection do
+      get :report
+    end
   end
   resources :others_collections
   resources :trade_licenses
   resources :profiles
-  resources :trade_organizations,shallow: true do
+  resources :trade_organizations, shallow: true do
     member do
       get :renew
       post :create_trade_license
       get :print_money_recipt
+    end
+  end
+
+  resources :expenses do
+    collection do
+      get :report
     end
   end
 

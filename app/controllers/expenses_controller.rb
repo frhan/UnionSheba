@@ -75,6 +75,47 @@ class ExpensesController < ApplicationController
 
   end
 
+  def report
+    @start_date = DateTime.parse(params[:start_date]) if params[:start_date].present?
+    @end_date = DateTime.parse(params[:end_date]) if params[:end_date].present?
+
+    @expenses = current_user.expenses
+                           .where(status: :active)
+                           .order("created_at desc")
+
+    if @start_date && @end_date
+      @expenses = @expenses.where(status: :active,
+                                    :created_at => @start_date.beginning_of_day..@end_date.end_of_day)
+
+    end
+
+    @total_sum = @expenses.map { |s| s.expense_money }.reduce(0, :+)
+
+    if request.format.html?
+      @expenses = @expenses.page(params[:page])
+                           .per(10)
+    end
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => file_name_report,
+               :template => 'expenses/index.pdf.erb',
+               :layout => 'pdf.html.erb',
+               :disposition => 'attachment',
+               :show_as_html => params[:debug].present?,
+               margin: {top: 10, # default 10 (mm)
+                        bottom: 0,
+                        left: 5,
+                        right: 5},
+               dpi: '300'
+        #zoom: 1.17647
+      end
+    end
+
+
+  end
+
 
   private
 
@@ -87,5 +128,11 @@ class ExpensesController < ApplicationController
                                       :other_category,:union_id,
                                       :expense_category_id)
   end
+
+  def file_name_report
+    pdf_file_name 'expsense_'
+  end
+
+
 end
 
