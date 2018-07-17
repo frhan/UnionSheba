@@ -12,6 +12,11 @@ class Expense < ActiveRecord::Base
     self.expense_category.name
   end
 
+  def bank_info
+    return String.new if self.bank_check_no.blank?
+    return "<p> #{self.bank_check_no}<br>#{self.check_date.strftime('%d-%m-%Y')} </p>".html_safe
+  end
+
   private
 
   def save_serial_no

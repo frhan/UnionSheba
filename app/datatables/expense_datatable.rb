@@ -41,6 +41,7 @@ class ExpenseDatatable
       expense <<  link_to(record.serial_no, expense_path(record))
       expense <<  link_to(formatted_date_time(record.created_at), expense_path(record))
       expense <<  record.expense_money
+      expense <<  record.bank_info
       expense << record.exp_category
       expense << record.note
       expense << edit_link(record)
@@ -73,7 +74,7 @@ class ExpenseDatatable
   end
 
   def sort_column
-    columns = %w[serial_no created_at expense_money  not_orderable not_orderable not_orderable not_orderable ]
+    columns = %w[serial_no created_at expense_money  not_orderable not_orderable not_orderable not_orderable not_orderable ]
     columns[params[:order][:'0'][:column].to_i]
   end
 

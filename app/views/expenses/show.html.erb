@@ -13,13 +13,25 @@
               <table class="table table-user-information">
                 <tbody>
                 <tr>
-                  <td>ব্যয়কৃত অর্থ</td>
+                  <td>প্রদানকৃত অর্থ</td>
                   <td><%= @expense.expense_money %></td>
                 </tr>
 
                 <tr>
                   <td>বাবদ</td>
                   <td><%= @expense.exp_category %></td>
+                </tr>
+
+
+                <tr>
+                  <td>ব্যাংক চেক নং</td>
+                  <td><%= @expense.bank_check_no %></td>
+                </tr>
+
+
+                <tr>
+                  <td>ব্যাংকে জমার তারিখ</td>
+                  <td><%= @expense.check_date %></td>
                 </tr>
 
                 <tr>

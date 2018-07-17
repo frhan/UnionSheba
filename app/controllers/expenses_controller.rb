@@ -124,8 +124,8 @@ class ExpensesController < ApplicationController
   end
 
   def expense_params
-      params.require(:expense).permit(:expense_money, :note,
-                                      :other_category,:union_id,
+      params.require(:expense).permit(:expense_money, :note, :other_category,
+                                      :bank_check_no,:check_date,:union_id,
                                       :expense_category_id)
   end
 

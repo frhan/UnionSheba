@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180716114125) do
+ActiveRecord::Schema.define(version: 20180717093456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,6 +187,8 @@ ActiveRecord::Schema.define(version: 20180716114125) do
     t.datetime "updated_at",                             null: false
     t.string   "status",              default: "active"
     t.integer  "serial_no"
+    t.string   "bank_check_no"
+    t.date     "check_date"
   end
 
   add_index "expenses", ["expense_category_id"], name: "index_expenses_on_expense_category_id", using: :btree

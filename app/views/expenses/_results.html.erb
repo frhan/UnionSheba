@@ -8,6 +8,7 @@
         <th>সিরিয়াল নং</th>
         <th>জমার তারিখ</th>
         <th>বাবদ</th>
+        <th>চেক তথ্য</th>
         <th>ব্যয়কৃত অর্থ</th>
       </tr>
       </thead>
@@ -18,11 +19,13 @@
             <td><%= t.serial_no %></td>
             <td><%= formatted_date_time t.created_at %></td>
             <td><%= t.exp_category %></td>
+            <td><%= t.bank_info %></td>
             <td><%= t.expense_money %></td>
           </tr>
       <% end %>
       <tr>
         <td>সর্বমোট</td>
+        <td></td>
         <td></td>
         <td></td>
         <td><%= @total_sum %></td>
