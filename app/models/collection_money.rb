@@ -90,4 +90,20 @@ class CollectionMoney < ActiveRecord::Base
     self.update_attributes(:tx_year => current_fiscal_year)
   end
 
+  # def save_voucher_no
+  #    vchr = Voucher.where(union_id: self.union.id, voucher_type: v_type,
+  #                   :created_at => Date.today.beginning_of_day..Date.today.end_of_day)
+  #   if vchr.present?
+  #       voucher = vchr
+  #   else
+  #     voucher = Voucher.create(voucher_no: vchr + 1, voucher_type: v_type, union: self.union)
+  #   end
+  #
+  #   self.update_attributes(voucher: voucher)
+  # end
+
+  def v_type
+    self.collectable_type
+  end
+
 end

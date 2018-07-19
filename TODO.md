@@ -105,3 +105,13 @@ sudo lsof -i tcp:3000
 Replace 3000 with whichever port you want. Run below command to kill that process.
 
 sudo kill -9 PID
+
+
+PDF and Mail
+------------
+
+https://berislavbabic.com/send-pdf-attachments-from-rails-with-wickedpdf-and-actionmailer/
+
+https://bootsnipp.com/snippets/featured/dynamic-sortable-tables
+
+https://bootsnipp.com/snippets/featured/basic-register-page

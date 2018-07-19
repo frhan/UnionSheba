@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180717093456) do
+ActiveRecord::Schema.define(version: 20180718080705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -369,6 +369,18 @@ ActiveRecord::Schema.define(version: 20180717093456) do
   add_index "users", ["union_id"], name: "index_users_on_union_id", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  create_table "vouchers", force: :cascade do |t|
+    t.integer  "voucher_no"
+    t.string   "check_no"
+    t.date     "check_date"
+    t.integer  "union_id"
+    t.string   "voucher_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "vouchers", ["union_id"], name: "index_vouchers_on_union_id", using: :btree
+
   create_table "warish_relations", force: :cascade do |t|
     t.string   "name"
     t.string   "relation"
@@ -409,6 +421,7 @@ ActiveRecord::Schema.define(version: 20180717093456) do
   add_foreign_key "unions", "upazilas"
   add_foreign_key "upazilas", "districts"
   add_foreign_key "users", "unions"
+  add_foreign_key "vouchers", "unions"
   add_foreign_key "warish_relations", "warishes"
   add_foreign_key "warishes", "unions"
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  voucher_no: 1
+  union_id: 
+  type: 
+
+two:
+  voucher_no: 1
+  union_id: 
+  type: 
