@@ -165,15 +165,18 @@
             <% end %>
 
             <ul class="dropdown-menu" role="menu">
-              <li> <%= link_to 'অবিবাহিত সনদ', '#' %></li>
-              <li> <%= link_to 'পুনঃ বিবাহ না হওয়ার সনদ', '#' %></li>
-              <li> <%= link_to 'একি  নামের প্রত্যয়ন পত্র', '#' %></li>
-              <li> <%= link_to 'সনাতন ধর্ম অবলম্বী', '#' %></li>
-              <li> <%= link_to 'ভূমিহীন সনদ', '#' %></li>
-              <li> <%= link_to 'বার্ষিক আয়ের প্রত্যয়ন', '#' %></li>
-              <li> <%= link_to 'প্রকৃত বাঁক এবং স্রবণ প্রতিবন্ধী', '#' %></li>
-              <li> <%= link_to 'অনুমতি পত্র', '#' %></li>
-              <li> <%= link_to 'প্রত্যয়ন পত্র', '#' %></li>
+              <li> <%= link_to 'অবিবাহিত সনদ', new_others_certificate_path(c_type: :unmarried) %></li>
+              <li> <%= link_to 'পুনঃ বিবাহ না হওয়ার সনদ', new_others_certificate_path(c_type: :no_remarried) %></li>
+              <li> <%= link_to 'একি  নামের প্রত্যয়ন পত্র', new_others_certificate_path(c_type: :rename) %></li>
+              <li> <%= link_to 'সনাতন ধর্ম অবলম্বী', new_others_certificate_path(c_type: :hindu) %></li>
+              <li> <%= link_to 'ভূমিহীন সনদ', new_others_certificate_path(c_type: :landless) %></li>
+              <li> <%= link_to 'বার্ষিক আয়ের প্রত্যয়ন', new_others_certificate_path(c_type: :annual_income) %></li>
+              <li> <%= link_to 'প্রকৃত বাঁক এবং স্রবণ প্রতিবন্ধী', new_others_certificate_path(c_type: :impirement) %></li>
+              <li> <%= link_to 'অনুমতি পত্র', new_others_certificate_path(c_type: :permission) %></li>
+              <li> <%= link_to 'প্রত্যয়ন পত্র', new_others_certificate_path(c_type: :prottoyon) %></li>
+              <li class="divider"></li>
+              <li> <%= link_to 'সনদের আবেদন যাচাই', verify_application_warishes_path %></li>
+              <li> <%= link_to 'সনদ পত্র যাচাই', verify_warish_warishes_path %></li>
             </ul>
           </li>
         </ul>
