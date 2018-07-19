@@ -45,10 +45,10 @@
             <% end %>
 
             <ul class="dropdown-menu" role="menu">
-              <li> <%= link_to 'অন্যান্য সনদ সমূহ', '#' %> </li>
+              <li> <%= link_to 'অন্যান্য সনদ সমূহ', others_certificates_path %> </li>
               <% if can? :manage, Citizen %>
                   <li class="divider"></li>
-                  <li><%= link_to 'অন্যান্য সনদ আবেদনকারী', '#' %></li>
+                  <li><%= link_to 'অন্যান্য সনদ আবেদনকারী', requests_others_certificates_path %></li>
               <% end %>
             </ul>
           </li>

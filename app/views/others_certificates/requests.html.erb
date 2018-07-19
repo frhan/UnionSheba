@@ -1,10 +1,10 @@
 <div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
   <p id="notice"><%= notice %></p>
 
-  <h1>ওয়ারিশ সনদের আবেদনকারী সমূহ</h1>
+  <h1>অন্যান্য সনদের আবেদনকারী</h1>
 
   <div class="row">
-    <%= form_tag(requests_citizens_path, method: :get) do %>
+    <%= form_tag(others_certificates_path, method: :get) do %>
         <div class="form-group col-md-10">
           <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "ট্র্যাকিং নম্বরটি প্রবেশ করুন" %>
         </div>
@@ -14,9 +14,4 @@
     <% end %>
   </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <%= render 'warishes', warishes: @warishes, show_tracking: true, show_citizen_no: false %>
-    </div>
-  </div>
 </div>

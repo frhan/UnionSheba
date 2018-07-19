@@ -14,6 +14,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :others_certificates do
+    collection do
+      get :requests
+    end
+  end
+
+
   resources :warishes do
     member do
       get :edit_request
@@ -45,7 +52,7 @@ Rails.application.routes.draw do
   end
 
   resources :collection_moneys
-  resources :others_certificates
+
   resources :tax_or_rate_collections do
     collection do
       get :report

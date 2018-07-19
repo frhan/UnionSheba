@@ -1,2 +1,17 @@
-<h1>OthersCertificates#index</h1>
-<p>Find me in app/views/others_certificates/index.html.erb</p>
+<div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+  <p id="notice"><%= notice %></p>
+
+  <h1>অন্যান্য সনদসমূহ</h1>
+
+  <div class="row">
+    <%= form_tag(others_certificates_path, method: :get) do %>
+        <div class="form-group col-md-10">
+          <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "অন্যান্য সনদ নম্বরটি প্রবেশ করুন" %>
+        </div>
+        <div class="form-group col-md-2">
+          <%= submit_tag 'খোঁজ করুন', class: "btn btn-primary" %>
+        </div>
+    <% end %>
+  </div>
+
+</div>
