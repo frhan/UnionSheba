@@ -3,6 +3,16 @@ class OthersCertificatesController < InheritedResources::Base
   before_filter :authenticate_user! ,only: [:index,:requests,:show,:activate_certificate]
   load_and_authorize_resource only: [:index,:requests,:show,:activate_certificate]
 
+  def new
+    @others_certificate = OthersCertificate.new
+    @others_certificate.build_contact_address
+    @others_certificate.build_citizen_basic
+    @others_certificate.build_image_attachment
+    @others_certificate.basic_infos.build(lang: current_lang)
+    @others_certificate.addresses.build(address_type: :present, lang: current_lang)
+    @others_certificate.addresses.build(address_type: :permanent, lang: current_lang)
+  end
+
   def requests
 
   end

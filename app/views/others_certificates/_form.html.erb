@@ -7,11 +7,52 @@
 
       <div class="container-page">
         <div class="col-md-12">
-          <%= render 'layouts/basic_information_compact'%>
+          <%= form_for @others_certificate do |f| %>
 
-          <%= render 'layouts/citizen_basic_compact'%>
-          <%= render 'layouts/address_compact'%>
-          <%= render 'layouts/contact_address_compact'%>
+              <% if @others_certificate.errors.any? %>
+                  <div id="signupalert" class="alert alert-danger">
+                    <h2><%= pluralize(@others_certificate.errors.count, "error") %> prohibited this user from being
+                      saved:</h2>
+                    <ul>
+                      <% @others_certificate.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+
+              <%= f.fields_for :basic_infos do |bi| %>
+                  <%= render partial: 'layouts/basic_information_compact', locals: {f: bi} %>
+              <% end %>
+
+
+              <%= f.hidden_field :status, :value => user_signed_in? ? :active : :pending %>
+
+              <%= f.fields_for :citizen_basic do |cb| %>
+                  <%= render partial: 'layouts/citizen_basic_compact', locals: {f: cb} %>
+              <% end %>
+
+              <%= f.fields_for :addresses do |ad| %>
+                  <%= render partial: 'layouts/address_compact', locals: {f: ad} %>
+              <% end %>
+
+              <%= f.fields_for :contact_address do |ca| %>
+                  <%= render partial: 'layouts/contact_address_compact', locals: {f: ca} %>
+              <% end %>
+
+              <div class="form-group col-lg-12">
+                <!-- Button -->
+                <div class="form-group">
+                  <%= f.submit "Save", class: "btn btn-info" %>
+                </div>
+
+                <div class="form-group">
+                      <%= link_to 'Back', root_path %>
+                </div>
+              </div>
+
+
+        <% end %>
 
         </div>
 

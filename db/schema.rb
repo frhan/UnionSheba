@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180718080705) do
+ActiveRecord::Schema.define(version: 20180719112243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -231,7 +231,10 @@ ActiveRecord::Schema.define(version: 20180718080705) do
     t.string   "tracking_no"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "union_id"
   end
+
+  add_index "others_certificates", ["union_id"], name: "index_others_certificates_on_union_id", using: :btree
 
   create_table "others_collections", force: :cascade do |t|
     t.string   "senders_name"
@@ -413,6 +416,7 @@ ActiveRecord::Schema.define(version: 20180718080705) do
   add_foreign_key "districts", "divisions"
   add_foreign_key "expenses", "expense_categories"
   add_foreign_key "expenses", "unions"
+  add_foreign_key "others_certificates", "unions"
   add_foreign_key "others_collections", "unions"
   add_foreign_key "tax_or_rate_collections", "tax_categories"
   add_foreign_key "tax_or_rate_collections", "unions"
