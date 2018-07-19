@@ -89,6 +89,11 @@ class ExpensesController < ApplicationController
 
     end
 
+
+    if params[:collections] && params[:collections][:category_id].present?
+      @expenses = @expenses.where(:expense_category_id => params[:collections][:category_id])
+    end
+
     @total_sum = @expenses.map { |s| s.expense_money }.reduce(0, :+)
 
     if request.format.html?
