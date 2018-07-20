@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
 
   get 'citizens/show_by_tracking_id/:id' => 'citizens#show_by_tracking_id', as: :show_by_tracking_citizens
+  get 'others_certificates/show_by_tracking_id/:id' => 'others_certificates#show_by_tracking_id', as: :show_by_tracking_certificate
 
   resources :citizen_requests do
     collection do

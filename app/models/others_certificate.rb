@@ -1,18 +1,26 @@
 class OthersCertificate < ActiveRecord::Base
-  include ApplicationHelper, UnionHelper
+  include ApplicationHelper, UnionHelper,Certificatable
 
-  belongs_to :union
+  after_create :save_tracking_id,:save_certificate_no
 
-  has_many :addresses, as: :addressable, dependent: :destroy
-  has_many :basic_infos, as: :infoable, dependent: :destroy
-  has_one :contact_address, as: :contactable, dependent: :destroy
-  has_one :citizen_basic, as: :basicable, dependent: :destroy
-  has_one :image_attachment, as: :attachable, dependent: :destroy
+  private
 
-  accepts_nested_attributes_for :addresses, allow_destroy: true
-  accepts_nested_attributes_for :basic_infos, allow_destroy: true
-  accepts_nested_attributes_for :contact_address, allow_destroy: true
-  accepts_nested_attributes_for :citizen_basic, allow_destroy: true
-  accepts_nested_attributes_for :image_attachment, allow_destroy: true
+  def save_certificate_no
+    return if self.pending? || self.citizen_no.present?
+
+    cer_no = OthersCertificate.where(union_id: self.union.id).count(:certifcate_no)
+    cer_no = cer_no + 1
+    cer = "#{self.union.union_code}O#{current_year.to_s}#{cer_no.to_s}"
+    self.update_attributes(:certifcate_no => cer)
+  end
+
+
+  def save_tracking_id
+    return if self.active? || self.tracking_id.present?
+
+    trac_no = OthersCertificate.where(union_id: self.union.id).count(:tracking_id)
+    trac_id = "#{self.union.union_code}O#{current_year_month_day.to_s}#{trac_no.to_s}"
+    self.update_attributes(:tracking_id => trac_id)
+  end
 
 end

@@ -9,8 +9,8 @@ class CitizenBasic < ActiveRecord::Base
   validate :nid_or_birthid_present
   validate :nid_birthid_numeric
 
-  validates_uniqueness_of :nid, :allow_blank => true, :allow_nil => true, scope: [:basicable_type]
-  validates_uniqueness_of :birthid, :allow_blank => true, :allow_nil => true, scope: [:basicable_type]
+  #validates_uniqueness_of :nid, :allow_blank => true, :allow_nil => true, scope: [:basicable_type]
+  #validates_uniqueness_of :birthid, :allow_blank => true, :allow_nil => true, scope: [:basicable_type]
   validates :nid, length: {minimum: 13}, :allow_blank => true, :allow_nil => true
   validates :birthid, length: {minimum: 17}, :allow_blank => true, :allow_nil => true
 

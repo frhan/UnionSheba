@@ -1,33 +1,8 @@
 class Citizen < ActiveRecord::Base
-  include ApplicationHelper, UnionHelper
-  belongs_to :union
-
-  has_many :addresses, as: :addressable, dependent: :destroy
-  has_many :basic_infos, as: :infoable, dependent: :destroy
-  has_one :contact_address, as: :contactable, dependent: :destroy
-  has_one :citizen_basic, as: :basicable, dependent: :destroy
-  has_one :image_attachment, as: :attachable, dependent: :destroy
-
-  accepts_nested_attributes_for :addresses, allow_destroy: true
-  accepts_nested_attributes_for :basic_infos, allow_destroy: true
-  accepts_nested_attributes_for :contact_address, allow_destroy: true
-  accepts_nested_attributes_for :citizen_basic, allow_destroy: true
-  accepts_nested_attributes_for :image_attachment, allow_destroy: true
+  include ApplicationHelper, UnionHelper,Certificatable
 
   after_create :save_tracking_id
   after_create :save_citizen_no
-
-  def set_status(status)
-    self.status = status
-  end
-
-  def active?
-    self.status == 'active'
-  end
-
-  def pending?
-    self.status == 'pending'
-  end
 
   def save_pending_request
     set_status(:pending)
