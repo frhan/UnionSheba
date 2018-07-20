@@ -12,6 +12,7 @@ class WarishesController < InheritedResources::Base
     @warish = Warish.new
     @warish.build_contact_address
     @warish.build_citizen_basic
+    @warish.build_image_attachment
     @warish.basic_infos.build(lang: current_lang)
     @warish.addresses.build(address_type: :present, lang: current_lang)
     @warish.addresses.build(address_type: :permanent, lang: current_lang)
@@ -37,7 +38,7 @@ class WarishesController < InheritedResources::Base
   end
 
   def show_by_tracking_id
-    @citizen = Citizen.find_by_tracking_id(params[:id])
+    @warish = Citizen.find_by_tracking_id(params[:id])
   end
 
   def activate_warish

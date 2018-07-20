@@ -1,10 +1,10 @@
-<div id="signupbox" class="mainbox col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+<div id="signupbox" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
   <div class="panel panel-info">
     <div class="panel-heading">
       <div class="panel-title">ওয়ারিশ ফরম</div>
     </div>
     <div class="panel-body">
-      <%= form_for @warish, html: {class: 'form-horizontal'} do |f| %>
+      <%= form_for @warish do |f| %>
 
           <% if @warish.errors.any? %>
               <div id="signupalert" class="alert alert-danger">
@@ -17,60 +17,51 @@
               </div>
           <% end %>
 
+          <% if f.object.new_record? %>
+              <span class=" text-center help-block">নাগরিকত্ব অথবা জন্ম নিবন্ধন এর স্ক্যান করা ছবি</span>
+              <div class="form-group col-lg-12">
+                <%= f.fields_for :image_attachment do |p| %>
+                    <%= p.file_field :photo, accept: 'image/png,image/jpeg', class: "form-control" %>
+                <% end %>
+              </div>
+          <%end%>
+
+
           <%= f.fields_for :basic_infos do |bi| %>
-              <%= render partial: 'layouts/basic_information', locals: {f: bi} %>
+              <%= render partial: 'layouts/basic_information_compact', locals: {f: bi} %>
           <% end %>
 
           <% if user_signed_in? %>
               <%= f.hidden_field :union_id, :value => current_user.union.id %>
           <% else %>
-              <div class="form-group">
-                <label for="nameInBn" class="col-md-3 control-label">ইউনিয়ন</label>
-                <div class="col-md-9">
-                  <%= f.collection_select :union_id, Union.all, :id, :name_in_bng, {}, {class: "form-control"} %>
-                </div>
+              <div class="form-group col-lg-6">
+                <label>ইউনিয়ন</label>
+                <%= f.collection_select :union_id, Union.all, :id, :name_in_bng, {}, {class: "form-control"} %>
               </div>
-
           <% end %>
 
           <%= f.hidden_field :status, :value => user_signed_in? ? :active : :pending %>
 
           <%= f.fields_for :citizen_basic do |cb| %>
-              <%= render partial: 'layouts/citizen_basic', locals: {f: cb} %>
+              <%= render partial: 'layouts/citizen_basic_compact', locals: {f: cb} %>
           <% end %>
 
-          <% if f.object.new_record? %>
-              <span class=" text-center help-block">নাগরিকত্ব অথবা জন্ম নিবন্ধন এর স্ক্যান করা ছবি</span>
-              <%= f.fields_for :image_attachment do |p| %>
-                  <div class="form-group">
-                    <label for="nameInBn" class="col-md-3 control-label">ছবি</label>
-                    <div class="col-md-9">
-                      <%= p.file_field :photo, accept: 'image/png,image/jpeg', class: "form-control" %>
-                    </div>
-                  </div>
-              <% end %>
-          <% end %>
+
 
           <div class="form-group">
             <h4 class="text-center"><u>ওয়ারিশগনের তালিকা </u> </h4>
           </div>
 
           <%= f.fields_for :warish_relations do |w| %>
-              <%= render 'warish_relation', f: w %>
+              <%= render 'warish_relation_compact',f: w%>
           <% end %>
-          <div class="form-group">
-            <!-- Button -->
-            <div class="col-md-offset-3 col-md-9">
-          <%= button_tag 'নতুন ওয়ারিশ', :name => nil-%>
-              </div>
-            </div>
 
           <%= f.fields_for :addresses do |ad| %>
-              <%= render partial: 'layouts/address', locals: {f: ad} %>
+              <%= render partial: 'layouts/address_compact', locals: {f: ad} %>
           <% end %>
 
           <%= f.fields_for :contact_address do |ca| %>
-              <%= render partial: 'layouts/contact_address', locals: {f: ca} %>
+              <%= render partial: 'layouts/contact_address_compact', locals: {f: ca} %>
           <% end %>
 
           <div class="form-group">
