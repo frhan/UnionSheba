@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  workplace_name: MyString
+  annual_income: 1
+  work_title: MyString
+
+two:
+  workplace_name: MyString
+  annual_income: 1
+  work_title: MyString

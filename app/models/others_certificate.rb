@@ -2,6 +2,7 @@ class OthersCertificate < ActiveRecord::Base
   include ApplicationHelper, UnionHelper,Certificatable
 
   after_create :save_tracking_id,:save_certificate_no
+  has_one :work_info
 
   private
 

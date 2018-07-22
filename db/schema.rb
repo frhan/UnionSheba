@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180720085005) do
+ActiveRecord::Schema.define(version: 20180720120543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -233,9 +233,11 @@ ActiveRecord::Schema.define(version: 20180720085005) do
     t.datetime "updated_at",       null: false
     t.integer  "union_id"
     t.string   "certificate_type"
+    t.integer  "work_info_id"
   end
 
   add_index "others_certificates", ["union_id"], name: "index_others_certificates_on_union_id", using: :btree
+  add_index "others_certificates", ["work_info_id"], name: "index_others_certificates_on_work_info_id", using: :btree
 
   create_table "others_collections", force: :cascade do |t|
     t.string   "senders_name"
@@ -409,6 +411,15 @@ ActiveRecord::Schema.define(version: 20180720085005) do
 
   add_index "warishes", ["union_id"], name: "index_warishes_on_union_id", using: :btree
 
+  create_table "work_infos", force: :cascade do |t|
+    t.string   "workplace_name"
+    t.integer  "annual_income"
+    t.string   "work_title"
+    t.string   "lang"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   add_foreign_key "citizen_basics", "citizenship_states"
   add_foreign_key "citizen_basics", "maritial_statuses"
   add_foreign_key "citizen_basics", "religions"
@@ -418,6 +429,7 @@ ActiveRecord::Schema.define(version: 20180720085005) do
   add_foreign_key "expenses", "expense_categories"
   add_foreign_key "expenses", "unions"
   add_foreign_key "others_certificates", "unions"
+  add_foreign_key "others_certificates", "work_infos"
   add_foreign_key "others_collections", "unions"
   add_foreign_key "tax_or_rate_collections", "tax_categories"
   add_foreign_key "tax_or_rate_collections", "unions"

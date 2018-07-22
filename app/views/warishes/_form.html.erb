@@ -1,7 +1,7 @@
 <div id="signupbox" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <div class="panel-title">ওয়ারিশ ফরম</div>
+      <div class="panel-title">ওয়ারিশ সনদের আবেদন</div>
     </div>
     <div class="panel-body">
       <%= form_for @warish do |f| %>
@@ -47,6 +47,11 @@
           <% end %>
 
 
+          <div class="form-group col-lg-12">
+            <label>মৃত ব্যক্তির নামঃ*</label>
+            <%= f.text_field :dead_person_name, class: "form-control" %>
+          </div>
+
 
           <div class="form-group">
             <h4 class="text-center"><u>ওয়ারিশগনের তালিকা </u> </h4>
@@ -55,6 +60,8 @@
           <%= f.fields_for :warish_relations do |w| %>
               <%= render 'warish_relation_compact',f: w%>
           <% end %>
+
+
 
           <%= f.fields_for :addresses do |ad| %>
               <%= render partial: 'layouts/address_compact', locals: {f: ad} %>

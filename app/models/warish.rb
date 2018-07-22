@@ -5,6 +5,9 @@ class Warish < ActiveRecord::Base
 
   after_create :save_tracking_id,:save_warish_no
 
+  validates :dead_person_name, presence: true
+
+
   private
 
   def save_warish_no

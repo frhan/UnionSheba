@@ -44,7 +44,4 @@ module Certificatable
     @permanent_address
   end
 
-
-
-
 end
