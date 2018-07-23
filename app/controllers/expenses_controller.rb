@@ -91,6 +91,7 @@ class ExpensesController < ApplicationController
 
 
     if params[:collections] && params[:collections][:category_id].present?
+      @selected_id = params[:collections][:category_id]
       @expenses = @expenses.where(:expense_category_id => params[:collections][:category_id])
     end
 
