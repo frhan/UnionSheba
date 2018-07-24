@@ -4,7 +4,7 @@ ActiveAdmin.register Citizen do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-  permit_params  :name_in_eng, :name_in_bng,:union_id,:status
+  permit_params  :union_id,:status,:citizen_no,:tracking_id
 #
 # or
 #

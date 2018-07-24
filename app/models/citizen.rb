@@ -15,7 +15,7 @@ class Citizen < ActiveRecord::Base
   accepts_nested_attributes_for :image_attachment, allow_destroy: true
 
   after_create :save_tracking_id
-  after_create :save_citizen_no
+  after_save :save_citizen_no
 
   def set_status(status)
     self.status = status
@@ -144,7 +144,7 @@ class Citizen < ActiveRecord::Base
 
 
   def save_tracking_id
-    return if !self.pending? || self.tracking_id.present?
+    return if self.active? || self.tracking_id.present?
 
     trac_no = Citizen.where(union_id: self.union.id).count(:tracking_id)
     trac_id = "#{self.union.union_code}C#{current_year_month_day.to_s}#{trac_no.to_s}"
