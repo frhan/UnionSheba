@@ -12,7 +12,9 @@ class CitizensController < InheritedResources::Base
     @citizen = Citizen.new
     @citizen.build_contact_address
     @citizen.build_citizen_basic
-    @citizen.build_image_attachment
+    if !user_signed_in?
+      @citizen.build_image_attachment
+    end
     @citizen.basic_infos.build(lang: current_lang)
     @citizen.addresses.build(address_type: :present, lang: current_lang)
     @citizen.addresses.build(address_type: :permanent, lang: current_lang)
