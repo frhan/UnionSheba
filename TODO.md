@@ -106,7 +106,6 @@ Replace 3000 with whichever port you want. Run below command to kill that proces
 
 sudo kill -9 PID
 
-
 PDF and Mail
 ------------
 
@@ -115,3 +114,7 @@ https://berislavbabic.com/send-pdf-attachments-from-rails-with-wickedpdf-and-act
 https://bootsnipp.com/snippets/featured/dynamic-sortable-tables
 
 https://bootsnipp.com/snippets/featured/basic-register-page
+
+File upload:
+https://github.com/blueimp/jQuery-File-Upload/wiki
+https://devcenter.heroku.com/articles/direct-to-s3-image-uploads-in-rails

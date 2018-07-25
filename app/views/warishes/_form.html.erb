@@ -28,7 +28,7 @@
 
 
           <%= f.fields_for :basic_infos do |bi| %>
-              <%= render partial: 'layouts/basic_information_compact', locals: {f: bi} %>
+              <%= render partial: 'layouts/basic_information_compact', locals: {f: bi, is_warish:true} %>
           <% end %>
 
           <% if user_signed_in? %>
@@ -46,19 +46,12 @@
               <%= render partial: 'layouts/citizen_basic_compact', locals: {f: cb} %>
           <% end %>
 
-
-          <div class="form-group col-lg-12">
-            <label>মৃত ব্যক্তির নামঃ*</label>
-            <%= f.text_field :dead_person_name, class: "form-control" %>
-          </div>
-
-
           <div class="form-group">
             <h4 class="text-center"><u>ওয়ারিশগনের তালিকা </u> </h4>
           </div>
 
           <%= f.fields_for :warish_relations do |w| %>
-              <%= render 'warish_relation_compact',f: w%>
+              <%= render 'warish_relation_compact', f: w %>
           <% end %>
 
 
@@ -73,10 +66,11 @@
 
           <div class="form-group">
             <!-- Button -->
-            <div class="col-md-offset-3 col-md-9">
-              <%= f.submit "Save", class: "btn btn-info" %>
+            <div class="col-md-offset-4 col-md-4">
+              <%= f.submit "দাখিল করুন", class: "btn btn-info" %>
             </div>
           </div>
+          <div class="col-md-9">
 
           <% if user_signed_in? %>
               <% if f.object.new_record? || f.object.active? %>
@@ -87,6 +81,7 @@
           <% else %>
               <%= link_to 'Back', root_path %>
           <% end %>
+          </div>
       <% end %>
 
 

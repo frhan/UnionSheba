@@ -3,14 +3,12 @@ class Warish < ActiveRecord::Base
   has_many :warish_relations, dependent: :destroy
   accepts_nested_attributes_for :warish_relations, allow_destroy: true
 
-  after_create :save_tracking_id,:save_warish_no
-
-  validates :dead_person_name, presence: true
-
+  after_create :save_tracking_id
+  after_save :save_certificate_no
 
   private
 
-  def save_warish_no
+  def save_certificate_no
     return if self.pending? || self.citizen_no.present?
 
     warsh_no = Warish.where(union_id: self.union.id).count(:warish_no)

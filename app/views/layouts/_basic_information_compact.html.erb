@@ -1,5 +1,9 @@
 <div class="form-group col-lg-12">
-  <label>নামঃ</label>
+  <% if is_warish %>
+      <label>মৃত ব্যক্তির নামঃ*</label>
+  <% else %>
+      <label>নামঃ</label>
+  <% end %>
   <%= f.text_field :name, class: "form-control" %>
 </div>
 
@@ -12,5 +16,18 @@
   <label>মাতার নাম</label>
   <%= f.text_field :mothers_name, class: "form-control" %>
 </div>
+
+<% if is_warish %>
+    <div class="form-group col-lg-6">
+      <label for="theme">পিতা জীবিত কিনা</label>
+      <label class="radio-inline"><%= f.radio_button :father_alive, false %> হ্যাঁ </label>
+      <label class="radio-inline"><%= f.radio_button :father_alive, true %> না</label>
+    </div>
+    <div class="form-group col-lg-6">
+      <label>মাতা জীবিত কিনা </label>
+      <label class="radio-inline"><%= f.radio_button :mother_alive, true %> হ্যাঁ </label>
+      <label class="radio-inline"> <%= f.radio_button :mother_alive, false %> না</label>
+    </div>
+<% end %>
 
 <%= f.hidden_field :lang %>
