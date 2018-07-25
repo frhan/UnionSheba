@@ -24,11 +24,11 @@
                     <%= p.file_field :photo, accept: 'image/png,image/jpeg', class: "form-control" %>
                 <% end %>
               </div>
-          <%end%>
+          <% end %>
 
 
           <%= f.fields_for :basic_infos do |bi| %>
-              <%= render partial: 'layouts/basic_information_compact', locals: {f: bi, is_warish:true} %>
+              <%= render partial: 'layouts/basic_information_compact', locals: {f: bi, is_warish: true} %>
           <% end %>
 
           <% if user_signed_in? %>
@@ -46,17 +46,20 @@
               <%= render partial: 'layouts/citizen_basic_compact', locals: {f: cb} %>
           <% end %>
 
-          <div class="form-group">
-            <h4 class="text-center"><u>ওয়ারিশগনের তালিকা </u> </h4>
+          <div class="form-group col-lg-12">
+            <div class="form-group">
+              <h4 class="text-center"><u>ওয়ারিশগনের তালিকা </u></h4>
+            </div>
           </div>
 
           <%= f.fields_for :warish_relations do |w| %>
               <%= render 'warish_relation_fields', f: w %>
           <% end %>
-
+          <div class="form-group col-lg-12">
           <div class="form-group">
-            <%= link_to_add_association 'নতুন ওয়ারিশ', f, :warish_relations,class:"btn btn-primary pull-right" %>
+            <%= link_to_add_association 'নতুন ওয়ারিশ', f, :warish_relations, class: "btn btn-primary pull-right" %>
           </div>
+            </div>
 
           <%= f.fields_for :addresses do |ad| %>
               <%= render partial: 'layouts/address_compact', locals: {f: ad} %>
@@ -74,18 +77,17 @@
           </div>
           <div class="col-md-9">
 
-          <% if user_signed_in? %>
-              <% if f.object.new_record? || f.object.active? %>
-                  <%= link_to 'Back', warishes_path %>
-              <% else %>
-                  <%= link_to 'Back', requests_warishes_path %>
-              <% end %>
-          <% else %>
-              <%= link_to 'Back', root_path %>
-          <% end %>
+            <% if user_signed_in? %>
+                <% if f.object.new_record? || f.object.active? %>
+                    <%= link_to 'Back', warishes_path %>
+                <% else %>
+                    <%= link_to 'Back', requests_warishes_path %>
+                <% end %>
+            <% else %>
+                <%= link_to 'Back', root_path %>
+            <% end %>
           </div>
       <% end %>
-
 
 
     </div>
