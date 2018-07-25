@@ -55,11 +55,12 @@
           <%= f.fields_for :warish_relations do |w| %>
               <%= render 'warish_relation_fields', f: w %>
           <% end %>
+
           <div class="form-group col-lg-12">
-          <div class="form-group">
-            <%= link_to_add_association 'নতুন ওয়ারিশ', f, :warish_relations, class: "btn btn-primary pull-right" %>
-          </div>
+            <div class="form-group">
+              <%= link_to_add_association 'নতুন ওয়ারিশ', f, :warish_relations, class: "btn btn-primary pull-right" %>
             </div>
+          </div>
 
           <%= f.fields_for :addresses do |ad| %>
               <%= render partial: 'layouts/address_compact', locals: {f: ad} %>
