@@ -51,10 +51,12 @@
           </div>
 
           <%= f.fields_for :warish_relations do |w| %>
-              <%= render 'warish_relation_compact', f: w %>
+              <%= render 'warish_relation_fields', f: w %>
           <% end %>
 
-
+          <div class="form-group">
+            <%= link_to_add_association 'add address', f, :warish_relations %>
+          </div>
 
           <%= f.fields_for :addresses do |ad| %>
               <%= render partial: 'layouts/address_compact', locals: {f: ad} %>

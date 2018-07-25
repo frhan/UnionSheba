@@ -163,10 +163,11 @@ class WarishesController < InheritedResources::Base
   private
 
   def warish_params
-    params.require(:warish).permit(:union_id, :status, basic_infos_attributes: [:id,:name, :fathers_name, :mothers_name, :date_of_birth, :lang],
-                                    addresses_attributes: [:id,:village, :road, :word_no, :district, :upazila, :post_office, :address_type, :lang],
-                                    contact_address_attributes: [:id,:mobile_no, :email],
-                                    citizen_basic_attributes:[:id,:nid,:birthid,:dob,:gender,:maritial_status_id,
+    params.require(:warish).permit(:union_id, :status,warish_relations_attributes:[:name,:age,:comment,:relation],
+                                   basic_infos_attributes: [:id,:name, :fathers_name, :mothers_name, :date_of_birth, :lang],
+                                   addresses_attributes: [:id,:village, :road, :word_no, :district, :upazila, :post_office, :address_type, :lang],
+                                   contact_address_attributes: [:id,:mobile_no, :email],
+                                   citizen_basic_attributes:[:id,:nid,:birthid,:dob,:gender,:maritial_status_id,
                                                               :citizenship_state_id,:religion_id])
   end
 

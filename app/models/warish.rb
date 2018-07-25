@@ -1,7 +1,8 @@
 class Warish < ActiveRecord::Base
   include ApplicationHelper, UnionHelper,Certificatable
   has_many :warish_relations, dependent: :destroy
-  accepts_nested_attributes_for :warish_relations, allow_destroy: true
+
+  accepts_nested_attributes_for :warish_relations, reject_if: :all_blank, allow_destroy: true
 
   after_create :save_tracking_id
   after_save :save_certificate_no
