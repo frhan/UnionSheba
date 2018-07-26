@@ -118,3 +118,34 @@ https://bootsnipp.com/snippets/featured/basic-register-page
 File upload:
 https://github.com/blueimp/jQuery-File-Upload/wiki
 https://devcenter.heroku.com/articles/direct-to-s3-image-uploads-in-rails
+
+
+Warish
+------
+* show page
+* pdf
+
+Others
+------
+* show page
+* pdf
+* menubar@user
+
+Trade_license
+-------------
+* verfication page
+* new Design
+* Public request page
+* request submit page
+* 
+
+SSL
+---
+https://medium.com/@franxyzxyz/setting-up-free-https-with-heroku-ssl-and-lets-encrypt-80cf6eac108e
+https://blog.heroku.com/ssl-is-now-included-on-all-paid-dynos
+
+
+DB backups
+----------
+* https://devcenter.heroku.com/articles/heroku-postgres-backups
+

@@ -19,14 +19,18 @@
 
 <% if is_warish %>
     <div class="form-group col-lg-6">
-      <label for="theme">পিতা জীবিত কিনা</label>
-      <label class="radio-inline"><%= f.radio_button :father_alive, false %> হ্যাঁ </label>
-      <label class="radio-inline"><%= f.radio_button :father_alive, true %> না</label>
+      <label for="theme">পিতা জীবিত কিনা: </label>
+      <%= f.radio_button :father_alive, true %>
+      <%= f.label :father_alive_label, "হ্যাঁ" %>
+      <%= f.radio_button :father_alive, false %>
+      <%= f.label :father_alive_label, "না" %>
     </div>
     <div class="form-group col-lg-6">
-      <label>মাতা জীবিত কিনা </label>
-      <label class="radio-inline"><%= f.radio_button :mother_alive, true %> হ্যাঁ </label>
-      <label class="radio-inline"> <%= f.radio_button :mother_alive, false %> না</label>
+      <label>মাতা জীবিত কিনা: </label>
+      <%= f.radio_button :mother_alive, true %>
+      <%= f.label :mother_alive_label, "হ্যাঁ" %>
+      <%= f.radio_button :mother_alive, false %>
+      <%= f.label :mother_alive_label, "না" %>
     </div>
 <% end %>
 
