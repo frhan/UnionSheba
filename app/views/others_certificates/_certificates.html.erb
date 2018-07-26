@@ -1,0 +1,57 @@
+<% if certificates %>
+    <table class="table table-bordered table-striped">
+      <thead>
+
+      <tr>
+        <% if show_tracking %>
+            <th>Tracking Id</th>
+        <% end %>
+        <% if show_certificate_no %>
+            <th>Certificate No</th>
+        <% end %>
+        <th>NID</th>
+        <th>Birth Id</th>
+        <th>Name</th>
+        <th>Father's Name</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% certificates.each do |others_certificate| %>
+          <tr>
+            <% if show_tracking %>
+                <td><%= link_to(others_certificate.tracking_no, others_certificate_path(others_certificate)) %></td>
+            <% end %>
+
+
+            <% if show_certificate_no %>
+                <td><%= link_to(others_certificate.certifcate_no, others_certificate_path(others_certificate)) %></td>
+            <% end %>
+
+            <% if others_certificate.citizen_basic.present? %>
+                <td><%= link_to(others_certificate.citizen_basic.nid, others_certificate_path(others_certificate)) %></td>
+                <td><%= link_to(others_certificate.citizen_basic.birthid, others_certificate_path(others_certificate)) %></td>
+            <% else %>
+                <td></td>
+                <td></td>
+            <% end %>
+
+            <% if others_certificate.basic_information.present? %>
+                <td><%= link_to(others_certificate.basic_information.name, others_certificate_path(others_certificate)) %></td>
+                <td><%= link_to(others_certificate.basic_information.fathers_name, others_certificate_path(others_certificate)) %></td>
+            <% else %>
+                <td></td>
+                <td></td>
+            <% end %>
+
+            <td>
+              <%= link_to('Edit', edit_others_certificate_path(others_certificate)) %>
+              <%= link_to('Delete', edit_others_certificate_path(others_certificate)) %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= paginate certificates %>
+<% end %>

@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :others_collections, through: :union
   has_many :warishes, through: :union
   has_many :expenses, through: :union
+  has_many :others_certificates, through: :union
 
   def email_required?
     false

@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :others_certificates do
     collection do
       get :requests
+      get :verify_application
+      get :verify_certificate
+
     end
   end
 
