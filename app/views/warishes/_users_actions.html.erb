@@ -6,9 +6,9 @@
         <%= link_to 'Print Certificate With Sign', warish_path(@warish, format: 'pdf', sign: true), class: "btn btn-success" %>
         <%= link_to 'Print Certificate W/O Sign', warish_path(@warish, format: 'pdf', sign: false), class: "btn btn-warning" %>
         <% if @warish.contact_address.email.present? %>
-          <%= link_to 'Send Email','#', class: "btn btn-success" %>
-        <% end%>
-        <%= link_to 'Deactivate','#', class: "btn btn-warning" %>
+            <%= link_to 'Send Email', '#', class: "btn btn-success" %>
+        <% end %>
+        <%= link_to 'Deactivate', '#', class: "btn btn-warning" %>
     <% end %>
 
     <% if @warish.pending? %>

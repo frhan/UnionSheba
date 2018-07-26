@@ -49,7 +49,7 @@
   .wrapper-content {
     border: 5px double #666;
     padding: 1px;
-    background: url('<%= Rails.root.join('public','images', @citizen.union_bg_name) %>') no-repeat center 50%;
+    background: url('<%= Rails.root.join('public','images', @warish.union_bg_name) %>') no-repeat center 50%;
     position: relative;
     overflow: hidden;
   }
@@ -238,7 +238,7 @@
                 <div class="row">
                   <div class="col-xs-4 col-xs-offset-4">
                     <div class="logo">
-                      <%= image_tag wicked_pdf_asset_base64(@citizen.union_logo_name) %>
+                      <%= image_tag wicked_pdf_asset_base64(@warish.union_logo_name) %>
                     </div>
                   </div>
                 </div>
@@ -248,11 +248,11 @@
             <div class="top-area">
               <p> গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
               <p> (স্থানীয় সরকার বিভাগ)</p>
-              <h1><%= bangla_number(@citizen.union_no) %> নং <%= @citizen.union_name_bng %> ইউনিয়ন পরিষদ</h1>
-              <p class="sub"> ডাকঘরঃ <%= @citizen.post_name_bng %> উপজেলাঃ <%= @citizen.upazila_name_bng %>
-                জেলাঃ  <%= @citizen.zila_name_bng %></p>
+              <h1><%= bangla_number(@warish.union_no) %> নং <%= @warish.union_name_bng %> ইউনিয়ন পরিষদ</h1>
+              <p class="sub"> ডাকঘরঃ <%= @warish.post_name_bng %> উপজেলাঃ <%= @warish.upazila_name_bng %>
+                জেলাঃ  <%= @warish.zila_name_bng %></p>
               <h3>নাগরিকত্ব ও চারিত্রিক সনদপত্র</h3>
-              <h4>নাগরিকত্ব নং: <%= @citizen.citizen_no %> </h4>
+              <h4>নাগরিকত্ব নং: <%= @warish.warish_no %> </h4>
             </div>
 
             <div class="row">
@@ -262,24 +262,24 @@
             </div>
 
             <div class="main-area">
-              <p>আমি এই মর্মে সনদ প্রদান করিতেছি যে,<strong> <%= @citizen.basic_information.name %> </strong>&nbsp;আমার ইউনিয়নের
+              <p>আমি এই মর্মে সনদ প্রদান করিতেছি যে,<strong> <%= @warish.basic_information.name %> </strong>&nbsp;আমার ইউনিয়নের
                 স্থায়ী
                 বাসিন্দা এবং জন্মসূত্রে বাংলাদেশের নাগরিক । তাহাকে আমি ব্যক্তিগতভাবে চিনি ও জানি ।</p>
               <p id="citizen_disc">নাগরিকের বিবরণ:</p>
               <ul>
-                <li>১) নামঃ <b><%= @citizen.basic_information.name %></b></li>
-                <li>২) পিতার নামঃ <b> <%= @citizen.basic_information.fathers_name %></b></li>
-                <li>৩) মাতার নামঃ <b><%= @citizen.basic_information.mothers_name %> </b></li>
-                <li>৪) ওয়ার্ড নম্বরঃ <%= bangla_number(@citizen.permanent_address.word_no.to_s) %></li>
-                <li>৫) গ্রামঃ <%= @citizen.permanent_address.village %></li>
-                <li>৬) ডাকঘরঃ <%= @citizen.permanent_address.post_office %></li>
-                <li>৭) উপজেলাঃ <%= @citizen.upazila_name_bng %></li>
-                <li>৮) জেলাঃ <%= @citizen.zila_name_bng %></li>
+                <li>১) নামঃ <b><%= @warish.basic_information.name %></b></li>
+                <li>২) পিতার নামঃ <b> <%= @warish.basic_information.fathers_name %></b></li>
+                <li>৩) মাতার নামঃ <b><%= @warish.basic_information.mothers_name %> </b></li>
+                <li>৪) ওয়ার্ড নম্বরঃ <%= bangla_number(@warish.permanent_address.word_no.to_s) %></li>
+                <li>৫) গ্রামঃ <%= @warish.permanent_address.village %></li>
+                <li>৬) ডাকঘরঃ <%= @warish.permanent_address.post_office %></li>
+                <li>৭) উপজেলাঃ <%= @warish.upazila_name_bng %></li>
+                <li>৮) জেলাঃ <%= @warish.zila_name_bng %></li>
 
-                <% if @citizen.citizen_basic.nid.present? %>
-                    <li>৯) জাতীয় পরিচয়পত্র নম্বরঃ <b><%= bangla_number(@citizen.citizen_basic.nid) %> </b></li>
+                <% if @warish.citizen_basic.nid.present? %>
+                    <li>৯) জাতীয় পরিচয়পত্র নম্বরঃ <b><%= bangla_number(@warish.citizen_basic.nid) %> </b></li>
                 <% else %>
-                    <li>৯) জন্ম নিবন্ধন নম্বরঃ <b><%= bangla_number(@citizen.citizen_basic.birthid) %> </b></li>
+                    <li>৯) জন্ম নিবন্ধন নম্বরঃ <b><%= bangla_number(@warish.citizen_basic.birthid) %> </b></li>
                 <% end %>
 
               </ul>
@@ -299,23 +299,23 @@
                 </div>
 
                 <div class="col-xs-5 ">
-                  <% if @citizen.signature? %>
+                  <% if @warish.signature? %>
                       <div class="signature">
-                        <%= image_tag wicked_pdf_asset_base64(@citizen.union_sig_name), width: '100%' %>
+                        <%= image_tag wicked_pdf_asset_base64(@warish.union_sig_name), width: '100%' %>
                       </div>
 
                   <% end %>
 
-                  <div class="<%= @citizen.signature? ? 'chairman_stamp_with_sig' : 'chairman_stamp_wo_sig' %>">
+                  <div class="<%= @warish.signature? ? 'chairman_stamp_with_sig' : 'chairman_stamp_wo_sig' %>">
 
-                    <% if @citizen.union_chairman_name.present? %>
-                        <p class="text-center chairman">( <%= @citizen.union_chairman_name %> )</p>
+                    <% if @warish.union_chairman_name.present? %>
+                        <p class="text-center chairman">( <%= @warish.union_chairman_name %> )</p>
                     <% end %>
 
                     <p class="text-center">চেয়ারম্যান</p>
-                    <p class="text-center"><%= bangla_number(@citizen.union.union_no.to_s) %>
-                      নং <%= @citizen.union.name_in_bng %> ইউনিয়ন পরিষদ</p>
-                    <p class="text-center"><%= @citizen.upz_zilla_name %></p>
+                    <p class="text-center"><%= bangla_number(@warish.union.union_no.to_s) %>
+                      নং <%= @warish.union.name_in_bng %> ইউনিয়ন পরিষদ</p>
+                    <p class="text-center"><%= @warish.upz_zilla_name %></p>
                   </div>
                 </div>
 

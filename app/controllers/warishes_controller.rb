@@ -132,7 +132,7 @@ class WarishesController < InheritedResources::Base
       format.html
       format.pdf do
         render :pdf => file_name,
-               :template => 'warish/show.pdf.erb',
+               :template => 'warishes/show.pdf.erb',
                :layout => 'pdf.html.erb',
                :disposition => 'attachment',
                page_size: 'A4',
