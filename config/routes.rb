@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   end
 
   resources :others_certificates do
-
     member do
       get :activate
     end
@@ -25,7 +24,6 @@ Rails.application.routes.draw do
       get :verify_certificate
     end
   end
-
 
   resources :warishes do
     member do
@@ -40,7 +38,6 @@ Rails.application.routes.draw do
       get :verify_warish
     end
   end
-
 
   get 'warishes/show_by_tracking_id/:id' => 'warishes#show_by_tracking_id', as: :show_by_tracking_warishes
   get 'citizens/show_by_tracking_id/:id' => 'citizens#show_by_tracking_id', as: :show_by_tracking_citizens

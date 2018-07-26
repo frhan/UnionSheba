@@ -1,11 +1,11 @@
 class OthersCertificate < ActiveRecord::Base
-  include ApplicationHelper, UnionHelper,Certificatable
+  include ApplicationHelper, UnionHelper, Certificatable
 
-  after_create :save_tracking_id,:save_certificate_no
+  after_create :save_tracking_id, :save_certificate_no
   has_one :work_info
 
   def save_certificate_no
-    return if self.pending? || self.citizen_no.present?
+    return if self.pending? || self.certifcate_no.present?
 
     cer_no = OthersCertificate.where(union_id: self.union.id).count(:certifcate_no)
     cer_no = cer_no + 1

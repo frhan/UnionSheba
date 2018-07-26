@@ -1,6 +1,6 @@
 class OthersCertificatesController < InheritedResources::Base
   include ApplicationHelper, UnionHelper
-  before_filter :authenticate_user!, only: [:index, :requests, :show, :activate_certificate]
+  before_filter :authenticate_user!, only: [:index, :requests, :no_remarried, :activate_certificate]
   load_and_authorize_resource only: [:index, :requests, :show, :activate_certificate]
 
   def new
@@ -19,7 +19,7 @@ class OthersCertificatesController < InheritedResources::Base
     respond_to do |format|
       if @others_certificate.save
         format.html { redirect_to user_signed_in? ? @others_certificate : public_certificate_path(@others_certificate), notice: get_notice }
-        format.json { render :show, status: :created, location: @citizen }
+        format.json { render :no_remarried, status: :created, location: @citizen }
       else
         @others_certificate.build_image_attachment if @others_certificate.image_attachment.blank?
         format.html { render :new }
@@ -41,6 +41,39 @@ class OthersCertificatesController < InheritedResources::Base
       format.html
     end
   end
+
+
+  def show
+    @others_certificate = OthersCertificate.find(params[:id])
+    @barcode = barcode_output(@others_certificate) if params[:format] == 'pdf'
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => file_name,
+               :template => 'others_certificates/pdf/no_remarried.pdf.erb',
+               :layout => 'pdf.html.erb',
+               :disposition => 'attachment',
+               page_size: 'A4',
+               :show_as_html => params[:debug].present?,
+               margin: {top: 8, # default 10 (mm)
+                        bottom: 0,
+                        left: 5,
+                        right: 5},
+               dpi: '300'
+      end
+    end
+  end
+
+  def barcode_output(others_certificate)
+    barcode_string = others_certificate.barcode
+    barcode = Barby::QrCode.new(barcode_string, level: :q, size: 9)
+
+    # PNG OUTPUT
+    base64_output = Base64.encode64(barcode.to_png({xdim: 4}))
+    "data:image/png;base64,#{base64_output}"
+  end
+
 
   def show_by_tracking_id
     @others_certificate = OthersCertificate.find_by_tracking_no(params[:id])
@@ -79,11 +112,18 @@ class OthersCertificatesController < InheritedResources::Base
     end
   end
 
-  def activate_certificate
-
+  def activate
+    @others_certificate = OthersCertificate.find(params[:id])
+    @others_certificate.activate
+    redirect_to @others_certificate, notice: 'Certificate was successfully activated.'
   end
 
   private
+
+  def file_name
+    pdf_file_name 'certificate_' << @others_certificate.union_code
+  end
+
 
   def public_certificate_path(oc)
     return show_by_tracking_certificate_path(oc.tracking_no)

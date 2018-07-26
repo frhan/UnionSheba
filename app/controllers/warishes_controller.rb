@@ -123,7 +123,6 @@ class WarishesController < InheritedResources::Base
     end
   end
 
-
   def show
     @warish = Warish.find(params[:id])
     @barcode = barcode_output(@warish) if params[:format] == 'pdf'
