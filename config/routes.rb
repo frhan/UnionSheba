@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   end
 
   resources :others_certificates do
+
+    member do
+      get :activate
+    end
+
     collection do
       get :requests
       get :verify_application

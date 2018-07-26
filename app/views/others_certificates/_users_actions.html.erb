@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-xs-12">
+
+    <% if @others_certificate.active? %>
+        <%= link_to 'Back', others_certificates_path, class: "btn btn-primary" %>
+        <%= link_to 'Print Certificate With Sign', others_certificate_path(@others_certificate, format: 'pdf', sign: true), class: "btn btn-success" %>
+        <%= link_to 'Print Certificate W/O Sign', others_certificate_path(@others_certificate, format: 'pdf', sign: false), class: "btn btn-warning" %>
+        <% if @others_certificate.contact_address.email.present? %>
+          <%= link_to 'Send Email','#', class: "btn btn-success" %>
+        <% end%>
+        <%= link_to 'Deactivate','#', class: "btn btn-warning" %>
+    <% end %>
+
+    <% if @others_certificate.pending? %>
+        <%= link_to 'Activate', activate_others_certificate_path(@others_certificate), class: "btn btn-info btn-default" %>
+        <%= link_to 'Back', requests_others_certificates_path, class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>

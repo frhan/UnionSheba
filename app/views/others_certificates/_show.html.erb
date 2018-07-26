@@ -27,6 +27,11 @@
       <%= render partial: 'layouts/show_address', locals: {address: @others_certificate.permanent_address} %>
       <%= render partial: 'layouts/show_contact_address', locals: {address: @others_certificate.contact_address} %>
 
+      <% if user_signed_in? %>
+          <%= render 'users_actions' %>
+      <% else %>
+          <%= render 'public_actions' %>
+      <% end %>
     </div>
   </div>
 </div>
