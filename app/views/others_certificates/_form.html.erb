@@ -31,7 +31,7 @@
               <%end%>
 
               <%= f.fields_for :basic_infos do |bi| %>
-                  <%= render partial: 'layouts/basic_information_compact', locals: {f: bi} %>
+                  <%= render partial: 'layouts/basic_information_compact', locals: {f: bi, is_warish: false} %>
               <% end %>
 
               <% if user_signed_in? %>

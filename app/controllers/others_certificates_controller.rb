@@ -11,7 +11,6 @@ class OthersCertificatesController < InheritedResources::Base
     @others_certificate.basic_infos.build(lang: current_lang)
     @others_certificate.addresses.build(address_type: :present, lang: current_lang)
     @others_certificate.addresses.build(address_type: :permanent, lang: current_lang)
-
   end
 
   def create
@@ -19,7 +18,7 @@ class OthersCertificatesController < InheritedResources::Base
 
     respond_to do |format|
       if @others_certificate.save
-        format.html { redirect_to user_signed_in? ?  @others_certificate : show_by_tracking_id(@others_certificate) , notice: get_notice }
+        format.html { redirect_to user_signed_in? ?  @others_certificate : public_certificate_path(@others_certificate) , notice: get_notice }
         format.json { render :show, status: :created, location: @citizen }
       else
         @others_certificate.build_image_attachment if @others_certificate.image_attachment.blank?
@@ -30,8 +29,8 @@ class OthersCertificatesController < InheritedResources::Base
 
   end
 
-  def show_by_tracking_id(cert)
-    @others_certificate = cert
+  def show_by_tracking_id
+    @others_certificate = OthersCertificate.find_by_tracking_no(params[:id])
   end
 
   def requests
@@ -43,6 +42,14 @@ class OthersCertificatesController < InheritedResources::Base
   end
 
   private
+
+  def public_certificate_path(oc)
+    return show_by_tracking_certificate_path(oc.tracking_no)
+  end
+
+  def get_notice
+    user_signed_in? ? 'Certificate was successfully created.' : 'আপনার আবেদনটি সাবমিট করা হয়েছে । ভবিষ্যৎ অনুসন্ধানের জন্য ট্র্যাকিং নম্বরটি সংগ্রহে রাখুন ।'
+  end
 
   def others_certificate_params
     params.require(:others_certificate).permit(:union_id,:certificate_type,:status,
