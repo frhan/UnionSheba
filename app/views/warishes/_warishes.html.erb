@@ -6,7 +6,9 @@
         <% if show_tracking %>
             <th>Tracking Id</th>
         <% end %>
-
+        <% if show_warish_no %>
+            <th>Warish No</th>
+        <% end %>
         <th>NID</th>
         <th>Birth Id</th>
         <th>Name</th>
@@ -22,6 +24,10 @@
                 <td><%= link_to(warish.tracking_id, warish_path(warish)) %></td>
             <% end %>
 
+
+            <% if show_warish_no %>
+                <td><%= link_to(warish.warish_no, warish_path(warish)) %></td>
+            <% end %>
 
             <% if warish.citizen_basic.present? %>
                 <td><%= link_to(warish.citizen_basic.nid, warish_path(warish)) %></td>
