@@ -2,7 +2,7 @@
   <p id="notice"><%= notice %></p>
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h3 class="panel-title">নাগরিকের বিবরণ</h3>
+      <h3 class="panel-title"><%= cer_label(@others_certificate.certificate_type) %></h3>
     </div>
 
     <div class="panel-body">
@@ -20,6 +20,14 @@
             </div>
           </div>
       <% end %>
+      <div class="row">
+        <div class="col-xs-2">
+          <label> নম্বর:</label>
+        </div>
+        <div class="col-xs-10 pull-left">
+          <p><%= cer_label(@others_certificate.certificate_type) %></p>
+        </div>
+      </div>
 
       <%= render partial: 'layouts/show_basic_info', locals: {person: @others_certificate.basic_information} %>
       <%= render partial: 'layouts/show_citizen_info', locals: {person: @others_certificate.citizen_basic} %>
