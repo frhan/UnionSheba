@@ -1,0 +1,88 @@
+<% if @others_certificate.present? %>
+    <div class="row">
+      <div class="col-md-10 col-sm-offset-1">
+        <p id="notice"><%= notice %></p>
+        <% if @others_certificate.image_attachment.present? %>
+            <%= render partial: 'layouts/show_image', locals: {image_attachment: @others_certificate.image_attachment} %>
+        <% end %>
+
+        <% if @others_certificate.certifcate_no.present? %>
+            <div class="row">
+              <div class="col-xs-2">
+                <label>নাগরিকত্ব নং:</label>
+              </div>
+              <div class="col-xs-10 pull-left">
+                <p><%= @others_certificate.certifcate_no %></p>
+              </div>
+            </div>
+        <% end %>
+
+        <% if @others_certificate.pending? %>
+            <div class="row">
+              <div class="col-xs-2">
+                <label> ট্র্যাকিং নম্বর:</label>
+              </div>
+              <div class="col-xs-10 pull-left">
+                <p><%= @others_certificate.tracking_no %></p>
+              </div>
+            </div>
+        <% end %>
+
+        <% if @others_certificate.basic_information.present? %>
+            <%= render partial: 'layouts/show_basic_info', locals: {person: @others_certificate.basic_information} %>
+        <% end %>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label> ইউনিয়ন:</label>
+          </div>
+          <div class="col-xs-10 pull-left">
+            <p><%= @others_certificate.union_name_bng %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label>উপজেলা:</label>
+          </div>
+          <div class="col-xs-10 pull-left">
+            <p><%= @others_certificate.upazila_name_bng %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label> জেলা:</label>
+          </div>
+          <div class="col-xs-10 pull-left">
+            <p><%= @others_certificate.zila_name_bng %></p>
+          </div>
+        </div>
+
+        <% if @others_certificate.citizen_basic.present? %>
+            <%= render partial: 'layouts/show_citizen_info', locals: {person: @others_certificate.citizen_basic} %>
+        <% end %>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label>স্ট্যাটাস:</label>
+          </div>
+          <div class="col-xs-10">
+            <p><%= @others_certificate.status %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-2">
+            <label>তারিখ:</label>
+          </div>
+          <div class="col-xs-10">
+            <p><%= @others_certificate.created_at %></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+<% else %>
+    <p>No Citizen found</p>
+<% end %>

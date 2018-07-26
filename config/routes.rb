@@ -19,12 +19,10 @@ Rails.application.routes.draw do
     member do
       get :activate
     end
-
     collection do
       get :requests
       get :verify_application
       get :verify_certificate
-
     end
   end
 

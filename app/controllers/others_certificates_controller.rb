@@ -60,6 +60,25 @@ class OthersCertificatesController < InheritedResources::Base
     end
   end
 
+
+  def verify_application
+    @others_certificate = OthersCertificate.find_by_tracking_no(params[:q]) if params[:q]
+    # where status in
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def verify_certificate
+    @others_certificate = OthersCertificate.find_by_certifcate_no(params[:q]) if params[:q]
+    # where status in
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def activate_certificate
 
   end
