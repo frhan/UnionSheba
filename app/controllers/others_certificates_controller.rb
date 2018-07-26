@@ -51,7 +51,7 @@ class OthersCertificatesController < InheritedResources::Base
       format.html
       format.pdf do
         render :pdf => file_name,
-               :template => 'others_certificates/pdf/no_remarried.pdf.erb',
+               :template => @others_certificate.template,
                :layout => 'pdf.html.erb',
                :disposition => 'attachment',
                page_size: 'A4',
@@ -145,6 +145,7 @@ class OthersCertificatesController < InheritedResources::Base
                                                                           :religion_id],
                                                image_attachment_attributes: [:id, :photo])
   end
+
 
 
 end

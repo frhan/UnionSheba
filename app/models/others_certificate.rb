@@ -22,4 +22,9 @@ class OthersCertificate < ActiveRecord::Base
     self.update_attributes(:tracking_no => trac_id)
   end
 
+  def template
+    'others_certificates/pdf/no_remarried.pdf.erb' if self.certificate_type == 'no_remarried'
+    'others_certificates/pdf/unmarried.pdf.erb' if self.certificate_type == 'unmarried'
+  end
+
 end
