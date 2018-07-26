@@ -1,36 +1,36 @@
 
-<% if @citizen.present? %>
+<% if @warish.present? %>
     <div class="row">
       <div class="col-md-10 col-sm-offset-1">
         <p id="notice"><%= notice %></p>
-        <% if @citizen.image_attachment.present? %>
-            <%= render partial: 'layouts/show_image', locals: {image_attachment: @citizen.image_attachment} %>
+        <% if @warish.image_attachment.present? %>
+            <%= render partial: 'layouts/show_image', locals: {image_attachment: @warish.image_attachment} %>
         <% end %>
 
-        <% if @citizen.citizen_no.present? %>
+        <% if @warish.warish_no.present? %>
             <div class="row">
               <div class="col-xs-2">
                 <label>নাগরিকত্ব নং:</label>
               </div>
               <div class="col-xs-10 pull-left">
-                <p><%= @citizen.citizen_no %></p>
+                <p><%= @warish.warish_no %></p>
               </div>
             </div>
         <% end %>
 
-        <% if @citizen.pending? %>
+        <% if @warish.pending? %>
             <div class="row">
               <div class="col-xs-2">
                 <label> ট্র্যাকিং নম্বর:</label>
               </div>
               <div class="col-xs-10 pull-left">
-                <p><%= @citizen.tracking_id %></p>
+                <p><%= @warish.tracking_id %></p>
               </div>
             </div>
         <% end %>
 
-        <% if @citizen.basic_information.present? %>
-            <%= render partial: 'layouts/show_basic_info', locals: {person: @citizen.basic_information} %>
+        <% if @warish.basic_information.present? %>
+            <%= render partial: 'layouts/show_basic_info', locals: {person: @warish.basic_information} %>
         <% end %>
 
         <div class="row">
@@ -38,7 +38,7 @@
             <label> ইউনিয়ন:</label>
           </div>
           <div class="col-xs-10 pull-left">
-            <p><%= @citizen.union_name_bng %></p>
+            <p><%= @warish.union_name_bng %></p>
           </div>
         </div>
 
@@ -47,7 +47,7 @@
             <label>উপজেলা:</label>
           </div>
           <div class="col-xs-10 pull-left">
-            <p><%= @citizen.upazila_name_bng %></p>
+            <p><%= @warish.upazila_name_bng %></p>
           </div>
         </div>
 
@@ -56,12 +56,12 @@
             <label> জেলা:</label>
           </div>
           <div class="col-xs-10 pull-left">
-            <p><%= @citizen.zila_name_bng %></p>
+            <p><%= @warish.zila_name_bng %></p>
           </div>
         </div>
 
-        <% if @citizen.citizen_basic.present? %>
-            <%= render partial: 'layouts/show_citizen_info', locals: {person: @citizen.citizen_basic} %>
+        <% if @warish.citizen_basic.present? %>
+            <%= render partial: 'layouts/show_citizen_info', locals: {person: @warish.citizen_basic} %>
         <% end %>
 
         <div class="row">
@@ -69,7 +69,7 @@
             <label>স্ট্যাটাস:</label>
           </div>
           <div class="col-xs-10">
-            <p><%= @citizen.status %></p>
+            <p><%= @warish.status %></p>
           </div>
         </div>
 
@@ -78,12 +78,12 @@
             <label>তারিখ:</label>
           </div>
           <div class="col-xs-10">
-            <p><%= @citizen.created_at %></p>
+            <p><%= @warish.created_at %></p>
           </div>
         </div>
 
       </div>
     </div>
 <% else %>
-    <p>No Citizen found</p>
+    <p>No warish found</p>
 <% end %>

@@ -12,7 +12,7 @@ class Warish < ActiveRecord::Base
 
     warsh_no = Warish.where(union_id: self.union.id).count(:warish_no)
     warsh_no = warsh_no + 1
-    warsh = "#{self.union.union_code}C#{current_year.to_s}#{warsh_no.to_s}"
+    warsh = "#{self.union.union_code}W#{current_year.to_s}#{warsh_no.to_s}"
     self.update_attributes(:warish_no => warsh)
   end
 
