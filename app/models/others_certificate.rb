@@ -4,8 +4,6 @@ class OthersCertificate < ActiveRecord::Base
   after_create :save_tracking_id,:save_certificate_no
   has_one :work_info
 
-  private
-
   def save_certificate_no
     return if self.pending? || self.citizen_no.present?
 

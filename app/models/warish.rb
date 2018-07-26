@@ -7,10 +7,8 @@ class Warish < ActiveRecord::Base
   after_create :save_tracking_id
   after_save :save_certificate_no
 
-  private
-
   def save_certificate_no
-    return if self.pending? || self.citizen_no.present?
+    return if self.pending? || self.warish_no.present?
 
     warsh_no = Warish.where(union_id: self.union.id).count(:warish_no)
     warsh_no = warsh_no + 1

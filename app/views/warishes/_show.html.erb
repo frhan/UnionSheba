@@ -16,16 +16,23 @@
               <label> ট্র্যাকিং নম্বর:</label>
             </div>
             <div class="col-xs-10 pull-left">
-              <p><%= @citizen.tracking_id %></p>
+              <p><%= @warish.tracking_id %></p>
             </div>
           </div>
       <% end %>
-
       <%= render partial: 'layouts/show_basic_info', locals: {person: @warish.basic_information} %>
       <%= render partial: 'layouts/show_citizen_info', locals: {person: @warish.citizen_basic} %>
       <%= render partial: 'layouts/show_address', locals: {address: @warish.present_address} %>
       <%= render partial: 'layouts/show_address', locals: {address: @warish.permanent_address} %>
       <%= render partial: 'layouts/show_contact_address', locals: {address: @warish.contact_address} %>
+
+      <%= render 'warish_relations_show' %>
+
+      <% if user_signed_in? %>
+          <%= render 'users_actions' %>
+      <% else %>
+          <%= render 'public_actions' %>
+      <% end %>
 
     </div>
   </div>

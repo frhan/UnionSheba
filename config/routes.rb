@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :warishes do
     member do
       get :edit_request
-      get :activate_citizen
+      get :activate_warish
       put :permit_request
     end
 
@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   end
 
 
+  get 'warishes/show_by_tracking_id/:id' => 'warishes#show_by_tracking_id', as: :show_by_tracking_warishes
   get 'citizens/show_by_tracking_id/:id' => 'citizens#show_by_tracking_id', as: :show_by_tracking_citizens
   get 'others_certificates/show_by_tracking_id/:id' => 'others_certificates#show_by_tracking_id', as: :show_by_tracking_certificate
 

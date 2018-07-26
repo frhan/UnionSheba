@@ -1,0 +1,31 @@
+<div class="form-group col-lg-12">
+  <div class="form-group">
+    <h4 class="text-center"><u>ওয়ারিশগনের তালিকা </u></h4>
+  </div>
+</div>
+<div class="col-lg-12 table-responsive nested-fields">
+  <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+    <thead>
+    <tr>
+      <th class="text-center">নাম</th>
+      <th class="text-center">সম্পর্ক</th>
+      <th class="text-center">মন্তব্য</th>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @warish.warish_relations.each do |wl| %>
+        <tr>
+          <td>
+            <%= wl.name %>
+          </td>
+          <td>
+            <%= wl.relation %>
+          </td>
+          <td>
+            <%= wl.comment %>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

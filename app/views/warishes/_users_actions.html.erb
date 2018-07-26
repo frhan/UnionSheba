@@ -1,16 +1,20 @@
 <div class="row">
   <div class="col-xs-12">
 
-    <% if @citizen.active? %>
-        <%= link_to 'Print Certificate', citizen_path(@citizen, format: 'pdf'), class: "btn btn-success" %>
-        <%= link_to 'Back', citizens_path, class: "btn btn-primary" %>
+    <% if @warish.active? %>
+        <%= link_to 'Back', warishes_path, class: "btn btn-primary" %>
+        <%= link_to 'Print Certificate With Sign', warish_path(@warish, format: 'pdf', sign: true), class: "btn btn-success" %>
+        <%= link_to 'Print Certificate W/O Sign', warish_path(@warish, format: 'pdf', sign: false), class: "btn btn-warning" %>
+        <% if @warish.contact_address.email.present? %>
+          <%= link_to 'Send Email','#', class: "btn btn-success" %>
+        <% end%>
+        <%= link_to 'Deactivate','#', class: "btn btn-warning" %>
     <% end %>
 
-    <% if @citizen.pending? %>
-        <%= link_to 'Activate Citizen', activate_citizen_citizen_path(@citizen), class: "btn btn-info btn-default" %>
-        <%= link_to 'Back', requests_citizens_path, class: "btn btn-primary" %>
+    <% if @warish.pending? %>
+        <%= link_to 'Activate Warish', activate_warish_warish_path(@warish), class: "btn btn-info btn-default" %>
+        <%= link_to 'Back', requests_warishes_path, class: "btn btn-primary" %>
     <% end %>
-
 
   </div>
 </div>

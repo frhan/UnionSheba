@@ -2,7 +2,7 @@ class Citizen < ActiveRecord::Base
   include ApplicationHelper, UnionHelper,Certificatable
 
   after_create :save_tracking_id
-  after_save :save_citizen_no
+  after_save :save_certificate_no
 
   def save_pending_request
     set_status(:pending)
@@ -12,18 +12,6 @@ class Citizen < ActiveRecord::Base
   def update_pending_request_to_active
     set_status :active
     save_saved_at
-  end
-
-  def activate
-    self.update_attributes(status: :active)
-    save_citizen_no
-    delete_image
-  end
-
-  def delete_image
-    return unless self.image_attachment.present? && self.image_attachment.photo.present?
-    self.image_attachment.photo.file.delete if self.image_attachment.photo.file.exists?
-    self.image_attachment.delete
   end
 
   def save_requested_at
@@ -90,9 +78,7 @@ class Citizen < ActiveRecord::Base
     bangla_number '1234567'
   end
 
-  private
-
-  def save_citizen_no
+  def save_certificate_no
     return if self.pending? || self.citizen_no.present?
 
     ctzn_no = Citizen.where(union_id: self.union.id).count(:citizen_no)

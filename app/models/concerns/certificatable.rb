@@ -44,4 +44,16 @@ module Certificatable
     @permanent_address
   end
 
+  def activate
+    self.update_attributes(status: :active)
+    save_certificate_no
+    delete_image
+  end
+
+  def delete_image
+    return unless self.image_attachment.present? && self.image_attachment.photo.present?
+    self.image_attachment.photo.file.delete if self.image_attachment.photo.file.exists?
+    self.image_attachment.delete
+  end
+
 end

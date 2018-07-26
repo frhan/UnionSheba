@@ -5,8 +5,8 @@ class WarishesController < InheritedResources::Base
   require 'barby/outputter/png_outputter'
 
   include ApplicationHelper, UnionHelper
-  before_filter :authenticate_user! ,only: [:index,:requests,:show,:activate_warish]
-  load_and_authorize_resource only: [:index,:requests,:show,:activate_warish]
+  before_filter :authenticate_user!, only: [:index, :requests, :show, :activate_warish]
+  load_and_authorize_resource only: [:index, :requests, :show, :activate_warish]
 
   def new
     @warish = Warish.new
@@ -26,25 +26,25 @@ class WarishesController < InheritedResources::Base
 
     respond_to do |format|
       if @warish.save
-        format.html { redirect_to user_signed_in? ?  @warish : public_citizen__path(@warish) , notice: get_notice }
+        format.html { redirect_to user_signed_in? ? @warish : public_warish_path(@warish), notice: get_notice }
         format.json { render :show, status: :created, location: @warish }
       else
-        @citizen.build_image_attachment if @citizen.image_attachment.blank?
-        format.html {render :new }
-        format.json { render json: @citizen.errors, status: :unprocessable_entity }
+        @warish.build_image_attachment if @warish.image_attachment.blank?
+        format.html { render :new }
+        format.json { render json: @warish.errors, status: :unprocessable_entity }
       end
     end
 
   end
 
   def show_by_tracking_id
-    @warish = Citizen.find_by_tracking_id(params[:id])
+    @warish = Warish.find_by_tracking_id(params[:id])
   end
 
   def activate_warish
     @warish = Warish.find(params[:id])
     @warish.activate
-    redirect_to @warish , notice: 'Citizen was successfully activated.'
+    redirect_to @warish, notice: 'Warish was successfully activated.'
   end
 
   def verify_application
@@ -163,14 +163,14 @@ class WarishesController < InheritedResources::Base
   private
 
   def warish_params
-    params.require(:warish).permit(:union_id, :status,warish_relations_attributes:[:name,:age,:comment,:relation],
-                                   basic_infos_attributes: [:id,:name, :fathers_name, :mothers_name, :date_of_birth,
-                                                            :father_alive,:mother_alive,:lang],
-                                   addresses_attributes: [:id,:village, :road, :word_no, :district, :upazila,
+    params.require(:warish).permit(:union_id, :status, warish_relations_attributes: [:name, :age, :comment, :relation],
+                                   basic_infos_attributes: [:id, :name, :fathers_name, :mothers_name, :date_of_birth,
+                                                            :father_alive, :mother_alive, :lang],
+                                   addresses_attributes: [:id, :village, :road, :word_no, :district, :upazila,
                                                           :post_office, :address_type, :lang],
-                                   contact_address_attributes: [:id,:mobile_no, :email],
-                                   citizen_basic_attributes:[:id,:nid,:birthid,:dob,:gender,:maritial_status_id,
-                                                              :citizenship_state_id,:religion_id])
+                                   contact_address_attributes: [:id, :mobile_no, :email],
+                                   citizen_basic_attributes: [:id, :nid, :birthid, :dob, :gender, :maritial_status_id,
+                                                              :citizenship_state_id, :religion_id])
   end
 
   def file_name
@@ -181,8 +181,8 @@ class WarishesController < InheritedResources::Base
     user_signed_in? ? 'Warsih is successfully created.' : 'আপনার আবেদনটি সাবমিট করা হয়েছে । ভবিষ্যৎ অনুসন্ধানের জন্য ট্র্যাকিং নম্বরটি সংগ্রহে রাখুন ।'
   end
 
-  def public_citizen__path(citizen)
-    return show_by_tracking_citizens_path(citizen.tracking_id)
+  def public_warish_path(warish)
+    return show_by_tracking_warishes_path(warish.tracking_id)
   end
 
 end
