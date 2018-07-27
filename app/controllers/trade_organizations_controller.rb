@@ -174,7 +174,7 @@ class TradeOrganizationsController < ApplicationController
   end
 
   def set_trade_organization
-    @trade_organization = TradeOrganization.find(params[:id])
+    @trade_organization = current_user.trade_organizations.find(params[:id])
   end
 
   def trade_organization_params
