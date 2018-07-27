@@ -12,7 +12,9 @@ class WarishesController < InheritedResources::Base
     @warish = Warish.new
     @warish.build_contact_address
     @warish.build_citizen_basic
-    @warish.build_image_attachment
+    if !user_signed_in?
+      @warish.build_image_attachment
+    end
     @warish.basic_infos.build(lang: current_lang)
     @warish.addresses.build(address_type: :present, lang: current_lang)
     @warish.addresses.build(address_type: :permanent, lang: current_lang)
@@ -37,12 +39,16 @@ class WarishesController < InheritedResources::Base
 
   end
 
+  def edit
+    @warish = current_user.warishes.find(params[:id])
+  end
+
   def show_by_tracking_id
     @warish = Warish.find_by_tracking_id(params[:id])
   end
 
   def activate_warish
-    @warish = Warish.find(params[:id])
+    @warish = current_user.warishes.find(params[:id])
     @warish.activate
     redirect_to @warish, notice: 'Warish was successfully activated.'
   end
@@ -115,7 +121,7 @@ class WarishesController < InheritedResources::Base
   # DELETE /recipes/1
   # DELETE /recipes/1.json
   def destroy
-    @warish = Warish.find(params[:id])
+    @warish = current_user.warishes..find(params[:id])
     @warish.update_attributes(status: :deleted)
     respond_to do |format|
       format.html { redirect_to citizens_url, notice: 'Citizen was successfully deleted' }
@@ -124,7 +130,7 @@ class WarishesController < InheritedResources::Base
   end
 
   def show
-    @warish = Warish.find(params[:id])
+    @warish = current_user.warishes.find(params[:id])
     @barcode = barcode_output(@warish) if params[:format] == 'pdf'
 
     respond_to do |format|
@@ -143,10 +149,6 @@ class WarishesController < InheritedResources::Base
                dpi: '300'
       end
     end
-  end
-
-  def search
-
   end
 
   def barcode_output(warish)

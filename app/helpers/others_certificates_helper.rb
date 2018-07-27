@@ -23,7 +23,6 @@ module OthersCertificatesHelper
     end
   end
 
-
   def cer_label_type(c_type)
     case c_type
       when 'unmarried'

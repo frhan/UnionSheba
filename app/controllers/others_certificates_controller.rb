@@ -7,7 +7,9 @@ class OthersCertificatesController < InheritedResources::Base
     @others_certificate = OthersCertificate.new
     @others_certificate.build_contact_address
     @others_certificate.build_citizen_basic
-    @others_certificate.build_image_attachment
+    if !user_signed_in?
+      @others_certificate.build_image_attachment
+    end
     @others_certificate.basic_infos.build(lang: current_lang)
     @others_certificate.addresses.build(address_type: :present, lang: current_lang)
     @others_certificate.addresses.build(address_type: :permanent, lang: current_lang)
@@ -29,6 +31,10 @@ class OthersCertificatesController < InheritedResources::Base
 
   end
 
+  def edit
+    @others_certificate = current_user.others_certificates.find(params[:id])
+  end
+
   def index
     @others_certificates = current_user.others_certificates.where(status: :active)
                                .order('updated_at desc')
@@ -44,7 +50,7 @@ class OthersCertificatesController < InheritedResources::Base
 
 
   def show
-    @others_certificate = OthersCertificate.find(params[:id])
+    @others_certificate = current_user.others_certificates.find(params[:id])
     @barcode = barcode_output(@others_certificate) if params[:format] == 'pdf'
 
     respond_to do |format|

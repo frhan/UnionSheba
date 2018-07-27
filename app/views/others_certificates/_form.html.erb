@@ -1,8 +1,13 @@
 <div id="signupbox" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <div class="panel-title"><%= cer_label(params[:c_type]) %></div>
+      <% if @others_certificate.certificate_type.present? %>
+          <div class="panel-title"><%= cer_label(@others_certificate.certificate_type) %></div>
+      <% else %>
+          <div class="panel-title"><%= cer_label(params[:c_type]) %></div>
+      <% end %>
     </div>
+
     <div class="panel-body">
 
       <div class="container-page">
@@ -28,7 +33,7 @@
                         <%= p.file_field :photo, accept: 'image/png,image/jpeg', class: "form-control" %>
                     <% end %>
                   </div>
-              <%end%>
+              <% end %>
 
               <%= f.fields_for :basic_infos do |bi| %>
                   <%= render partial: 'layouts/basic_information_compact', locals: {f: bi, is_warish: false} %>

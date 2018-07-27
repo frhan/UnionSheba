@@ -5,8 +5,8 @@ class CitizensController < InheritedResources::Base
   require 'barby/outputter/png_outputter'
 
   include ApplicationHelper, UnionHelper
-  before_filter :authenticate_user! ,only: [:index,:requests,:show,:activate_citizen]
-  load_and_authorize_resource only: [:index,:requests,:show,:activate_citizen]
+  before_filter :authenticate_user!, only: [:index, :requests, :show, :activate_citizen]
+  load_and_authorize_resource only: [:index, :requests, :show, :activate_citizen]
 
   def new
     @citizen = Citizen.new
@@ -24,18 +24,21 @@ class CitizensController < InheritedResources::Base
   # POST /recipes.json
   def create
     @citizen = Citizen.new(citizen_params)
-
     respond_to do |format|
       if @citizen.save
-        format.html { redirect_to user_signed_in? ?  @citizen : public_citizen__path(@citizen) , notice: get_notice }
+        format.html { redirect_to user_signed_in? ? @citizen : public_citizen__path(@citizen), notice: get_notice }
         format.json { render :show, status: :created, location: @citizen }
       else
         @citizen.build_image_attachment if @citizen.image_attachment.blank?
-        format.html {render :new }
+        format.html { render :new }
         format.json { render json: @citizen.errors, status: :unprocessable_entity }
       end
     end
 
+  end
+
+  def edit
+    @citizen = current_user.citizens.find(params[:id]);
   end
 
   def show_by_tracking_id
@@ -47,9 +50,9 @@ class CitizensController < InheritedResources::Base
   end
 
   def activate_citizen
-    @citizen = Citizen.find(params[:id])
+    @citizen = current_user.citizens.find(params[:id])
     @citizen.activate
-    redirect_to @citizen,notice: 'Citizen was successfully activated.'
+    redirect_to @citizen, notice: 'Citizen was successfully activated.'
   end
 
   def verify_application
@@ -130,7 +133,7 @@ class CitizensController < InheritedResources::Base
 
 
   def show
-    @citizen = Citizen.find(params[:id])
+    @citizen = current_user.citizens.find(params[:id])
     @barcode = barcode_output(@citizen) if params[:format] == 'pdf'
 
     respond_to do |format|
@@ -151,10 +154,6 @@ class CitizensController < InheritedResources::Base
     end
   end
 
-  def search
-
-  end
-
   def barcode_output(citizen)
     barcode_string = citizen.barcode
     barcode = Barby::QrCode.new(barcode_string, level: :q, size: 9)
@@ -168,12 +167,12 @@ class CitizensController < InheritedResources::Base
   private
 
   def citizen_params
-    params.require(:citizen).permit(:union_id, :status, basic_infos_attributes: [:id,:name, :fathers_name, :mothers_name, :date_of_birth, :lang],
-                                    addresses_attributes: [:id,:village, :road, :word_no, :district, :upazila, :post_office, :address_type, :lang],
-                                    contact_address_attributes: [:id,:mobile_no, :email],
-                                    citizen_basic_attributes:[:id,:nid,:birthid,:dob,:gender,:maritial_status_id,
-                                                              :citizenship_state_id,:religion_id],
-                                    image_attachment_attributes: [:id,:photo])
+    params.require(:citizen).permit(:union_id, :status, basic_infos_attributes: [:id, :name, :fathers_name, :mothers_name, :date_of_birth, :lang],
+                                    addresses_attributes: [:id, :village, :road, :word_no, :district, :upazila, :post_office, :address_type, :lang],
+                                    contact_address_attributes: [:id, :mobile_no, :email],
+                                    citizen_basic_attributes: [:id, :nid, :birthid, :dob, :gender, :maritial_status_id,
+                                                               :citizenship_state_id, :religion_id],
+                                    image_attachment_attributes: [:id, :photo])
   end
 
   def file_name
