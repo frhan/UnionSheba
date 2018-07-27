@@ -35,7 +35,7 @@ class OthersCertificatesController < InheritedResources::Base
                                .page(params[:page])
                                .per(10)
 
-    @others_certificates = @others_certificates.where("certificate_no like :search", search: "%#{params[:q]}%") if params[:q].present?
+    @others_certificates = @others_certificates.where("certifcate_no like :search", search: "%#{params[:q]}%") if params[:q].present?
 
     respond_to do |format|
       format.html
@@ -86,7 +86,7 @@ class OthersCertificatesController < InheritedResources::Base
                                .page(params[:page])
                                .per(10)
 
-    @others_certificates = @others_certificates.where("certificate_no like :search", search: "%#{params[:q]}%") if params[:q].present?
+    @others_certificates = @others_certificates.where("tracking_no like :search", search: "%#{params[:q]}%") if params[:q].present?
 
     respond_to do |format|
       format.html

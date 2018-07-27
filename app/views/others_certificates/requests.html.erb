@@ -4,7 +4,7 @@
   <h1>অন্যান্য সনদের আবেদনকারী</h1>
 
   <div class="row">
-    <%= form_tag(others_certificates_path, method: :get) do %>
+    <%= form_tag(requests_others_certificates_path, method: :get) do %>
         <div class="form-group col-md-10">
           <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "ট্র্যাকিং নম্বরটি প্রবেশ করুন" %>
         </div>

@@ -14,6 +14,11 @@ class CitizenBasic < ActiveRecord::Base
   validates :nid, length: {minimum: 13}, :allow_blank => true, :allow_nil => true
   validates :birthid, length: {minimum: 17}, :allow_blank => true, :allow_nil => true
 
+  def nid_or_birthid
+    return self.nid if nid.present?
+    return self.birthid if birthid.present?
+  end
+
   private
 
   def nid_or_birthid_present

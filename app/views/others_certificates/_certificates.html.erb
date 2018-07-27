@@ -9,8 +9,9 @@
         <% if show_certificate_no %>
             <th>Certificate No</th>
         <% end %>
-        <th>NID</th>
-        <th>Birth Id</th>
+
+        <th>NID/BirthId</th>
+        <th>Type</th>
         <th>Name</th>
         <th>Father's Name</th>
         <th>Actions</th>
@@ -30,12 +31,12 @@
             <% end %>
 
             <% if others_certificate.citizen_basic.present? %>
-                <td><%= link_to(others_certificate.citizen_basic.nid, others_certificate_path(others_certificate)) %></td>
-                <td><%= link_to(others_certificate.citizen_basic.birthid, others_certificate_path(others_certificate)) %></td>
+                <td><%= link_to(others_certificate.citizen_basic.nid_or_birthid, others_certificate_path(others_certificate)) %></td>
             <% else %>
                 <td></td>
-                <td></td>
             <% end %>
+
+            <td><%= cer_label_type(others_certificate.certificate_type) %></td>
 
             <% if others_certificate.basic_information.present? %>
                 <td><%= link_to(others_certificate.basic_information.name, others_certificate_path(others_certificate)) %></td>

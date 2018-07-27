@@ -22,7 +22,7 @@
       <% end %>
       <div class="row">
         <div class="col-xs-2">
-          <label> নম্বর:</label>
+          <label> সনদের ধরন:</label>
         </div>
         <div class="col-xs-10 pull-left">
           <p><%= cer_label(@others_certificate.certificate_type) %></p>
@@ -38,7 +38,7 @@
       <% if user_signed_in? %>
           <%= render 'users_actions' %>
       <% else %>
-          <%= render 'public_actions' %>
+          <%= render 'layouts/public_actions' %>
       <% end %>
     </div>
   </div>
