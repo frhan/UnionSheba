@@ -261,7 +261,7 @@
             </div>
 
             <div class="main-area">
-              <p>এই মর্মে প্রত্যয়ন করিতেছি যে,  <b>মৃত <%= @others_certificate.basic_information.name %></b>, পিতা- <b> <%= @others_certificate.basic_information.fathers_name %></b>,
+              <p>এই মর্মে প্রত্যয়ন করিতেছি যে,  <b><%= @others_certificate.basic_information.name %></b>, পিতা- <b> <%= @others_certificate.basic_information.fathers_name %></b>,
                 মাতা- <b><%= @others_certificate.basic_information.mothers_name %> </b>, গ্রাম- <%= @others_certificate.permanent_address.village %>, ওয়ার্ড -<%= bangla_number(@others_certificate.permanent_address.word_no.to_s) %>, ডাকঘরঃ <%= @others_certificate.permanent_address.post_office %>, উপাজেলাঃ <%= @others_certificate.upazila_name_bng %>, জেলাঃ <%= @others_certificate.zila_name_bng %>।
                 আমি তাহাকে বাক্তিগতভাবে চিনি ও জানি । আমার জানামতে, তিনি ব্যক্তিগত জীবনে বিবাহ বন্ধনে আবদ্ধ হন নাই অর্থাৎ তিনি অবিবাহিত । </p>
               </div>
