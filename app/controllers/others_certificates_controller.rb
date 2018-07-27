@@ -133,7 +133,7 @@ class OthersCertificatesController < InheritedResources::Base
   end
 
   def others_certificate_params
-    params.require(:others_certificate).permit(:union_id, :certificate_type, :status,
+    params.require(:others_certificate).permit(:union_id, :certifcate_type, :status,
                                                basic_infos_attributes: [:id, :name, :fathers_name,
                                                                         :mothers_name, :date_of_birth, :lang],
                                                addresses_attributes: [:id, :village, :road, :word_no, :district, :upazila,

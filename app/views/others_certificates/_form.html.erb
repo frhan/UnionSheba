@@ -44,7 +44,7 @@
               <% end %>
 
               <%= f.hidden_field :status, :value => user_signed_in? ? :active : :pending %>
-              <%= f.hidden_field :certificate_type, value: params[:c_type] %>
+              <%= f.hidden_field :certifcate_type, value: params[:c_type] %>
 
               <%= f.fields_for :citizen_basic do |cb| %>
                   <%= render partial: 'layouts/citizen_basic_compact', locals: {f: cb} %>
