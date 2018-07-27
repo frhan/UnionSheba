@@ -59,17 +59,25 @@
                   <%= render partial: 'layouts/contact_address_compact', locals: {f: ca} %>
               <% end %>
 
-              <div class="form-group col-lg-12">
+              <div class="form-group">
                 <!-- Button -->
-                <div class="form-group">
-                  <%= f.submit "Save", class: "btn btn-info" %>
-                </div>
-
-                <div class="form-group">
-                  <%= link_to 'Back', root_path %>
+                <div class="col-md-offset-4 col-md-4">
+                  <%= f.submit "দাখিল করুন", class: "btn btn-info" %>
                 </div>
               </div>
 
+              <div class="col-md-9">
+
+                <% if user_signed_in? %>
+                    <% if f.object.new_record? || f.object.active? %>
+                        <%= link_to 'Back', others_certificates_path %>
+                    <% else %>
+                        <%= link_to 'Back', requests_others_certificates_path %>
+                    <% end %>
+                <% else %>
+                    <%= link_to 'Back', root_path %>
+                <% end %>
+              </div>
 
           <% end %>
 
