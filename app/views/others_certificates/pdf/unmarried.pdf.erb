@@ -261,33 +261,12 @@
             </div>
 
             <div class="main-area">
-              <p>আমি এই মর্মে সনদ প্রদান করিতেছি যে,<strong> <%= @others_certificate.basic_information.name %> </strong>&nbsp;আমার
-                ইউনিয়নের
-                স্থায়ী
-                বাসিন্দা এবং জন্মসূত্রে বাংলাদেশের নাগরিক । তাহাকে আমি ব্যক্তিগতভাবে চিনি ও জানি ।</p>
-              <p id="citizen_disc">নাগরিকের বিবরণ:</p>
-              <ul>
-                <li>১) নামঃ <b><%= @others_certificate.basic_information.name %></b></li>
-                <li>২) পিতার নামঃ <b> <%= @others_certificate.basic_information.fathers_name %></b></li>
-                <li>৩) মাতার নামঃ <b><%= @others_certificate.basic_information.mothers_name %> </b></li>
-                <li>৪) ওয়ার্ড নম্বরঃ <%= bangla_number(@others_certificate.permanent_address.word_no.to_s) %></li>
-                <li>৫) গ্রামঃ <%= @others_certificate.permanent_address.village %></li>
-                <li>৬) ডাকঘরঃ <%= @others_certificate.permanent_address.post_office %></li>
-                <li>৭) উপজেলাঃ <%= @others_certificate.upazila_name_bng %></li>
-                <li>৮) জেলাঃ <%= @others_certificate.zila_name_bng %></li>
-
-                <% if @others_certificate.citizen_basic.nid.present? %>
-                    <li>৯) জাতীয় পরিচয়পত্র নম্বরঃ <b><%= bangla_number(@others_certificate.citizen_basic.nid) %> </b></li>
-                <% else %>
-                    <li>৯) জন্ম নিবন্ধন নম্বরঃ <b><%= bangla_number(@others_certificate.citizen_basic.birthid) %> </b></li>
-                <% end %>
-
-              </ul>
-            </div>
+              <p>এই মর্মে প্রত্যয়ন করিতেছি যে,  <b>মৃত <%= @others_certificate.basic_information.name %></b>, পিতা- <b> <%= @others_certificate.basic_information.fathers_name %></b>,
+                মাতা- <b><%= @others_certificate.basic_information.mothers_name %> </b>, গ্রাম- <%= @others_certificate.permanent_address.village %>, ওয়ার্ড -<%= bangla_number(@others_certificate.permanent_address.word_no.to_s) %>, ডাকঘরঃ <%= @others_certificate.permanent_address.post_office %>, উপাজেলাঃ <%= @others_certificate.upazila_name_bng %>, জেলাঃ <%= @others_certificate.zila_name_bng %>।
+                আমি তাহাকে বাক্তিগতভাবে চিনি ও জানি । আমার জানামতে, তিনি ব্যক্তিগত জীবনে বিবাহ বন্ধনে আবদ্ধ হন নাই অর্থাৎ তিনি অবিবাহিত । </p>
+              </div>
 
             <div class="text-area">
-              <p> আমার জানামতে তিনি উন্নত ও নৈতিক চরিত্রের অধিকারী । তিনি সমাজের শান্তি-শৃঙ্খলা ভঙ্গ কিংবা রাষ্ট্র
-                বিরোধী কোনো কার্যকলাপে অংশগ্রহণ করে নাই ।</p>
               <p class="footer_center">আমি তাহার জীবনের সর্বাঙ্গীন উন্নতি কামনা করি ।</p>
             </div>
 
