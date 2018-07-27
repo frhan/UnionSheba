@@ -93,7 +93,6 @@ class OthersCertificatesController < InheritedResources::Base
     end
   end
 
-
   def verify_application
     @others_certificate = OthersCertificate.find_by_tracking_no(params[:q]) if params[:q]
     # where status in
@@ -145,7 +144,6 @@ class OthersCertificatesController < InheritedResources::Base
                                                                           :religion_id],
                                                image_attachment_attributes: [:id, :photo])
   end
-
 
 
 end

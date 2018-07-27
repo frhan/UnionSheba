@@ -10,8 +10,7 @@
             <th>Citizen No</th>
         <% end %>
 
-        <th>NID</th>
-        <th>Birth Id</th>
+        <th>NID/BirthId</th>
         <th>Name</th>
         <th>Father's Name</th>
         <th>Actions</th>
@@ -30,10 +29,8 @@
             <% end %>
 
             <% if citizen.citizen_basic.present? %>
-                <td><%= link_to(citizen.citizen_basic.nid, citizen_path(citizen)) %></td>
-                <td><%= link_to(citizen.citizen_basic.birthid, citizen_path(citizen)) %></td>
+                <td><%= link_to(citizen.citizen_basic.nid_or_birthid, citizen_path(citizen)) %></td>
             <% else %>
-                <td></td>
                 <td></td>
             <% end %>
 

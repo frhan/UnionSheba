@@ -9,9 +9,9 @@
         <% if show_warish_no %>
             <th>Warish No</th>
         <% end %>
-        <th>NID</th>
-        <th>Birth Id</th>
-        <th>Name</th>
+        <th>NID/BirthId</th>
+
+        <th>Dead Man's Name</th>
         <th>Father's Name</th>
         <th>Actions</th>
       </tr>
@@ -30,10 +30,8 @@
             <% end %>
 
             <% if warish.citizen_basic.present? %>
-                <td><%= link_to(warish.citizen_basic.nid, warish_path(warish)) %></td>
-                <td><%= link_to(warish.citizen_basic.birthid, warish_path(warish)) %></td>
+                <td><%= link_to(warish.citizen_basic.nid_or_birthid, warish_path(warish)) %></td>
             <% else %>
-                <td></td>
                 <td></td>
             <% end %>
 
