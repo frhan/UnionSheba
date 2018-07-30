@@ -164,7 +164,8 @@ class WarishesController < InheritedResources::Base
   private
 
   def warish_params
-    params.require(:warish).permit(:union_id, :status, warish_relations_attributes: [:name, :age, :comment, :relation],
+    params.require(:warish).permit(:union_id, :status,
+                                   warish_relations_attributes: [:id,:name, :age, :comment, :relation],
                                    basic_infos_attributes: [:id, :name, :fathers_name, :mothers_name, :date_of_birth,
                                                             :father_alive, :mother_alive, :lang],
                                    addresses_attributes: [:id, :village, :road, :word_no, :district, :upazila,
