@@ -7,6 +7,7 @@ class WarishesController < InheritedResources::Base
   include ApplicationHelper, UnionHelper
   before_filter :authenticate_user!, only: [:index, :requests, :show, :activate_warish]
   load_and_authorize_resource only: [:index, :requests, :show, :activate_warish]
+  before_action :set_warish, only: [:show, :edit, :update, :destroy,:activate_warish]
 
   def new
     @warish = Warish.new
@@ -39,16 +40,25 @@ class WarishesController < InheritedResources::Base
 
   end
 
-  def edit
-    @warish = current_user.warishes.find(params[:id])
+  def update
+    respond_to do |format|
+      if @warish.update(warish_params)
+        format.html { redirect_to  @warish, notice: 'Warish was successfully updated.' }
+        format.json { render :show, status: :ok, location: @warish }
+      else
+        format.html { render :edit }
+        format.json { render json: @warish.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
+
 
   def show_by_tracking_id
     @warish = Warish.find_by_tracking_id(params[:id])
   end
 
   def activate_warish
-    @warish = current_user.warishes.find(params[:id])
     @warish.activate
     redirect_to @warish, notice: 'Warish was successfully activated.'
   end
@@ -121,7 +131,6 @@ class WarishesController < InheritedResources::Base
   # DELETE /recipes/1
   # DELETE /recipes/1.json
   def destroy
-    @warish = current_user.warishes..find(params[:id])
     @warish.update_attributes(status: :deleted)
     respond_to do |format|
       format.html { redirect_to citizens_url, notice: 'Citizen was successfully deleted' }
@@ -130,7 +139,6 @@ class WarishesController < InheritedResources::Base
   end
 
   def show
-    @warish = current_user.warishes.find(params[:id])
     @barcode = barcode_output(@warish) if params[:format] == 'pdf'
 
     respond_to do |format|
@@ -163,9 +171,13 @@ class WarishesController < InheritedResources::Base
 
   private
 
+  def set_warish
+    @warish = current_user.warishes.find(params[:id])
+  end
+
   def warish_params
     params.require(:warish).permit(:union_id, :status,
-                                   warish_relations_attributes: [:id,:name, :age, :comment, :relation],
+                                   warish_relations_attributes: [:id,:name, :age, :comment, :relation,:_destroy],
                                    basic_infos_attributes: [:id, :name, :fathers_name, :mothers_name, :date_of_birth,
                                                             :father_alive, :mother_alive, :lang],
                                    addresses_attributes: [:id, :village, :road, :word_no, :district, :upazila,
