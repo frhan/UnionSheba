@@ -19,6 +19,20 @@ class CitizenBasic < ActiveRecord::Base
     return self.birthid if birthid.present?
   end
 
+
+  def male?
+    self.gender == 'male'
+  end
+
+  def female?
+    self.gender == 'female'
+  end
+
+  def other?
+    self.gender == 'other'
+  end
+
+
   private
 
   def nid_or_birthid_present

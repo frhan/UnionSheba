@@ -23,8 +23,8 @@ class OthersCertificate < ActiveRecord::Base
   end
 
   def template
-    'others_certificates/pdf/no_remarried.pdf.erb' if self.certificate_type == 'no_remarried'
-    'others_certificates/pdf/unmarried.pdf.erb' if self.certificate_type == 'unmarried'
+    return 'others_certificates/pdf/no_remarried.pdf.erb' if self.certificate_type == 'no_remarried'
+    return 'others_certificates/pdf/unmarried.pdf.erb' if self.certificate_type == 'unmarried'
   end
 
 end

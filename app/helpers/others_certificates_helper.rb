@@ -45,4 +45,10 @@ module OthersCertificatesHelper
         'প্রত্যয়ন পত্র'
     end
   end
+
+  def cer_husband_wife(cb)
+    return 'স্বামীর' if cb.female?
+    return 'স্ত্রীর' if cb.male?
+    return 'সঙ্গীর' if cb.other?
+  end
 end

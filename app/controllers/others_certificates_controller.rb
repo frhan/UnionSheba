@@ -1,4 +1,9 @@
 class OthersCertificatesController < InheritedResources::Base
+  require 'barby'
+  require 'barby/barcode'
+  require 'barby/barcode/qr_code'
+  require 'barby/outputter/png_outputter'
+
   include ApplicationHelper, UnionHelper
   before_filter :authenticate_user!, only: [:index, :requests, :no_remarried, :activate_certificate]
   load_and_authorize_resource only: [:index, :requests, :show, :activate_certificate]
@@ -140,7 +145,7 @@ class OthersCertificatesController < InheritedResources::Base
 
   def others_certificate_params
     params.require(:others_certificate).permit(:union_id, :certificate_type, :status,
-                                               basic_infos_attributes: [:id, :name, :fathers_name,
+                                               basic_infos_attributes: [:id, :name, :fathers_name,:spouse_name,
                                                                         :mothers_name, :date_of_birth, :lang],
                                                addresses_attributes: [:id, :village, :road, :word_no, :district, :upazila,
                                                                       :post_office, :address_type, :lang],
