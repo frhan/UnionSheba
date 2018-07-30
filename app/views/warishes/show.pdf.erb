@@ -41,17 +41,26 @@
     max-width: 100%;
     height: auto;
   }
+  th,tr{
+    font-weight: normal;
+    text-align: center;
+
+  }
 
   .table {
-    border: 1px solid #000000;
+    border: 0.5px solid #000000;
+    font-size: 13px;
   }
-  .table-bordered > thead > tr > th,
+  .table-bordered > thead > tr > th {
+    border: 0.5px solid #000000;
+    font-weight: bold;
+  }
   .table-bordered > tbody > tr > th,
   .table-bordered > tfoot > tr > th,
   .table-bordered > thead > tr > td,
   .table-bordered > tbody > tr > td,
   .table-bordered > tfoot > tr > td {
-    border: 1px solid #000000;
+    border: 0.5px solid #000000;
     margin: 2px;
     padding: 3px;
   }
