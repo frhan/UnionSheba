@@ -58,10 +58,6 @@ module Certificatable
 
   def barcode
     barcode = ''
-    if self.basic_information.present?
-      barcode << self.basic_information.name if self.basic_information.name.present?
-      barcode << "\n"
-    end
 
     if self.citizen_basic.present?
       if self.citizen_basic.nid.present?
