@@ -47,8 +47,16 @@ module OthersCertificatesHelper
   end
 
   def cer_husband_wife(cb)
+    return '' if cb.maritial_status.unmarried? ||  cb.maritial_status.married? || cb.other?
     return 'স্বামীর' if cb.female?
     return 'স্ত্রীর' if cb.male?
     return 'সঙ্গীর' if cb.other?
   end
+
+  def cer_maritial_state(cb)
+    return '' if cb.maritial_status.unmarried? ||  cb.maritial_status.married? || cb.other?
+    return 'মৃত্যুর পর' if cb.maritial_status.widow?
+    return 'সাথে বিচ্ছেদের পর' if cb.maritial_status.divorced?
+  end
+
 end

@@ -32,7 +32,6 @@ class CitizenBasic < ActiveRecord::Base
     self.gender == 'other'
   end
 
-
   private
 
   def nid_or_birthid_present
