@@ -3,6 +3,7 @@ class OthersCertificate < ActiveRecord::Base
 
   after_create :save_tracking_id, :save_certificate_no
   has_one :work_info
+  has_one :freedom_fighter
 
   def save_certificate_no
     return if self.pending? || self.certifcate_no.present?
@@ -28,7 +29,7 @@ class OthersCertificate < ActiveRecord::Base
     return 'others_certificates/pdf/married.pdf.erb' if self.certificate_type == 'married'
     return 'others_certificates/pdf/unemployed.pdf.erb' if self.certificate_type == 'unemployed'
     return 'others_certificates/pdf/landless.pdf.erb' if self.certificate_type == 'landless'
-    return 'others_certificates/pdf/mon_solvent.pdf.erb' if self.certificate_type == 'non_solvent'
+    return 'others_certificates/pdf/non_solvent.pdf.erb' if self.certificate_type == 'non_solvent'
     return 'others_certificates/pdf/orphan.pdf.erb' if self.certificate_type == 'orphan'
     return 'others_certificates/pdf/freedom_fighter.pdf.erb' if self.certificate_type == 'freedom_fighter'
   end

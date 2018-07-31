@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  red_book_no: MyString
+  indian_no: MyString
+  gazette_no: MyString
+
+two:
+  red_book_no: MyString
+  indian_no: MyString
+  gazette_no: MyString
