@@ -25,6 +25,12 @@ class OthersCertificate < ActiveRecord::Base
   def template
     return 'others_certificates/pdf/no_remarried.pdf.erb' if self.certificate_type == 'no_remarried'
     return 'others_certificates/pdf/unmarried.pdf.erb' if self.certificate_type == 'unmarried'
+    return 'others_certificates/pdf/married.pdf.erb' if self.certificate_type == 'married'
+    return 'others_certificates/pdf/unemployed.pdf.erb' if self.certificate_type == 'unemployed'
+    return 'others_certificates/pdf/landless.pdf.erb' if self.certificate_type == 'landless'
+    return 'others_certificates/pdf/mon_solvent.pdf.erb' if self.certificate_type == 'non_solvent'
+    return 'others_certificates/pdf/orphan.pdf.erb' if self.certificate_type == 'orphan'
+    return 'others_certificates/pdf/freedom_fighter.pdf.erb' if self.certificate_type == 'freedom_fighter'
   end
 
 end
