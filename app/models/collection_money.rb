@@ -3,6 +3,7 @@ class CollectionMoney < ActiveRecord::Base
   belongs_to :collectable,polymorphic: true
   validates :fee,presence: true
   belongs_to :union
+  belongs_to :voucher
 
   after_create :save_serial_no,:save_tax_year
   scope :by_type, lambda { |type,status| joins("INNER JOIN #{type.table_name} ON #{type.table_name}.id = #{CollectionMoney.table_name}.opinionable_id

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180725105528) do
+ActiveRecord::Schema.define(version: 20180731120813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,10 +135,12 @@ ActiveRecord::Schema.define(version: 20180725105528) do
     t.integer  "union_id"
     t.string   "status",           default: "active"
     t.integer  "tx_year"
+    t.integer  "voucher_id"
   end
 
   add_index "collection_moneys", ["collectable_type", "collectable_id"], name: "index_collection_moneys_on_collectable_type_and_collectable_id", using: :btree
   add_index "collection_moneys", ["union_id"], name: "index_collection_moneys_on_union_id", using: :btree
+  add_index "collection_moneys", ["voucher_id"], name: "index_collection_moneys_on_voucher_id", using: :btree
 
   create_table "contact_addresses", force: :cascade do |t|
     t.string   "mobile_no"
@@ -426,6 +428,7 @@ ActiveRecord::Schema.define(version: 20180725105528) do
   add_foreign_key "citizen_basics", "religions"
   add_foreign_key "citizens", "unions"
   add_foreign_key "collection_moneys", "unions"
+  add_foreign_key "collection_moneys", "vouchers"
   add_foreign_key "districts", "divisions"
   add_foreign_key "expenses", "expense_categories"
   add_foreign_key "expenses", "unions"

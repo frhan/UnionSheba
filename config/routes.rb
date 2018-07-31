@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'home/index'
 
+  resources :cash_books
   resources :citizens do
     member do
       get :edit_request
