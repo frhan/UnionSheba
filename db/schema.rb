@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180731131645) do
+ActiveRecord::Schema.define(version: 20180731132234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -266,6 +266,17 @@ ActiveRecord::Schema.define(version: 20180731131645) do
 
   add_index "others_collections", ["union_id"], name: "index_others_collections_on_union_id", using: :btree
 
+  create_table "relationships", force: :cascade do |t|
+    t.string   "to_whom"
+    t.string   "relation_type"
+    t.string   "person_title"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "others_certificate_id"
+  end
+
+  add_index "relationships", ["others_certificate_id"], name: "index_relationships_on_others_certificate_id", using: :btree
+
   create_table "religions", force: :cascade do |t|
     t.string   "name_en"
     t.string   "name_bn"
@@ -447,6 +458,7 @@ ActiveRecord::Schema.define(version: 20180731131645) do
   add_foreign_key "others_certificates", "unions"
   add_foreign_key "others_certificates", "work_infos"
   add_foreign_key "others_collections", "unions"
+  add_foreign_key "relationships", "others_certificates"
   add_foreign_key "tax_or_rate_collections", "tax_categories"
   add_foreign_key "tax_or_rate_collections", "unions"
   add_foreign_key "trade_licenses", "trade_organizations"

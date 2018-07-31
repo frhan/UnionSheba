@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  to_whom: MyString
+  relation_type: MyString
+  person_title: MyString
+
+two:
+  to_whom: MyString
+  relation_type: MyString
+  person_title: MyString
