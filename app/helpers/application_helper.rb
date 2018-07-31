@@ -225,4 +225,15 @@ module ApplicationHelper
     String.new
   end
 
+  def should_show_spouse?
+    return false if !@c_type.present?
+    return true if @c_type == 'no_remarried'
+    return true if @c_type == 'married'
+    return false
+  end
+
+  def should_show_spouse_name?(certificate)
+    certificate.citizen_basic.female? && certificate.basic_information.spouse_name.present?
+  end
+
 end
