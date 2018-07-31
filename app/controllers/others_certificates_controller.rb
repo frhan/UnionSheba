@@ -18,6 +18,7 @@ class OthersCertificatesController < InheritedResources::Base
     @others_certificate.basic_infos.build(lang: current_lang)
     @others_certificate.addresses.build(address_type: :present, lang: current_lang)
     @others_certificate.addresses.build(address_type: :permanent, lang: current_lang)
+    @c_type = params[:c_type]
   end
 
   def create
@@ -38,6 +39,7 @@ class OthersCertificatesController < InheritedResources::Base
 
   def edit
     @others_certificate = current_user.others_certificates.find(params[:id])
+    @c_type = params[:c_type].present? ? params[:c_type] : @others_certificate.certificate_type
   end
 
   def index
