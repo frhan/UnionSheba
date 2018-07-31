@@ -2,8 +2,8 @@ class OthersCertificate < ActiveRecord::Base
   include ApplicationHelper, UnionHelper, Certificatable
 
   after_create :save_tracking_id, :save_certificate_no
-  has_one :work_info
-  has_one :freedom_fighter
+  has_many :work_infos
+  has_many :freedom_fighters
 
   def save_certificate_no
     return if self.pending? || self.certifcate_no.present?
