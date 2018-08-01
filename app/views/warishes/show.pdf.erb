@@ -268,15 +268,13 @@
                 </div>
 
                 <div class="col-xs-5 ">
-                  <% if @warish.signature? %>
+                  <% if @warish.signature? && params[:sign] == 'true' %>
                       <div class="signature">
                         <%= image_tag wicked_pdf_asset_base64(@warish.union_sig_name), width: '100%' %>
                       </div>
-
                   <% end %>
 
-                  <div class="<%= @warish.signature? ? 'chairman_stamp_with_sig' : 'chairman_stamp_wo_sig' %>">
-
+                  <div class="<%= (@warish.signature? && params[:sign] == 'true') ? 'chairman_stamp_with_sig' : 'chairman_stamp_wo_sig' %>">
                     <% if @warish.union_chairman_name.present? %>
                         <p class="text-center chairman">( <%= @warish.union_chairman_name %> )</p>
                     <% end %>
