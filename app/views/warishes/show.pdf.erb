@@ -54,6 +54,8 @@
   .table-bordered > thead > tr > th {
     border: 0.5px solid #000000;
     font-weight: bold;
+    margin: 1px;
+    padding: 2px;
   }
   .table-bordered > tbody > tr > th,
   .table-bordered > tfoot > tr > th,
@@ -98,7 +100,7 @@
 
   .top-area h1 {
     margin-top: 5px;
-    font-size: 35px;
+    font-size: 33px;
     color: #0958AD;
   }
 
@@ -106,14 +108,14 @@
   }
 
   .top-area h3 {
-    margin-top: 5px;
+    margin-top: 1.5px;
     font-weight: 400;
     font-size: 25px;
 
   }
 
   .top-area h4 {
-    margin-top: 10px;
+    margin-top: 3.5px;
     text-decoration: underline;
   }
 
@@ -122,61 +124,11 @@
   }
 
   .main-area {
-    margin-top: 5px;
-
-  }
-
-  .main-area #citizen_disc {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-weight: bold;
+    margin-top: 2.5px;
   }
 
   .main-area ul li {
-    margin-bottom: 5px;
-  }
-
-  .text-area {
-    margin-top: 10px;
-  }
-
-  .text-area .footer_center {
-    margin-top: 10px;
-    text-align: center;
-    font-size: 22px;
-  }
-
-  .bottom-area {
-    margin-top: 40px;
-  }
-
-  .bottom-area-left strong {
-    text-decoration: underline;
-    font-size: 15px;
-  }
-
-  .bottom-area-left {
-
-  }
-
-  .bottom-area-left ol {
-    line-height: 19px;
-  }
-
-  .bottom-area-left ol li {
-    font-size: 11px;
-    font-weight: 600;
-
-  }
-
-  .bottom-area-left ol ol {
-    list-style: none;
-
-  }
-
-  .bottom-area-right ul li {
-    font-weight: 600;
-    font-size: 12px;
+    margin-bottom: 2.5px;
   }
 
   .footer {
@@ -198,21 +150,13 @@
     margin-top: 80px;
   }
 
-  .footer .signature {
-    margin-top: 10px;
-  }
-
   .footer .chairman {
     font-size: 20px;
   }
 
   .slogan {
-    margin-top: 10px;
+    margin-top: 2.5px;
     font-size: 16px;
-  }
-
-  .slogan #left-slogan {
-    text-align: right;
   }
 
   body {
@@ -230,18 +174,6 @@
   .container {
     padding: 0;
     margin: 0;
-  }
-
-  .test {
-    background: #155aa7;
-  }
-
-  .test2 {
-    background: #730E15;
-  }
-
-  .test3 {
-    background: #B00100;
   }
 
 </style>
@@ -295,7 +227,7 @@
               <div class="main-area">
 
                 <div class="col-lg-12">
-                  <table class="table table-bordered table-hover table-sortable">
+                  <table class="table table-bordered">
                     <thead>
                     <tr>
                       <th class="text-center">নাম</th>
@@ -326,7 +258,6 @@
             <div class="text-area">
               <p> প্রাপ্ত তথ্য মতে এই সনদ প্রদান করা হল ।<br/>
                 তথ্যদাতার দেয়া তথ্যে কোন ত্রুটি থাকলে এই সনদ বাতিল  বলে গণ্য হবে । </p>
-
             </div>
 
             <div class="footer">
@@ -337,15 +268,13 @@
                 </div>
 
                 <div class="col-xs-5 ">
-                  <% if @warish.signature? %>
+                  <% if @warish.signature? && params[:sign] == 'true' %>
                       <div class="signature">
                         <%= image_tag wicked_pdf_asset_base64(@warish.union_sig_name), width: '100%' %>
                       </div>
-
                   <% end %>
 
-                  <div class="<%= @warish.signature? ? 'chairman_stamp_with_sig' : 'chairman_stamp_wo_sig' %>">
-
+                  <div class="<%= (@warish.signature? && params[:sign] == 'true') ? 'chairman_stamp_with_sig' : 'chairman_stamp_wo_sig' %>">
                     <% if @warish.union_chairman_name.present? %>
                         <p class="text-center chairman">( <%= @warish.union_chairman_name %> )</p>
                     <% end %>
