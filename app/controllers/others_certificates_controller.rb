@@ -19,7 +19,7 @@ class OthersCertificatesController < InheritedResources::Base
     @others_certificate.addresses.build(address_type: :present, lang: current_lang)
     @others_certificate.addresses.build(address_type: :permanent, lang: current_lang)
     @c_type = params[:c_type]
-    @others_certificate.work_infos.build(lang: current_lang, income_type: @c_type) if should_show_work_info @c_type
+    @others_certificate.work_infos.build(lang: current_lang) if should_show_work_info @c_type
   end
 
   def create
