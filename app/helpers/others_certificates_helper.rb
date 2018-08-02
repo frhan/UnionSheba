@@ -99,6 +99,17 @@ module OthersCertificatesHelper
     return "তাহার #{who} একজন #{work_info.work_title}"
   end
 
+  def income_type(work_info)
+    return String.new if work_info.blank?
+
+    case work_info.income_type
+      when 'income_monthly'
+        'মাসিক আয়ের সনদপত্র'
+      when 'income_yearly'
+        'বাৎসরিক আয়ের সনদপত্র'
+    end
+  end
+
   def income_money(work_info)
     return '' if work_info.blank?
 
@@ -114,7 +125,7 @@ module OthersCertificatesHelper
       return "তাহার #{type} আয় #{bangla_number(number_with_delimiter(work_info.annual_income))}( #{work_info.income_in_bangla} ) টাকা"
     end
 
-    return "তাহার #{who(work_info)}র #{type} আয় #{bangla_number(number_with_delimiter(work_info.annual_income))} ( #{work_info.income_in_bangla} ) টাকা"
+    return "তাহার #{who(work_info)}র #{type} আয় #{bangla_number(number_with_delimiter(work_info.annual_income))} (#{work_info.income_in_bangla}) টাকা"
   end
 
 end
