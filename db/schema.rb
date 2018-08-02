@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180802145942) do
+ActiveRecord::Schema.define(version: 20180802165837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -454,6 +454,7 @@ ActiveRecord::Schema.define(version: 20180802145942) do
     t.integer  "for_whom_id"
     t.string   "for_whom_others"
     t.string   "income_in_bangla"
+    t.string   "income_type"
   end
 
   add_index "work_infos", ["for_whom_id"], name: "index_work_infos_on_for_whom_id", using: :btree

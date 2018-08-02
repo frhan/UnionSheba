@@ -67,16 +67,54 @@ module OthersCertificatesHelper
   end
 
   def cer_husband_wife(cb)
-    return '' if cb.maritial_status.unmarried? ||  cb.maritial_status.married? || cb.other?
+    return '' if cb.maritial_status.unmarried? || cb.maritial_status.married? || cb.other?
     return 'স্বামীর' if cb.female?
     return 'স্ত্রীর' if cb.male?
     return 'সঙ্গীর' if cb.other?
   end
 
   def cer_maritial_state(cb)
-    return '' if cb.maritial_status.unmarried? ||  cb.maritial_status.married? || cb.other?
+    return '' if cb.maritial_status.unmarried? || cb.maritial_status.married? || cb.other?
     return 'মৃত্যুর পর' if cb.maritial_status.widow?
     return 'সাথে বিচ্ছেদের পর' if cb.maritial_status.divorced?
+  end
+
+  def who(work_info)
+    return work_info.for_whom_others if work_info.for_whom.other?
+    work_info.for_whom.who_in_bangla
+  end
+
+  def income_whom(work_info)
+    return '' if work_info.blank?
+    if work_info.for_whom.own?
+      return "তিনি একজন #{work_info.work_title}"
+    end
+
+    if work_info.for_whom.other?
+      who = work_info.for_whom_others
+    else
+      who = work_info.for_whom.who_in_bangla
+    end
+
+    return "তাহার #{who} একজন #{work_info.work_title}"
+  end
+
+  def income_money(work_info)
+    return '' if work_info.blank?
+
+    type = String.new
+    case work_info.income_type
+      when 'income_monthly'
+        type = 'মাসিক'
+      when 'income_yearly'
+        type = 'বাৎসরিক'
+    end
+
+    if work_info.for_whom.own?
+      return "তাহার #{type} আয় #{bangla_number(work_info.annual_income.to_s)}(#{work_info.income_in_bangla}) টাকা"
+    end
+
+    return "তাহার #{who(work_info)}র #{type} আয় #{bangla_number(work_info.annual_income.to_s)}(#{work_info.income_in_bangla}) টাকা"
   end
 
 end

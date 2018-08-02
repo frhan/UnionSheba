@@ -25,6 +25,11 @@ class OthersCertificate < ActiveRecord::Base
     self.update_attributes(:tracking_no => trac_id)
   end
 
+  def work_info
+    @work_info ||= self.work_infos.info(current_lang).first
+    @work_info
+  end
+
   def template
     return 'others_certificates/pdf/no_remarried.pdf.erb' if self.certificate_type == 'no_remarried'
     return 'others_certificates/pdf/unmarried.pdf.erb' if self.certificate_type == 'unmarried'
