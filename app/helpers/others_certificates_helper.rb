@@ -111,10 +111,10 @@ module OthersCertificatesHelper
     end
 
     if work_info.for_whom.own?
-      return "তাহার #{type} আয় #{bangla_number(number_with_delimiter(work_info.annual_income))}(#{work_info.income_in_bangla}) টাকা"
+      return "তাহার #{type} আয় #{bangla_number(number_with_delimiter(work_info.annual_income))}( #{work_info.income_in_bangla} ) টাকা"
     end
 
-    return "তাহার #{who(work_info)}র #{type} আয় #{bangla_number(number_with_delimiter(work_info.annual_income))}(#{work_info.income_in_bangla}) টাকা"
+    return "তাহার #{who(work_info)}র #{type} আয় #{bangla_number(number_with_delimiter(work_info.annual_income))} ( #{work_info.income_in_bangla} ) টাকা"
   end
 
 end
