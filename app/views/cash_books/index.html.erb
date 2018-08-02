@@ -1,0 +1,34 @@
+<div class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+  <p id="notice"><%= notice %></p>
+  <h2>Cash Book</h2>
+
+  <%= form_tag(collection_moneys_path, class: "form-inline", method: :get, remote: true) do %>
+      <div class="form-group">
+        <label>মোবাইল</label>
+        </div>
+
+      <div class="form-group">
+        <label class="sr-only">Start Date</label>
+        <%= text_field_tag :start_date, params[:start_date], "data-provide" => 'datepicker', value: params[:start_date], "data-date-format" => "yyyy-mm-dd", class: "form-control", placeholder: "Start Date" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :end_date, nil, class: "sr-only" %>
+        <%= text_field_tag :end_date, params[:end_date], "data-provide" => 'datepicker', value: params[:end_date], "data-date-format" => "yyyy-mm-dd", class: "form-control", placeholder: "End Date" %>
+      </div>
+
+      <%= submit_tag :Search, class: "btn btn-primary" %>
+  <% end %>
+
+  <%= link_to 'pdf', collection_moneys_path(collections: {type: get_type}, start_date: params[:start_date], end_date: params[:end_date], format: :pdf), class: "btn" %>
+
+  <h2>প্রাপ্তি</h2>
+  <div id="results">
+    <%= render 'in' %>
+  </div>
+  <h2>প্রদান</h2>
+  <div id="results">
+    <%= render 'out' %>
+  </div>
+
+</div>
