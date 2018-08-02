@@ -52,6 +52,11 @@
                   <%= render partial: 'layouts/citizen_basic_compact', locals: {f: cb} %>
               <% end %>
 
+              <% if should_show_work_info(@c_type) %>
+                  <%= f.fields_for :work_infos do |wi| %>
+                      <%= render partial: 'layouts/work_info', locals: {f: wi} %>
+                  <% end %>
+              <% end %>
 
               <%= f.fields_for :addresses do |ad| %>
                   <%= render partial: 'layouts/address_compact', locals: {f: ad} %>

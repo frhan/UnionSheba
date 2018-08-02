@@ -26,6 +26,10 @@ module OthersCertificatesHelper
         'অনুমতি পত্রের আবেদন'
       when 'prottoyon'
         'প্রত্যয়ন পত্রের আবেদন'
+      when 'income_monthly'
+        'মাসিক আয়ের সনদপত্র'
+      when 'income_yearly'
+        'বাৎসরিক আয়ের সনদপত্র'
     end
   end
 
@@ -55,6 +59,10 @@ module OthersCertificatesHelper
         'অনুমতি পত্র'
       when 'prottoyon'
         'প্রত্যয়ন পত্র'
+      when 'income_yearly'
+        'বাৎসরিক আয়'
+      when 'income_monthly'
+        'মাসিক আয়'
     end
   end
 

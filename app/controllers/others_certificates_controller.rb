@@ -19,6 +19,7 @@ class OthersCertificatesController < InheritedResources::Base
     @others_certificate.addresses.build(address_type: :present, lang: current_lang)
     @others_certificate.addresses.build(address_type: :permanent, lang: current_lang)
     @c_type = params[:c_type]
+    @others_certificate.work_infos.build(lang: current_lang)
   end
 
   def create
@@ -126,7 +127,7 @@ class OthersCertificatesController < InheritedResources::Base
 
   def activate
     @others_certificate = OthersCertificate.find(params[:id])
-    @others_certificate.activate
+    @others_certificate.activat
     redirect_to @others_certificate, notice: 'Certificate was successfully activated.'
   end
 
@@ -147,6 +148,8 @@ class OthersCertificatesController < InheritedResources::Base
 
   def others_certificate_params
     params.require(:others_certificate).permit(:union_id, :certificate_type, :status,
+                                               work_infos_attributes:[:id,:for_whom_others,:annual_income,:income_in_bangla,
+                                                                     :work_title,:workplace_name,:for_whom_id,:lang],
                                                basic_infos_attributes: [:id, :name, :fathers_name,:spouse_name,
                                                                         :mothers_name, :date_of_birth, :lang],
                                                addresses_attributes: [:id, :village, :road, :word_no, :district, :upazila,

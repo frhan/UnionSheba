@@ -236,4 +236,8 @@ module ApplicationHelper
     certificate.citizen_basic.female? && certificate.basic_information.spouse_name.present?
   end
 
+  def should_show_work_info(c_type)
+    return c_type =='income_yearly' || c_type =='income_monthly'
+  end
+
 end

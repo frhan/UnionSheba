@@ -2,8 +2,10 @@ class OthersCertificate < ActiveRecord::Base
   include ApplicationHelper, UnionHelper, Certificatable
 
   after_create :save_tracking_id, :save_certificate_no
-  has_many :work_infos
-  has_many :freedom_fighters
+  has_many :work_infos, dependent: :destroy
+  #has_many :freedom_fighters
+
+  accepts_nested_attributes_for :work_infos, allow_destroy: true
 
   def save_certificate_no
     return if self.pending? || self.certifcate_no.present?
@@ -32,6 +34,8 @@ class OthersCertificate < ActiveRecord::Base
     return 'others_certificates/pdf/non_solvent.pdf.erb' if self.certificate_type == 'non_solvent'
     return 'others_certificates/pdf/orphan.pdf.erb' if self.certificate_type == 'orphan'
     return 'others_certificates/pdf/freedom_fighter.pdf.erb' if self.certificate_type == 'freedom_fighter'
+    return 'others_certificates/pdf/income_yearly.pdf.erb' if self.certificate_type == 'income_yearly'
+    return 'others_certificates/pdf/income_monthly.pdf.erb' if self.certificate_type == 'income_monthly'
   end
 
 end

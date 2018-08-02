@@ -1,0 +1,35 @@
+<div class="form-group col-lg-12">
+  <h4 class="text-center"><u>আয়ের তথ্য</u></h4>
+</div>
+<div class="form-group col-lg-6">
+  <label>পেশাজীবী</label>
+  <%= f.collection_select :for_whom_id, ForWhom.all, :id, :who_in_bangla, {}, {class: "form-control"} %>
+</div>
+
+<div class="form-group col-lg-6">
+  <label>অন্যান্য</label>
+  <%= f.text_field :for_whom_others, class: "form-control",placeholder: "অন্য কারো হলে লিখুন" %>
+</div>
+
+
+<div class="form-group col-lg-6">
+  <label>আয়</label>
+  <%= f.number_field :annual_income, class: "form-control",placeholder: "In English Number" %>
+</div>
+
+<div class="form-group col-lg-6">
+  <label>আয়(বাংলায়)</label>
+  <%= f.text_field :income_in_bangla, class: "form-control",placeholder: "যেমনঃ দশ হাজার টাকা" %>
+</div>
+
+<div class="form-group col-lg-6">
+  <label>পেশা (যার করছেন)</label>
+  <%= f.text_field :work_title, class: "form-control",placeholder:"যেমনঃ কৃষক" %>
+</div>
+
+<div class="form-group col-lg-6">
+  <label>পেশার স্থান (যার করছেন)</label>
+  <%= f.text_field :workplace_name, class: "form-control",placeholder:"যেমনঃ রংপুর মেডিকেল কলেজ" %>
+</div>
+
+<%= f.hidden_field :lang %>
