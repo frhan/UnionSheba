@@ -19,8 +19,14 @@ class OthersCertificatesController < InheritedResources::Base
     @others_certificate.addresses.build(address_type: :present, lang: current_lang)
     @others_certificate.addresses.build(address_type: :permanent, lang: current_lang)
     @c_type = params[:c_type]
-    @others_certificate.work_infos.build(lang: current_lang) if should_show_work_info @c_type
-    @others_certificate.freedom_fighters.build(lang: current_lang) if @c_type == 'freedom_fighter'
+
+    if should_show_work_info @c_type
+      @others_certificate.work_infos.build(lang: current_lang)
+    end
+
+    if @c_type == 'freedom_fighter'
+      @others_certificate.freedom_fighters.build(lang: current_lang)
+    end
 
   end
 
@@ -150,9 +156,9 @@ class OthersCertificatesController < InheritedResources::Base
 
   def others_certificate_params
     params.require(:others_certificate).permit(:union_id, :certificate_type, :status,
-                                               work_infos_attributes:[:id,:for_whom_others,:annual_income,:income_in_bangla,
-                                                                     :work_title,:workplace_name,:for_whom_id,:lang,:income_type],
-                                               basic_infos_attributes: [:id, :name, :fathers_name,:spouse_name,
+                                               work_infos_attributes: [:id, :for_whom_others, :annual_income, :income_in_bangla,
+                                                                       :work_title, :workplace_name, :for_whom_id, :lang, :income_type],
+                                               basic_infos_attributes: [:id, :name, :fathers_name, :spouse_name,
                                                                         :mothers_name, :date_of_birth, :lang],
                                                addresses_attributes: [:id, :village, :road, :word_no, :district, :upazila,
                                                                       :post_office, :address_type, :lang],
