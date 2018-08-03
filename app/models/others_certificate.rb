@@ -3,7 +3,7 @@ class OthersCertificate < ActiveRecord::Base
 
   after_create :save_tracking_id, :save_certificate_no
   has_many :work_infos, dependent: :destroy
-  #has_many :freedom_fighters
+  has_many :freedom_fighters
 
   accepts_nested_attributes_for :work_infos, allow_destroy: true
 
@@ -40,6 +40,7 @@ class OthersCertificate < ActiveRecord::Base
     return 'others_certificates/pdf/orphan.pdf.erb' if self.certificate_type == 'orphan'
     return 'others_certificates/pdf/freedom_fighter.pdf.erb' if self.certificate_type == 'freedom_fighter'
     return 'others_certificates/pdf/income.pdf.erb' if should_show_work_info self.certificate_type
+    return 'others_certificates/pdf/only_widow.pdf.erb' if self.certificate_type == 'only_widow'
   end
 
   private
@@ -48,7 +49,7 @@ class OthersCertificate < ActiveRecord::Base
     cer_no = "#{self.union.union_code}S#{current_year.to_s}#{sl_no.to_s}"
     certificate = OthersCertificate.find_by_certifcate_no(cer_no)
     return cer_no if certificate.blank?
-    return get_unique_certificate_id(sl_no + 1)
+    return get_unique_certificate_no(sl_no + 1)
   end
 
 end
