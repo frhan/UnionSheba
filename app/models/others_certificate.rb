@@ -12,10 +12,10 @@ class OthersCertificate < ActiveRecord::Base
 
     cer_no = OthersCertificate.where(union_id: self.union.id).count(:certifcate_no)
     cer_no = cer_no + 1
-    cer = "#{self.union.union_code}S#{current_year.to_s}#{cer_no.to_s}"
+    #cer = "#{self.union.union_code}S#{current_year.to_s}#{cer_no.to_s}"
+    cer = get_unique_certificate_no cer_no
     self.update_attributes(:certifcate_no => cer)
   end
-
 
   def save_tracking_id
     return if self.active? || self.tracking_no.present?
@@ -40,6 +40,15 @@ class OthersCertificate < ActiveRecord::Base
     return 'others_certificates/pdf/orphan.pdf.erb' if self.certificate_type == 'orphan'
     return 'others_certificates/pdf/freedom_fighter.pdf.erb' if self.certificate_type == 'freedom_fighter'
     return 'others_certificates/pdf/income.pdf.erb' if should_show_work_info self.certificate_type
+  end
+
+  private
+
+  def get_unique_certificate_no(sl_no)
+    cer_no = "#{self.union.union_code}S#{current_year.to_s}#{sl_no.to_s}"
+    certificate = OthersCertificate.find_by_certifcate_no(cer_no)
+    return cer_no if certificate.blank?
+    return get_unique_certificate_id(sl_no + 1)
   end
 
 end
