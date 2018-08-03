@@ -1,0 +1,21 @@
+<div class="form-group col-lg-12">
+  <h4 class="text-center"><u>মুক্তিযোদ্ধা তথ্য</u></h4>
+</div>
+
+<div class="form-group col-lg-6">
+  <label>মুক্তিবার্তা নং (লাল বই)</label>
+  <%= f.text_field :red_book_no, class: "form-control" %>
+</div>
+
+
+<div class="form-group col-lg-6">
+  <label>ভারতীয় নং</label>
+  <%= f.text_field :indian_no, class: "form-control" %>
+</div>
+
+<div class="form-group col-lg-6">
+  <label>বাংলাদেশ গেজেট নং</label>
+  <%= f.text_field :gazette_no, class: "form-control" %>
+</div>
+
+<%= f.hidden_field :lang %>

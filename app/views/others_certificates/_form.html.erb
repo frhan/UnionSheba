@@ -58,6 +58,12 @@
                   <% end %>
               <% end %>
 
+              <% if @c_type == 'freedom_fighter' %>
+                  <%= f.fields_for :freedom_fighters do |ff| %>
+                      <%= render partial: 'layouts/freedom_fighter_info', locals: {f: ff} %>
+                  <% end %>
+              <% end %>
+
               <%= f.fields_for :addresses do |ad| %>
                   <%= render partial: 'layouts/address_compact', locals: {f: ad} %>
               <% end %>

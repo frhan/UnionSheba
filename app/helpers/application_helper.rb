@@ -229,6 +229,7 @@ module ApplicationHelper
     return false if !@c_type.present?
     return true if @c_type == 'no_remarried'
     return true if @c_type == 'married'
+    return true if @c_type == 'only_widow'
     return false
   end
 
