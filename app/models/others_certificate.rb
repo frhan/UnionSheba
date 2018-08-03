@@ -3,9 +3,10 @@ class OthersCertificate < ActiveRecord::Base
 
   after_create :save_tracking_id, :save_certificate_no
   has_many :work_infos, dependent: :destroy
-  has_many :freedom_fighters
+  has_many :freedom_fighters,dependent: :destroy
 
   accepts_nested_attributes_for :work_infos, allow_destroy: true
+  accepts_nested_attributes_for :freedom_fighters, allow_destroy: true
 
   def save_certificate_no
     return if self.pending? || self.certifcate_no.present?
@@ -28,6 +29,11 @@ class OthersCertificate < ActiveRecord::Base
   def work_info
     @work_info ||= self.work_infos.info(current_lang).first
     @work_info
+  end
+
+  def freedom_fighter
+    @freedom_fighter ||= self.freedom_fighters.with_lang(current_lang).first
+    @freedom_fighter
   end
 
   def template

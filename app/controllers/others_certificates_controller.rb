@@ -20,6 +20,7 @@ class OthersCertificatesController < InheritedResources::Base
     @others_certificate.addresses.build(address_type: :permanent, lang: current_lang)
     @c_type = params[:c_type]
     @others_certificate.work_infos.build(lang: current_lang, income_type: @c_type) if should_show_work_info @c_type
+    @others_certificate.freedom_fighters.build(lang: current_lang) if @c_type == 'freedom_fighter'
   end
 
   def create
@@ -158,7 +159,8 @@ class OthersCertificatesController < InheritedResources::Base
                                                citizen_basic_attributes: [:id, :nid, :birthid, :dob, :gender,
                                                                           :maritial_status_id, :citizenship_state_id,
                                                                           :religion_id],
-                                               image_attachment_attributes: [:id, :photo])
+                                               image_attachment_attributes: [:id, :photo],
+                                               freedom_fighters_attributes: [:id, :red_book_no,:indian_no,:gazette_no,:lang])
   end
 
 
