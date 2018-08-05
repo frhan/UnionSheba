@@ -18,7 +18,7 @@ class OthersCertificatesController < InheritedResources::Base
     @others_certificate.basic_infos.build(lang: current_lang)
     @others_certificate.addresses.build(address_type: :present, lang: current_lang)
     @others_certificate.addresses.build(address_type: :permanent, lang: current_lang)
-    @c_type = params[:c_type]
+    @c_type ||= params[:c_type]
 
     if should_show_work_info @c_type
       @others_certificate.work_infos.build(lang: current_lang)
@@ -32,14 +32,14 @@ class OthersCertificatesController < InheritedResources::Base
 
   def create
     @others_certificate = OthersCertificate.new(others_certificate_params)
-
+    @c_type = @others_certificate.certificate_type
     respond_to do |format|
       if @others_certificate.save
         format.html { redirect_to user_signed_in? ? @others_certificate : public_certificate_path(@others_certificate), notice: get_notice }
         format.json { render :no_remarried, status: :created, location: @citizen }
       else
         @others_certificate.build_image_attachment if @others_certificate.image_attachment.blank?
-        format.html { render :new }
+        format.html { render :new,c_ype: @c_type }
         format.json { render json: @others_certificate.errors, status: :unprocessable_entity }
       end
     end
@@ -166,7 +166,8 @@ class OthersCertificatesController < InheritedResources::Base
                                                citizen_basic_attributes: [:id, :nid, :birthid, :dob, :gender,
                                                                           :maritial_status_id, :citizenship_state_id,
                                                                           :religion_id],
-                                               image_attachment_attributes: [:id, :photo])
+                                               image_attachment_attributes: [:id, :photo],
+                                               freedom_fighters_attributes:[:id,:red_book_no,:indian_no,:gazette_no,:lang])
   end
 
 
