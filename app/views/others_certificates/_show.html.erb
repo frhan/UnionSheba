@@ -31,6 +31,15 @@
 
       <%= render partial: 'layouts/show_basic_info', locals: {person: @others_certificate.basic_information} %>
       <%= render partial: 'layouts/show_citizen_info', locals: {person: @others_certificate.citizen_basic} %>
+      <% if @others_certificate.freedom_fighter.present? %>
+          <%= render partial: 'layouts/show_freedom_fighter', locals: {ff: @others_certificate.freedom_fighter} %>
+      <% end %>
+
+      <% if @others_certificate.work_info.present? %>
+          <%= render partial: 'layouts/show_work_info', locals: {work: @others_certificate.work_info} %>
+      <% end %>
+
+
       <%= render partial: 'layouts/show_address', locals: {address: @others_certificate.present_address} %>
       <%= render partial: 'layouts/show_address', locals: {address: @others_certificate.permanent_address} %>
       <%= render partial: 'layouts/show_contact_address', locals: {address: @others_certificate.contact_address} %>
