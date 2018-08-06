@@ -246,4 +246,10 @@ module ApplicationHelper
     return c_type =='income_yearly' || c_type =='income_monthly'
   end
 
+  def relation(relationship)
+    lat = "আমার জানামতে, তিনি #{relationship.person_title} #{relationship.to_whom} এর #{relationship.relation}"
+    lat << " অর্থাৎ সম্পর্কে #{relationship.relation_type}" if relationship.relation_type.present?
+    lat << ' ।'
+  end
+
 end

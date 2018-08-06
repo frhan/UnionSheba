@@ -65,8 +65,8 @@ module OthersCertificatesHelper
         'বাৎসরিক আয়'
       when 'income_monthly'
         'মাসিক আয়'
-      when 'সম্পর্ক'
-        'মাসিক আয়'
+      when 'relationship'
+        'সম্পর্ক'
     end
   end
 
