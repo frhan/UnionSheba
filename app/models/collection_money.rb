@@ -105,7 +105,8 @@ class CollectionMoney < ActiveRecord::Base
   end
 
   def v_type
-    self.collectable_type
+    return self.collectable.catergory if self.collectable_type == 'TaxOrRateCollection'
+    return self.collectable_type
   end
 
 end
