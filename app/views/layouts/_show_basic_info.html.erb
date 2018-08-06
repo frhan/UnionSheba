@@ -8,6 +8,17 @@
   </div>
 </div>
 
+<% if person.nick_name.present? %>
+    <div class="row">
+      <div class="col-xs-2">
+        <label>ডাক নাম:</label>
+      </div>
+      <div class="col-xs-10">
+        <p><%= person.nick_name %></p>
+      </div>
+    </div>
+<% end %>
+
 <div class="row">
   <div class="col-xs-2">
     <label>পিতার নাম:</label>
@@ -16,6 +27,7 @@
     <p><%= person.fathers_name %></p>
   </div>
 </div>
+
 
 <div class="row">
   <div class="col-xs-2">
