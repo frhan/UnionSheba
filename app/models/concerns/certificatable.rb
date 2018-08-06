@@ -63,7 +63,7 @@ module Certificatable
       if self.citizen_basic.nid.present?
         barcode << 'NID#'<< self.citizen_basic.nid << "\n"
       elsif self.citizen_basic.birthid.present?
-        barcode << 'BirthId# '<< self.citizen_basic.nid .birthid << "\n"
+        barcode << 'BirthId# '<< self.citizen_basic.birthid<< "\n"
       end
     end
 
