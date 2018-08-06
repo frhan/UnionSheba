@@ -1,0 +1,26 @@
+<div class="form-group col-lg-12">
+  <h4 class="text-center"><u>সম্পর্কের তথ্য</u></h4>
+</div>
+
+<div class="form-group col-lg-6">
+  <label>যার সাথে সম্পর্ক</label>
+  <%= f.text_field :to_whom, class: "form-control" %>
+</div>
+
+
+<div class="form-group col-lg-6">
+  <label>ব্যক্তির বিশেষ পদবি(যদি থাকে)</label>
+  <%= f.text_field :person_title, class: "form-control", placeholder:"যেমনঃ বীর মুক্তিযোদ্ধা" %>
+</div>
+
+<div class="form-group col-lg-6">
+  <label>সম্পর্ক</label>
+  <%= f.text_field :relation, class: "form-control", placeholder:"যেমনঃ কন্যার সন্তান"%>
+</div>
+
+<div class="form-group col-lg-6">
+  <label>সম্পর্ক(এক কথায়)</label>
+  <%= f.text_field :relation_type, class: "form-control",placeholder:"যেমনঃ নাতনি" %>
+</div>
+
+<%= f.hidden_field :lang %>

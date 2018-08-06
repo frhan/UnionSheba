@@ -4,9 +4,11 @@ class OthersCertificate < ActiveRecord::Base
   after_create :save_tracking_id, :save_certificate_no
   has_many :work_infos, dependent: :destroy
   has_many :freedom_fighters,dependent: :destroy
+  has_many :relationships,dependent: :destroy
 
   accepts_nested_attributes_for :work_infos, allow_destroy: true
   accepts_nested_attributes_for :freedom_fighters, allow_destroy: true
+  accepts_nested_attributes_for :relationships, allow_destroy: true
 
   def save_certificate_no
     return if self.pending? || self.certifcate_no.present?
@@ -36,6 +38,13 @@ class OthersCertificate < ActiveRecord::Base
     @freedom_fighter
   end
 
+
+  def relationship
+    @relationship ||= self.relationships.with_lang(current_lang).first
+    @relationship
+  end
+
+
   def template
     return 'others_certificates/pdf/no_remarried.pdf.erb' if self.certificate_type == 'no_remarried'
     return 'others_certificates/pdf/unmarried.pdf.erb' if self.certificate_type == 'unmarried'
@@ -49,6 +58,7 @@ class OthersCertificate < ActiveRecord::Base
     return 'others_certificates/pdf/only_widow.pdf.erb' if self.certificate_type == 'only_widow'
     return 'others_certificates/pdf/permanent_citizen.pdf.erb' if self.certificate_type == 'permanent_citizen'
     return 'others_certificates/pdf/same_name.pdf.erb' if self.certificate_type == 'same_name'
+    return 'others_certificates/pdf/relationship.pdf.erb' if self.certificate_type == 'relationship'
   end
 
   private

@@ -30,6 +30,8 @@ module OthersCertificatesHelper
         'মাসিক আয়ের সনদপত্র'
       when 'income_yearly'
         'বাৎসরিক আয়ের সনদপত্র'
+      when 'relationship'
+        'সম্পর্কের সনদপত্র'
     end
   end
 
@@ -62,6 +64,8 @@ module OthersCertificatesHelper
       when 'income_yearly'
         'বাৎসরিক আয়'
       when 'income_monthly'
+        'মাসিক আয়'
+      when 'সম্পর্ক'
         'মাসিক আয়'
     end
   end

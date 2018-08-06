@@ -15,6 +15,7 @@ class OthersCertificatesController < InheritedResources::Base
     if !user_signed_in?
       @others_certificate.build_image_attachment
     end
+
     @others_certificate.basic_infos.build(lang: current_lang)
     @others_certificate.addresses.build(address_type: :present, lang: current_lang)
     @others_certificate.addresses.build(address_type: :permanent, lang: current_lang)
@@ -26,6 +27,10 @@ class OthersCertificatesController < InheritedResources::Base
 
     if @c_type == 'freedom_fighter'
       @others_certificate.freedom_fighters.build(lang: current_lang)
+    end
+
+    if @c_type == 'relationship'
+      @others_certificate.relationships.build(lang: current_lang)
     end
 
   end
@@ -167,7 +172,8 @@ class OthersCertificatesController < InheritedResources::Base
                                                                           :maritial_status_id, :citizenship_state_id,
                                                                           :religion_id],
                                                image_attachment_attributes: [:id, :photo],
-                                               freedom_fighters_attributes:[:id,:red_book_no,:indian_no,:gazette_no,:lang])
+                                               freedom_fighters_attributes:[:id,:red_book_no,:indian_no,:gazette_no,:lang],
+                                               relationships_attributes:[:id,:to_whom,:person_title,:relation,:relation_type,:lang])
   end
 
 

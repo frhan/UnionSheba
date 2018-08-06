@@ -39,6 +39,10 @@
           <%= render partial: 'layouts/show_work_info', locals: {work: @others_certificate.work_info} %>
       <% end %>
 
+      <% if @others_certificate.relationship.present? %>
+          <%= render partial: 'layouts/show_relationship_info', locals: {rs: @others_certificate.relationship} %>
+      <% end %>
+
 
       <%= render partial: 'layouts/show_address', locals: {address: @others_certificate.present_address} %>
       <%= render partial: 'layouts/show_address', locals: {address: @others_certificate.permanent_address} %>

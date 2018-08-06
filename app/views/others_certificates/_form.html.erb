@@ -64,6 +64,12 @@
                   <% end %>
               <% end %>
 
+              <% if @c_type == 'relationship' %>
+                  <%= f.fields_for :relationships do |rs| %>
+                      <%= render partial: 'layouts/relationship_info', locals: {f: rs} %>
+                  <% end %>
+              <% end %>
+
               <%= f.fields_for :addresses do |ad| %>
                   <%= render partial: 'layouts/address_compact', locals: {f: ad} %>
               <% end %>

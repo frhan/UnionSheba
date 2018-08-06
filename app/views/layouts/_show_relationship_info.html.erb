@@ -1,0 +1,53 @@
+<div class="col-md-12">
+  <h4 class="text-center"><u>সম্পর্কের তথ্য</u></h4>
+</div>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-xs-4">
+        <label>যার সাথে সম্পর্ক</label>
+      </div>
+      <div class="col-xs-8">
+        <p><%= rs.to_whom %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-xs-4  control-label">
+        <label>ব্যক্তির বিশেষ পদবি(যদি থাকে)</label>
+      </div>
+      <div class="col-xs-8">
+        <p><%= rs.person_title %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-xs-4">
+        <label>সম্পর্ক</label>
+      </div>
+      <div class="col-xs-8">
+        <p><%= rs.relation %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-xs-4  control-label">
+        <label>সম্পর্ক(এক কথায়)</label>
+      </div>
+      <div class="col-xs-8">
+        <p><%= rs.relation_type %></p>
+      </div>
+    </div>
+  </div>
+</div>
