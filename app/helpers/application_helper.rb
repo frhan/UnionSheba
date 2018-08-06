@@ -247,7 +247,7 @@ module ApplicationHelper
   end
 
   def relation(relationship)
-    lat = "আমার জানামতে, তিনি #{relationship.person_title} #{relationship.to_whom} এর #{relationship.relation}"
+    lat = "আমার জানামতে, তিনি #{relationship.person_title} <b>#{relationship.to_whom}</b> এর #{relationship.relation}"
     lat << " অর্থাৎ সম্পর্কে #{relationship.relation_type}" if relationship.relation_type.present?
     lat << ' ।'
   end
