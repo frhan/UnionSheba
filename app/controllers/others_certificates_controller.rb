@@ -48,7 +48,7 @@ class OthersCertificatesController < InheritedResources::Base
 
   def edit
     @others_certificate = current_user.others_certificates.find(params[:id])
-    @c_type = params[:c_type].present? ? params[:c_type] : @others_certificate.certificate_type
+    @c_type = @others_certificate.certificate_type
   end
 
   def index

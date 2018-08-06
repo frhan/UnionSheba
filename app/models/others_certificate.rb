@@ -47,6 +47,7 @@ class OthersCertificate < ActiveRecord::Base
     return 'others_certificates/pdf/freedom_fighter.pdf.erb' if self.certificate_type == 'freedom_fighter'
     return 'others_certificates/pdf/income.pdf.erb' if should_show_work_info self.certificate_type
     return 'others_certificates/pdf/only_widow.pdf.erb' if self.certificate_type == 'only_widow'
+    return 'others_certificates/pdf/permanent_citizen.pdf.erb' if self.certificate_type == 'permanent_citizen'
   end
 
   private
