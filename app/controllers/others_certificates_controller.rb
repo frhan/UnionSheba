@@ -30,7 +30,7 @@ class OthersCertificatesController < InheritedResources::Base
     end
 
     if @c_type == 'relationship'
-      @others_certificate.relationships.build
+      @others_certificate.relationships.build(lang: current_lang)
     end
 
   end
