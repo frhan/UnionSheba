@@ -225,6 +225,12 @@ module ApplicationHelper
     String.new
   end
 
+  def address_type_change(address)
+    return "পুরাতন ঠিকানা" if address.present_address?
+    return "নতুন ঠিকানা" if address.permanent_address?
+    String.new
+  end
+
   def should_show_spouse?
     return false if !@c_type.present?
     return true if @c_type == 'no_remarried'

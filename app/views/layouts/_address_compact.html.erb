@@ -1,6 +1,12 @@
+<% if @c_type.present? && @c_type == 'address_change'%>
 <div class="form-group col-lg-12">
-  <h4 class="text-center"><u><%= address_type f.object %></u></h4>
+  <h4 class="text-center"><u><%= address_type_change f.object %></u></h4>
 </div>
+<% else %>
+    <div class="form-group col-lg-12">
+      <h4 class="text-center"><u><%= address_type f.object %></u></h4>
+    </div>
+<% end %>
 
 <div class="form-group col-lg-6">
   <label>গ্রাম/মহল্লা</label>

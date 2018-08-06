@@ -208,6 +208,18 @@
     margin: 0;
   }
 
+  .test {
+    background: #155aa7;
+  }
+
+  .test2 {
+    background: #730E15;
+  }
+
+  .test3 {
+    background: #B00100;
+  }
+
 </style>
 
 <!--========================================================
@@ -231,13 +243,15 @@
                 </div>
               </div>
             </div>
+
             <div class="top-area">
               <p> গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
               <p> (স্থানীয় সরকার বিভাগ)</p>
               <h1><%= bangla_number(@others_certificate.union_no) %> নং <%= @others_certificate.union_name_bng %> ইউনিয়ন পরিষদ</h1>
-              <p class="sub"> ডাকঘরঃ <%= @others_certificate.post_name_bng %>, উপজেলাঃ <%= @others_certificate.upazila_name_bng %>, জেলাঃ  <%= @others_certificate.zila_name_bng %> ।</p>
-              <h3>মুক্তিযোদ্ধা সনদপত্র</h3>
-              <h4>সনদপত্র নং: <%= @others_certificate.certifcate_no %> </h4>
+              <p class="sub"> ডাকঘরঃ <%= @others_certificate.post_name_bng %>, উপজেলাঃ <%= @others_certificate.upazila_name_bng %>,
+                জেলাঃ  <%= @others_certificate.zila_name_bng %> ।</p>
+              <h3>ঠিকানা পরিবর্তনের প্রত্যয়ন পত্র</h3>
+              <h4>প্রত্যয়ন পত্র নং: <%= @others_certificate.certifcate_no %> </h4>
             </div>
 
             <div class="row">
@@ -247,38 +261,22 @@
             </div>
 
             <div class="main-area">
-              <p>আমি এই মর্মে সনদ প্রদান করিতেছি যে,<strong> <%= @others_certificate.basic_information.name %> </strong>&nbsp;আমার
-                ইউনিয়নের
-                স্থায়ী
-                বাসিন্দা এবং জন্মসূত্রে বাংলাদেশের নাগরিক । তাহাকে আমি ব্যক্তিগতভাবে চিনি ও জানি ।</p>
-              <p id="citizen_disc">বিবরণ:</p>
-              <ul>
-                <li>১) নামঃ <b><%= @others_certificate.basic_information.name %></b></li>
-                <li>২) পিতার নামঃ <b> <%= @others_certificate.basic_information.fathers_name %></b></li>
-                <li>৩) মাতার নামঃ <b><%= @others_certificate.basic_information.mothers_name %> </b></li>
-                <li>৪) ওয়ার্ড নম্বরঃ <%= bangla_number(@others_certificate.permanent_address.word_no.to_s) %></li>
-                <li>৫) গ্রামঃ <%= @others_certificate.permanent_address.village %></li>
-                <li>৬) ডাকঘরঃ <%= @others_certificate.permanent_address.post_office %></li>
-                <li>৭) উপজেলাঃ <%= @others_certificate.upazila_name_bng %></li>
-                <li>৮) জেলাঃ <%= @others_certificate.zila_name_bng %></li>
-
-                <% if @others_certificate.citizen_basic.nid.present? %>
-                    <li>৯) জাতীয় পরিচয়পত্র নম্বরঃ <b><%= bangla_number(@others_certificate.citizen_basic.nid) %> </b></li>
-                <% else %>
-                    <li>৯) জন্ম নিবন্ধন নম্বরঃ <b><%= bangla_number(@others_certificate.citizen_basic.birthid) %> </b></li>
-                <% end %>
-
-              </ul>
+              <p> এই মর্মে প্রত্যয়ন করা যাইতেছে যে, <%= @others_certificate.basic_information.name %>, পিতা- <%= @others_certificate.basic_information.fathers_name %>,
+                মাতা- <%= @others_certificate.basic_information.mothers_name %>,
+                গ্রাম- <%= @others_certificate.present_address.village %>,
+                ডাকঘর- <%= @others_certificate.present_address.post_office %>,
+                উপজেলা- <%= @others_certificate.present_address.upazila %>,
+                জেলা- <%= @others_certificate.present_address.district %> এর বাসস্থান পরিবর্তনের কারণে উক্ত ঠিকানা পরিবর্তিত হইয়াছে ।
+                বর্তমানে তাহার পরিবর্তিত নতুন স্থায়ী ঠিকানা হলোঃ গ্রাম- <%= @others_certificate.permanent_address.village %>,
+                ওয়ার্ড - <%= bangla_number @others_certificate.permanent_address.word_no.to_s %>,
+                ডাকঘর- <%= @others_certificate.permanent_address.post_office %>,
+                উপজেলা- <%= @others_certificate.permanent_address.upazila %>,
+                জেলা- <%= @others_certificate.permanent_address.district %> ।</p>
             </div>
 
             <div class="text-area">
-              <% if @others_certificate.freedom_fighter.present? %>
-                  <p>আমার জানামতে, তিনি একজন প্রকৃত বীর মুক্তিযোদ্ধা । তাহার মুক্তিবার্তা নং (লাল বই)-
-                    <%= bangla_number @others_certificate.freedom_fighter.red_book_no %>, ভারতীয় নং-
-                    <%= bangla_number @others_certificate.freedom_fighter.indian_no %> এবং বাংলাদেশ গেজেট নং-
-                    <%= bangla_number @others_certificate.freedom_fighter.gazette_no %>।</p>
-            <% end %>
-              <p class="footer_center">আমি তাহার সুস্বাস্থ্য ও উন্নতি কামনা করছি ।</p>
+              <p>বর্তমানে তিনি অত্র এলাকার একজন স্থায়ী বাসিন্দা ।</p>
+              <p class="footer_center">আমি তাহার জীবনের সর্বাঙ্গীন সাফল্য ও মঙ্গল কামনা করছি ।</p>
             </div>
 
             <div class="footer">

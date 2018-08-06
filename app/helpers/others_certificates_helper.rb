@@ -34,6 +34,8 @@ module OthersCertificatesHelper
         'সম্পর্কের সনদপত্র'
       when 'orphan'
         'এতিম সনদপত্র'
+      when 'address_change'
+        'ঠিকানা পরিবর্তনের প্রত্যয়ন পত্র'
     end
   end
 
@@ -71,6 +73,8 @@ module OthersCertificatesHelper
         'সম্পর্ক'
       when 'orphan'
         'এতিম'
+      when 'address_change'
+        'ঠিকানা পরিবর্তন'
     end
   end
 
