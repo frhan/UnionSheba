@@ -248,9 +248,9 @@
               <p> গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
               <p> (স্থানীয় সরকার বিভাগ)</p>
               <h1><%= bangla_number(@others_certificate.union_no) %> নং <%= @others_certificate.union_name_bng %> ইউনিয়ন পরিষদ</h1>
-              <p class="sub"> ডাকঘরঃ <%= @others_certificate.post_name_bng %> উপজেলাঃ <%= @others_certificate.upazila_name_bng %>
+              <p class="sub"> ডাকঘরঃ <%= @others_certificate.post_name_bng %>, উপজেলাঃ <%= @others_certificate.upazila_name_bng %>,
                 জেলাঃ  <%= @others_certificate.zila_name_bng %> ।</p>
-              <h3>দ্বিতীয় বিবাহ না করা সনদপত্র</h3>
+              <h3>দুই নামে একই ব্যক্তির সনদপত্র</h3>
               <h4>সনদ নং: <%= @others_certificate.certifcate_no %> </h4>
             </div>
 
@@ -286,8 +286,14 @@
             </div>
 
             <div class="text-area">
-              <p> আমার জানামতে তিনি সৎ চরিত্রবান নাগরিক । তিনি কোন প্রকার রাষ্ট্রবিরোধী কাজে লিপ্ত ছিলেন না । আমি যতদুর জানি  তিনি <%= cer_husband_wife(@others_certificate.citizen_basic)%> <%= cer_maritial_state(@others_certificate.citizen_basic)%>
-                অদ্যাবদী দ্বিতীয় বিবাহ করেন নি ।</p>
+              <% if @others_certificate.basic_information.present? %>
+              <p>আমার জানামতে, তাহার এলাকায় ডাক নাম <b><%= @others_certificate.basic_information.nick_name %></b>
+                এবং জাতীয় পরিচয়পত্রে নাম রয়েছে <b><%= @others_certificate.basic_information.name %></b>।
+                <%= @others_certificate.basic_information.nick_name %> ও
+                <%= @others_certificate.basic_information.name %> এই দুই নামে একই ব্যক্তি ।
+                প্রকৃত পক্ষে তাহার নাম <b><%= @others_certificate.basic_information.name %></b>।
+                তিনি রাষ্ট্র বা সমাজ বিরোধী কোনো কাজে লিপ্ত ছিল না ।</p>
+              <% end %>
               <p class="footer_center">আমি তাহার সুস্বাস্থ্য ও উন্নতি কামনা করছি ।</p>
             </div>
 

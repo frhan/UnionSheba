@@ -233,6 +233,11 @@ module ApplicationHelper
     return false
   end
 
+  def should_show_nick_name?
+    return true if @c_type == 'same_name'
+    return false
+  end
+
   def should_show_spouse_name?(certificate)
     certificate.citizen_basic.female? && certificate.basic_information.spouse_name.present?
   end

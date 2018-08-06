@@ -158,7 +158,7 @@ class OthersCertificatesController < InheritedResources::Base
     params.require(:others_certificate).permit(:union_id, :certificate_type, :status,
                                                work_infos_attributes: [:id, :for_whom_others, :annual_income, :income_in_bangla,
                                                                        :work_title, :workplace_name, :for_whom_id, :lang, :income_type],
-                                               basic_infos_attributes: [:id, :name, :fathers_name, :spouse_name,
+                                               basic_infos_attributes: [:id, :name,:nick_name,:fathers_name, :spouse_name,
                                                                         :mothers_name, :date_of_birth, :lang],
                                                addresses_attributes: [:id, :village, :road, :word_no, :district, :upazila,
                                                                       :post_office, :address_type, :lang],

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180802165837) do
+ActiveRecord::Schema.define(version: 20180806095839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20180802165837) do
     t.boolean  "father_alive",              default: true
     t.boolean  "mother_alive",              default: true
     t.string   "educational_qualification"
+    t.string   "nick_name"
   end
 
   add_index "basic_infos", ["infoable_type", "infoable_id"], name: "index_basic_infos_on_infoable_type_and_infoable_id", using: :btree
