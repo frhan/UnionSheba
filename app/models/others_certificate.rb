@@ -3,8 +3,8 @@ class OthersCertificate < ActiveRecord::Base
 
   after_create :save_tracking_id, :save_certificate_no
   has_many :work_infos, dependent: :destroy
-  has_many :freedom_fighters,dependent: :destroy
-  has_many :relationships,dependent: :destroy
+  has_many :freedom_fighters, dependent: :destroy
+  has_many :relationships, dependent: :destroy
 
   accepts_nested_attributes_for :work_infos, allow_destroy: true
   accepts_nested_attributes_for :freedom_fighters, allow_destroy: true
