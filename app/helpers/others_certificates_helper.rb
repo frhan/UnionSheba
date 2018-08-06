@@ -32,6 +32,8 @@ module OthersCertificatesHelper
         'বাৎসরিক আয়ের সনদপত্র'
       when 'relationship'
         'সম্পর্কের সনদপত্র'
+      when 'orphan'
+        'এতিম সনদপত্র'
     end
   end
 
@@ -67,6 +69,8 @@ module OthersCertificatesHelper
         'মাসিক আয়'
       when 'relationship'
         'সম্পর্ক'
+      when 'orphan'
+        'এতিম'
     end
   end
 

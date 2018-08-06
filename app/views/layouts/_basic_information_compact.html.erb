@@ -28,6 +28,14 @@
   <%= f.text_field :mothers_name, class: "form-control" %>
 </div>
 
+<% if @c_type.present? && @c_type == 'orphan' %>
+  <div class="form-group col-lg-6">
+    <label>পিতার মৃত্যুর তারিখ</label>
+    <%= f.date_field :fathers_death_date, "data-provide" => 'datepicker', "data-date-format" => "yyyy-mm-dd", max: Date.today, class: "form-control" %>
+  </div>
+<% end %>
+
+
 <% if should_show_spouse? %>
     <div class="form-group col-lg-6">
       <label>স্বামী/স্ত্রীর নামঃ</label>

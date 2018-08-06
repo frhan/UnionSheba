@@ -59,6 +59,7 @@ class OthersCertificate < ActiveRecord::Base
     return 'others_certificates/pdf/permanent_citizen.pdf.erb' if self.certificate_type == 'permanent_citizen'
     return 'others_certificates/pdf/same_name.pdf.erb' if self.certificate_type == 'same_name'
     return 'others_certificates/pdf/relationship.pdf.erb' if self.certificate_type == 'relationship'
+    return 'others_certificates/pdf/orphan.pdf.erb' if self.certificate_type == 'orphan'
   end
 
   private

@@ -19,6 +19,18 @@
     </div>
 <% end %>
 
+<% if person.fathers_death_date.present?%>
+    <div class="row">
+      <div class="col-xs-2">
+        <label>পিতার মৃত্যুর তারিখ</label>
+      </div>
+      <div class="col-xs-10">
+        <p><%= person.fathers_death_date %></p>
+      </div>
+    </div>
+<% end %>
+
+
 <div class="row">
   <div class="col-xs-2">
     <label>পিতার নাম:</label>
