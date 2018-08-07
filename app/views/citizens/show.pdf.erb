@@ -207,19 +207,6 @@
     padding: 0;
     margin: 0;
   }
-
-  .test {
-    background: #155aa7;
-  }
-
-  .test2 {
-    background: #730E15;
-  }
-
-  .test3 {
-    background: #B00100;
-  }
-
 </style>
 
 <!--========================================================
@@ -248,8 +235,7 @@
               <p> গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
               <p> (স্থানীয় সরকার বিভাগ)</p>
               <h1><%= bangla_number(@citizen.union_no) %> নং <%= @citizen.union_name_bng %> ইউনিয়ন পরিষদ</h1>
-              <p class="sub"> ডাকঘরঃ <%= @citizen.post_name_bng %> উপজেলাঃ <%= @citizen.upazila_name_bng %>
-                জেলাঃ  <%= @citizen.zila_name_bng %></p>
+              <p class="sub"> ডাকঘরঃ <%= @citizen.post_name_bng %>, উপজেলাঃ <%= @citizen.upazila_name_bng %>, জেলাঃ  <%= @citizen.zila_name_bng %> ।</p>
               <h3>নাগরিকত্ব ও চারিত্রিক সনদপত্র</h3>
               <h4>নাগরিকত্ব নং: <%= @citizen.citizen_no %> </h4>
             </div>
