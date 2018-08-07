@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180807121948) do
+ActiveRecord::Schema.define(version: 20180807122734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -194,10 +194,12 @@ ActiveRecord::Schema.define(version: 20180807121948) do
     t.integer  "serial_no"
     t.string   "bank_check_no"
     t.date     "check_date"
+    t.integer  "voucher_id"
   end
 
   add_index "expenses", ["expense_category_id"], name: "index_expenses_on_expense_category_id", using: :btree
   add_index "expenses", ["union_id"], name: "index_expenses_on_union_id", using: :btree
+  add_index "expenses", ["voucher_id"], name: "index_expenses_on_voucher_id", using: :btree
 
   create_table "for_whoms", force: :cascade do |t|
     t.string   "who"
@@ -477,6 +479,7 @@ ActiveRecord::Schema.define(version: 20180807121948) do
   add_foreign_key "districts", "divisions"
   add_foreign_key "expenses", "expense_categories"
   add_foreign_key "expenses", "unions"
+  add_foreign_key "expenses", "vouchers"
   add_foreign_key "freedom_fighters", "others_certificates"
   add_foreign_key "others_certificates", "unions"
   add_foreign_key "others_collections", "unions"

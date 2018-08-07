@@ -1,5 +1,5 @@
 class CollectionMoney < ActiveRecord::Base
-  include ApplicationHelper
+  include ApplicationHelper,VoucherHelper
   belongs_to :collectable, polymorphic: true
   validates :fee, presence: true
   belongs_to :union
@@ -79,6 +79,15 @@ class CollectionMoney < ActiveRecord::Base
     0.0
   end
 
+  def v_type
+    return self.collectable.category if self.tax_or_rate?
+    return self.collectable_type
+  end
+
+  def main_type
+    :collection
+  end
+
   private
 
   def save_serial_no
@@ -91,29 +100,6 @@ class CollectionMoney < ActiveRecord::Base
 
   def save_tax_year
     self.update_attributes(:tx_year => current_fiscal_year)
-  end
-
-  def save_voucher_no
-    voucher = Voucher.where(union_id: self.union.id, voucher_type: v_type, main_voucher_type: :collection,
-                            :created_at => Date.today.beginning_of_day..Date.today.end_of_day, status: :active)
-
-    voucher = voucher.first if voucher.present?
-
-    if voucher.blank?
-      voucher_count = Voucher.where(union_id: self.union.id, main_voucher_type: :collection,
-                                    :created_at => Date.today.beginning_of_day..Date.today.end_of_day,
-                                    status: :active).count
-
-      voucher = Voucher.create(voucher_no: voucher_count + 1, main_voucher_type: :collection,
-                               voucher_type: v_type, union: self.union)
-    end
-
-    self.update_attributes(voucher: voucher)
-  end
-
-  def v_type
-    return self.collectable.category if self.tax_or_rate?
-    return self.collectable_type
   end
 
 end

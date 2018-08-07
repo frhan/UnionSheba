@@ -1,6 +1,7 @@
 class Voucher < ActiveRecord::Base
   belongs_to :union
   has_many :collection_moneys
+  has_many :expenses
 
   def total
     self.collection_moneys.sum(:fee) + self.collection_moneys.sum(:fine) +
