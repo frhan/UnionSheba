@@ -1,5 +1,5 @@
 class CollectionMoney < ActiveRecord::Base
-  include ApplicationHelper,VoucherHelper
+  include ApplicationHelper, VoucherHelper
   belongs_to :collectable, polymorphic: true
   validates :fee, presence: true
   belongs_to :union

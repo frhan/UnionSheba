@@ -5,8 +5,7 @@ class Expense < ActiveRecord::Base
   belongs_to :voucher
 
   validates :expense_money, presence: true
-  after_create :save_serial_no,:save_voucher_no
-
+  after_create :save_serial_no, :save_voucher_no
 
   def exp_category
     if self.expense_category.others?
@@ -27,7 +26,6 @@ class Expense < ActiveRecord::Base
   def main_type
     :expenses
   end
-
 
   private
 
