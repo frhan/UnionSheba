@@ -37,7 +37,7 @@ class TaxOrRateCollection < ActiveRecord::Base
   end
 
   def category
-    return self.tax_category.name
+    return self.tax_category.category_code
   end
 
   def babod

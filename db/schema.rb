@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180806132339) do
+ActiveRecord::Schema.define(version: 20180807121948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,8 +176,9 @@ ActiveRecord::Schema.define(version: 20180806132339) do
 
   create_table "expense_categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "category_code"
   end
 
   create_table "expenses", force: :cascade do |t|
@@ -301,8 +302,9 @@ ActiveRecord::Schema.define(version: 20180806132339) do
 
   create_table "tax_categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "category_code"
   end
 
   create_table "tax_or_rate_collections", force: :cascade do |t|
@@ -416,8 +418,10 @@ ActiveRecord::Schema.define(version: 20180806132339) do
     t.date     "check_date"
     t.integer  "union_id"
     t.string   "voucher_type"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "main_voucher_type"
+    t.string   "status",            default: "active"
   end
 
   add_index "vouchers", ["union_id"], name: "index_vouchers_on_union_id", using: :btree
