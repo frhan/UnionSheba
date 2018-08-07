@@ -249,21 +249,31 @@ module ApplicationHelper
   end
 
   def should_show_freedom_fighter?(c_type)
-    return c_type =='freedom_fighter'
+    c_type =='freedom_fighter'
   end
 
   def should_show_work_info?(c_type)
-    return c_type =='income_yearly' || c_type =='income_monthly'
+    c_type =='income_yearly' || c_type =='income_monthly'
   end
 
   def should_show_relationship?(c_type)
-    return c_type =='relationship'
+    c_type =='relationship'
   end
 
   def relation(relationship)
     lat = "আমার জানামতে, তিনি #{relationship.person_title} #{relationship.to_whom} এর #{relationship.relation}"
     lat << " অর্থাৎ সম্পর্কে #{relationship.relation_type}" if relationship.relation_type.present?
     lat << ' ।'
+  end
+
+  def from_date
+   return DateTime.parse(params[:start_date]).strftime('%Y-%m-%d') if params[:start_date].present?
+   Date.today.strftime('%Y-%m-%d')
+  end
+
+  def to_date
+    return DateTime.parse(params[:end_date]).strftime('%Y-%m-%d') if params[:end_date].present?
+    Date.today.strftime('%Y-%m-%d')
   end
 
 end
