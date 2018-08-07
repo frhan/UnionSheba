@@ -5,7 +5,7 @@ class CollectionMoney < ActiveRecord::Base
   belongs_to :union
   belongs_to :voucher
 
-  after_create :save_serial_no,:save_tax_year
+  after_create :save_serial_no,:save_tax_year,:save_voucher_no
 
   scope :by_type, lambda { |type,status| joins("INNER JOIN #{type.table_name} ON #{type.table_name}.id = #{CollectionMoney.table_name}.opinionable_id
                                           AND #{Opinion.table_name}.opinionable_type = '#{type.to_s}'") }
@@ -93,19 +93,15 @@ class CollectionMoney < ActiveRecord::Base
   end
 
   def save_voucher_no
-     vchr = Voucher.where(union_id: self.union.id, voucher_type: v_type,
+    voucher = Voucher.where(union_id: self.union.id, voucher_type: v_type,
                     :created_at => Date.today.beginning_of_day..Date.today.end_of_day)
-    if vchr.present?
-        voucher = vchr
-    else
-      voucher = Voucher.create(voucher_no: vchr + 1, voucher_type: v_type, union: self.union)
-    end
-
+    
+    voucher = Voucher.create(voucher_no: vchr + 1, voucher_type: v_type, union: self.union) if voucher.blank?
     self.update_attributes(voucher: voucher)
   end
 
   def v_type
-    return self.collectable.catergory if self.collectable_type == 'TaxOrRateCollection'
+    return self.collectable.category if tax_or_rate?
     return self.collectable_type
   end
 

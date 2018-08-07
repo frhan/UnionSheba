@@ -54,7 +54,7 @@ class OthersCertificate < ActiveRecord::Base
     return 'others_certificates/pdf/non_solvent.pdf.erb' if self.certificate_type == 'non_solvent'
     return 'others_certificates/pdf/orphan.pdf.erb' if self.certificate_type == 'orphan'
     return 'others_certificates/pdf/freedom_fighter.pdf.erb' if self.certificate_type == 'freedom_fighter'
-    return 'others_certificates/pdf/income.pdf.erb' if should_show_work_info self.certificate_type
+    return 'others_certificates/pdf/income.pdf.erb' if should_show_work_info? self.certificate_type
     return 'others_certificates/pdf/only_widow.pdf.erb' if self.certificate_type == 'only_widow'
     return 'others_certificates/pdf/permanent_citizen.pdf.erb' if self.certificate_type == 'permanent_citizen'
     return 'others_certificates/pdf/same_name.pdf.erb' if self.certificate_type == 'same_name'

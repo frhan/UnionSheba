@@ -140,4 +140,17 @@ module OthersCertificatesHelper
     return "তাহার #{who(work_info)}র #{type} আয় #{bangla_number(number_with_delimiter(work_info.annual_income))} (#{work_info.income_in_bangla}) টাকা"
   end
 
+  def should_show_freedom_fighter?(c_type)
+    return c_type =='freedom_fighter'
+  end
+
+  def should_show_work_info?(c_type)
+    return c_type =='income_yearly' || c_type =='income_monthly'
+  end
+
+  def should_show_relationship?(c_type)
+    return c_type =='relationship'
+  end
+
+
 end
