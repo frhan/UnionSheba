@@ -1,4 +1,6 @@
-<table class="table table-bordered table-striped">
+<% if @collections %>
+
+    <table class="table table-bordered table-striped">
   <thead>
   <tr>
     <th><p>প্রাপ্তির<br/>তারিখ</p></th>
@@ -14,19 +16,46 @@
   </tr>
   </thead>
   <tbody>
+  <% @collections.each do |c| %>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>
+      <%= bangla_date c.created_at  %>
+    </td>
+    <td>
+      <%= c.money_senders_name %>
+    </td>
+    <td>
+      <%= bangla_number c.serial_no.to_s %>
+    </td>
+    <td>
+      <%= bangla_number c.total.to_s %>
+    </td>
+    <td>
+      <%= c.babod %>
+    </td>
+    <td>
+      <% if c.voucher.present? %>
+        <%= bangla_number c.voucher.total.to_s   %>
+      <% end %>
+    </td>
+    <td>
+      <% if c.voucher.present? %>
+          <%= bangla_number c.voucher.total.to_s   %>
+      <% end %>
+    </td>
+    <td>
+      <%= bangla_date c.created_at  %>
+    </td>
+    <td>
+      <% if c.voucher.present? %>
+          <%= bangla_number c.voucher.voucher_no.to_s   %>
+      <% end %>
+    </td>
     <td></td>
   </tr>
+      <% end %>
   </tbody>
 </table>
 </tbody>
 </table>
+<% end %>

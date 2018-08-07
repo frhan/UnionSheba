@@ -42,6 +42,13 @@ class CollectionMoney < ActiveRecord::Base
     return String.new
   end
 
+  def babod
+    return 'বিবিধ' if collectable_type == 'OthersCollection'
+    return self.collectable.babod if collectable_type == 'TaxOrRateCollection'
+    return 'ট্রেড লাইসেন্স' if collectable_type == 'TradeLicense'
+    return String.new
+  end
+
   def self.Types
     {'সব' => :all, 'ট্যাক্স ও রেট' => :TaxOrRateCollection, 'বিবিধ' => :OthersCollection,
      'ট্রেড লাইসেন্স' => :TradeLicense}

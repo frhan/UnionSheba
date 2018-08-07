@@ -267,13 +267,13 @@ module ApplicationHelper
   end
 
   def from_date
-   return DateTime.parse(params[:start_date]).strftime('%Y-%m-%d') if params[:start_date].present?
-   Date.today.strftime('%Y-%m-%d')
+   return DateTime.parse(params[:start_date]) if params[:start_date].present?
+   Date.today
   end
 
   def to_date
-    return DateTime.parse(params[:end_date]).strftime('%Y-%m-%d') if params[:end_date].present?
-    Date.today.strftime('%Y-%m-%d')
+    return DateTime.parse(params[:end_date]) if params[:end_date].present?
+    Date.today
   end
 
 end
