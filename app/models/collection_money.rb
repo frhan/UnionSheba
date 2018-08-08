@@ -49,6 +49,11 @@ class CollectionMoney < ActiveRecord::Base
     return String.new
   end
 
+  def comment
+    return self.collectable.comment if collectable_type == 'TaxOrRateCollection'
+    String.new
+  end
+
   def self.Types
     {'সব' => :all, 'ট্যাক্স ও রেট' => :TaxOrRateCollection, 'বিবিধ' => :OthersCollection,
      'ট্রেড লাইসেন্স' => :TradeLicense}

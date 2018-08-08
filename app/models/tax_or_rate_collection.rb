@@ -41,9 +41,12 @@ class TaxOrRateCollection < ActiveRecord::Base
   end
 
   def babod
-    return self.other_reason if self.tax_category.present? && self.tax_category.others?
     return self.tax_category.name if self.tax_category.present?
-    return String.new
+    String.new
+  end
+
+  def comment
+    return self.other_reason if self.tax_category.present? && self.tax_category.others?
   end
 
   def babod_pdf

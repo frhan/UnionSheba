@@ -1,61 +1,62 @@
 <% if @collections %>
-
     <table class="table table-bordered table-striped">
-  <thead>
-  <tr>
-    <th><p>প্রাপ্তির<br/>তারিখ</p></th>
-    <th><p>যাহার<br/>নিকট<br/>হইতে<br/>গৃহীত</p></th>
-    <th><p>প্রাপ্তি<br/>রশিদ<br/>বইয়ের<br/>রশিদ<br/>নং</p></th>
-    <th><p>গৃহীত<br/>অর্থ<br/>(টাকা)</p></th>
-    <th><p>হিসাবের<br/>খাত</p></th>
-    <th><p>দৈনিক<br/>মোট<br/>(টাকা)</p></th>
-    <th><p>ব্যাংক<br/>হিসাবে<br/>জমাক্রিত<br/>অর্থ<br/>(টাকা)</p></th>
-    <th><p>ব্যাংকে<br/>জমাদানের<br/>তারিখ</p></th>
-    <th><p>ব্যাংকে<br/>জমার<br/>চালন/<br/>রশিদ<br/>নং</p></th>
-    <th>মন্তব্য</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @collections.each do |c| %>
-  <tr>
-    <td>
-      <%= bangla_date c.created_at  %>
-    </td>
-    <td>
-      <%= c.money_senders_name %>
-    </td>
-    <td>
-      <%= bangla_number c.serial_no.to_s %>
-    </td>
-    <td>
-      <%= bangla_number c.total.to_s %>
-    </td>
-    <td>
-      <%= c.babod %>
-    </td>
-    <td>
-      <% if c.voucher.present? %>
-        <%= bangla_number c.voucher.total.to_s   %>
+      <thead>
+      <tr>
+        <th><p>প্রাপ্তির<br/>তারিখ</p></th>
+        <th><p>যাহার<br/>নিকট<br/>হইতে<br/>গৃহীত</p></th>
+        <th><p>প্রাপ্তি<br/>রশিদ<br/>বইয়ের<br/>রশিদ<br/>নং</p></th>
+        <th><p>গৃহীত<br/>অর্থ<br/>(টাকা)</p></th>
+        <th><p>হিসাবের<br/>খাত</p></th>
+        <th><p>দৈনিক<br/>মোট<br/>(টাকা)</p></th>
+        <th><p>ব্যাংক<br/>হিসাবে<br/>জমাকৃত<br/>অর্থ<br/>(টাকা)</p></th>
+        <th><p>ব্যাংকে<br/>জমাদানের<br/>তারিখ</p></th>
+        <th><p>ব্যাংকে<br/>জমার<br/>চালন/<br/>রশিদ<br/>নং</p></th>
+        <th>মন্তব্য</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @collections.each do |c| %>
+          <tr>
+            <td>
+              <%= bangla_date c.created_at %>
+            </td>
+            <td>
+              <%= c.money_senders_name %>
+            </td>
+            <td>
+              <%= bangla_number c.serial_no.to_s %>
+            </td>
+            <td>
+              <%= bangla_number c.total.to_s %>
+            </td>
+            <td>
+              <%= c.babod %>
+            </td>
+            <td>
+              <% if c.voucher.present? %>
+                  <%= bangla_number c.voucher.total.to_s %>
+              <% end %>
+            </td>
+            <td>
+              <% if c.voucher.present? %>
+                  <%= bangla_number c.voucher.total.to_s %>
+              <% end %>
+            </td>
+            <td>
+              <%= bangla_date c.created_at %>
+            </td>
+            <td>
+              <% if c.voucher.present? %>
+                  <%= bangla_number c.voucher.voucher_no.to_s %>
+              <% end %>
+            </td>
+            <td>
+              <%= c.comment %>
+            </td>
+          </tr>
       <% end %>
-    </td>
-    <td>
-      <% if c.voucher.present? %>
-          <%= bangla_number c.voucher.total.to_s   %>
-      <% end %>
-    </td>
-    <td>
-      <%= bangla_date c.created_at  %>
-    </td>
-    <td>
-      <% if c.voucher.present? %>
-          <%= bangla_number c.voucher.voucher_no.to_s   %>
-      <% end %>
-    </td>
-    <td></td>
-  </tr>
-      <% end %>
-  </tbody>
-</table>
-</tbody>
-</table>
+      </tbody>
+    </table>
+    </tbody>
+    </table>
 <% end %>

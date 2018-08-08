@@ -8,12 +8,14 @@ class Expense < ActiveRecord::Base
   after_create :save_serial_no, :save_voucher_no
 
   def exp_category
-    if self.expense_category.others?
-      return self.other_category
-    end
+    return self.other_category if self.expense_category.others?
     self.expense_category.name
   end
 
+  def babod
+    return "<p>#{self.expense_category.name}<br/>#{self.other_category}<p>".html_safe if self.expense_category.others?
+    self.expense_category.name
+  end
   def bank_info
     return String.new if self.bank_check_no.blank?
     return "<p> #{self.bank_check_no}<br>#{self.check_date.strftime('%d-%m-%Y')} </p>".html_safe
