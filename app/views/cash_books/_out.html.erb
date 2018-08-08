@@ -23,14 +23,15 @@
               <%= e.babod %>
             </td>
             <td>
-              <%= e.serial_no %>
+              <% if e.voucher.present? %>
+                  <%= bangla_number e.voucher.voucher_no.to_s %>
+              <% end %>
             </td>
             <td>
               <%= bangla_date e.created_at %>
             </td>
             <td>
-                  <%= bangla_number e.expense_money.to_s %>
-
+              <%= bangla_number e.expense_money.to_s %>
             </td>
             <td>
               <%= e.babod %>
