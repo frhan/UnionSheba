@@ -45,7 +45,7 @@
 
             <td>
               <%= link_to('Edit', edit_warish_path(warish)) %>
-              <%= link_to('Delete', edit_warish_path(warish)) %>
+              <%= link_to('Delete',warish_path(warish), method: :delete, data: { confirm: 'Are you sure?' }) %>
             </td>
           </tr>
       <% end %>

@@ -16,6 +16,10 @@ class Warish < ActiveRecord::Base
     self.update_attributes(:warish_no => warsh)
   end
 
+  def remove_dependents
+    self.warish_relations.update_all({status: :deleted}) if self.warish_relations.present?
+  end
+
 
   def save_tracking_id
     return if self.active? || self.tracking_id.present?

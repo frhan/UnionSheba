@@ -4,7 +4,10 @@
 
   <%= form_tag(cash_books_path, class: "form-inline", method: :get) do %>
 
-      <%= render 'layouts/search_box' %>
+      <div class="form-group">
+        <label class="sr-only">Start Date</label>
+        <%= text_field_tag :start_date, @start_date.strftime('%Y-%m-%d'), "data-provide" => 'datepicker', value: @start_date.strftime('%Y-%m-%d'), "data-date-format" => "yyyy-mm-dd", class: "form-control", placeholder: "Start Date" %>
+      </div>
 
       <div class="form-group">
         <%= collection_select(:books, :type, {'প্রাপ্তি' => :in, 'প্রদান' => :out}, :last, :first, {:selected => @books_type}, {class: "form-control"}) %>

@@ -15,7 +15,6 @@ class OthersCertificate < ActiveRecord::Base
 
     cer_no = OthersCertificate.where(union_id: self.union.id).count(:certifcate_no)
     cer_no = cer_no + 1
-    #cer = "#{self.union.union_code}S#{current_year.to_s}#{cer_no.to_s}"
     cer = get_unique_certificate_no cer_no
     self.update_attributes(:certifcate_no => cer)
   end
@@ -38,12 +37,16 @@ class OthersCertificate < ActiveRecord::Base
     @freedom_fighter
   end
 
-
   def relationship
     @relationship ||= self.relationships.with_lang(current_lang).first
     @relationship
   end
 
+  def remove_dependents
+    self.work_infos.update_all({status: :deleted}) if self.work_infos.present?
+    self.freedom_fighters.update_all({status: :deleted}) if self.freedom_fighters.present?
+    self.relationships.relationships({status: :deleted}) if self.relationships.present?
+  end
 
   def template
     return 'others_certificates/pdf/no_remarried.pdf.erb' if self.certificate_type == 'no_remarried'

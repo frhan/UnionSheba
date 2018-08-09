@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180807122734) do
+ActiveRecord::Schema.define(version: 20180809111240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,9 @@ ActiveRecord::Schema.define(version: 20180807122734) do
     t.string   "lang"
     t.integer  "addressable_id"
     t.string   "addressable_type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "status",           default: "active"
   end
 
   add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
@@ -73,8 +74,8 @@ ActiveRecord::Schema.define(version: 20180807122734) do
     t.string   "lang"
     t.integer  "infoable_id"
     t.string   "infoable_type"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.string   "state"
     t.string   "spouse_name"
     t.boolean  "father_alive",              default: true
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(version: 20180807122734) do
     t.string   "educational_qualification"
     t.string   "nick_name"
     t.date     "fathers_death_date"
+    t.string   "status",                    default: "active"
   end
 
   add_index "basic_infos", ["infoable_type", "infoable_id"], name: "index_basic_infos_on_infoable_type_and_infoable_id", using: :btree
@@ -99,6 +101,7 @@ ActiveRecord::Schema.define(version: 20180807122734) do
     t.string   "basicable_type"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.string   "status"
   end
 
   add_index "citizen_basics", ["basicable_type", "basicable_id"], name: "index_citizen_basics_on_basicable_type_and_basicable_id", using: :btree
@@ -149,8 +152,9 @@ ActiveRecord::Schema.define(version: 20180807122734) do
     t.string   "email"
     t.integer  "contactable_id"
     t.string   "contactable_type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "status",           default: "active"
   end
 
   add_index "contact_addresses", ["contactable_type", "contactable_id"], name: "index_contact_addresses_on_contactable_type_and_contactable_id", using: :btree
@@ -214,10 +218,11 @@ ActiveRecord::Schema.define(version: 20180807122734) do
     t.string   "red_book_no"
     t.string   "indian_no"
     t.string   "gazette_no"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "others_certificate_id"
     t.string   "lang"
+    t.string   "status",                default: "active"
   end
 
   add_index "freedom_fighters", ["others_certificate_id"], name: "index_freedom_fighters_on_others_certificate_id", using: :btree
@@ -282,11 +287,12 @@ ActiveRecord::Schema.define(version: 20180807122734) do
     t.string   "to_whom"
     t.string   "relation_type"
     t.string   "person_title"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "others_certificate_id"
     t.string   "relation"
     t.string   "lang"
+    t.string   "status",                default: "active"
   end
 
   add_index "relationships", ["others_certificate_id"], name: "index_relationships_on_others_certificate_id", using: :btree
@@ -434,9 +440,10 @@ ActiveRecord::Schema.define(version: 20180807122734) do
     t.integer  "age"
     t.string   "lang"
     t.integer  "warish_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "comment"
+    t.string   "status",     default: "active"
   end
 
   add_index "warish_relations", ["warish_id"], name: "index_warish_relations_on_warish_id", using: :btree
@@ -458,13 +465,14 @@ ActiveRecord::Schema.define(version: 20180807122734) do
     t.integer  "annual_income"
     t.string   "work_title"
     t.string   "lang"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "others_certificate_id"
     t.integer  "for_whom_id"
     t.string   "for_whom_others"
     t.string   "income_in_bangla"
     t.string   "income_type"
+    t.string   "status",                default: "active"
   end
 
   add_index "work_infos", ["for_whom_id"], name: "index_work_infos_on_for_whom_id", using: :btree

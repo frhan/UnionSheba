@@ -9,13 +9,13 @@ class TradeOrganizationsController < ApplicationController
   load_and_authorize_resource
   skip_authorize_resource :only => :print_money_recipt
   before_action :set_trade_organization, only: [:show, :edit, :update, :destroy,
-                                                :renew,:show_money_recipt,
-                                                :create_trade_license,:edit_license]
+                                                :renew, :show_money_recipt,
+                                                :create_trade_license, :edit_license]
 
   def index
     respond_to do |format|
       format.html
-      format.json { render json: TradeOrganizationDatatable.new(view_context,current_user) }
+      format.json { render json: TradeOrganizationDatatable.new(view_context, current_user) }
     end
 
   end
@@ -28,7 +28,7 @@ class TradeOrganizationsController < ApplicationController
   end
 
   def show
-    @barcode = barcode_output(@trade_organization)   if params[:format] == 'pdf'
+    @barcode = barcode_output(@trade_organization) if params[:format] == 'pdf'
 
     respond_to do |format|
       format.html
@@ -38,21 +38,21 @@ class TradeOrganizationsController < ApplicationController
                :layout => 'pdf.html.erb',
                :disposition => 'attachment',
                :show_as_html => params[:debug].present?,
-               margin:  {   top:               2,                     # default 10 (mm)
-                            bottom:            0,
-                            left:              17,
-                            right:             0 },
-               dpi:                            '300'
-               #zoom: 1.17647
+               margin: {top: 2, # default 10 (mm)
+                        bottom: 0,
+                        left: 17,
+                        right: 0},
+               dpi: '300'
+        #zoom: 1.17647
       end
     end
   end
 
-  def barcode_output( trade_organization )
+  def barcode_output(trade_organization)
     barcode_string = trade_organization.barcode
     barcode = Barby::QrCode.new(barcode_string, level: :q, size: 6)
     # PNG OUTPUT
-    base64_output = Base64.encode64(barcode.to_png({ xdim: 3 }))
+    base64_output = Base64.encode64(barcode.to_png({xdim: 3}))
     "data:image/png;base64,#{base64_output}"
   end
 
@@ -65,11 +65,11 @@ class TradeOrganizationsController < ApplicationController
                :layout => 'pdf.html.erb',
                :disposition => 'attachment',
                :show_as_html => params[:debug].present?,
-               margin:  {   top:               10,                     # default 10 (mm)
-                            bottom:            0,
-                            left:              12,
-                            right:             12 },
-               dpi:                            '300'
+               margin: {top: 10, # default 10 (mm)
+                        bottom: 0,
+                        left: 12,
+                        right: 12},
+               dpi: '300'
         #zoom: 1.17647
       end
     end
@@ -90,7 +90,7 @@ class TradeOrganizationsController < ApplicationController
         format.html { redirect_to @trade_organization, notice: 'Trade License was successfully created.' }
         format.json { render :show, status: :created, location: @trade_organization }
       else
-        format.html {render :new }
+        format.html { render :new }
         format.json { render json: @trade_organization.errors, status: :unprocessable_entity }
       end
     end
@@ -181,14 +181,14 @@ class TradeOrganizationsController < ApplicationController
     params.require(:trade_organization).permit(:enterprize_name_in_eng, :enterprize_name_in_bng,
                                                :owners_name_eng, :owners_name_bng,
                                                :fathers_name, :mothers_name, :spouse_name,
-                                               :village_name, :post_name, :upazilla_name,:word_no,
-                                               :zilla_name, :business_place, :business_category,:holding_no,:nid,:birthid,
+                                               :village_name, :post_name, :upazilla_name, :word_no,
+                                               :zilla_name, :business_place, :business_category, :holding_no, :nid, :birthid,
                                                :union_id, trade_licenses_attributes:
-                                                   [:fiscal_year,collection_money_attributes:[:fee,:remain,:fine,:vat,:union_id]])
+                                                   [:fiscal_year, collection_money_attributes: [:fee, :remain, :fine, :vat, :union_id]])
   end
 
   def trade_license_params
-    params.require(:trade_license).permit(:fiscal_year,collection_money_attributes:[:fee,:remain,:fine,:vat,:union_id])
+    params.require(:trade_license).permit(:fiscal_year, collection_money_attributes: [:fee, :remain, :fine, :vat, :union_id])
   end
 
 end

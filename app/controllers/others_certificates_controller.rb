@@ -139,9 +139,20 @@ class OthersCertificatesController < InheritedResources::Base
   end
 
   def activate
-    @others_certificate = OthersCertificate.find(params[:id])
+    @others_certificate = current_user.others_certificates.find(params[:id])
     @others_certificate.activate
     redirect_to @others_certificate, notice: 'Certificate was successfully activated.'
+  end
+
+  # DELETE /recipes/1
+  # DELETE /recipes/1.json
+  def destroy
+    @others_certificate = current_user.others_certificates.find(params[:id])
+    @others_certificate.remove
+    respond_to do |format|
+      format.html { redirect_to citizens_url, notice: 'Certificate was successfully deleted' }
+      format.json { head :no_content }
+    end
   end
 
   private
