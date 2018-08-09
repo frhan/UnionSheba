@@ -5,17 +5,17 @@
   <%= form_tag(report_tax_or_rate_collections_path, class: "form-inline", method: :get) do %>
 
       <div class="form-group">
-        <label class="sr-only" >Start Date</label>
-        <%= text_field_tag :start_date, params[:start_date],"data-provide" => 'datepicker',value: params[:start_date], "data-date-format" => "yyyy-mm-dd",class: "form-control", placeholder: "Start Date" %>
+        <label class="sr-only">Start Date</label>
+        <%= text_field_tag :start_date, @start_date, "data-provide" => 'datepicker', value: @start_date.strftime('%Y-%m-%d'), "data-date-format" => "yyyy-mm-dd", class: "form-control", placeholder: "Start Date" %>
       </div>
 
       <div class="form-group">
-        <%= label_tag :end_date,nil,class:"sr-only" %>
-        <%= text_field_tag :end_date, params[:end_date],"data-provide" => 'datepicker',value: params[:end_date], "data-date-format" => "yyyy-mm-dd",class: "form-control", placeholder: "End Date" %>
+        <%= label_tag :end_date, nil, class: "sr-only" %>
+        <%= text_field_tag :end_date, @end_date, "data-provide" => 'datepicker', value: @end_date.strftime('%Y-%m-%d'), "data-date-format" => "yyyy-mm-dd", class: "form-control", placeholder: "End Date" %>
       </div>
 
       <div class="form-group">
-        <%= collection_select(:collections, :category_id, TaxCategory.all, :id,:name,{ :include_blank => 'সব',:selected => @selected_id},{class: "form-control"}) %>
+        <%= collection_select(:collections, :category_id, TaxCategory.all, :id, :name, {:include_blank => 'সব', :selected => @selected_id}, {class: "form-control"}) %>
       </div>
       <%= submit_tag :Search, class: "btn btn-primary" %>
   <% end %>

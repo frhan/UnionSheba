@@ -15,19 +15,11 @@ class TaxOrRateCollectionsController < ApplicationController
   end
 
   def report
-    @start_date = DateTime.parse(params[:start_date]) if params[:start_date].present?
-    @end_date = DateTime.parse(params[:end_date]) if params[:end_date].present?
+    @start_date = from_date
+    @end_date = to_date
 
     @tax_collections = current_user.tax_or_rate_collections
-                           .where(status: :active)
-                           .order("created_at desc")
-
-    if @start_date && @end_date
-      @tax_collections = @tax_collections
-                             .where(status: :active,
-                                    :created_at => @start_date.beginning_of_day..@end_date.end_of_day)
-
-    end
+                           .where(status: :active, :created_at => @start_date.beginning_of_day..@end_date.end_of_day)
 
     if params[:collections] && params[:collections][:category_id].present?
       @selected_id = params[:collections][:category_id]
