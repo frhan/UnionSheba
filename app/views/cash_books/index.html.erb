@@ -4,18 +4,15 @@
 
   <%= form_tag(cash_books_path, class: "form-inline", method: :get) do %>
 
-      <%= render 'layouts/search_box'  %>
+      <%= render 'layouts/search_box' %>
 
       <div class="form-group">
-        <%= collection_select('books', 'type', CashBooksHelper.TYPE.map {|c| [c[0],c[1]]}, :last, :first,{},{class: "form-control"}) %>
+        <%= collection_select(:books, :type, {'প্রাপ্তি' => :in, 'প্রদান' => :out}, :last, :first, {:selected => @books_type}, {class: "form-control"}) %>
       </div>
 
       <%= submit_tag :Search, class: "btn btn-primary" %>
   <% end %>
 
-  <h2>প্রাপ্তি</h2>
-  <div id="results">
-    <%= render 'out' %>
-  </div>
+  <%= render 'results' %>
 
 </div>

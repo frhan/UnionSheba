@@ -2,7 +2,7 @@
   <p id="notice"><%= notice %></p>
   <h2>Money Collected</h2>
 
-  <%= form_tag(collection_moneys_path, class: "form-inline", method: :get) do %>
+  <%= form_tag(collection_moneys_path, class: "form-inline", method: :get, remote: true) do %>
 
       <%= render 'layouts/search_box' %>
 
