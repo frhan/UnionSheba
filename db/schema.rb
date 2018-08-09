@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180809111240) do
+ActiveRecord::Schema.define(version: 20180809173212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -199,6 +199,7 @@ ActiveRecord::Schema.define(version: 20180809111240) do
     t.string   "bank_check_no"
     t.date     "check_date"
     t.integer  "voucher_id"
+    t.string   "senders_name"
   end
 
   add_index "expenses", ["expense_category_id"], name: "index_expenses_on_expense_category_id", using: :btree

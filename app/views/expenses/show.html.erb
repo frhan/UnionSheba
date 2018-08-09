@@ -4,7 +4,7 @@
 
       <div class="panel panel-info">
         <div class="panel-heading">
-          <h3 class="panel-title">Buy</h3>
+          <h3 class="panel-title">ব্যয়</h3>
         </div>
         <div class="panel-body">
           <div class="row">
@@ -18,16 +18,19 @@
                 </tr>
 
                 <tr>
+                  <td>যাহাকে প্রদত্ত</td>
+                  <td><%= @expense.senders_name %></td>
+                </tr>
+
+                <tr>
                   <td>বাবদ</td>
                   <td><%= @expense.exp_category %></td>
                 </tr>
-
 
                 <tr>
                   <td>ব্যাংক চেক নং</td>
                   <td><%= @expense.bank_check_no %></td>
                 </tr>
-
 
                 <tr>
                   <td>ব্যাংকে প্রদানের তারিখ</td>
