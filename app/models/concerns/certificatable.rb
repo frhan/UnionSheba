@@ -26,6 +26,10 @@ module Certificatable
     self.citizen_basic.update_attributes(status: :deleted) if self.citizen_basic.present?
   end
 
+  def deactivate
+    self. self.update_attributes(status: :deactivated)
+  end
+
   def remove_dependents
   end
 
