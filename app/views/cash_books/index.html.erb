@@ -6,6 +6,10 @@
 
       <%= render 'layouts/search_box'  %>
 
+      <div class="form-group">
+        <%= collection_select('books', 'type', CashBooksHelper.TYPE.map {|c| [c[0],c[1]]}, :last, :first,{},{class: "form-control"}) %>
+      </div>
+
       <%= submit_tag :Search, class: "btn btn-primary" %>
   <% end %>
 

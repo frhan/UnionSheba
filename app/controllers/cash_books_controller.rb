@@ -15,7 +15,6 @@ class CashBooksController < ApplicationController
                     .where(status: :active, :created_at => @start_date.beginning_of_day..@end_date.end_of_day)
                     .order("voucher_id asc")
 
-
   end
 
 end
