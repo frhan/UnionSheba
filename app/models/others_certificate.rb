@@ -10,6 +10,8 @@ class OthersCertificate < ActiveRecord::Base
   accepts_nested_attributes_for :freedom_fighters, allow_destroy: true
   accepts_nested_attributes_for :relationships, allow_destroy: true
 
+  validates :certificate_type, presence: true
+  
   def save_certificate_no
     return if self.pending? || self.certifcate_no.present?
 

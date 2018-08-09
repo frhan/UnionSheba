@@ -218,7 +218,10 @@ module ApplicationHelper
     #return 'en' if params[:lang] == 'en'
     'bn'
   end
-
+  def permanent_address?(address)
+    return true if address.permanent_address?
+    false
+  end
   def address_type(address)
     return "বর্তমান ঠিকানা" if address.present_address?
     return "স্থায়ী ঠিকানা" if address.permanent_address?

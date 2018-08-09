@@ -7,7 +7,7 @@ class CashBooksController < ApplicationController
     @start_date = from_date
     #@end_date = to_date
 
-    @books_type = :in
+    @books_type = 'in'
     @books_type = params[:books][:type] if params[:books].present? && params[:books][:type].present?
 
     @collections = current_user.collection_moneys
