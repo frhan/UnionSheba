@@ -12,7 +12,7 @@ class Warish < ActiveRecord::Base
 
     warsh_no = Warish.where(union_id: self.union.id).count(:warish_no)
     warsh_no = warsh_no + 1
-    warsh = "#{self.union.union_code}W#{current_year.to_s}#{warsh_no.to_s}"
+    warsh = get_unique_certificate_no warsh_no
     self.update_attributes(:warish_no => warsh)
   end
 
@@ -24,6 +24,16 @@ class Warish < ActiveRecord::Base
     trac_id = "#{self.union.union_code}W#{current_year_month_day.to_s}#{trac_no.to_s}"
     self.update_attributes(:tracking_id => trac_id)
   end
+
+  private
+
+  def get_unique_certificate_no(sl_no)
+    cer_no = "#{self.union.union_code}W#{current_year.to_s}#{sl_no.to_s}"
+    warish = Warish.find_by_warish_no(cer_no)
+    return cer_no if warish.blank?
+    return get_unique_certificate_no(sl_no + 1)
+  end
+
 
 
 end

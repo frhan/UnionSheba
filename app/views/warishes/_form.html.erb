@@ -17,10 +17,10 @@
               </div>
           <% end %>
 
-          <% if f.object.new_record? %>
-              <span class=" text-center help-block">নাগরিকত্ব অথবা জন্ম নিবন্ধন এর স্ক্যান করা ছবি</span>
+          <% if f.object.new_record?%>
               <div class="form-group col-lg-12">
                 <%= f.fields_for :image_attachment do |p| %>
+                    <span class=" text-center help-block">নাগরিকত্ব অথবা জন্ম নিবন্ধন এর স্ক্যান করা ছবি</span>
                     <%= p.file_field :photo, accept: 'image/png,image/jpeg', class: "form-control" %>
                 <% end %>
               </div>
