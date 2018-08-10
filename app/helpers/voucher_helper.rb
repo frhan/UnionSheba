@@ -18,4 +18,5 @@ module VoucherHelper
     self.update_attributes(voucher: voucher)
   end
 
+
 end

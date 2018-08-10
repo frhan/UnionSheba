@@ -20,15 +20,15 @@
               <%= bangla_date e.created_at %>
             </td>
             <td>
-              <%= e.babod %>
+              <%= e.senders_name %>
             </td>
             <td>
-              <% if e.voucher.present? %>
-                  <%= bangla_number e.voucher.voucher_no.to_s %>
+              <%= bangla_number e.serial_no.to_s %>
+            </td>
+            <td>
+              <% if e.check_date.present? %>
+                  <%= bangla_date e.check_date %>
               <% end %>
-            </td>
-            <td>
-              <%= bangla_date e.created_at %>
             </td>
             <td>
               <%= bangla_number e.expense_money.to_s %>
@@ -37,9 +37,7 @@
               <%= e.babod %>
             </td>
             <td>
-              <% if e.voucher.present? %>
-                  <%= bangla_number e.voucher.total_expense.to_s %>
-              <% end %>
+              <%= bangla_number e.expense_money.to_s %>
             </td>
             <td></td>
             <td>
