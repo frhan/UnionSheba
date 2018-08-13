@@ -93,14 +93,9 @@ DB backups
 ----------
 * https://devcenter.heroku.com/articles/heroku-postgres-backups
 
-TODO
-----
-* DELETE -  CITIZEN
-* delete - warish
-* delete - 
-* thikana change(others certificate) - show
-
 
 https://stackoverflow.com/questions/32895050/validate-uniqueness-of-polymorphic-association
 
+CASH-BOOKS
+----------
 
