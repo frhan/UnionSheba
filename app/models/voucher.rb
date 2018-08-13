@@ -38,9 +38,10 @@ class Voucher < ActiveRecord::Base
 
   def rearrange_voucher
     vouchers = Voucher.where(union_id: self.union.id, main_voucher_type: self.main_voucher_type,
-                  :created_at =>self.created_at.beginning_of_day..self.created_at.end_of_day, status: :active)
+                             :created_at => self.created_at.beginning_of_day..self.created_at.end_of_day,
+                             status: :active)
     if vouchers.present?
-      vouchers.vouchers do |v,index|
+      vouchers.vouchers do |v, index|
         v.update_attributes voucher_no: index
       end
     end
