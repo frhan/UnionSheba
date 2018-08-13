@@ -150,7 +150,7 @@ class OthersCertificatesController < InheritedResources::Base
     @others_certificate = current_user.others_certificates.find(params[:id])
     @others_certificate.remove
     respond_to do |format|
-      format.html { redirect_to citizens_url, notice: 'Certificate was successfully deleted' }
+      format.html { redirect_to others_certificate_url, notice: 'Certificate was successfully deleted' }
       format.json { head :no_content }
     end
   end
