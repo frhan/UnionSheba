@@ -28,6 +28,13 @@
           </div>
 
           <div class="form-group">
+            <label for="nameInBn" class="col-md-3 control-label">যাহাকে প্রদত্ত</label>
+            <div class="col-md-9">
+              <%= f.text_field :senders_name, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label for="nameInBn" class="col-md-3 control-label">চেক নং(যদি থাকে)</label>
             <div class="col-md-9">
               <%= f.text_field :bank_check_no, class: "form-control", placeholder: "Check No" %>

@@ -1,0 +1,12 @@
+
+<% if @books_type == 'in' %>
+    <h2>প্রাপ্তি</h2>
+    <div id="results">
+      <%= render 'in' %>
+    </div>
+<% else %>
+    <h2>প্রদান</h2>
+    <div id="results">
+      <%= render 'out' %>
+    </div>
+<% end %>

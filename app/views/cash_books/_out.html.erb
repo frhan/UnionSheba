@@ -1,30 +1,52 @@
-<table class="table table-bordered table-striped">
-  <thead>
-  <tr>
-    <th>রশিদ নং</th>
-    <th> জমার তারিখ</th>
-    <th>প্রদানকারী</th>
-    <th>বাবদ</th>
-    <th>জমার পরিমাণ</th>
-    <th>জরিমানা</th>
-    <th>বকেয়া</th>
-    <th>ভ্যাট</th>
-    <th>মোট</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  </tbody>
-</table>
-</tbody>
-</table>
+<% if @expenses %>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th><p>প্রদানের<br/>তারিখ</p></th>
+        <th><p>যাহাকে<br/>প্রদত্ত</p></th>
+        <th><p>ভাউচার<br/>নং</p></th>
+        <th><p>ব্যাংক<br/>হইতে টাকা<br/>উত্তোলনের<br/>তারিখ</p></th>
+        <th><p>প্রতি<br/>ভাউচারে<br/>অর্থের<br/>পরিমাণ</p></th>
+        <th><p>প্রদানের<br/>বিবরণ<br/>(খাত<br/>ভিত্তিক)</p></th>
+        <th><p>ব্যাংক হইতে<br/>উত্তোলনকৃত<br/>মোট অর্থের<br/>পরিমাণ<br>(টাকা)</p></th>
+        <th><p>সমাপনী<br/>স্থিতি<br/>(টাকা)</p></th>
+        <th><p>মন্তব্য</p></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @expenses.each do |e| %>
+          <tr>
+            <td>
+              <%= bangla_date e.created_at %>
+            </td>
+            <td>
+              <%= e.senders_name %>
+            </td>
+            <td>
+              <%= bangla_number e.serial_no.to_s %>
+            </td>
+            <td>
+              <% if e.check_date.present? %>
+                  <%= bangla_date e.check_date %>
+              <% end %>
+            </td>
+            <td>
+              <%= bangla_number e.expense_money.to_s %>
+            </td>
+            <td>
+              <%= e.babod %>
+            </td>
+            <td>
+              <%= bangla_number e.expense_money.to_s %>
+            </td>
+            <td></td>
+            <td>
+              <%= e.note %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    </tbody>
+    </table>
+<% end %>

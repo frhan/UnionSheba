@@ -48,7 +48,7 @@
 
             <td>
               <%= link_to('Edit', edit_others_certificate_path(others_certificate)) %>
-              <%= link_to('Delete', edit_others_certificate_path(others_certificate)) %>
+              <%= link_to('Delete', others_certificate_path(others_certificate), method: :delete, data: { confirm: 'Are you sure?' }) %>
             </td>
           </tr>
       <% end %>

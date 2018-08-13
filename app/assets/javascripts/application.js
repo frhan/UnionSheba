@@ -24,3 +24,5 @@
 //= require others_collections
 //= require expenses
 //= require cocoon
+
+

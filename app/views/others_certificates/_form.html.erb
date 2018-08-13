@@ -52,19 +52,19 @@
                   <%= render partial: 'layouts/citizen_basic_compact', locals: {f: cb} %>
               <% end %>
 
-              <% if should_show_work_info(@c_type) %>
+              <% if should_show_work_info? @c_type %>
                   <%= f.fields_for :work_infos do |wi| %>
                       <%= render partial: 'layouts/work_info', locals: {f: wi} %>
                   <% end %>
               <% end %>
 
-              <% if @c_type == 'freedom_fighter' %>
+              <% if should_show_freedom_fighter? @c_type %>
                   <%= f.fields_for :freedom_fighters do |ff| %>
                       <%= render partial: 'layouts/freedom_fighter_info', locals: {f: ff} %>
                   <% end %>
               <% end %>
 
-              <% if @c_type == 'relationship' %>
+              <% if should_show_relationship? @c_type %>
                   <%= f.fields_for :relationships do |rs| %>
                       <%= render partial: 'layouts/relationship_info', locals: {f: rs} %>
                   <% end %>

@@ -32,52 +32,15 @@ Task
 -----
 * validates same nid or birthid (english and bangla)
 
-নাগরিক
---------
-- নাগরিকত্ব সন্দের আবেদন
-- নাগরিকত্ব সন্দের আবেদন যাচাই
-- নাগরিকত্ব সনদ পত্র যাচাই
-
- ওয়ারিশ
- --------
-- ওয়ারিশ সন্দের আবেদন
-- ওয়ারিশ সন্দের আবেদন যাচাই
-- ওয়ারিশ সনদ পত্র যাচাই
 
 ট্রেড লাইসেন্স
 -----------
-- ট্রেড লাইসেন্স আবেদন
 - ট্রেড লাইসেন্স আবেদন যাচাই
 - ট্রেড লাইসেন্স যাচাই
-- রেড লাইসেন্স নবায়ন
-
-অবিবাহিত সনদ
-পুনঃ বিবাহ না হওয়ার সনদ
-একি  নামের প্রত্যয়ন পত্র
-সনাতন ধর্ম অবলম্বী
-প্রত্যয়ন পত্র
-ভূমিহীন সনদ
-বার্ষিক আয়ের সনদ
 
 Task
 -------
-* T#2: citizen certificate
- - label from file
- - jquery form verification
- - pdf
- - date of birth add calender
- - checking data
- - delete citizen
- - citizen no should unique for all union
- - on public show - union/district/upazila- show
  
-* T#3 warish certificate
- - controller
- - views
- - certificate
- - 
- 
-* others certificate
 * add footer
 * theme should not black
 * paralax for home page
@@ -96,7 +59,7 @@ Citizen Applications
 --------------------
 * after request send mail with tracking id
 * after verifiy send mail with pdf
-* 
+ 
 
 Kill port
 ------
@@ -120,24 +83,6 @@ https://github.com/blueimp/jQuery-File-Upload/wiki
 https://devcenter.heroku.com/articles/direct-to-s3-image-uploads-in-rails
 
 
-Warish
-------
-* pdf
-
-Others
-------
-* show page
-* pdf
-* menubar@user
-
-Trade_license
--------------
-* verfication page
-* new Design
-* Public request page
-* request submit page
- 
-
 SSL
 ---
 https://medium.com/@franxyzxyz/setting-up-free-https-with-heroku-ssl-and-lets-encrypt-80cf6eac108e
@@ -147,4 +92,15 @@ https://blog.heroku.com/ssl-is-now-included-on-all-paid-dynos
 DB backups
 ----------
 * https://devcenter.heroku.com/articles/heroku-postgres-backups
+
+TODO
+----
+* DELETE -  CITIZEN
+* delete - warish
+* delete - 
+* thikana change(others certificate) - show
+
+
+https://stackoverflow.com/questions/32895050/validate-uniqueness-of-polymorphic-association
+
 

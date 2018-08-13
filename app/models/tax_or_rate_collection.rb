@@ -36,10 +36,17 @@ class TaxOrRateCollection < ActiveRecord::Base
     license_no.split('-').last if license_no.present?
   end
 
+  def category
+    return self.tax_category.category_code
+  end
+
   def babod
-    return self.other_reason if self.tax_category.present? && self.tax_category.others?
     return self.tax_category.name if self.tax_category.present?
-    return String.new
+    String.new
+  end
+
+  def comment
+    return self.other_reason if self.tax_category.present? && self.tax_category.others?
   end
 
   def babod_pdf

@@ -17,6 +17,22 @@ module Certificatable
 
   end
 
+  def remove
+    remove_dependents
+    self.update_attributes(status: :deleted)
+    self.addresses.update_all({status: :deleted}) if self.addresses.present?
+    self.basic_infos.update_all({status: :deleted}) if self.basic_infos.present?
+    self.contact_address.update_attributes(status: :deleted) if self.contact_address.present?
+    self.citizen_basic.update_attributes(status: :deleted) if self.citizen_basic.present?
+  end
+
+  def deactivate
+    self. self.update_attributes(status: :deactivated)
+  end
+
+  def remove_dependents
+  end
+
   def set_status(status)
     self.status = status
   end

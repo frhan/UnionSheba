@@ -10,12 +10,13 @@ class OthersCertificate < ActiveRecord::Base
   accepts_nested_attributes_for :freedom_fighters, allow_destroy: true
   accepts_nested_attributes_for :relationships, allow_destroy: true
 
+  validates :certificate_type, presence: true
+  
   def save_certificate_no
     return if self.pending? || self.certifcate_no.present?
 
     cer_no = OthersCertificate.where(union_id: self.union.id).count(:certifcate_no)
     cer_no = cer_no + 1
-    #cer = "#{self.union.union_code}S#{current_year.to_s}#{cer_no.to_s}"
     cer = get_unique_certificate_no cer_no
     self.update_attributes(:certifcate_no => cer)
   end
@@ -38,12 +39,16 @@ class OthersCertificate < ActiveRecord::Base
     @freedom_fighter
   end
 
-
   def relationship
     @relationship ||= self.relationships.with_lang(current_lang).first
     @relationship
   end
 
+  def remove_dependents
+    self.work_infos.update_all({status: :deleted}) if self.work_infos.present?
+    self.freedom_fighters.update_all({status: :deleted}) if self.freedom_fighters.present?
+    self.relationships.relationships({status: :deleted}) if self.relationships.present?
+  end
 
   def template
     return 'others_certificates/pdf/no_remarried.pdf.erb' if self.certificate_type == 'no_remarried'
@@ -54,7 +59,7 @@ class OthersCertificate < ActiveRecord::Base
     return 'others_certificates/pdf/non_solvent.pdf.erb' if self.certificate_type == 'non_solvent'
     return 'others_certificates/pdf/orphan.pdf.erb' if self.certificate_type == 'orphan'
     return 'others_certificates/pdf/freedom_fighter.pdf.erb' if self.certificate_type == 'freedom_fighter'
-    return 'others_certificates/pdf/income.pdf.erb' if should_show_work_info self.certificate_type
+    return 'others_certificates/pdf/income.pdf.erb' if should_show_work_info? self.certificate_type
     return 'others_certificates/pdf/only_widow.pdf.erb' if self.certificate_type == 'only_widow'
     return 'others_certificates/pdf/permanent_citizen.pdf.erb' if self.certificate_type == 'permanent_citizen'
     return 'others_certificates/pdf/same_name.pdf.erb' if self.certificate_type == 'same_name'

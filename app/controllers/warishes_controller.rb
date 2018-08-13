@@ -131,9 +131,9 @@ class WarishesController < InheritedResources::Base
   # DELETE /recipes/1
   # DELETE /recipes/1.json
   def destroy
-    @warish.update_attributes(status: :deleted)
+    @warish.remove
     respond_to do |format|
-      format.html { redirect_to citizens_url, notice: 'Citizen was successfully deleted' }
+      format.html { redirect_to warishes_url, notice: 'Citizen was successfully deleted' }
       format.json { head :no_content }
     end
   end
