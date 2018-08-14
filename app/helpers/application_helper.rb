@@ -218,10 +218,12 @@ module ApplicationHelper
     #return 'en' if params[:lang] == 'en'
     'bn'
   end
+
   def permanent_address?(address)
     return true if address.permanent_address?
     false
   end
+
   def address_type(address)
     return "বর্তমান ঠিকানা" if address.present_address?
     return "স্থায়ী ঠিকানা" if address.permanent_address?
@@ -270,13 +272,25 @@ module ApplicationHelper
   end
 
   def from_date
-   return DateTime.parse(params[:start_date]) if params[:start_date].present?
-   Date.today
+    return DateTime.parse(params[:start_date]) if params[:start_date].present?
+    Date.today
   end
 
   def to_date
     return DateTime.parse(params[:end_date]) if params[:end_date].present?
     Date.today
+  end
+
+  def first_day_fiscal_year
+    now = Time.now
+    year = now.year
+    DateTime.parse("#{year}-07-01")
+  end
+
+  def last_day_fiscal_year
+    now = Time.now
+    year = now.year + 1
+    DateTime.parse("#{year}-06-30")
   end
 
 end
