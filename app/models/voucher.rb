@@ -32,7 +32,6 @@ class Voucher < ActiveRecord::Base
 
   end
 
-
   def rearrange_voucher
     vouchers = Voucher.where(union_id: self.union.id, main_voucher_type: self.main_voucher_type,
                              :created_at => self.created_at.beginning_of_day..self.created_at.end_of_day,
@@ -43,7 +42,8 @@ class Voucher < ActiveRecord::Base
                           main_voucher_type: self.main_voucher_type, status: :active).count
     if vouchers.present?
       vouchers.each do |v|
-        v.update_attributes voucher_no: count + 1
+        count = count + 1
+        v.update_attributes voucher_no: count
       end
     end
 
