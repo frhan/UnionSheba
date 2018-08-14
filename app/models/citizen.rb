@@ -54,21 +54,6 @@ class Citizen < ActiveRecord::Base
     return 'অন্যান্য' if others?
   end
 
-  def barcode
-    barcode = ''
-
-    if self.citizen_basic.present?
-      if self.citizen_basic.nid.present?
-        barcode << 'NID#'<< self.citizen_basic.nid << "\n"
-      elsif self.citizen_basic.birthid.present?
-        barcode << 'BirthId# '<< self.citizen_basic.nid .birthid << "\n"
-      end
-    end
-
-    barcode << 'Union: ' << self.union.name_in_bng
-    barcode
-  end
-
   def citizen_no_pdf
     return bangla_number(self.citizen_no) if self.citizen_no.present?
     bangla_number '1234567'
