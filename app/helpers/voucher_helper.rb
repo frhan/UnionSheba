@@ -10,7 +10,6 @@ module VoucherHelper
       #create at from july 1
 
       voucher_count = Voucher.where(union_id: self.union.id,main_voucher_type: main_type, status: :active)
-                          .where('created_at >= ?', first_day_fiscal_year)
                           .count
 
       voucher = Voucher.create(voucher_no: voucher_count + 1, main_voucher_type: main_type,
