@@ -4,8 +4,7 @@ class Voucher < ActiveRecord::Base
   has_many :expenses
 
   def total
-    self.collection_moneys.sum(:fee) + self.collection_moneys.sum(:fine) +
-        self.collection_moneys.sum(:remain) + self.collection_moneys.sum(:vat)
+    self.collection_moneys.sum(:fee)
   end
 
   def total_expense
