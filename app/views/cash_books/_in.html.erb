@@ -32,24 +32,34 @@
             <td>
               <%= c.babod %>
             </td>
-            <td>
-              <% if c.voucher.present? %>
-                  <%= bangla_number c.voucher.total.to_s %>
-              <% end %>
-            </td>
-            <td>
-              <% if c.voucher.present? %>
-                  <%= bangla_number c.voucher.total.to_s %>
-              <% end %>
-            </td>
-            <td>
-              <%= bangla_date c.created_at %>
-            </td>
-            <td>
-              <% if c.voucher.present? %>
-                  <%= bangla_number c.voucher.voucher_no.to_s %>
-              <% end %>
-            </td>
+            <% if c.voucher.present? %>
+                <% if c == c.voucher.collection_moneys.last %>
+
+                    <td>
+                      <% if c.voucher.present? %>
+                          <%= bangla_number c.voucher.total.to_s %>
+                      <% end %>
+                    </td>
+                    <td>
+                      <% if c.voucher.present? %>
+                          <%= bangla_number c.voucher.total.to_s %>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= bangla_date c.created_at %>
+                    </td>
+                    <td>
+                      <% if c.voucher.present? %>
+                          <%= bangla_number c.voucher.voucher_no.to_s %>
+                      <% end %>
+                    </td>
+                <% else %>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <% end %>
+            <% end %>
             <td>
               <%= c.comment %>
             </td>
