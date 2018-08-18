@@ -11,26 +11,33 @@ class CashBooksController < ApplicationController
     @books_type = params[:books][:type] if params[:books].present? && params[:books][:type].present?
 
     @collections = current_user.collection_moneys
-        .where(status: :active, :created_at => @start_date.beginning_of_day..@start_date.end_of_day)
-        .order("voucher_id asc")
+                       .where(status: :active, created_at:
+                           @start_date.beginning_of_day..@start_date.end_of_day)
+                       .order("voucher_id asc")
 
     @initial_collections = current_user.collection_moneys
-                              .where(status: :active, created_at:
-                                  first_day_fiscal_year.beginning_of_day..Date.yesterday.end_of_day)
+                               .where(status: :active, created_at:
+                                   first_day_fiscal_year.beginning_of_day..Date.yesterday.end_of_day)
+
+    @expenses = current_user.expenses
+                    .where(status: :active, created_at:
+                        @start_date.beginning_of_day..@start_date.end_of_day)
+                    .order("voucher_id asc")
 
     total_fee = @initial_collections.sum(:fee)
     total_fine = @initial_collections.sum(:fine)
     total_remain = @initial_collections.sum(:remain)
-    @initial_collections = total_fee + total_fine +total_remain
+    @initial_collections = total_fee + total_fine + total_remain
 
     @inital_expenses = current_user.expenses.where(status: :active, created_at:
         first_day_fiscal_year.beginning_of_day..Date.yesterday.end_of_day).sum(:expense_money)
 
-    @balance = @initial_collections - @inital_expenses
+    last_year_balance = 0
+    last_year_balances = current_user.balance_moneys.where(tax_year: current_fiscal_year - 1)
+    last_year_balance = last_year_balances.first.value if last_year_balances.present?
 
-    @expenses = current_user.expenses
-                    .where(status: :active, :created_at => @start_date.beginning_of_day..@start_date.end_of_day)
-                    .order("voucher_id asc")
+    @balance = @initial_collections - @inital_expenses + last_year_balance
+
     respond_to do |format|
       format.html
       format.js
