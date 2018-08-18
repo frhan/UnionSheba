@@ -25,6 +25,7 @@
         <td><%= bangla_number @balance.to_s %></td>
         <td></td>
       </tr>
+      <% temp = @balance %>
       <% @expenses.each do |e| %>
           <tr>
             <td>
@@ -50,7 +51,10 @@
             <td>
               <%= bangla_number e.expense_money.to_s %>
             </td>
-            <td></td>
+            <td>
+              <% temp = temp -  e.expense_money %>
+              <%= bangla_number temp.to_s %>
+            </td>
             <td>
               <%= e.note %>
             </td>
