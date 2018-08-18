@@ -14,7 +14,19 @@ class CashBooksController < ApplicationController
         .where(status: :active, :created_at => @start_date.beginning_of_day..@start_date.end_of_day)
         .order("voucher_id asc")
 
-    #@initial_collection =
+    @initial_collections = current_user.collection_moneys
+                              .where(status: :active, created_at:
+                                  first_day_fiscal_year.beginning_of_day..Date.yesterday.end_of_day)
+
+    total_fee = @initial_collections.sum(:fee)
+    total_fine = @initial_collections.sum(:fine)
+    total_remain = @initial_collections.sum(:remain)
+    @initial_collections = total_fee + total_fine +total_remain
+
+    @inital_expenses = current_user.expenses.where(status: :active, created_at:
+        first_day_fiscal_year.beginning_of_day..Date.yesterday.end_of_day).sum(:expense_money)
+
+    @balance = @initial_collections - @inital_expenses
 
     @expenses = current_user.expenses
                     .where(status: :active, :created_at => @start_date.beginning_of_day..@start_date.end_of_day)
@@ -24,7 +36,7 @@ class CashBooksController < ApplicationController
       format.js
       format.pdf do
         render :pdf => file_name,
-               :template => 'cash_books/in.pdf.erb',
+               :template => template_name(@books_type),
                :layout => 'pdf.html.erb',
                :disposition => 'attachment',
                page_size: 'A4',
