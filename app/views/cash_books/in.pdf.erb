@@ -1,0 +1,129 @@
+<style>
+
+  body {
+    font-size: 16px;
+    margin: 0 auto;
+    background-color: #ffffff;
+  }
+
+  .row {
+    padding: 0;
+    margin: 0;
+  }
+
+  th, tr {
+    font-weight: normal;
+    text-align: center;
+
+  }
+
+  table {
+    border: 1px solid black;
+    margin: 0;
+    padding: 0;
+  }
+
+  .table {
+    border: 1px solid #000000;
+  }
+
+  .table-bordered > thead > tr > th,
+  .table-bordered > tbody > tr > th,
+  .table-bordered > tfoot > tr > th,
+  .table-bordered > thead > tr > td,
+  .table-bordered > tbody > tr > td,
+  .table-bordered > tfoot > tr > td {
+    border: 1px solid #000000;
+    margin: 2px;
+    padding: 3px;
+  }
+
+  table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid;
+  }
+
+  thead th {
+    background: grey;
+    color: white
+  }
+
+  [class*='col-'] {
+    padding: 0;
+    margin: 0;
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
+  .margin-left {
+    margin-left: 7px;
+  }
+
+  .margin-right {
+    margin-right: 5px;
+  }
+
+  .margin-top-5 {
+    margin-top: 5px;
+  }
+
+  #margin-top-50 {
+    margin-top: 50px;
+  }
+
+  .margin-top-10 {
+    margin-top: 10px;
+  }
+
+</style>
+
+<div>
+  <div class="container">
+
+    <div class="row top-header">
+      <div class="col-xs-12 text-center">
+        <h2><%= bangla_number current_user.union_no %> নং <%= current_user.union_name_bng %> ইউনিয়ন
+          পরিষদ</h2>
+        <p class="sub"> ডাকঘরঃ <%= current_user.post_name_bng %>
+          উপজেলাঃ <%= current_user.upazila_name_bng %>
+          জেলাঃ  <%= current_user.zila_name_bng %></p>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <h3><u><%= collection_money_type_bangla %></u></h3>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="row">
+          <div class="col-xs-3 trade-label">
+            <p>Start Date</p>
+          </div>
+          <div class="col-xs-9">
+            <p class="margin-left" id="license_no"><%= formatted_date_time @start_date %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="row">
+          <div class="col-xs-3 trade-label">
+            <p>End Date</p>
+          </div>
+          <div class="col-xs-9">
+            <p class="pull-left margin-left"><%= formatted_date_time @end_date %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-xs-12  margin-top-10">
+        <%= render 'in' %>
+      </div>
+    </div>
+
+  </div>
+</div>

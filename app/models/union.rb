@@ -9,6 +9,7 @@ class Union < ActiveRecord::Base
   has_many :warishes
   has_many :expenses
   has_many :vouchers
+  has_many :balance_moneys
 
   def to_s
     name_in_bng

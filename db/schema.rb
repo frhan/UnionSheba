@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180809173212) do
+ActiveRecord::Schema.define(version: 20180816084859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,17 @@ ActiveRecord::Schema.define(version: 20180809173212) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "balance_moneys", force: :cascade do |t|
+    t.integer  "union_id"
+    t.integer  "tax_year"
+    t.integer  "value"
+    t.string   "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "balance_moneys", ["union_id"], name: "index_balance_moneys_on_union_id", using: :btree
 
   create_table "basic_infos", force: :cascade do |t|
     t.string   "name"
@@ -479,6 +490,7 @@ ActiveRecord::Schema.define(version: 20180809173212) do
   add_index "work_infos", ["for_whom_id"], name: "index_work_infos_on_for_whom_id", using: :btree
   add_index "work_infos", ["others_certificate_id"], name: "index_work_infos_on_others_certificate_id", using: :btree
 
+  add_foreign_key "balance_moneys", "unions"
   add_foreign_key "citizen_basics", "citizenship_states"
   add_foreign_key "citizen_basics", "maritial_statuses"
   add_foreign_key "citizen_basics", "religions"

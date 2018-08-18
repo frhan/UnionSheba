@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  union_id: 
+  tax_year: 1
+  value: 1
+  note: MyString
+
+two:
+  union_id: 
+  tax_year: 1
+  value: 1
+  note: MyString
