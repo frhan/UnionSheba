@@ -17,7 +17,7 @@ class CashBooksController < ApplicationController
 
     @initial_collections = current_user.collection_moneys
                                .where(status: :active, created_at:
-                                   first_day_fiscal_year.beginning_of_day..Date.yesterday.end_of_day)
+                                   first_day_fiscal_year.beginning_of_day..@start_date.yesterday.end_of_day)
 
     @expenses = current_user.expenses
                     .where(status: :active, created_at:
@@ -30,7 +30,7 @@ class CashBooksController < ApplicationController
     @initial_collections = total_fee + total_fine + total_remain
 
     @inital_expenses = current_user.expenses.where(status: :active, created_at:
-        first_day_fiscal_year.beginning_of_day..Date.yesterday.end_of_day).sum(:expense_money)
+        first_day_fiscal_year.beginning_of_day..@start_date.yesterday.end_of_day).sum(:expense_money)
 
     last_year_balance = 0
     last_year_balances = current_user.balance_moneys.where(tax_year: current_fiscal_year - 1)
