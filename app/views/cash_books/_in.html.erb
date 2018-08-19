@@ -46,7 +46,7 @@
               <%= c.babod %>
             </td>
             <% if c.voucher.present? %>
-                <% if c == c.voucher.collection_moneys.order("id asc").last %>
+                <% if c == c.voucher.collection_moneys.order("serial_no asc").last %>
 
                     <td>
                       <% if c.voucher.present? %>
