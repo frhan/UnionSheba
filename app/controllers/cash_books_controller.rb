@@ -13,7 +13,7 @@ class CashBooksController < ApplicationController
     @collections = current_user.collection_moneys
                        .where(status: :active, created_at:
                            @start_date.beginning_of_day..@start_date.end_of_day)
-                       .order("voucher_id asc")
+                       .order("voucher_id,id desc")
 
     @initial_collections = current_user.collection_moneys
                                .where(status: :active, created_at:
