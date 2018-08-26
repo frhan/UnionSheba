@@ -284,12 +284,14 @@ module ApplicationHelper
   def first_day_fiscal_year
     now = Time.now
     year = now.year
+    year = now.year - 1 if now.month < 7 #if fiscal year less than june
     DateTime.parse("#{year}-07-01")
   end
 
   def last_day_fiscal_year
     now = Time.now
-    year = now.year + 1
+    year = now.year
+    year = year + 1 if now.month > 7 #if fiscal year less than june
     DateTime.parse("#{year}-06-30")
   end
 
