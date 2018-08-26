@@ -22,21 +22,28 @@ class CashBooksController < ApplicationController
     @expenses = current_user.expenses
                     .where(status: :active, created_at:
                         @start_date.beginning_of_day..@start_date.end_of_day)
-                    .order("voucher_id asc")
+                    .order("id asc")
+
+    @inital_expenses = current_user.expenses.where(status: :active,
+                                                   created_at: first_day_fiscal_year.beginning_of_day..
+                                                       @start_date.yesterday.end_of_day).sum(:expense_money)
+
 
     total_fee = @initial_collections.sum(:fee)
     total_fine = @initial_collections.sum(:fine)
     total_remain = @initial_collections.sum(:remain)
     @initial_collections = total_fee + total_fine + total_remain
 
-    @inital_expenses = current_user.expenses.where(status: :active, created_at:
-        first_day_fiscal_year.beginning_of_day..@start_date.yesterday.end_of_day).sum(:expense_money)
+    todays_total_collection = @collections.sum(:fee) + @collections.sum(:fine) + @collections.sum(:remain)
+
 
     last_year_balance = 0
     last_year_balances = current_user.balance_moneys.where(tax_year: current_fiscal_year - 1)
     last_year_balance = last_year_balances.first.value if last_year_balances.present?
 
     @balance = @initial_collections - @inital_expenses + last_year_balance
+
+    @todays_balance = @balance + todays_total_collection
 
     respond_to do |format|
       format.html

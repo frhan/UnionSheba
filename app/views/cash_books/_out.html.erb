@@ -16,16 +16,16 @@
       <tbody>
       <tr>
         <td></td>
-        <td>সমাপনী স্থিতি</td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
-        <td><%= bangla_number @balance.to_s %></td>
+        <td></td>
+        <td><%= bangla_number minus_val(@todays_balance) %></td>
         <td></td>
       </tr>
-      <% temp = @balance %>
+      <% temp = @todays_balance %>
       <% @expenses.each do |e| %>
           <tr>
             <td>
@@ -53,7 +53,7 @@
             </td>
             <td>
               <% temp = temp -  e.expense_money %>
-              <%= bangla_number temp.to_s %>
+              <%= bangla_number minus_val(temp) %>
             </td>
             <td>
               <%= e.note %>
