@@ -8,7 +8,7 @@ class ExpensesController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json { render json: ExpenseDatatable.new(view_context, current_user) }
+      format.json {render json: ExpenseDatatable.new(view_context, current_user)}
     end
   end
 
@@ -21,11 +21,11 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
-        format.json { render :show, status: :created, location: @expense }
+        format.html {redirect_to @expense, notice: 'Expense was successfully created.'}
+        format.json {render :show, status: :created, location: @expense}
       else
-        format.html { render :new }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @expense.errors, status: :unprocessable_entity}
       end
     end
 
@@ -35,11 +35,11 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       if @expense.update(expense_params)
-        format.html { redirect_to @expense, notice: 'Collection  was successfully updated.' }
-        format.json { render :show, status: :ok, location: @expense }
+        format.html {redirect_to @expense, notice: 'Collection  was successfully updated.'}
+        format.json {render :show, status: :ok, location: @expense}
       else
-        format.html { render :edit }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @expense.errors, status: :unprocessable_entity}
       end
     end
 
@@ -49,8 +49,8 @@ class ExpensesController < ApplicationController
     @expense.update_attributes(status: :deleted)
 
     respond_to do |format|
-      format.html { redirect_to expenses_path, notice: 'Collection was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {redirect_to expenses_path, notice: 'Collection was successfully destroyed.'}
+      format.json {head :no_content}
     end
   end
 
@@ -78,20 +78,20 @@ class ExpensesController < ApplicationController
     @start_date = from_date
     @end_date = to_date
 
-      @expenses = current_user.expenses
-                              .where(status: :active, :created_at =>
-                                  @start_date.beginning_of_day..@end_date.end_of_day)
+    @expenses = current_user.expenses
+                    .where(status: :active, :created_at =>
+                        @start_date.beginning_of_day..@end_date.end_of_day)
 
     if params[:collections] && params[:collections][:category_id].present?
       @selected_id = params[:collections][:category_id]
       @expenses = @expenses.where(:expense_category_id => params[:collections][:category_id])
     end
 
-    @total_sum = @expenses.map { |s| s.expense_money }.reduce(0, :+)
+    @total_sum = @expenses.map {|s| s.expense_money}.reduce(0, :+)
 
     if request.format.html?
       @expenses = @expenses.page(params[:page])
-                           .per(10)
+                      .per(10)
     end
 
     respond_to do |format|
@@ -122,9 +122,9 @@ class ExpensesController < ApplicationController
   end
 
   def expense_params
-      params.require(:expense).permit(:expense_money,:senders_name, :note, :other_category,
-                                      :bank_check_no,:check_date,:union_id,
-                                      :expense_category_id)
+    params.require(:expense).permit(:expense_money, :senders_name, :note, :other_category,
+                                    :bank_check_no, :check_date, :union_id,
+                                    :expense_category_id)
   end
 
   def file_name_report
