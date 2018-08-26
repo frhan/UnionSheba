@@ -67,8 +67,9 @@ class CashBooksController < ApplicationController
   private
 
   def template_name books_type
-    return 'cash_books/in.pdf.erb' if books_type == 'in'
-    return 'cash_books/out.pdf.erb' if books_type == 'out'
+    #return 'cash_books/in.pdf.erb' if books_type == 'in'
+    #return 'cash_books/out.pdf.erb' if books_type == 'out'
+    'cash_books/cash_book.pdf.erb'
   end
 
   def file_name

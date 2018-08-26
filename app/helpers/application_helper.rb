@@ -134,7 +134,7 @@ module ApplicationHelper
       when 7
         month = 'জুলাই'
       when 8
-        month = 'অগাস্ট'
+        month = 'আগস্ট'
       when 9
         month = 'সেপ্টেম্বর'
       when 10

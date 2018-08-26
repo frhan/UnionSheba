@@ -58,22 +58,6 @@
     margin: 0;
   }
 
-  .margin-left {
-    margin-left: 7px;
-  }
-
-  .margin-right {
-    margin-right: 5px;
-  }
-
-  .margin-top-5 {
-    margin-top: 5px;
-  }
-
-  #margin-top-50 {
-    margin-top: 50px;
-  }
-
   .margin-top-10 {
     margin-top: 10px;
   }
@@ -91,7 +75,7 @@
         <p>ইউপি ফরম-১</p>
         <p>( বিধি ৫(১) দ্রষ্টব্য )</p>
         <p><b>ক্যাশ বহি </b></p>
-        <p><u><%= current_fiscal_year_bangla %></u> অর্থ বছর</p>
+        <p><b><u><%= current_fiscal_year_bangla %></u> </b> অর্থ বছর, মাস <b><%= bangla_month @start_date.month %></b> /<%= bangla_number @start_date.year.to_s %> ইং</p>
       </div>
     </div>
 
