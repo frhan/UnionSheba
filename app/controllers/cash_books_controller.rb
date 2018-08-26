@@ -11,17 +11,17 @@ class CashBooksController < ApplicationController
     @books_type = params[:books][:type] if params[:books].present? && params[:books][:type].present?
 
     @collections = current_user.collection_moneys
-                       .where(status: :active, created_at:
-                           @start_date.beginning_of_day..@start_date.end_of_day)
+                       .where(status: :active,
+                              created_at: @start_date.beginning_of_day..@start_date.end_of_day)
                        .order("voucher_id,id desc")
 
     @initial_collections = current_user.collection_moneys
-                               .where(status: :active, created_at:
-                                   first_day_fiscal_year.beginning_of_day..@start_date.yesterday.end_of_day)
+                               .where(status: :active,
+                                      created_at: first_day_fiscal_year.beginning_of_day..@start_date.yesterday.end_of_day)
 
     @expenses = current_user.expenses
-                    .where(status: :active, created_at:
-                        @start_date.beginning_of_day..@start_date.end_of_day)
+                    .where(status: :active,
+                           created_at: @start_date.beginning_of_day..@start_date.end_of_day)
                     .order("id asc")
 
     @inital_expenses = current_user.expenses.where(status: :active,
