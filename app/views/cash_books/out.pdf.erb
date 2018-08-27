@@ -72,7 +72,7 @@
         <h3>ইউপি ফরম-১</h3>
         <p>( বিধি ৫(১) দ্রষ্টব্য )</p>
         <h2><b>ক্যাশ বহি </b></h2>
-        <p><b><u><%= current_fiscal_year_bangla %></u> </b> অর্থ বছর, মাস <b><%= bangla_month @start_date.month %></b> /<%= bangla_number @start_date.year.to_s %> ইং</p>
+        <p><b><u><%= current_fiscal_year_bangla %></u> </b> অর্থ বছর, মাস: <b><%= bangla_month @start_date.month %></b> /<%= bangla_number @start_date.year.to_s %> ইং</p>
         <p><%= bangla_number current_user.union_no %> নং <%= current_user.union_name_bng %> ইউনিয়ন পরিষদ,
           <u><%= current_user.upazila_name_bng %></u> উপজেলা, <u><%= current_user.zila_name_bng %></u> জেলা ।</p>
       </div>

@@ -14,18 +14,41 @@
     </tr>
     </thead>
     <tbody>
+    <% temp = @balance %>
     <tr>
-      <td><%= bangla_date @start_date %></td>
       <td></td>
       <td></td>
       <td></td>
       <td></td>
       <td></td>
       <td></td>
-      <td><%= bangla_number minus_val(@todays_balance) %></td>
+      <td></td>
+      <td><%= bangla_number minus_val(@balance) %></td>
       <td></td>
     </tr>
-    <% temp = @todays_balance %>
+    <% @collections.each do |c| %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <% if c.voucher.present? %>
+          <% if c == c.voucher.collection_moneys.order("id desc").last %>
+            <td>
+              <% temp = temp + c.voucher.total_collection %>
+              <%= bangla_number minus_val(temp) %>
+            </td>
+          <% else %>
+            <td style="height:15px;">-</td>
+          <% end %>
+        <%else %>
+        <% end %>
+        <td></td>
+      </tr>
+    <% end %>
     <% @expenses.each do |e| %>
       <tr>
         <td>
@@ -52,7 +75,7 @@
           <%= bangla_number e.expense_money.to_s %>
         </td>
         <td>
-          <% temp = temp -  e.expense_money %>
+          <% temp = temp - e.expense_money %>
           <%= bangla_number minus_val(temp) %>
         </td>
         <td>

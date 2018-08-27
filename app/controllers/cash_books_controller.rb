@@ -34,8 +34,7 @@ class CashBooksController < ApplicationController
     total_remain = @initial_collections.sum(:remain)
     @initial_collections = total_fee + total_fine + total_remain
 
-    todays_total_collection = @collections.sum(:fee) + @collections.sum(:fine) + @collections.sum(:remain)
-
+    #todays_total_collection = @collections.sum(:fee) + @collections.sum(:fine) + @collections.sum(:remain)
 
     last_year_balance = 0
     last_year_balances = current_user.balance_moneys.where(tax_year: current_fiscal_year - 1)
@@ -43,7 +42,7 @@ class CashBooksController < ApplicationController
 
     @balance = @initial_collections - @inital_expenses + last_year_balance
 
-    @todays_balance = @balance + todays_total_collection
+    #@todays_balance = @balance + todays_total_collection
 
     respond_to do |format|
       format.html
