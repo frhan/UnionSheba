@@ -18,10 +18,10 @@
   }
 
   table {
+    font-size: 14px;
     border: 1px solid black;
     margin: 0;
     padding: 0;
-    font-size: 14px;
   }
 
   .table {
@@ -69,18 +69,12 @@
 
     <div class="row top-header">
       <div class="col-xs-12 text-center">
-        <h2><%= bangla_number current_user.union_no %> নং <%= current_user.union_name_bng %> ইউনিয়ন পরিষদ</h2>
-        <p class="sub"> ডাকঘরঃ <%= current_user.post_name_bng %>, উপজেলাঃ <%= current_user.upazila_name_bng %>, জেলাঃ  <%= current_user.zila_name_bng %> ।</p>
-        <p>ইউপি ফরম-১</p>
-        <p>(বিধি ৫(১) দ্রষ্টব্য)</p>
-        <p><b>ক্যাশ বহি </b></p>
+        <h3>ইউপি ফরম-১</h3>
+        <p>( বিধি ৫(১) দ্রষ্টব্য )</p>
+        <h2><b>ক্যাশ বহি </b></h2>
         <p><u><%= current_fiscal_year_bangla %></u> অর্থ বছর</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12">
-        <p> তারিখ: <%= bangla_date @start_date %></p>
+        <p><%= bangla_number current_user.union_no %> নং <%= current_user.union_name_bng %> ইউনিয়ন পরিষদ,
+          <u><%= current_user.upazila_name_bng %></u> উপজেলা, <u><%= current_user.zila_name_bng %></u> জেলা ।</p>
       </div>
     </div>
 
