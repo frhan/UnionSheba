@@ -99,3 +99,13 @@ https://stackoverflow.com/questions/32895050/validate-uniqueness-of-polymorphic-
 CASH-BOOKS
 ----------
 
+###Create new user:
+ - first check division
+ - check district
+ - check upazila
+ - create union
+ - create user
+ - add logo and sig from assets
+ 
+
+
