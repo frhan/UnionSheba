@@ -21,4 +21,8 @@ class ForWhom < ActiveRecord::Base
     return self.who == 'other'
   end
 
+  def to_s
+    who_in_bangla
+  end
+
 end

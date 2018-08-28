@@ -73,6 +73,7 @@ class OthersCertificatesController < InheritedResources::Base
   def show
     @others_certificate = current_user.others_certificates.find(params[:id])
     @barcode = barcode_output(@others_certificate) if params[:format] == 'pdf'
+    @c_type = @others_certificate.certificate_type
 
     respond_to do |format|
       format.html
