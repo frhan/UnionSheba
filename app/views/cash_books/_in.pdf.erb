@@ -46,7 +46,7 @@
           <%= c.babod %>
         </td>
         <% if c.voucher.present? %>
-          <% if c == c.voucher.collection_moneys.order("id desc").last %>
+          <% if c == c.voucher.collection_moneys.where(status: :active).order("id desc").last %>
 
             <td>
               <% if c.voucher.present? %>
