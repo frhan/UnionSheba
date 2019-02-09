@@ -5,9 +5,9 @@ class TradeOrganizationsController < ApplicationController
   require 'barby/outputter/png_outputter'
 
   include ApplicationHelper
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:verify]
   load_and_authorize_resource
-  skip_authorize_resource :only => :print_money_recipt
+  skip_authorize_resource :only => [:print_money_recipt,:verify]
   before_action :set_trade_organization, only: [:show, :edit, :update, :destroy,
                                                 :renew, :show_money_recipt,
                                                 :create_trade_license, :edit_license]
@@ -161,6 +161,15 @@ class TradeOrganizationsController < ApplicationController
 
   def update_issue_date
     #TODO: ajax for update issue date
+  end
+
+  def verify
+    @trade_organization = TradeOrganization.find_by_license_no(params[:q]) if params[:q]
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

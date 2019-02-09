@@ -67,11 +67,17 @@ Rails.application.routes.draw do
   resources :others_collections
   resources :trade_licenses
   resources :profiles
+
   resources :trade_organizations, shallow: true do
+
     member do
       get :renew
       post :create_trade_license
       get :print_money_recipt
+    end
+
+    collection do
+      get :verify
     end
   end
 
