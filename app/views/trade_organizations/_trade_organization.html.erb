@@ -38,7 +38,7 @@
 
               <tr>
                 <td>সর্বশেষ নবায়ন বছরঃ</td>
-                <td><%= @trade_organization.trade_licenses.order('fiscal_year desc').first.fiscal_year %></td>
+                <td><%= fiscal_year_bangla @trade_organization.trade_licenses.order('fiscal_year desc').first.fiscal_year %></td>
               </tr>
             <% end %>
 

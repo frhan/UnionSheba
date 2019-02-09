@@ -198,6 +198,10 @@ module ApplicationHelper
     bangla_number(year.to_s) << '-'<< bangla_number((year + 1).to_s)
   end
 
+  def fiscal_year_bangla(year)
+    bangla_number(year.to_s) << '-'<< bangla_number((year + 1).to_s)
+  end
+
   def current_fiscal_year
     now = Time.now
     year = now.year
