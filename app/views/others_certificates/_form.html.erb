@@ -10,93 +10,97 @@
         <div class="col-md-12">
           <%= form_for @others_certificate do |f| %>
 
-              <% if @others_certificate.errors.any? %>
-                  <div id="signupalert" class="alert alert-danger">
-                    <h2><%= pluralize(@others_certificate.errors.count, "error") %> prohibited this user from being
-                      saved:</h2>
-                    <ul>
-                      <% @others_certificate.errors.full_messages.each do |msg| %>
-                          <li><%= msg %></li>
-                      <% end %>
-                    </ul>
-                  </div>
-              <% end %>
+            <% if @others_certificate.errors.any? %>
+              <div id="signupalert" class="alert alert-danger">
+                <h2><%= pluralize(@others_certificate.errors.count, "error") %> prohibited this user from being
+                  saved:</h2>
+                <ul>
+                  <% @others_certificate.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <% if !user_signed_in? %>
 
               <% if f.object.new_record? %>
-                  <span class=" text-center help-block">নাগরিকত্ব অথবা জন্ম নিবন্ধন এর স্ক্যান করা ছবি</span>
-                  <div class="form-group col-lg-12">
-                    <%= f.fields_for :image_attachment do |p| %>
-                        <%= p.file_field :photo, accept: 'image/png,image/jpeg', class: "form-control" %>
-                    <% end %>
-                  </div>
+                <span class=" text-center help-block">নাগরিকত্ব অথবা জন্ম নিবন্ধন এর স্ক্যান করা ছবি</span>
+                <div class="form-group col-lg-12">
+                  <%= f.fields_for :image_attachment do |p| %>
+                    <%= p.file_field :photo, accept: 'image/png,image/jpeg', class: "form-control" %>
+                  <% end %>
+                </div>
               <% end %>
+              
+            <% end %>
 
-              <%= f.fields_for :basic_infos do |bi| %>
-                  <%= render partial: 'layouts/basic_information_compact', locals: {f: bi, is_warish: false} %>
+            <%= f.fields_for :basic_infos do |bi| %>
+              <%= render partial: 'layouts/basic_information_compact', locals: {f: bi, is_warish: false} %>
+            <% end %>
+
+            <% if user_signed_in? %>
+              <%= f.hidden_field :union_id, :value => current_user.union.id %>
+            <% else %>
+              <div class="form-group col-lg-6">
+                <label>ইউনিয়ন</label>
+                <%= f.collection_select :union_id, Union.all, :id, :name_in_bng, {}, {class: "form-control"} %>
+              </div>
+            <% end %>
+
+            <%= f.hidden_field :status, :value => user_signed_in? ? :active : :pending %>
+
+            <%= f.hidden_field :certificate_type, value: @c_type %>
+
+            <%= f.fields_for :citizen_basic do |cb| %>
+              <%= render partial: 'layouts/citizen_basic_compact', locals: {f: cb} %>
+            <% end %>
+
+            <% if should_show_work_info? @c_type %>
+              <%= f.fields_for :work_infos do |wi| %>
+                <%= render partial: 'layouts/work_info', locals: {f: wi} %>
               <% end %>
+            <% end %>
+
+            <% if should_show_freedom_fighter? @c_type %>
+              <%= f.fields_for :freedom_fighters do |ff| %>
+                <%= render partial: 'layouts/freedom_fighter_info', locals: {f: ff} %>
+              <% end %>
+            <% end %>
+
+            <% if should_show_relationship? @c_type %>
+              <%= f.fields_for :relationships do |rs| %>
+                <%= render partial: 'layouts/relationship_info', locals: {f: rs} %>
+              <% end %>
+            <% end %>
+
+            <%= f.fields_for :addresses do |ad| %>
+              <%= render partial: 'layouts/address_compact', locals: {f: ad} %>
+            <% end %>
+
+            <%= f.fields_for :contact_address do |ca| %>
+              <%= render partial: 'layouts/contact_address_compact', locals: {f: ca} %>
+            <% end %>
+
+            <div class="form-group">
+              <!-- Button -->
+              <div class="col-md-offset-4 col-md-4">
+                <%= f.submit "দাখিল করুন", class: "btn btn-info" %>
+              </div>
+            </div>
+
+            <div class="col-md-9">
 
               <% if user_signed_in? %>
-                  <%= f.hidden_field :union_id, :value => current_user.union.id %>
-              <% else %>
-                  <div class="form-group col-lg-6">
-                    <label>ইউনিয়ন</label>
-                    <%= f.collection_select :union_id, Union.all, :id, :name_in_bng, {}, {class: "form-control"} %>
-                  </div>
-              <% end %>
-
-              <%= f.hidden_field :status, :value => user_signed_in? ? :active : :pending %>
-
-              <%= f.hidden_field :certificate_type, value: @c_type %>
-
-              <%= f.fields_for :citizen_basic do |cb| %>
-                  <%= render partial: 'layouts/citizen_basic_compact', locals: {f: cb} %>
-              <% end %>
-
-              <% if should_show_work_info? @c_type %>
-                  <%= f.fields_for :work_infos do |wi| %>
-                      <%= render partial: 'layouts/work_info', locals: {f: wi} %>
-                  <% end %>
-              <% end %>
-
-              <% if should_show_freedom_fighter? @c_type %>
-                  <%= f.fields_for :freedom_fighters do |ff| %>
-                      <%= render partial: 'layouts/freedom_fighter_info', locals: {f: ff} %>
-                  <% end %>
-              <% end %>
-
-              <% if should_show_relationship? @c_type %>
-                  <%= f.fields_for :relationships do |rs| %>
-                      <%= render partial: 'layouts/relationship_info', locals: {f: rs} %>
-                  <% end %>
-              <% end %>
-
-              <%= f.fields_for :addresses do |ad| %>
-                  <%= render partial: 'layouts/address_compact', locals: {f: ad} %>
-              <% end %>
-
-              <%= f.fields_for :contact_address do |ca| %>
-                  <%= render partial: 'layouts/contact_address_compact', locals: {f: ca} %>
-              <% end %>
-
-              <div class="form-group">
-                <!-- Button -->
-                <div class="col-md-offset-4 col-md-4">
-                  <%= f.submit "দাখিল করুন", class: "btn btn-info" %>
-                </div>
-              </div>
-
-              <div class="col-md-9">
-
-                <% if user_signed_in? %>
-                    <% if f.object.new_record? || f.object.active? %>
-                        <%= link_to 'Back', others_certificates_path %>
-                    <% else %>
-                        <%= link_to 'Back', requests_others_certificates_path %>
-                    <% end %>
+                <% if f.object.new_record? || f.object.active? %>
+                  <%= link_to 'Back', others_certificates_path %>
                 <% else %>
-                    <%= link_to 'Back', root_path %>
+                  <%= link_to 'Back', requests_others_certificates_path %>
                 <% end %>
-              </div>
+              <% else %>
+                <%= link_to 'Back', root_path %>
+              <% end %>
+            </div>
 
           <% end %>
 
