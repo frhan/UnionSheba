@@ -44,8 +44,6 @@
           <% end %>
 
           <ul class="dropdown-menu" role="menu">
-            <li> <%= link_to 'নতুন সনদ', '#' %></li>
-            <li class="divider"></li>
             <li> <%= link_to 'অবিবাহিত সনদ', new_others_certificate_path(c_type: :unmarried) %></li>
             <li> <%= link_to 'পুনঃ বিবাহ না হওয়ার সনদ', new_others_certificate_path(c_type: :no_remarried) %></li>
             <li> <%= link_to 'ভূমিহীন সনদ', new_others_certificate_path(c_type: :landless) %></li>
