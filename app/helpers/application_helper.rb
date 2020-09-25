@@ -202,6 +202,12 @@ module ApplicationHelper
     bangla_number(year.to_s) << '-'<< bangla_number((year + 1).to_s)
   end
 
+  def cfiscal_year(day)
+    year = day.year
+    year = day.year - 1 if day.month < 7 #if fiscal year less than june
+    year
+  end
+
   def current_fiscal_year
     now = Time.now
     year = now.year
@@ -296,6 +302,18 @@ module ApplicationHelper
     now = Time.now
     year = now.year
     year = year + 1 if now.month > 7 #if fiscal year less than june
+    DateTime.parse("#{year}-06-30")
+  end
+
+  def fday_fiscal_year(day)
+    year = day.year
+    year = day.year - 1 if day.month < 7 #if fiscal year less than june
+    DateTime.parse("#{year}-07-01")
+  end
+
+  def lday_fiscal_year(day)
+    year = day.year
+    year = year + 1 if day.month > 7 #if fiscal year less than june
     DateTime.parse("#{year}-06-30")
   end
 

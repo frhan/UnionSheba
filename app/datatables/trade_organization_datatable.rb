@@ -25,8 +25,10 @@ class TradeOrganizationDatatable
   def sort_order_filter
     records = my_search.order("#{sort_column} #{sort_direction}")
     if params[:search][:value].present?
-      records = records.where("license_no like :search or lower(enterprize_name_in_eng) like lower(:search) or lower(owners_name_eng) like lower(:search)",
-                              search: "%#{params[:search][:value]}%")
+      records = records.where("license_no like :search
+                                or lower(enterprize_name_in_eng) like lower(:search)
+                                or lower(owners_name_eng) like lower(:search) ",
+                                search: "%#{params[:search][:value]}%")
     end
     records
   end
